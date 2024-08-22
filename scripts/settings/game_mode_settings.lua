@@ -4,11 +4,12 @@ require("foundation/scripts/util/error")
 GameModeSettings = GameModeSettings or {}
 GameModeSettings.base = {
 	class_name = "GameModeBase",
-	allow_host_migration = true,
 	use_level_progress = true,
 	use_story_lines = true,
 	cap_power_level = true,
 	visible = false,
+	max_health_kd = 300,
+	disable_host_migration = false,
 	object_sets = {},
 	game_mode_states = {
 		"initial_state"

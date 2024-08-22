@@ -3,11 +3,16 @@ require("scripts/settings/dlcs/bless/passive_ability_warrior_priest")
 ActivatedAbilitySettings.wh_priest = {
 	{
 		description = "career_active_desc_wh_priest",
-		weapon_name = "wh_priest_career_skill_weapon",
 		display_name = "career_active_name_wh_priest",
+		weapon_name = "wh_priest_career_skill_weapon",
 		cooldown = 70,
 		icon = "victor_priest_activated_ability",
-		action_name = "action_career_wh_priest"
+		action_name = "action_career_wh_priest",
+		mechanism_overrides = {
+			versus = {
+				cooldown = 100
+			}
+		}
 	}
 }
 PassiveAbilitySettings.wh_priest = {
@@ -44,10 +49,18 @@ PassiveAbilitySettings.wh_priest = {
 			ability_class = PassiveAbilityWarriorPriest,
 			init_data = {
 				resource_per_breed = {
-					on_boss = 200,
 					on_normal = 2,
 					on_special = 8,
-					on_elite = 6
+					on_boss = 200,
+					on_elite = 6,
+					mechanism_overrides = {
+						versus = {
+							on_boss = 200,
+							on_normal = 2,
+							on_special = 16,
+							on_elite = 12
+						}
+					}
 				}
 			}
 		}

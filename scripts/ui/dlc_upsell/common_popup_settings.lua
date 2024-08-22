@@ -113,20 +113,3 @@ CommonPopupSettings.shovel = {
 		}
 	}
 }
-CommonPopupSettings.carousel = {
-	popup_type = "reminder",
-	button_text = "menu_accept",
-	display_on_every_boot = true,
-	class_name = "UnlockReminderPopup",
-	background_texture = "versus_welcome_popup",
-	definitions = local_require("scripts/ui/dlc_upsell/unlock_reminder_popup_definitions"),
-	input_desc = {
-		actions = {
-			{
-				input_action = "confirm",
-				priority = 1,
-				description_text = "menu_accept"
-			}
-		}
-	}
-}

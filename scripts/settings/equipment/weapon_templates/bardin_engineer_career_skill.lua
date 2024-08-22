@@ -2,10 +2,10 @@ local ammo_ability_cost = 0.75
 local min_shots_activate = 1
 local spinup_time = 0.5
 local base_chain_time = 0.15
-local initial_rounds_per_second = 6
+local initial_rounds_per_second = 4
 local max_rps = 12
 local rps_loss_per_second = 1.5
-local rps_gain_per_shot = 0.3
+local rps_gain_per_shot = 0.2
 local armor_pierce_ammo_ability_cost = 2
 local armor_pierce_damage_profile = "engineer_ability_shot_armor_pierce"
 local armor_pierce_initial_rounds_per_second = 2
@@ -68,6 +68,8 @@ weapon_template.actions = {
 		},
 		spin = {
 			charge_sound_stop_event = "Stop_player_engineer_engine_loop",
+			anim_end_event = "attack_finished",
+			fp_speed_anim_variable = "barrel_spin_speed",
 			visual_spinup_min = 0,
 			kind = "career_dr_four_spin",
 			override_visual_spinup = true,
@@ -77,7 +79,7 @@ weapon_template.actions = {
 			visual_spinup_max = 0.3,
 			charge_sound_husk_name = "Play_player_engineer_engine_charge_husk",
 			windup_speed = 0,
-			anim_end_event = "attack_finished",
+			audio_loop_id = "engineer_weapon_spin",
 			hold_input = "action_one_hold",
 			anim_event = "attack_charge",
 			charge_sound_husk_stop_event = "Stop_player_engineer_engine_loop_husk",
@@ -146,26 +148,27 @@ weapon_template.actions = {
 			chain_condition_func = shoot_condition_func
 		},
 		base_fire = {
-			alert_sound_range_hit = 1.5,
-			charge_value = "bullet_hit",
-			damage_profile = "engineer_ability_shot",
+			anim_event = "attack_shoot_charged",
+			use_ability_as_ammo = true,
+			fire_sound_event = "Play_player_engineer_shooting_burst",
 			kind = "career_dr_four",
 			shot_count = 1,
 			action_priority = 0,
-			fire_time = 0,
+			damage_profile = "engineer_ability_shot",
 			anim_end_event = "attack_finished",
 			anim_event_secondary = "reload",
+			charge_value = "bullet_hit",
 			total_time_secondary = 1.75,
 			apply_recoil = true,
 			headshot_multiplier = 2,
-			aim_assist_ramp_multiplier = 0.1,
 			additional_critical_strike_chance = 0,
+			aim_assist_ramp_multiplier = 0.1,
 			aim_assist_max_ramp_multiplier = 0.3,
+			fire_time = 0,
 			aim_assist_auto_hit_chance = 0.5,
-			fire_sound_event = "Play_player_engineer_shooting_burst",
 			aim_assist_ramp_decay_delay = 0.2,
 			critical_hit_effect = "bullet_critical_impact",
-			anim_event = "attack_shoot_charged",
+			alert_sound_range_hit = 1.5,
 			reload_when_out_of_ammo = true,
 			continuous_buff_check = true,
 			num_layers_spread = 1,
@@ -237,7 +240,7 @@ weapon_template.actions = {
 			anim_end_event = "attack_finished",
 			visual_spinup_min = 0.4,
 			kind = "career_dr_four_spin",
-			charge_sound_name = "Play_player_engineer_engine_charge",
+			charge_sound_husk_stop_event = "Stop_player_engineer_engine_loop_husk",
 			override_visual_spinup = true,
 			windup_max = 0,
 			initial_windup = 0,
@@ -245,9 +248,10 @@ weapon_template.actions = {
 			visual_spinup_max = 0.5,
 			charge_sound_husk_name = "Play_player_engineer_engine_loop_husk",
 			windup_speed = 0,
+			audio_loop_id = "engineer_weapon_spin",
 			hold_input = "action_two_hold",
 			anim_event = "attack_charge_loop",
-			charge_sound_husk_stop_event = "Stop_player_engineer_engine_loop_husk",
+			charge_sound_name = "Play_player_engineer_engine_charge",
 			anim_end_event_condition_func = function (unit, end_reason)
 				return end_reason ~= "new_interupting_action"
 			end,
@@ -380,17 +384,15 @@ weapon_template.actions = {
 				local career_extension = ScriptUnit.has_extension(action_user, "career_system")
 				local buff_extension = ScriptUnit.has_extension(action_user, "buff_system")
 				local can_reload = not buff_extension:has_buff_type("bardin_engineer_pump_max_exhaustion_buff")
-				local needs_reload = career_extension:current_ability_cooldown(1) > 0
 
-				return can_reload and needs_reload
+				return can_reload
 			end,
 			chain_condition_func = function (action_user, input_extension)
 				local career_extension = ScriptUnit.has_extension(action_user, "career_system")
 				local buff_extension = ScriptUnit.has_extension(action_user, "buff_system")
 				local can_reload = not buff_extension:has_buff_type("bardin_engineer_pump_max_exhaustion_buff")
-				local needs_reload = career_extension:current_ability_cooldown(1) > 0
 
-				return can_reload and needs_reload
+				return can_reload
 			end,
 			initial_charge_delay = base_initial_charge_delay,
 			ability_charge_interval = base_ability_charge_interval
@@ -480,10 +482,6 @@ weapon_template.particle_fx = {
 	}
 }
 weapon_template.particle_fx_lookup = table.mirror_array_inplace(table.keys(weapon_template.particle_fx))
-weapon_template.wwise_dep_right_hand = {
-	"wwise/drakegun",
-	"wwise/flamethrower"
-}
 weapon_template.visual_heat_cooldown_speed = visual_heat_cooldown_speed
 weapon_template.custom_data = {
 	windup = 0,

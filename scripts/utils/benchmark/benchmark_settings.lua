@@ -19,13 +19,12 @@ BenchmarkSettings = {
 	destroy_close_enemies_timer = 90,
 	initial_overview_time = math.huge,
 	parameters = {
-		hide_fps = true,
+		player_invincible = true,
 		network_debug = false,
 		disable_tutorial_at_start = true,
 		disable_gutter_runner = true,
 		hide_version_info = true,
 		network_debug_connections = false,
-		honduras_demo = false,
 		spawn_empty_chest = true,
 		disable_debug_draw = true,
 		disable_pack_master = true,
@@ -35,8 +34,8 @@ BenchmarkSettings = {
 		debug_interactions = false,
 		screen_space_player_camera_reactions = false,
 		infinite_ammo = true,
-		player_invincible = true,
-		wanted_profile = "empire_soldier_tutorial"
+		honduras_demo = false,
+		hide_fps = true
 	},
 	attract_mode_settings = {
 		display_name = "intel_loading_screen_attract_mode",
@@ -95,6 +94,7 @@ for _, arg in pairs(args) do
 		BenchmarkSettings.parameters.hide_fps = false
 		BenchmarkSettings.parameters.show_fps = true
 		BenchmarkSettings.parameters.attract_mode = true
+		BenchmarkSettings.parameters.skip_start_screen = true
 
 		override_display_name(BenchmarkSettings.benchmark_mode_settings)
 		override_development_parameter_func(BenchmarkSettings.parameters)

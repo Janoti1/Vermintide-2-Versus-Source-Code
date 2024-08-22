@@ -17,7 +17,10 @@ local function hit_ai_func(unit, blackboard, hit_unit, action, attack)
 		local buff_extension = ScriptUnit.extension(unit, "buff_system")
 
 		buff_extension:trigger_procs("on_damage_dealt", hit_unit, unit, damage, nil, nil, nil, nil, nil, nil, nil, nil, nil)
-		Managers.state.achievement:trigger_event("on_damage_dealt", hit_unit, unit, damage, nil, nil, nil, nil, nil, nil, nil, nil, nil)
+
+		if not Managers.state.network:in_game_session() then
+			Managers.state.achievement:trigger_event("on_damage_dealt", hit_unit, unit, damage, nil, nil, nil, nil, nil, nil, nil, nil, nil)
+		end
 	end
 end
 
@@ -25,28 +28,29 @@ local breed_data = {
 	detection_radius = 18,
 	leave_walk_distance = 5,
 	walk_speed = 4,
-	horde_behavior = "pet_skeleton",
-	flingable = true,
+	hesitation_timer = 5,
+	exchange_order = 4,
 	patrol_active_target_selection = "pick_closest_target_with_spillover",
 	run_max_speed_distance = 4,
-	exchange_order = 4,
-	hit_effect = "fx/skull_shatter",
+	horde_behavior = "pet_skeleton",
+	aim_template = "chaos_marauder",
 	animation_sync_rpc = "rpc_sync_anim_state_7",
-	aoe_height = 1.4,
+	hit_effect = "fx/skull_shatter",
 	is_always_spawnable = true,
 	run_min_speed_distance = 1.5,
 	debug_spawn_category = "Misc",
 	no_blood = true,
+	height = 1.6,
+	has_inventory = true,
 	default_inventory_template = "undead_npc_skeleton_dual_wield",
 	slot_template = "chaos_roamer",
-	hit_mass_count = 3,
 	uses_spawn_animation = true,
 	wield_inventory_on_spawn = true,
 	attack_general_sound_event = "Play_skeleton_minion_attack_vce",
 	force_walk_while_tired = true,
 	stagger_resistance = 2,
 	patrol_detection_radius = 10,
-	hesitation_timer = 5,
+	flingable = true,
 	scale_death_push = 0.35,
 	panic_close_detection_radius_sq = 9,
 	radius = 1,
@@ -54,32 +58,33 @@ local breed_data = {
 	stagger_multiplier = 0.45,
 	look_at_range = 40,
 	patrol_active_perception = "perception_regular",
+	hit_mass_count = 3,
 	perception_previous_attacker_stickyness_value = -7.75,
 	race = "undead",
-	poison_resistance = 100,
+	during_horde_detection_radius = 15,
 	ai_strength = 0.8,
 	death_reaction = "ai_default",
 	armor_category = 1,
 	die_on_vortex_land = false,
+	poison_resistance = 100,
+	death_sound_event = "career_necro_skeleton_spawn",
 	uses_attack_sfx_callback = true,
 	push_sound_event = "Play_generic_pushed_impact_large",
-	death_sound_event = "career_necro_skeleton_spawn",
-	commanded_unit_aggro_sound = "Play_skeleton_minion_charge_vce",
 	max_commander_distance = 28,
+	commanded_unit_aggro_sound = "Play_skeleton_minion_charge_vce",
 	is_bot_threat = true,
-	threat_value = 2.5,
 	smart_targeting_width = 0.2,
-	debug_despawn_immunity = true,
-	has_inventory = true,
+	threat_value = 2.5,
 	behavior = "pet_skeleton",
 	use_regular_horde_spawning = true,
+	debug_despawn_immunity = true,
+	aoe_height = 1.4,
+	ignore_activate_unit = true,
 	bone_lod_level = 1,
 	smart_object_template = "chaos_marauder",
-	during_horde_detection_radius = 15,
 	target_selection = "pick_closest_target_near_detection_source_position",
 	run_speed = 6,
 	follow_reach = 1,
-	aim_template = "chaos_marauder",
 	using_inventory_weakspots = true,
 	stagger_threshold_light = 0,
 	hit_reaction = "ai_default",
@@ -140,15 +145,15 @@ local breed_data = {
 		1
 	},
 	max_health = {
-		16.650000000000002,
-		16.650000000000002,
-		24.75,
-		29.25,
-		45,
-		67.5,
-		67.5,
-		67.5,
-		16.650000000000002
+		37 * CareerConstants.bw_necromancer.pet_balance_health_modifier,
+		37 * CareerConstants.bw_necromancer.pet_balance_health_modifier,
+		55 * CareerConstants.bw_necromancer.pet_balance_health_modifier,
+		65 * CareerConstants.bw_necromancer.pet_balance_health_modifier,
+		100 * CareerConstants.bw_necromancer.pet_balance_health_modifier,
+		150 * CareerConstants.bw_necromancer.pet_balance_health_modifier,
+		150 * CareerConstants.bw_necromancer.pet_balance_health_modifier,
+		150 * CareerConstants.bw_necromancer.pet_balance_health_modifier,
+		37 * CareerConstants.bw_necromancer.pet_balance_health_modifier
 	},
 	bloodlust_health = BreedTweaks.bloodlust_health.chaos_roamer,
 	hit_mass_counts = {
@@ -174,7 +179,7 @@ local breed_data = {
 		40,
 		40
 	},
-	stagger_modifier_function = function (stagger, duration, length, hit_zone_name, blackboard, breed, direction)
+	stagger_modifier_function = function (stagger, duration, length, hit_zone_name, blackboard, breed)
 		if blackboard.stagger_type == 3 then
 			if stagger == 3 and blackboard.heavy_stagger_immune_time then
 				stagger = 0

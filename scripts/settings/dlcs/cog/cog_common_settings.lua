@@ -90,12 +90,20 @@ settings.unlock_settings = {
 	cog = {
 		id = "1443780",
 		class = "UnlockDlc",
-		requires_restart = true
+		requires_restart = true,
+		always_unlocked_game_app_ids = {
+			2792380,
+			1270350
+		}
 	},
 	cog_upgrade = {
 		id = "1443790",
 		class = "UnlockDlc",
-		requires_restart = true
+		requires_restart = true,
+		always_unlocked_game_app_ids = {
+			2792380,
+			1270350
+		}
 	}
 }
 settings.unlock_settings_xb1 = {

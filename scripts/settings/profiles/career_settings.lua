@@ -21,7 +21,7 @@ CareerActionNames = {
 local function local_is_unlocked_function(career, hero_name, hero_level)
 	local unlocked, reason = career:override_available_for_mechanism()
 
-	if unlocked ~= nil then
+	if not unlocked then
 		return unlocked, reason
 	end
 
@@ -44,11 +44,11 @@ local function local_override_available_for_mechanism(career)
 	local settings = Managers.mechanism:mechanism_setting_for_title("override_career_availability")
 	local career_name = career.display_name
 
-	if settings and settings[career_name] ~= nil then
-		return settings[career_name], "disabled_for_mechanism"
+	if settings and settings[career_name] == false then
+		return false, "disabled_for_mechanism"
 	end
 
-	return nil
+	return true
 end
 
 CareerSettings = {
@@ -77,10 +77,9 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.dr_1,
 		passive_ability = PassiveAbilitySettings.dr_1,
 		attributes = {
+			max_hp = 150,
 			movement_speed = 10,
 			base_critical_strike_chance = 0.05,
-			max_hp = 150,
-			max_hp_kd = 300,
 			attack_speed_speed = 10
 		},
 		video = {
@@ -158,9 +157,8 @@ CareerSettings = {
 		passive_ability = PassiveAbilitySettings.dr_2,
 		attributes = {
 			max_hp = 125,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05,
-			movement_speed = 9
+			movement_speed = 9,
+			base_critical_strike_chance = 0.05
 		},
 		video = {
 			material_name = "dr_slayer",
@@ -238,9 +236,8 @@ CareerSettings = {
 		passive_ability = PassiveAbilitySettings.dr_3,
 		attributes = {
 			max_hp = 100,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05,
-			movement_speed = 8
+			movement_speed = 8,
+			base_critical_strike_chance = 0.05
 		},
 		video = {
 			material_name = "dr_ranger",
@@ -316,9 +313,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.es_1,
 		passive_ability = PassiveAbilitySettings.es_1,
 		attributes = {
-			max_hp = 100,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 100
 		},
 		video = {
 			material_name = "es_huntsman",
@@ -394,9 +390,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.es_2,
 		passive_ability = PassiveAbilitySettings.es_2,
 		attributes = {
-			max_hp = 150,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 150
 		},
 		video = {
 			material_name = "es_knight",
@@ -472,9 +467,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.es_3,
 		passive_ability = PassiveAbilitySettings.es_3,
 		attributes = {
-			max_hp = 125,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 125
 		},
 		video = {
 			material_name = "es_mercenary",
@@ -550,9 +544,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.we_1,
 		passive_ability = PassiveAbilitySettings.we_1,
 		attributes = {
-			max_hp = 100,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.1
+			base_critical_strike_chance = 0.1,
+			max_hp = 100
 		},
 		video = {
 			material_name = "we_shade",
@@ -628,9 +621,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.we_2,
 		passive_ability = PassiveAbilitySettings.we_2,
 		attributes = {
-			max_hp = 125,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 125
 		},
 		video = {
 			material_name = "we_maidenguard",
@@ -706,9 +698,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.we_3,
 		passive_ability = PassiveAbilitySettings.we_3,
 		attributes = {
-			max_hp = 100,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 100
 		},
 		video = {
 			material_name = "we_waywatcher",
@@ -725,12 +716,12 @@ CareerSettings = {
 		is_unlocked_function = local_is_unlocked_function,
 		is_dlc_unlocked = local_is_dlc_unlocked,
 		override_available_for_mechanism = local_override_available_for_mechanism,
-		talent_packages = function (talent_ids, packages_list, is_first_person)
+		talent_packages = function (talent_ids, packages_list, is_first_person, is_bot)
 			local weapon_name = ActivatedAbilitySettings.we_3[1].weapon_name
 			local weapon = ItemMasterList[weapon_name]
 
 			if weapon and weapon.slot_to_use then
-				local item = BackendUtils.get_loadout_item("we_waywatcher", weapon.slot_to_use)
+				local item = BackendUtils.get_loadout_item("we_waywatcher", weapon.slot_to_use, is_bot)
 				local item_data = item and rawget(ItemMasterList, item.key)
 				local item_template_name = item_data and item_data.template
 
@@ -808,9 +799,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.wh_1,
 		passive_ability = PassiveAbilitySettings.wh_1,
 		attributes = {
-			max_hp = 150,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 150
 		},
 		video = {
 			material_name = "wh_zealot",
@@ -889,9 +879,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.wh_2,
 		passive_ability = PassiveAbilitySettings.wh_2,
 		attributes = {
-			max_hp = 100,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 100
 		},
 		video = {
 			material_name = "wh_bountyhunter",
@@ -967,9 +956,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.wh_3,
 		passive_ability = PassiveAbilitySettings.wh_3,
 		attributes = {
-			max_hp = 125,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.1
+			base_critical_strike_chance = 0.1,
+			max_hp = 125
 		},
 		video = {
 			material_name = "wh_captain",
@@ -1045,9 +1033,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.bw_1,
 		passive_ability = PassiveAbilitySettings.bw_1,
 		attributes = {
-			max_hp = 100,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 100
 		},
 		video = {
 			material_name = "bw_scholar",
@@ -1123,9 +1110,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.bw_2,
 		passive_ability = PassiveAbilitySettings.bw_2,
 		attributes = {
-			max_hp = 100,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 100
 		},
 		video = {
 			material_name = "bw_adept",
@@ -1201,9 +1187,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.bw_3,
 		passive_ability = PassiveAbilitySettings.bw_3,
 		attributes = {
-			max_hp = 150,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 150
 		},
 		video = {
 			material_name = "bw_unchained",
@@ -1276,9 +1261,8 @@ CareerSettings = {
 		activated_ability = ActivatedAbilitySettings.es_2,
 		passive_ability = PassiveAbilitySettings.es_2,
 		attributes = {
-			max_hp = 150,
-			max_hp_kd = 300,
-			base_critical_strike_chance = 0.05
+			base_critical_strike_chance = 0.05,
+			max_hp = 150
 		},
 		video = {
 			material_name = "es_knight",
@@ -1349,6 +1333,8 @@ CareerNameAchievementMapping = {
 }
 
 DLCUtils.require_list("career_setting_files")
+
+CareerSettingsOriginal = table.shallow_copy(CareerSettings)
 
 if script_data.honduras_demo then
 	CareerSettings.we_shade.preview_items = {

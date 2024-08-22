@@ -25,9 +25,8 @@ CareerSettings.we_thornsister = {
 	activated_ability = ActivatedAbilitySettings.we_thornsister,
 	passive_ability = PassiveAbilitySettings.we_thornsister,
 	attributes = {
-		max_hp = 125,
-		max_hp_kd = 300,
-		base_critical_strike_chance = 0.05
+		base_critical_strike_chance = 0.05,
+		max_hp = 125
 	},
 	video = {
 		material_name = "we_thornsister",
@@ -48,7 +47,7 @@ CareerSettings.we_thornsister = {
 	is_unlocked_function = function (career, hero_name, hero_level)
 		local unlocked, reason = career:override_available_for_mechanism()
 
-		if unlocked ~= nil then
+		if not unlocked then
 			return unlocked, reason
 		end
 
@@ -73,11 +72,11 @@ CareerSettings.we_thornsister = {
 		local settings = Managers.mechanism:mechanism_setting_for_title("override_career_availability")
 		local career_name = career.display_name
 
-		if settings and settings[career_name] ~= nil then
-			return settings[career_name], "disabled_for_mechanism"
+		if settings and settings[career_name] == false then
+			return false, "disabled_for_mechanism"
 		end
 
-		return nil
+		return true
 	end,
 	requires_packages = {
 		wall_units = {

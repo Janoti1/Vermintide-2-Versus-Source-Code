@@ -1,5 +1,5 @@
 local settings = {
-	branch = "versus_cat",
+	branch = "default",
 	project = "vermintide 2"
 }
 

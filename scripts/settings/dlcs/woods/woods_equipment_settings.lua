@@ -301,23 +301,32 @@ settings.area_damage_templates = {
 		},
 		client = {
 			update = function (world, radius, aoe_unit, player_screen_effect_name, player_unit_particles, aoe_dot_player_take_damage, explosion_template_name, slow_modifier)
+				local side = Managers.state.side.side_by_unit[aoe_unit]
+
+				if not side then
+					return
+				end
+
 				local area_damage_position = POSITION_LOOKUP[aoe_unit]
 
-				if area_damage_position then
-					for _, player in pairs(Managers.player:players()) do
-						local unit = player.player_unit
-						local unit_position = POSITION_LOOKUP[unit]
+				if not area_damage_position then
+					return
+				end
 
-						if unit_position then
-							local distance = Vector3.distance_squared(unit_position, area_damage_position)
-							local is_inside_radius = distance < radius * radius
+				local player_units = side.PLAYER_AND_BOT_UNITS
 
-							if is_inside_radius then
-								local buff_extension = ScriptUnit.has_extension(unit, "buff_system")
+				for _, player_unit in pairs(player_units) do
+					local unit_position = POSITION_LOOKUP[player_unit]
 
-								if buff_extension then
-									buff_extension:add_buff("thorn_sister_wall_slow")
-								end
+					if unit_position then
+						local distance = Vector3.distance_squared(unit_position, area_damage_position)
+						local is_inside_radius = distance < radius * radius
+
+						if is_inside_radius then
+							local buff_extension = ScriptUnit.has_extension(player_unit, "buff_system")
+
+							if buff_extension then
+								buff_extension:add_buff("thorn_sister_wall_slow")
 							end
 						end
 					end
@@ -343,29 +352,35 @@ settings.area_damage_templates = {
 }
 settings.vortex_templates = {
 	spirit_storm = {
-		breed_name = "spirit_storm",
-		ai_rotation_speed = 0.1,
-		full_outer_radius = 1.3,
+		outer_fx_z_scale_multiplier = 0.3,
+		max_height_player_target = 1.5,
 		inner_fx_z_scale_multiplier = 0.3,
-		medium_cost_nav_cost_map_cost_type = "vortex_near",
-		start_sound_event_name = "weapon_life_staff_thorn_lift_wind_loop_start",
-		ai_max_ascension_height = 1,
+		player_ascend_speed = 5,
+		keep_enemies_within_radius = 0,
+		player_actions_allowed = false,
 		stop_sound_event_name = "weapon_life_staff_thorn_lift_wind_loop_end",
+		full_inner_radius = 1,
+		ai_rotation_speed = 0.1,
+		high_cost_nav_cost_map_cost_type = "vortex_danger_zone",
+		full_outer_radius = 1.3,
+		medium_cost_nav_cost_map_cost_type = "vortex_near",
+		damage = 5,
+		max_height = 3,
+		ai_max_ascension_height = 1,
+		player_in_vortex_max_duration = 2,
+		player_attract_speed = 20,
+		breed_name = "spirit_storm",
 		outer_fx_name = "fx/thornsister_spirits",
 		ai_attract_speed = 20,
-		high_cost_nav_cost_map_cost_type = "vortex_danger_zone",
-		max_units = 1,
 		inner_fx_name = "fx/thornsister_spirits",
+		start_sound_event_name = "weapon_life_staff_thorn_lift_wind_loop_start",
 		windup_time = 0,
-		outer_fx_z_scale_multiplier = 0.3,
-		max_height = 3,
-		ai_attractable = true,
-		full_inner_radius = 1,
 		ai_radius_change_speed = 1,
-		damage = 5,
+		player_rotation_speed = 0,
 		use_nav_cost_map_volumes = true,
 		ai_ascension_speed = 1.5,
 		max_allowed_inner_radius_dist = 0.1,
+		player_radius_change_speed = 1,
 		full_fx_radius = 4,
 		ai_eject_height = {
 			5,
@@ -374,6 +389,10 @@ settings.vortex_templates = {
 		time_of_life = {
 			8,
 			8
+		},
+		time_of_life_player_target = {
+			2,
+			2
 		},
 		reduce_duration_per_breed = {
 			chaos_warrior = 0.5

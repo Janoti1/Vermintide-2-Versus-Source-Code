@@ -26,9 +26,8 @@ CareerSettings.wh_priest = {
 	activated_ability = ActivatedAbilitySettings.wh_priest,
 	passive_ability = PassiveAbilitySettings.wh_priest,
 	attributes = {
-		max_hp = 150,
-		max_hp_kd = 300,
-		base_critical_strike_chance = 0.05
+		base_critical_strike_chance = 0.05,
+		max_hp = 150
 	},
 	video = {
 		material_name = "wh_priest",
@@ -49,7 +48,7 @@ CareerSettings.wh_priest = {
 	is_unlocked_function = function (career, hero_name, hero_level)
 		local unlocked, reason = career:override_available_for_mechanism()
 
-		if unlocked ~= nil then
+		if not unlocked then
 			return unlocked, reason
 		end
 
@@ -74,11 +73,11 @@ CareerSettings.wh_priest = {
 		local settings = Managers.mechanism:mechanism_setting_for_title("override_career_availability")
 		local career_name = career.display_name
 
-		if settings and settings[career_name] ~= nil then
-			return settings[career_name], "disabled_for_mechanism"
+		if settings and settings[career_name] == false then
+			return false, "disabled_for_mechanism"
 		end
 
-		return nil
+		return true
 	end,
 	item_slot_types_by_slot_name = {
 		slot_melee = {

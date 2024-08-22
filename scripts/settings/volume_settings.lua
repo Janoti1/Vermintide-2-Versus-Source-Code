@@ -233,6 +233,11 @@ VolumeExtensionSettings = VolumeExtensionSettings or {
 			[BOT] = {
 				traversal_cost = "inferno"
 			}
+		},
+		ai_avoid_area = {
+			[AI] = {
+				traversal_cost = "inferno"
+			}
 		}
 	},
 	movement_volume = {
@@ -312,7 +317,9 @@ VolumeExtensionSettings = VolumeExtensionSettings or {
 			}
 		},
 		ai_inside = {
-			[AI] = {}
+			[AI] = {
+				filter = GenericVolumeTemplates.filters.is_alive_default_enemy
+			}
 		},
 		players_and_bots_inside = {
 			[PLAYER] = {},

@@ -150,7 +150,6 @@ ItemMasterList.es_handgun_skin_02_runed_05 = {
 	information_text = "information_weapon_skin",
 	right_hand_unit = "units/weapons/player/wpn_empire_handgun_02_t2/wpn_empire_handgun_02_t2_runed_01",
 	template = "handgun_template_1",
-	required_dlc = "bogenhafen",
 	hud_icon = "weapon_generic_icon_staff_3",
 	display_unit = "units/weapons/weapon_display/display_rifle",
 	item_type = "weapon_skin",
@@ -174,7 +173,6 @@ ItemMasterList.we_dual_dagger_skin_02_runed_05 = {
 	hud_icon = "weapon_generic_icon_staff_3",
 	display_unit = "units/weapons/weapon_display/display_1h_weapon",
 	item_type = "weapon_skin",
-	required_dlc = "bogenhafen",
 	matching_item_key = "we_dual_wield_daggers",
 	can_wield = {
 		"we_shade",

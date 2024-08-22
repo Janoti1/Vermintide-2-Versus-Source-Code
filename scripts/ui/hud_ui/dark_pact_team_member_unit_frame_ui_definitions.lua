@@ -118,10 +118,13 @@ local function create_static_widget()
 		element = {
 			passes = {
 				{
-					pass_type = "texture",
 					style_id = "character_portrait",
 					texture_id = "character_portrait",
-					retained_mode = RETAINED_MODE_ENABLED
+					pass_type = "texture",
+					retained_mode = RETAINED_MODE_ENABLED,
+					content_change_function = function (content, style)
+						style.color = content.dim_portraits and Colors.get_color_table_with_alpha("dim_gray", 255) or Colors.get_color_table_with_alpha("white", 255)
+					end
 				},
 				{
 					style_id = "player_level",
@@ -475,12 +478,13 @@ local function create_dynamic_portait_widget()
 				}
 			},
 			respawn_countdown_text = {
-				font_size = 64,
+				font_size = 72,
 				scenegraph_id = "portrait_pivot",
 				word_wrap = true,
+				use_shadow = true,
 				horizontal_alignment = "center",
 				vertical_alignment = "center",
-				font_type = "hell_shark",
+				font_type = "hell_shark_header",
 				size = {
 					86 * portrait_scale,
 					108 * portrait_scale
@@ -488,13 +492,18 @@ local function create_dynamic_portait_widget()
 				text_color = {
 					255,
 					255,
-					168,
-					0
+					255,
+					255
 				},
 				offset = {
 					-(86 * portrait_scale) / 2,
 					-(108 * portrait_scale) / 2,
 					50
+				},
+				shadow_offset = {
+					2,
+					2,
+					0
 				}
 			}
 		},

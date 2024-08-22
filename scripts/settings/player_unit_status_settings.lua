@@ -38,13 +38,15 @@ PlayerUnitStatusSettings.fatigue_point_costs = {
 	action_dodge = 0,
 	action_stun_push = 1,
 	vomit_face = 2,
-	blocked_charge = 28,
+	bulwark_shield_bash = 12,
 	vomit_ground = 1,
-	headshot_clan_rat = -1,
+	blocked_charge = 28,
 	action_push = 2,
+	headshot_clan_rat = -1,
 	headshot_special = -10,
+	blocked_attack_3 = 2,
 	career_victor_captain = -10,
-	blocked_attack_3 = 2
+	force_set = 0
 }
 PlayerUnitStatusSettings.WOUNDED_DEGEN_DELAY = 0.5
 PlayerUnitStatusSettings.WOUNDED_DEGEN_AMOUNT = 0.25
@@ -116,6 +118,13 @@ PlayerUnitStatusSettings.hanging_by_pack_master = {
 	damage_type = "cutting",
 	release_falling_time_ko = 3,
 	release_unhook_time_ko = 4
+}
+PlayerUnitStatusSettings.invisibility = {
+	friendly_fade = 0.65,
+	intensity = 10,
+	disabled_enemy_fade_min = 0.1,
+	enemy_fade = 1,
+	disabled_enemy_fade_max = 0.5
 }
 
 DLCUtils.require_list("player_unit_status_settings_file_names")

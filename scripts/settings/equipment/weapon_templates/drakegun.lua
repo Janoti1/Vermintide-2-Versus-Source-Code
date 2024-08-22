@@ -267,6 +267,7 @@ weapon_template.overcharge_data = {
 	overcharge_warning_med_sound_event = "drakegun_overcharge_warning_med",
 	hit_overcharge_threshold_sound = "ui_special_attack_ready"
 }
+weapon_template.overcharge_data.critical_overcharge_margin = weapon_template.overcharge_data.max_value * 0.03
 weapon_template.attack_meta_data = {
 	max_range = 15,
 	obstruction_fuzzyness_range_charged = 1,

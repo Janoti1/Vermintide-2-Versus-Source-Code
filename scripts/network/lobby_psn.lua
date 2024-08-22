@@ -77,11 +77,7 @@ LobbyInternal.key_order = {
 	"num_players",
 	"quick_game",
 	"session_id",
-	"player_slot_1",
-	"player_slot_2",
-	"player_slot_3",
-	"player_slot_4",
-	"player_slot_5",
+	"reserved_profiles",
 	"unique_server_name",
 	"host",
 	"country_code",
@@ -96,6 +92,7 @@ for i, key in ipairs(LobbyInternal.key_order) do
 end
 
 LobbyInternal.default_lobby_data = {
+	reserved_profiles = "0=0",
 	is_private = "false",
 	matchmaking_type = "n/a",
 	mission_id = "n/a",
@@ -335,7 +332,7 @@ LobbyInternal.unserialize_psn_data = function (data_string, verify_lobby_data)
 	else
 		t = {}
 
-		local data_string_table = string.split(data_string, "/")
+		local data_string_table = string.split_deprecated(data_string, "/")
 
 		if #data_string_table > #LobbyInternal.key_order then
 			t.broken_lobby_data = data_string

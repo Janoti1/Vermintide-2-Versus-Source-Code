@@ -108,6 +108,7 @@ local function make_filter_macro_can_wield_career(career_name)
 	end
 end
 
+local EMPTY_TABLE = {}
 local filter_macros = {
 	item_key = function (item, backend_id)
 		local item_data = item.data
@@ -157,7 +158,7 @@ local filter_macros = {
 
 		if item_data.traits then
 			for _, trait_name in ipairs(item_data.traits) do
-				local trait_config = BuffTemplates[trait_name]
+				local trait_config = BuffUtils.get_buff_template(trait_name)
 				local roll_dice_as_hero = trait_config.roll_dice_as_hero
 
 				if roll_dice_as_hero then
@@ -214,6 +215,17 @@ local filter_macros = {
 		local career_names = backend_items:equipped_by(backend_id)
 
 		if #career_names > 0 then
+			return true
+		end
+
+		return false
+	end,
+	is_equipped_by_any_loadout = function (item, backend_id)
+		local item_data = item.data
+		local backend_items = Managers.backend:get_interface("items")
+		local loadouts = backend_items:is_equipped_by_any_loadout(backend_id)
+
+		if #loadouts > 0 then
 			return true
 		end
 
@@ -326,6 +338,12 @@ local filter_macros = {
 		local rarity = backend_items:get_item_rarity(backend_id)
 
 		return rarity == "magic"
+	end,
+	is_event = function (item, backend_id)
+		local backend_items = Managers.backend:get_interface("items")
+		local rarity = backend_items:get_item_rarity(backend_id)
+
+		return rarity == "event"
 	end,
 	can_wield_bright_wizard = make_filter_macro_can_wield_profile("bright_wizard"),
 	can_wield_bw_scholar = make_filter_macro_can_wield_career("bw_scholar"),
@@ -536,6 +554,12 @@ local filter_macros = {
 		if fake_items[backend_id] then
 			return true
 		end
+	end,
+	is_event_item = function (item, backend_id)
+		local item_data = item.data
+		local event_bound = item_data.event_item
+
+		return event_bound
 	end
 }
 

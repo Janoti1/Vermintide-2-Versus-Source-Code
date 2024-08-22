@@ -377,12 +377,12 @@ local damage_templates = {
 			boost_curve_coefficient = 0.75,
 			attack_template = "staff_magma",
 			power_distribution_near = {
-				attack = 0.2,
-				impact = 0.25
+				attack = 0.16,
+				impact = 0.2
 			},
 			power_distribution_far = {
-				attack = 0.1,
-				impact = 0.1
+				attack = 0.07,
+				impact = 0.07
 			},
 			range_modifier_settings = {
 				dropoff_start = 8,
@@ -391,12 +391,11 @@ local damage_templates = {
 		}
 	},
 	geiser_magma = {
-		dot_template_name = "burning_magma_dot",
 		charge_value = "aoe",
 		dot_balefire_variant = true,
+		no_stagger = true,
 		no_stagger_damage_reduction_ranged = true,
 		attack_template = "wizard_staff_geiser_magma",
-		no_stagger = true,
 		critical_strike = {
 			attack_armor_power_modifer = {
 				1,
@@ -897,6 +896,122 @@ local damage_templates = {
 				attack = 5,
 				impact = 0.5
 			}
+		}
+	},
+	deus_damage_drone = {
+		charge_value = "projectile",
+		no_stagger_damage_reduction_ranged = true,
+		armor_modifier = {
+			attack = {
+				0.2,
+				0.1,
+				0.4,
+				0.2,
+				0.4,
+				0.05
+			},
+			impact = {
+				0,
+				0,
+				0,
+				0,
+				0
+			}
+		},
+		default_target = {
+			boost_curve_type = "smiter_curve",
+			boost_curve_coefficient = 1,
+			attack_template = "bolt_sniper",
+			power_distribution = {
+				attack = 0.3,
+				impact = 0
+			}
+		}
+	},
+	boon_career_ability_lightning_aoe = {
+		charge_value = "light_attack",
+		no_stagger_damage_reduction_ranged = true,
+		no_stagger = true,
+		cleave_distribution = {
+			attack = 0.25,
+			impact = 0.25
+		},
+		armor_modifier = {
+			attack = {
+				0.45,
+				0.45,
+				0.45,
+				0.45,
+				0.45,
+				0.45
+			},
+			impact = {
+				0.45,
+				0.45,
+				0.45,
+				0.45,
+				0.45,
+				0.45
+			}
+		},
+		default_target = {
+			damage_type = "buff",
+			attack_template = "armor_breaker"
+		}
+	},
+	periodic_aoe_stagger = {
+		is_explosion = true,
+		charge_value = "ability",
+		cleave_distribution = "cleave_distribution_push_default",
+		default_target = "target_push_Ability",
+		no_friendly_fire = true,
+		no_damage = true,
+		armor_modifier = {
+			attack = {
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			},
+			impact = {
+				0.07,
+				0.5,
+				2,
+				0.3,
+				1,
+				1
+			}
+		}
+	},
+	boon_skulls_03 = {
+		is_explosion = true,
+		charge_value = "ability",
+		default_target = "target_push_Ability",
+		no_friendly_fire = true,
+		no_damage = true,
+		armor_modifier = {
+			attack = {
+				0,
+				0,
+				0,
+				0,
+				0,
+				0
+			},
+			impact = {
+				1,
+				1,
+				15,
+				1,
+				1,
+				1
+			}
+		},
+		cleave_distribution = {
+			impact = 2,
+			atack = 0
 		}
 	}
 }

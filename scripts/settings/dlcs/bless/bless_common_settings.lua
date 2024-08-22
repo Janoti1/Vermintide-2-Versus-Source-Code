@@ -57,12 +57,20 @@ settings.unlock_settings = {
 	bless = {
 		id = "1782450",
 		class = "UnlockDlc",
-		requires_restart = true
+		requires_restart = true,
+		always_unlocked_game_app_ids = {
+			2792380,
+			1270350
+		}
 	},
 	bless_upgrade = {
 		id = "1782451",
 		class = "UnlockDlc",
-		requires_restart = true
+		requires_restart = true,
+		always_unlocked_game_app_ids = {
+			2792380,
+			1270350
+		}
 	}
 }
 settings.unlock_settings_xb1 = {

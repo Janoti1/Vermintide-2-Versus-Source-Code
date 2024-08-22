@@ -36,13 +36,28 @@ settings.controller_settings = {
 }
 settings.hotkey_mapping = {
 	hotkey_store = {
-		cat_disabled = true,
 		in_transition = "hero_view_force",
 		error_message = "matchmaking_ready_interaction_message_store",
 		view = "hero_view",
 		transition_state = "store",
-		disable_when_matchmaking_ready = true,
-		in_transition_menu = "hero_view"
+		in_transition_menu = "hero_view",
+		disable_for_mechanism = {
+			adventure = {
+				matchmaking = false,
+				matchmaking_ready = true,
+				not_matchmaking = false
+			},
+			versus = {
+				matchmaking = true,
+				matchmaking_ready = true,
+				not_matchmaking = true
+			},
+			deus = {
+				matchmaking = false,
+				matchmaking_ready = true,
+				not_matchmaking = false
+			}
+		}
 	}
 }
 settings.store_state_filenames = {

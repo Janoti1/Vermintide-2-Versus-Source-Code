@@ -98,7 +98,7 @@ local damage_templates = {
 				1,
 				1,
 				1,
-				0.25
+				0.5
 			},
 			impact_armor_power_modifer = {
 				1,
@@ -106,7 +106,7 @@ local damage_templates = {
 				1,
 				1,
 				1,
-				0.25
+				0.5
 			}
 		},
 		armor_modifier_near = {
@@ -116,7 +116,7 @@ local damage_templates = {
 				1,
 				1,
 				0.5,
-				0.2
+				0.4
 			},
 			impact = {
 				1,
@@ -124,7 +124,7 @@ local damage_templates = {
 				1,
 				1,
 				1,
-				0.2
+				0.4
 			}
 		},
 		armor_modifier_far = {
@@ -134,7 +134,7 @@ local damage_templates = {
 				1,
 				1,
 				0.5,
-				0.2
+				0.4
 			},
 			impact = {
 				1,
@@ -142,7 +142,7 @@ local damage_templates = {
 				1,
 				1,
 				1,
-				0.2
+				0.4
 			}
 		},
 		cleave_distribution = {
@@ -173,7 +173,7 @@ local damage_templates = {
 			attack_armor_power_modifer = {
 				1,
 				1.4,
-				1.5,
+				1.17,
 				1,
 				0.75,
 				0.5
@@ -191,7 +191,7 @@ local damage_templates = {
 			attack = {
 				1,
 				1.2,
-				1.5,
+				1.17,
 				1,
 				0.75,
 				0

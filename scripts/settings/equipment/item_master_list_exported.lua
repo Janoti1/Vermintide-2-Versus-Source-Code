@@ -1389,23 +1389,6 @@ ItemMasterList.skin_bw_unchained_black_and_gold = {
 	}
 }
 ItemMasterList.skin_bw_unchained_bronze = {
-	description = "description_skin_bw_unchained_bronze",
-	temporary_template = "skin_bw_unchained_bronze",
-	display_name = "skin_bw_unchained_bronze",
-	name = "skin_bw_unchained_bronze",
-	inventory_icon = "icon_skin_unchained_bronze",
-	slot_type = "skin",
-	information_text = "information_text_character_skin",
-	hud_icon = "unit_frame_portrait_bright_wizard",
-	rarity = "rare",
-	skin_type = "unit",
-	item_preview_environment = "unchained_skins_01",
-	item_type = "skin",
-	can_wield = {
-		"bw_unchained"
-	}
-}
-ItemMasterList.skin_bw_unchained_bronze = {
 	description = "description_skin_bw_unchained_redemption",
 	temporary_template = "skin_bw_unchained_bronze",
 	display_name = "skin_bw_unchained_redemption",
@@ -13610,4 +13593,28 @@ ItemMasterList.we_spear_skin = {
 		"we_maidenguard",
 		"we_shade"
 	}
+}
+ItemMasterList.frame_beta_2024 = {
+	description = "frame_beta_2024_description",
+	temporary_template = "frame_beta_2024",
+	display_name = "frame_beta_2024_name",
+	hud_icon = "unit_frame_02",
+	inventory_icon = "icon_portrait_frame_beta_2024",
+	slot_type = "frame",
+	information_text = "information_text_frame",
+	rarity = "promo",
+	item_type = "frame",
+	can_wield = CanWieldAllItemTemplates
+}
+ItemMasterList.frame_streamer = {
+	description = "frame_streamer_description",
+	temporary_template = "frame_streamer",
+	display_name = "frame_streamer_name",
+	hud_icon = "unit_frame_02",
+	inventory_icon = "icon_portrait_frame_streamer",
+	slot_type = "frame",
+	information_text = "information_text_frame",
+	rarity = "promo",
+	item_type = "frame",
+	can_wield = CanWieldAllItemTemplates
 }

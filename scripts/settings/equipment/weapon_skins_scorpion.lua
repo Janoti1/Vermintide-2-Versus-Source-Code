@@ -189,13 +189,14 @@ local skins = {
 		name = "we_longbow_skin_02_magic_01",
 		data = {
 			description = "we_longbow_skin_02_magic_01_description",
+			ammo_unit = "units/weapons/player/wpn_we_quiver_t1/wpn_we_arrow_t1",
+			display_name = "we_longbow_skin_02_magic_01_name",
 			rarity = "magic",
-			hud_icon = "weapon_generic_icon_staff_3",
-			display_unit = "units/weapons/weapon_display/display_bow",
 			inventory_icon = "icon_we_bow_01_t2_magic_01",
 			left_hand_unit = "units/weapons/player/wpn_we_bow_01_t2/wpn_we_bow_01_t2_magic_01",
-			display_name = "we_longbow_skin_02_magic_01_name",
-			template = "longbow_template_1"
+			template = "longbow_template_1",
+			hud_icon = "weapon_generic_icon_staff_3",
+			display_unit = "units/weapons/weapon_display/display_bow"
 		}
 	},
 	{
@@ -283,13 +284,14 @@ local skins = {
 		name = "es_longbow_skin_04_magic_01",
 		data = {
 			description = "es_longbow_skin_04_magic_01_description",
+			ammo_unit = "units/weapons/player/wpn_emp_arrows/wpn_es_arrow_t1",
+			display_name = "es_longbow_skin_04_magic_01_name",
 			rarity = "magic",
-			hud_icon = "weapon_generic_icon_staff_3",
-			display_unit = "units/weapons/weapon_display/display_longbow",
 			inventory_icon = "icon_emp_bow_04_magic_01",
 			left_hand_unit = "units/weapons/player/wpn_emp_bow_04/wpn_emp_bow_04_magic_01",
-			display_name = "es_longbow_skin_04_magic_01_name",
-			template = "longbow_empire_template"
+			template = "longbow_empire_template",
+			hud_icon = "weapon_generic_icon_staff_3",
+			display_unit = "units/weapons/weapon_display/display_longbow"
 		}
 	},
 	{
@@ -309,26 +311,28 @@ local skins = {
 		name = "we_shortbow_skin_02_magic_01",
 		data = {
 			description = "we_shortbow_skin_02_magic_01_description",
+			ammo_unit = "units/weapons/player/wpn_we_quiver_t1/wpn_we_arrow_t1",
+			display_name = "we_shortbow_skin_02_magic_01_name",
 			rarity = "magic",
-			hud_icon = "weapon_generic_icon_staff_3",
-			display_unit = "units/weapons/weapon_display/display_bow",
 			inventory_icon = "icon_we_bow_short_02_magic_01",
 			left_hand_unit = "units/weapons/player/wpn_we_bow_short_02/wpn_we_bow_short_02_magic_01",
-			display_name = "we_shortbow_skin_02_magic_01_name",
-			template = "shortbow_template_1"
+			template = "shortbow_template_1",
+			hud_icon = "weapon_generic_icon_staff_3",
+			display_unit = "units/weapons/weapon_display/display_bow"
 		}
 	},
 	{
 		name = "we_shortbow_hagbane_skin_02_magic_01",
 		data = {
 			description = "we_shortbow_hagbane_skin_02_magic_01_description",
+			ammo_unit = "units/weapons/player/wpn_we_quiver_t1/wpn_we_poison_arrow_t1",
+			display_name = "we_shortbow_hagbane_skin_02_magic_01_name",
 			rarity = "magic",
-			hud_icon = "weapon_generic_icon_staff_3",
-			display_unit = "units/weapons/weapon_display/display_bow",
 			inventory_icon = "icon_we_bow_short_02_magic_01",
 			left_hand_unit = "units/weapons/player/wpn_we_bow_short_02/wpn_we_bow_short_02_magic_01",
-			display_name = "we_shortbow_hagbane_skin_02_magic_01_name",
-			template = "shortbow_hagbane_template_1"
+			template = "shortbow_hagbane_template_1",
+			hud_icon = "weapon_generic_icon_staff_3",
+			display_unit = "units/weapons/weapon_display/display_bow"
 		}
 	},
 	{
@@ -560,26 +564,28 @@ local skins = {
 		name = "wh_crossbow_skin_06_magic_01",
 		data = {
 			description = "wh_crossbow_skin_06_magic_01_description",
+			ammo_unit = "units/weapons/player/wpn_crossbow_quiver/wpn_crossbow_bolt",
+			display_name = "wh_crossbow_skin_06_magic_01_name",
 			rarity = "magic",
-			hud_icon = "weapon_generic_icon_crossbow",
-			display_unit = "units/weapons/weapon_display/display_1h_crossbow",
 			inventory_icon = "icon_empire_crossbow_tier2_magic_01",
 			left_hand_unit = "units/weapons/player/wpn_empire_crossbow_t2/wpn_empire_crossbow_tier2_magic_01",
-			display_name = "wh_crossbow_skin_06_magic_01_name",
-			template = "crossbow_template_1"
+			template = "crossbow_template_1",
+			hud_icon = "weapon_generic_icon_crossbow",
+			display_unit = "units/weapons/weapon_display/display_1h_crossbow"
 		}
 	},
 	{
 		name = "dw_crossbow_skin_03_magic_01",
 		data = {
 			description = "dw_crossbow_skin_03_magic_01_description",
+			ammo_unit = "units/weapons/player/wpn_crossbow_quiver/wpn_crossbow_bolt",
+			display_name = "dw_crossbow_skin_03_magic_01_name",
 			rarity = "magic",
-			hud_icon = "weapon_generic_icon_staff_3",
-			display_unit = "units/weapons/weapon_display/display_1h_crossbow",
 			inventory_icon = "icon_dw_xbow_02_t1_magic_01",
 			left_hand_unit = "units/weapons/player/wpn_dw_xbow_02_t1/wpn_dw_xbow_02_t1_magic_01",
-			display_name = "dw_crossbow_skin_03_magic_01_name",
-			template = "crossbow_template_1"
+			template = "crossbow_template_1",
+			hud_icon = "weapon_generic_icon_staff_3",
+			display_unit = "units/weapons/weapon_display/display_1h_crossbow"
 		}
 	},
 	{

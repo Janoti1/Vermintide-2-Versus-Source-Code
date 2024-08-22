@@ -138,7 +138,7 @@ player.kill_skaven_storm_vermin_warlord_difficulty_rank = {
 }
 player.highest_equipped_rarity = {}
 
-for _, slot in ipairs({
+local slot_types = {
 	"melee",
 	"ranged",
 	"necklace",
@@ -147,7 +147,9 @@ for _, slot in ipairs({
 	"hat",
 	"skin",
 	"frame"
-}) do
+}
+
+for _, slot in ipairs(slot_types) do
 	player.highest_equipped_rarity[slot] = {
 		value = 0,
 		source = "player_data",
@@ -500,10 +502,6 @@ player.completed_career_levels = {}
 player.played_difficulty = {}
 player.weapon_kills_per_breed = {}
 player.mission_streak = {}
-player.spawned_times = {
-	value = 0,
-	sync_on_hot_join = true
-}
 player.completed_daily_quests = {
 	value = 0,
 	database_name = "completed_daily_quests",

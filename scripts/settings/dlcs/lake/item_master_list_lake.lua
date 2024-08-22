@@ -373,7 +373,7 @@ ItemMasterList.es_bastard_sword_skin_04_magic_01 = {
 	information_text = "information_weapon_skin",
 	template = "bastard_sword_template",
 	right_hand_unit = "units/weapons/player/wpn_emp_gk_sword_02_t2/wpn_emp_gk_sword_02_t2_magic_01",
-	required_dlc = "lake_upgrade",
+	required_dlc = "lake",
 	display_unit = "units/weapons/weapon_display/display_2h_swords",
 	item_type = "weapon_skin",
 	matching_item_key = "es_bastard_sword",
@@ -551,9 +551,9 @@ ItemMasterList.es_sword_shield_breton_skin_04 = {
 	}
 }
 ItemMasterList.es_sword_shield_breton_skin_04_magic_01_magic_01 = {
-	description = "es_sword_shield_breton_skin_04_magic_01_description",
+	description = "es_sword_shield_breton_skin_05_magic_01_description",
 	rarity = "magic",
-	display_name = "es_sword_shield_breton_skin_04_magic_01_name",
+	display_name = "es_sword_shield_breton_skin_05_magic_01_name",
 	hud_icon = "weapon_generic_icon_staff_3",
 	inventory_icon = "icon_wpn_emp_gk_sword_02_t2_wpn_emp_gk_shield_01_magic_01",
 	slot_type = "weapon_skin",
@@ -563,7 +563,7 @@ ItemMasterList.es_sword_shield_breton_skin_04_magic_01_magic_01 = {
 	left_hand_unit = "units/weapons/player/wpn_emp_gk_shield_01/wpn_emp_gk_shield_01_magic_01",
 	display_unit = "units/weapons/weapon_display/display_shield_sword",
 	item_type = "weapon_skin",
-	required_dlc = "lake_upgrade",
+	required_dlc = "lake",
 	matching_item_key = "es_sword_shield_breton",
 	can_wield = {
 		"es_questingknight"
@@ -602,7 +602,7 @@ ItemMasterList.es_sword_shield_breton_magic_01 = {
 	property_table_name = "melee",
 	item_type = "es_1h_sword_shield_breton",
 	left_hand_unit = "units/weapons/player/wpn_emp_gk_shield_01/wpn_emp_gk_shield_01_magic_01",
-	required_unlock_item = "es_sword_shield",
+	required_unlock_item = "es_sword_shield_breton",
 	required_dlc = "lake",
 	can_wield = {
 		"es_questingknight"
@@ -655,13 +655,5 @@ UpdateItemMasterList({
 	"es_2h_hammer_magic_01",
 	"es_sword_shield_magic_01",
 	"es_mace_shield_magic_01",
-	"es_dual_wield_hammer_sword_magic_01",
-	"vs_es_1h_sword",
-	"vs_es_1h_mace",
-	"vs_es_2h_sword_executioner",
-	"vs_es_2h_sword",
-	"vs_es_2h_hammer",
-	"vs_es_sword_shield",
-	"vs_es_mace_shield",
-	"vs_es_dual_wield_hammer_sword"
+	"es_dual_wield_hammer_sword_magic_01"
 }, "es_questingknight")

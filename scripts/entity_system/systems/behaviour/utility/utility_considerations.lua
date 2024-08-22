@@ -82,6 +82,257 @@ UtilityConsiderations = {
 			blackboard_input = "target_changed"
 		}
 	},
+	chaos_bulwark_follow = {
+		distance_to_target = {
+			max_value = 7,
+			blackboard_input = "target_dist",
+			spline = {
+				0,
+				0,
+				0.05,
+				0,
+				0.1,
+				1,
+				0.7,
+				1,
+				0.75,
+				0.5,
+				0.95,
+				0.5,
+				1,
+				1
+			}
+		},
+		distance_to_destination = {
+			max_value = 5,
+			blackboard_input = "destination_dist",
+			spline = {
+				0,
+				0,
+				0.05,
+				0,
+				0.15,
+				1,
+				1,
+				1
+			}
+		},
+		is_navbot_following_path = {
+			is_condition = true,
+			blackboard_input = "is_navbot_following_path"
+		}
+	},
+	chaos_bulwark_push_attack = {
+		distance_to_target = {
+			max_value = 5,
+			blackboard_input = "target_dist",
+			spline = {
+				0,
+				0,
+				0.1,
+				1,
+				0.25,
+				1,
+				0.35,
+				0.75,
+				0.45,
+				0.65,
+				0.6,
+				0.5,
+				0.75,
+				0,
+				1,
+				0
+			}
+		},
+		time_since_last = {
+			max_value = 4,
+			blackboard_input = "time_since_last",
+			spline = {
+				0,
+				0,
+				0.25,
+				0,
+				0.5,
+				1,
+				1,
+				1
+			}
+		},
+		not_charging = {
+			is_condition = true,
+			invert = true,
+			blackboard_input = "is_charging"
+		}
+	},
+	chaos_bulwark_sweep_attack = {
+		distance_to_target = {
+			max_value = 5,
+			blackboard_input = "target_dist",
+			spline = {
+				0,
+				0,
+				0.2,
+				0,
+				0.25,
+				1,
+				0.35,
+				1,
+				0.45,
+				0.65,
+				0.6,
+				0.5,
+				0.75,
+				0,
+				1,
+				0
+			}
+		},
+		time_since_last = {
+			max_value = 4,
+			blackboard_input = "time_since_last",
+			spline = {
+				0,
+				0,
+				0.3,
+				0,
+				1,
+				1
+			}
+		},
+		has_line_of_sight = {
+			is_condition = true,
+			blackboard_input = "has_line_of_sight"
+		},
+		not_charging = {
+			is_condition = true,
+			invert = true,
+			blackboard_input = "is_charging"
+		}
+	},
+	chaos_bulwark_running_attack_charging = {
+		distance_to_target = {
+			max_value = 7,
+			blackboard_input = "target_dist",
+			spline = {
+				0,
+				0,
+				0.2,
+				0,
+				0.21,
+				1,
+				0.8,
+				1,
+				0.9,
+				0,
+				1,
+				0
+			}
+		},
+		charging = {
+			is_condition = true,
+			invert = false,
+			blackboard_input = "is_charging"
+		},
+		max_occupied_slots = {
+			max_value = 3,
+			blackboard_input = "target_num_occupied_slots",
+			spline = {
+				0,
+				1,
+				0.5,
+				1,
+				1,
+				0
+			}
+		},
+		have_slot = {
+			max_value = 1,
+			blackboard_input = "have_slot",
+			spline = {
+				0,
+				0,
+				0.5,
+				0,
+				1,
+				1
+			}
+		}
+	},
+	chaos_bulwark_running_attack = {
+		distance_to_target = {
+			max_value = 7,
+			blackboard_input = "target_dist",
+			spline = {
+				0,
+				0,
+				0.5,
+				0,
+				0.51,
+				1,
+				0.7,
+				1,
+				0.75,
+				0,
+				1,
+				0
+			}
+		},
+		time_since_last = {
+			max_value = 8,
+			blackboard_input = "time_since_last",
+			spline = {
+				0,
+				0,
+				0.4,
+				0,
+				0.7,
+				1,
+				1,
+				1
+			}
+		},
+		target_move_speed = {
+			max_value = 5,
+			blackboard_input = "target_speed_away",
+			spline = {
+				0,
+				0,
+				0.2,
+				0,
+				0.5,
+				1,
+				0.85,
+				1,
+				1,
+				0
+			}
+		},
+		max_occupied_slots = {
+			max_value = 3,
+			blackboard_input = "target_num_occupied_slots",
+			spline = {
+				0,
+				1,
+				0.5,
+				1,
+				1,
+				0
+			}
+		},
+		have_slot = {
+			max_value = 1,
+			blackboard_input = "have_slot",
+			spline = {
+				0,
+				0,
+				0.5,
+				0,
+				1,
+				1
+			}
+		}
+	},
 	storm_vermin_shield_combo_attack = {
 		distance_to_target_flat_sq = {
 			max_value = 15,

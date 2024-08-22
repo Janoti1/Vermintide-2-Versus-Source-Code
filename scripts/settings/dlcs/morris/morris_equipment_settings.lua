@@ -246,41 +246,21 @@ settings.projectiles = {
 		disable_throwing_dialogue = true,
 		radius = 0.1,
 		impact_type = "sphere_sweep",
-		life_time = 5,
 		trajectory_template_name = "throw_trajectory",
 		pickup_name = "grenade",
 		show_warning_icon = true,
+		life_time = 5,
 		rotation_speed = 10,
 		gravity_settings = "drakegun",
 		projectile_unit_template_name = "player_projectile_unit",
-		projectile_units_template = "holy_hand_grenade"
-	}
-}
-settings.default_items = {
-	dr_deus_01 = {
-		inventory_icon = "icon_wpn_dw_trollhammer_t1",
-		description = "dr_deus_01_description",
-		display_name = "dr_deus_01_name"
-	},
-	es_deus_01 = {
-		inventory_icon = "icon_wpn_empire_spearshield_t1",
-		description = "es_deus_01_description",
-		display_name = "es_deus_01_name"
-	},
-	bw_deus_01 = {
-		inventory_icon = "icon_wpn_brw_magmastaff_t1",
-		description = "bw_deus_01_description",
-		display_name = "bw_deus_01_name"
-	},
-	we_deus_01 = {
-		inventory_icon = "icon_wpn_we_moonfire_t1",
-		description = "we_deus_01_description",
-		display_name = "we_deus_01_name"
-	},
-	wh_deus_01 = {
-		inventory_icon = "icon_wpn_emp_duckfoot_t1",
-		description = "wh_deus_01_description",
-		display_name = "wh_deus_01_name"
+		projectile_units_template = "holy_hand_grenade",
+		rotation_on_hit = function (unit)
+			local go_id = Managers.state.network.unit_storage:go_id(unit)
+			local _, rnd = Math.next_random(go_id)
+			local rotation = Quaternion.axis_angle(Vector3.right(), rnd * math.pi * 0.15)
+
+			return Quaternion.multiply(Quaternion.axis_angle(Vector3.up(), math.random() * math.tau), rotation)
+		end
 	}
 }
 settings.spread_templates = {

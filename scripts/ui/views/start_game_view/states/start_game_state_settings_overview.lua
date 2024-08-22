@@ -942,6 +942,8 @@ StartGameStateSettingsOverview.cancel_matchmaking = function (self)
 	self.parent:cancel_matchmaking()
 end
 
+local EMPTY_TABLE = {}
+
 StartGameStateSettingsOverview.play = function (self, t, vote_type, force_close_menu)
 	printf("[StartGameStateSettingsOverview:play() - vote_type(%s)", vote_type)
 
@@ -1036,12 +1038,12 @@ StartGameStateSettingsOverview.play = function (self, t, vote_type, force_close_
 	elseif vote_type == "event" then
 		local live_event_interface = Managers.backend:get_interface("live_events")
 		local game_mode_data = live_event_interface:get_weekly_events_game_mode_data()
-		local event_data = {
-			mutators = game_mode_data.mutators
-		}
+		local event_data
 
-		if next(event_data) == nil then
-			event_data = nil
+		if game_mode_data.mutators then
+			event_data = {
+				mutators = game_mode_data.mutators
+			}
 		end
 
 		local params = {
@@ -1060,18 +1062,16 @@ StartGameStateSettingsOverview.play = function (self, t, vote_type, force_close_
 
 		self.parent:start_game(params)
 	elseif vote_type == "versus_quickplay" then
-		local player_hosted_enabled = self:using_player_hosted_search()
-		local search_for_dedicated_server, search_for_didicated_aws_server = self:using_dedicated_servers_search()
 		local params = {
 			private_game = false,
+			dedicated_servers_aws = true,
+			player_hosted = false,
+			dedicated_servers_win = false,
 			matchmaking_type = "standard",
 			mechanism = "versus",
 			quick_game = true,
 			difficulty = "versus_base",
 			join_method = "party",
-			player_hosted = player_hosted_enabled,
-			dedicated_servers_win = search_for_dedicated_server,
-			dedicated_servers_aws = search_for_didicated_aws_server,
 			request_type = vote_type
 		}
 
@@ -1172,6 +1172,43 @@ StartGameStateSettingsOverview.play = function (self, t, vote_type, force_close_
 			difficulty = self._selected_difficulty_key,
 			private_game = is_offline,
 			always_host = is_offline,
+			request_type = vote_type
+		}
+
+		self.parent:start_game(params)
+	elseif vote_type == "deus_weekly" then
+		local live_event_interface = Managers.backend:get_interface("live_events")
+		local game_mode_data = live_event_interface:get_weekly_chaos_wastes_game_mode_data() or EMPTY_TABLE
+		local event_data
+
+		if game_mode_data.mutators then
+			event_data = event_data or {}
+			event_data.mutators = game_mode_data.mutators
+		end
+
+		if game_mode_data.boons then
+			event_data = event_data or {}
+			event_data.boons = game_mode_data.boons
+		end
+
+		local mission_id = game_mode_data.journey_name
+		local backend_deus = Managers.backend:get_interface("deus")
+		local journey_cycle = backend_deus:get_journey_cycle()
+		local journey_data = journey_cycle.journey_data
+		local journey_settings = journey_data[mission_id]
+		local dominant_god = journey_settings.dominant_god
+		local params = {
+			private_game = false,
+			strict_matchmaking = false,
+			always_host = false,
+			matchmaking_type = "event",
+			mechanism = "deus",
+			quick_game = false,
+			mission_id = mission_id,
+			difficulty = self._selected_difficulty_key,
+			dominant_god = dominant_god,
+			event_data = event_data,
+			excluded_level_keys = game_mode_data.excluded_level_keys,
 			request_type = vote_type
 		}
 
@@ -1450,7 +1487,7 @@ StartGameStateSettingsOverview.is_difficulty_approved = function (self, difficul
 	end
 
 	if difficulty_settings.extra_requirement_name then
-		local players_not_meeting_requirements = DifficultyManager.players_below_difficulty_rank(difficulty_key, human_players)
+		local players_not_meeting_requirements = DifficultyManager.players_locked_difficulty_rank(difficulty_key, human_players)
 
 		if #players_not_meeting_requirements > 0 then
 			local extra_requirement_name = difficulty_settings.extra_requirement_name

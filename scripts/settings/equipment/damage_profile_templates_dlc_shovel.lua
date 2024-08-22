@@ -1,81 +1,4 @@
 local damage_templates = {
-	medium_blunt_tank_stab = {
-		charge_value = "light_attack",
-		critical_strike = {
-			attack_armor_power_modifer = {
-				1,
-				0.5,
-				2,
-				1,
-				1
-			},
-			impact_armor_power_modifer = {
-				1,
-				1,
-				1,
-				1,
-				1
-			}
-		},
-		cleave_distribution = {
-			attack = 0.2,
-			impact = 0.2
-		},
-		armor_modifier = {
-			attack = {
-				1,
-				0.25,
-				1.5,
-				1,
-				0.75
-			},
-			impact = {
-				1,
-				0.25,
-				1,
-				1,
-				0.75
-			}
-		},
-		default_target = {
-			boost_curve_coefficient_headshot = 2,
-			boost_curve_type = "tank_curve",
-			boost_curve_coefficient = 0.75,
-			attack_template = "stab_tank",
-			power_distribution = {
-				attack = 0.1,
-				impact = 0.1
-			}
-		},
-		targets = {
-			{
-				boost_curve_coefficient_headshot = 2.2,
-				boost_curve_type = "tank_curve",
-				boost_curve_coefficient = 0.75,
-				attack_template = "heavy_stab_tank",
-				armor_modifier = {
-					attack = {
-						1,
-						0.6,
-						1.5,
-						1,
-						0.75
-					},
-					impact = {
-						1,
-						0.6,
-						1,
-						1,
-						0.75
-					}
-				},
-				power_distribution = {
-					attack = 0.2,
-					impact = 0.2
-				}
-			}
-		}
-	},
 	heavy_slashing_linesman_scythe = {
 		charge_value = "heavy_attack",
 		critical_strike = {
@@ -1013,8 +936,8 @@ local damage_templates = {
 		critical_strike = {
 			attack_armor_power_modifer = {
 				0.5,
-				0.5,
-				2,
+				0.6,
+				2.5,
 				0.5,
 				0.5,
 				0.2
@@ -1031,8 +954,8 @@ local damage_templates = {
 		armor_modifier = {
 			attack = {
 				0.5,
-				0.5,
-				2,
+				0.6,
+				2.5,
 				0.5,
 				0.1,
 				0
@@ -1057,12 +980,12 @@ local damage_templates = {
 			boost_curve_coefficient = 1,
 			attack_template = "fireball",
 			power_distribution_near = {
-				attack = 0.12,
-				impact = 0.2
+				attack = 0.17,
+				impact = 0.25
 			},
 			power_distribution_far = {
-				attack = 0.12,
-				impact = 0.2
+				attack = 0.17,
+				impact = 0.25
 			},
 			range_modifier_settings = shotgun_dropoff_ranges
 		}

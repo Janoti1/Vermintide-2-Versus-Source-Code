@@ -61,6 +61,11 @@ settings.buff_templates = {
 				update_func = "apply_dot_damage",
 				perks = {
 					buff_perks.poisoned
+				},
+				mechanism_overrides = {
+					versus = {
+						damage_profile = "thorn_sister_poison_vs"
+					}
 				}
 			}
 		}

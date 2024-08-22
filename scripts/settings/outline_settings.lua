@@ -168,6 +168,12 @@ OutlineSettings.templates = {
 		method = "always",
 		outline_color = OutlineSettings.colors.necromancer_command,
 		flag = OutlineSettings.flags.non_wall_occluded
+	},
+	horde_ability = {
+		priority = 20,
+		method = "always",
+		outline_color = OutlineSettings.colors.local_player_team_lighter,
+		flag = OutlineSettings.flags.non_wall_occluded
 	}
 }
 
