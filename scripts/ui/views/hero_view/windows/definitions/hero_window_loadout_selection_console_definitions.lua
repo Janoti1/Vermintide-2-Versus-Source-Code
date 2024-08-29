@@ -1256,7 +1256,12 @@ local generic_input_actions = {
 		{
 			input_action = "left_stick_press",
 			priority = 5,
-			description_text = "input_description_equip_for_bot"
+			description_text = "input_description_equip_for_bot",
+			content_check_function = function ()
+				local game_mode_key = Managers.state.game_mode:game_mode_key()
+
+				return InventorySettings.bot_loadout_allowed_game_modes[game_mode_key]
+			end
 		},
 		{
 			input_action = "back",
@@ -1284,7 +1289,12 @@ local generic_input_actions = {
 		{
 			input_action = "left_stick_press",
 			priority = 4,
-			description_text = "input_description_equip_for_bot"
+			description_text = "input_description_equip_for_bot",
+			content_check_function = function ()
+				local game_mode_key = Managers.state.game_mode:game_mode_key()
+
+				return InventorySettings.bot_loadout_allowed_game_modes[game_mode_key]
+			end
 		},
 		{
 			input_action = "back",

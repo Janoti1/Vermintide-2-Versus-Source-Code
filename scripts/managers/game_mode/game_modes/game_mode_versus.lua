@@ -1039,7 +1039,6 @@ end
 GameModeVersus.player_left_game_session = function (self, peer_id, local_player_id)
 	if table.size(self._network_server.peer_state_machines) - 1 <= 0 then
 		self:change_game_mode_state("dedicated_server_abort_game")
-		Managers.backend:get_interface("versus"):reset_fetched_data()
 	end
 end
 

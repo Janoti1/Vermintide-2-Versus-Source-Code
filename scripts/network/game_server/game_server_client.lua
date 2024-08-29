@@ -80,6 +80,18 @@ GameServerLobbyClient.update = function (self, dt)
 
 				self._eac_communication_initated = false
 			end
+
+			local versus_interface = Managers.backend and Managers.backend:get_interface("versus")
+
+			if versus_interface then
+				local matchmaking_session_id = versus_interface:get_matchmaking_session_id()
+
+				if matchmaking_session_id then
+					local ip_port = self._game_server_info.ip_port or "MISSING"
+
+					Crashify.print_exception("GameServerLobbyClient", "State changed from %s to %s for flexmatch server. matchmaking_session_id: %s | ip_port: %s", old_state, new_state, matchmaking_session_id or "MISSING", ip_port)
+				end
+			end
 		elseif new_state == "reserved" then
 			local game_server_peer_id = GameServerInternal.lobby_host(engine_lobby)
 			local channel_id = GameServerInternal.open_channel(engine_lobby, game_server_peer_id)

@@ -235,6 +235,10 @@ VersusMechanism.network_context_created = function (self, lobby, server_peer_id,
 			self._shared_state = nil
 		end
 	end
+
+	if self._slot_reservation_handler and self._slot_reservation_handler.network_context_created then
+		self._slot_reservation_handler:network_context_created(lobby, server_peer_id, own_peer_id, is_server, network_handler)
+	end
 end
 
 VersusMechanism.network_context_destroyed = function (self)

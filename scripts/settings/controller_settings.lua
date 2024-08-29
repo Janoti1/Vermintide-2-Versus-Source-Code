@@ -1016,6 +1016,11 @@ PlayerControllerKeymaps.ps4 = InputUtils.keymaps_key_approved("ps4") and {
 		"gamepad",
 		"square",
 		"pressed"
+	},
+	versus_horde_ability = {
+		"gamepad",
+		"up",
+		"pressed"
 	}
 }
 PlayerControllerKeymaps.ps_pad = InputUtils.keymaps_key_approved("ps_pad") and {
@@ -1315,6 +1320,11 @@ PlayerControllerKeymaps.ps_pad = InputUtils.keymaps_key_approved("ps_pad") and {
 	emote_toggle_hud_visibility = {
 		"ps_pad",
 		"square",
+		"pressed"
+	},
+	versus_horde_ability = {
+		"ps_pad",
+		"up",
 		"pressed"
 	}
 }
