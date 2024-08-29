@@ -5,12 +5,12 @@ menu_buttons_atlas = {
 			42
 		},
 		uv00 = {
-			0.444336,
-			0.5625
+			0.282227,
+			0.875977
 		},
 		uv11 = {
-			0.479492,
-			0.603516
+			0.317383,
+			0.916992
 		}
 	},
 	button_detail_03_gold = {
@@ -19,26 +19,12 @@ menu_buttons_atlas = {
 			42
 		},
 		uv00 = {
-			0.444336,
-			0.517578
+			0.926758,
+			0.317383
 		},
 		uv11 = {
-			0.479492,
-			0.558594
-		}
-	},
-	button_detail_04 = {
-		size = {
-			60,
-			42
-		},
-		uv00 = {
-			0.352539,
-			0.930664
-		},
-		uv11 = {
-			0.411133,
-			0.97168
+			0.961914,
+			0.358398
 		}
 	},
 	button_detail_02 = {
@@ -47,12 +33,26 @@ menu_buttons_atlas = {
 			60
 		},
 		uv00 = {
+			0.282227,
+			0.813477
+		},
+		uv11 = {
+			0.320313,
+			0.87207
+		}
+	},
+	button_detail_04 = {
+		size = {
+			60,
+			42
+		},
+		uv00 = {
 			0.926758,
 			0.272461
 		},
 		uv11 = {
-			0.964844,
-			0.331055
+			0.985352,
+			0.313477
 		}
 	},
 	forge_button_03_glow_effect = {
@@ -111,7 +111,7 @@ menu_buttons_atlas = {
 			0.072266
 		}
 	},
-	button_detail_05_left = {
+	button_detail_05_right = {
 		size = {
 			88,
 			72
@@ -125,7 +125,7 @@ menu_buttons_atlas = {
 			0.446289
 		}
 	},
-	button_detail_05_right = {
+	button_detail_05_left = {
 		size = {
 			88,
 			72
@@ -229,26 +229,12 @@ menu_buttons_atlas = {
 			160
 		},
 		uv00 = {
-			0.283203,
-			0.813477
-		},
-		uv11 = {
-			0.321289,
-			0.969727
-		}
-	},
-	button_detail_12 = {
-		size = {
-			40,
-			180
-		},
-		uv00 = {
 			0.240234,
 			0.813477
 		},
 		uv11 = {
-			0.279297,
-			0.989258
+			0.27832,
+			0.969727
 		}
 	},
 	scorpion_icon_unlit = {
@@ -307,7 +293,7 @@ menu_buttons_atlas = {
 			0.098633
 		}
 	},
-	button_state_hover_red = {
+	button_state_disabled = {
 		size = {
 			355,
 			60
@@ -321,7 +307,7 @@ menu_buttons_atlas = {
 			0.80957
 		}
 	},
-	button_state_disabled = {
+	button_state_normal = {
 		size = {
 			355,
 			60
@@ -335,7 +321,7 @@ menu_buttons_atlas = {
 			0.74707
 		}
 	},
-	button_state_hover_green = {
+	button_state_hover = {
 		size = {
 			355,
 			60
@@ -349,7 +335,7 @@ menu_buttons_atlas = {
 			0.68457
 		}
 	},
-	button_state_hover = {
+	button_state_hover_red = {
 		size = {
 			355,
 			60
@@ -363,7 +349,7 @@ menu_buttons_atlas = {
 			0.62207
 		}
 	},
-	button_state_normal = {
+	button_state_locked = {
 		size = {
 			355,
 			60
@@ -377,7 +363,7 @@ menu_buttons_atlas = {
 			0.55957
 		}
 	},
-	button_state_locked = {
+	button_state_hover_green = {
 		size = {
 			355,
 			60
@@ -391,7 +377,7 @@ menu_buttons_atlas = {
 			0.49707
 		}
 	},
-	button_state_normal_red = {
+	button_state_normal_green = {
 		size = {
 			355,
 			60
@@ -405,7 +391,7 @@ menu_buttons_atlas = {
 			0.43457
 		}
 	},
-	button_state_normal_green = {
+	button_state_normal_red = {
 		size = {
 			355,
 			60

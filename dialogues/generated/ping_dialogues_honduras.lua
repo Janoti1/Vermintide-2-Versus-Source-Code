@@ -500,97 +500,6 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "pbw_gameplay_pinging_monster_a",
-		response = "pbw_gameplay_pinging_monster_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"seen_enemy"
-			},
-			{
-				"query_context",
-				"is_ping",
-				OP.EQ,
-				1
-			},
-			{
-				"query_context",
-				"distance",
-				OP.LTEQ,
-				7
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"chaos_troll",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"chaos_spawn",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_rat_ogre",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_stormfiend",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"beastmen_minotaur",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_chaos_troll"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"bright_wizard"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"bright_wizard"
-			},
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMEDIFF,
-				OP.GT,
-				30
-			}
-		},
-		on_done = {
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
 		response = "pbw_gameplay_player_pounced_ping",
 		name = "pbw_gameplay_player_pounced_ping",
 		criterias = {
@@ -646,14 +555,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_poison_wind_globadier",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_poison_wind_globadier"
+				"skaven_poison_wind_globadier"
 			},
 			{
 				"query_context",
@@ -679,11 +581,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_globadier",
 				OP.TIMESET
 			}
 		}
@@ -708,14 +605,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_gutter_runner",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_gutter_runner"
+				"skaven_gutter_runner"
 			},
 			{
 				"query_context",
@@ -742,11 +632,6 @@ return function ()
 				"faction_memory",
 				"time_since_ping_enemy",
 				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_gutter_runner",
-				OP.TIMESET
 			}
 		}
 	})
@@ -765,12 +650,6 @@ return function ()
 				"is_ping",
 				OP.EQ,
 				1
-			},
-			{
-				"query_context",
-				"distance",
-				OP.GT,
-				7
 			},
 			{
 				"query_context",
@@ -810,11 +689,6 @@ return function ()
 				"faction_memory",
 				"last_seen_rat_ogre",
 				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMESET
 			}
 		}
 	})
@@ -838,14 +712,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_ratling_gunner",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_ratling_gunner"
+				"skaven_ratling_gunner"
 			},
 			{
 				"query_context",
@@ -871,11 +738,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_skaven_ratling_gunner",
 				OP.TIMESET
 			}
 		}
@@ -900,14 +762,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_pack_master",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_packmaster"
+				"skaven_pack_master"
 			},
 			{
 				"query_context",
@@ -933,73 +788,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"time_since_slaver",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
-		name = "pbw_gameplay_seeing_a_skaven_warpfire_thrower_ping",
-		response = "pbw_gameplay_seeing_a_skaven_warpfire_thrower_ping",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"seen_enemy"
-			},
-			{
-				"query_context",
-				"is_ping",
-				OP.EQ,
-				1
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_warpfire_thrower",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_warpfire_thrower"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"bright_wizard"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"bright_wizard"
-			},
-			{
-				"faction_memory",
-				"time_since_ping_enemy",
-				OP.TIMEDIFF,
-				OP.GT,
-				7
-			}
-		},
-		on_done = {
-			{
-				"faction_memory",
-				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_skaven_warpfire_thrower",
 				OP.TIMESET
 			}
 		}
@@ -1855,97 +1643,6 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "pdr_gameplay_pinging_monster_a",
-		response = "pdr_gameplay_pinging_monster_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"seen_enemy"
-			},
-			{
-				"query_context",
-				"is_ping",
-				OP.EQ,
-				1
-			},
-			{
-				"query_context",
-				"distance",
-				OP.LTEQ,
-				7
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"chaos_troll",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"chaos_spawn",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_rat_ogre",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_stormfiend",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"beastmen_minotaur",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_chaos_troll"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"dwarf_ranger"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"dwarf_ranger"
-			},
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMEDIFF,
-				OP.GT,
-				30
-			}
-		},
-		on_done = {
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
 		response = "pdr_gameplay_player_pounced_ping",
 		name = "pdr_gameplay_player_pounced_ping",
 		criterias = {
@@ -2001,14 +1698,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_poison_wind_globadier",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_poison_wind_globadier"
+				"skaven_poison_wind_globadier"
 			},
 			{
 				"query_context",
@@ -2034,11 +1724,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_globadier",
 				OP.TIMESET
 			}
 		}
@@ -2063,14 +1748,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_gutter_runner",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_gutter_runner"
+				"skaven_gutter_runner"
 			},
 			{
 				"query_context",
@@ -2097,11 +1775,6 @@ return function ()
 				"faction_memory",
 				"time_since_ping_enemy",
 				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_gutter_runner",
-				OP.TIMESET
 			}
 		}
 	})
@@ -2120,12 +1793,6 @@ return function ()
 				"is_ping",
 				OP.EQ,
 				1
-			},
-			{
-				"query_context",
-				"distance",
-				OP.GT,
-				7
 			},
 			{
 				"query_context",
@@ -2165,11 +1832,6 @@ return function ()
 				"faction_memory",
 				"last_seen_rat_ogre",
 				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMESET
 			}
 		}
 	})
@@ -2193,14 +1855,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_ratling_gunner",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_ratling_gunner"
+				"skaven_ratling_gunner"
 			},
 			{
 				"query_context",
@@ -2226,11 +1881,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_skaven_ratling_gunner",
 				OP.TIMESET
 			}
 		}
@@ -2255,14 +1905,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_pack_master",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_packmaster"
+				"skaven_pack_master"
 			},
 			{
 				"query_context",
@@ -2288,73 +1931,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"time_since_slaver",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
-		name = "pdr_gameplay_seeing_a_skaven_warpfire_thrower_ping",
-		response = "pdr_gameplay_seeing_a_skaven_warpfire_thrower_ping",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"seen_enemy"
-			},
-			{
-				"query_context",
-				"is_ping",
-				OP.EQ,
-				1
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_warpfire_thrower",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_warpfire_thrower"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"dwarf_ranger"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"dwarf_ranger"
-			},
-			{
-				"faction_memory",
-				"time_since_ping_enemy",
-				OP.TIMEDIFF,
-				OP.GT,
-				7
-			}
-		},
-		on_done = {
-			{
-				"faction_memory",
-				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_skaven_warpfire_thrower",
 				OP.TIMESET
 			}
 		}
@@ -3228,97 +2804,6 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "pes_gameplay_pinging_monster_a",
-		response = "pes_gameplay_pinging_monster_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"seen_enemy"
-			},
-			{
-				"query_context",
-				"is_ping",
-				OP.EQ,
-				1
-			},
-			{
-				"query_context",
-				"distance",
-				OP.LTEQ,
-				7
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"chaos_troll",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"chaos_spawn",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_rat_ogre",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_stormfiend",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"beastmen_minotaur",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_chaos_troll"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"empire_soldier"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"empire_soldier"
-			},
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMEDIFF,
-				OP.GT,
-				30
-			}
-		},
-		on_done = {
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
 		response = "pes_gameplay_player_pounced_ping",
 		name = "pes_gameplay_player_pounced_ping",
 		criterias = {
@@ -3374,14 +2859,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_poison_wind_globadier",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_poison_wind_globadier"
+				"skaven_poison_wind_globadier"
 			},
 			{
 				"query_context",
@@ -3407,11 +2885,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_globadier",
 				OP.TIMESET
 			}
 		}
@@ -3436,14 +2909,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_gutter_runner",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_gutter_runner"
+				"skaven_gutter_runner"
 			},
 			{
 				"query_context",
@@ -3470,11 +2936,6 @@ return function ()
 				"faction_memory",
 				"time_since_ping_enemy",
 				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_gutter_runner",
-				OP.TIMESET
 			}
 		}
 	})
@@ -3493,12 +2954,6 @@ return function ()
 				"is_ping",
 				OP.EQ,
 				1
-			},
-			{
-				"query_context",
-				"distance",
-				OP.GT,
-				7
 			},
 			{
 				"query_context",
@@ -3538,11 +2993,6 @@ return function ()
 				"faction_memory",
 				"last_seen_rat_ogre",
 				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMESET
 			}
 		}
 	})
@@ -3566,14 +3016,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_ratling_gunner",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_ratling_gunner"
+				"skaven_ratling_gunner"
 			},
 			{
 				"query_context",
@@ -3599,11 +3042,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_skaven_ratling_gunner",
 				OP.TIMESET
 			}
 		}
@@ -3628,14 +3066,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_pack_master",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_packmaster"
+				"skaven_pack_master"
 			},
 			{
 				"query_context",
@@ -3661,73 +3092,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"time_since_slaver",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
-		name = "pes_gameplay_seeing_a_skaven_warpfire_thrower_ping",
-		response = "pes_gameplay_seeing_a_skaven_warpfire_thrower_ping",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"seen_enemy"
-			},
-			{
-				"query_context",
-				"is_ping",
-				OP.EQ,
-				1
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_warpfire_thrower",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_warpfire_thrower"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"empire_soldier"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"empire_soldier"
-			},
-			{
-				"faction_memory",
-				"time_since_ping_enemy",
-				OP.TIMEDIFF,
-				OP.GT,
-				7
-			}
-		},
-		on_done = {
-			{
-				"faction_memory",
-				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_skaven_warpfire_thrower",
 				OP.TIMESET
 			}
 		}
@@ -4633,97 +3997,6 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "pwe_gameplay_pinging_monster_a",
-		response = "pwe_gameplay_pinging_monster_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"seen_enemy"
-			},
-			{
-				"query_context",
-				"is_ping",
-				OP.EQ,
-				1
-			},
-			{
-				"query_context",
-				"distance",
-				OP.LTEQ,
-				7
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"chaos_troll",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"chaos_spawn",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_rat_ogre",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_stormfiend",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"beastmen_minotaur",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_chaos_troll"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"wood_elf"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"wood_elf"
-			},
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMEDIFF,
-				OP.GT,
-				30
-			}
-		},
-		on_done = {
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
 		response = "pwe_gameplay_player_pounced_ping",
 		name = "pwe_gameplay_player_pounced_ping",
 		criterias = {
@@ -4779,14 +4052,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_poison_wind_globadier",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_poison_wind_globadier"
+				"skaven_poison_wind_globadier"
 			},
 			{
 				"query_context",
@@ -4812,11 +4078,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_globadier",
 				OP.TIMESET
 			}
 		}
@@ -4841,14 +4102,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_gutter_runner",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_gutter_runner"
+				"skaven_gutter_runner"
 			},
 			{
 				"query_context",
@@ -4875,11 +4129,6 @@ return function ()
 				"faction_memory",
 				"time_since_ping_enemy",
 				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_gutter_runner",
-				OP.TIMESET
 			}
 		}
 	})
@@ -4898,12 +4147,6 @@ return function ()
 				"is_ping",
 				OP.EQ,
 				1
-			},
-			{
-				"query_context",
-				"distance",
-				OP.GT,
-				7
 			},
 			{
 				"query_context",
@@ -4943,11 +4186,6 @@ return function ()
 				"faction_memory",
 				"last_seen_rat_ogre",
 				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMESET
 			}
 		}
 	})
@@ -4971,14 +4209,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_ratling_gunner",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_ratling_gunner"
+				"skaven_ratling_gunner"
 			},
 			{
 				"query_context",
@@ -5004,11 +4235,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_skaven_ratling_gunner",
 				OP.TIMESET
 			}
 		}
@@ -5033,14 +4259,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_pack_master",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_packmaster"
+				"skaven_pack_master"
 			},
 			{
 				"query_context",
@@ -5066,73 +4285,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"time_since_slaver",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
-		name = "pwe_gameplay_seeing_a_skaven_warpfire_thrower_ping",
-		response = "pwe_gameplay_seeing_a_skaven_warpfire_thrower_ping",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"seen_enemy"
-			},
-			{
-				"query_context",
-				"is_ping",
-				OP.EQ,
-				1
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_warpfire_thrower",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_warpfire_thrower"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"wood_elf"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"wood_elf"
-			},
-			{
-				"faction_memory",
-				"time_since_ping_enemy",
-				OP.TIMEDIFF,
-				OP.GT,
-				7
-			}
-		},
-		on_done = {
-			{
-				"faction_memory",
-				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_skaven_warpfire_thrower",
 				OP.TIMESET
 			}
 		}
@@ -5988,97 +5140,6 @@ return function ()
 		}
 	})
 	define_rule({
-		name = "pwh_gameplay_pinging_monster_a",
-		response = "pwh_gameplay_pinging_monster_a",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"seen_enemy"
-			},
-			{
-				"query_context",
-				"is_ping",
-				OP.EQ,
-				1
-			},
-			{
-				"query_context",
-				"distance",
-				OP.LTEQ,
-				7
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"chaos_troll",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"chaos_spawn",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_rat_ogre",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_stormfiend",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"beastmen_minotaur",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_chaos_troll"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"witch_hunter"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"witch_hunter"
-			},
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMEDIFF,
-				OP.GT,
-				30
-			}
-		},
-		on_done = {
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
 		response = "pwh_gameplay_player_pounced_ping",
 		name = "pwh_gameplay_player_pounced_ping",
 		criterias = {
@@ -6134,14 +5195,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_poison_wind_globadier",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_poison_wind_globadier"
+				"skaven_poison_wind_globadier"
 			},
 			{
 				"query_context",
@@ -6167,11 +5221,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_globadier",
 				OP.TIMESET
 			}
 		}
@@ -6196,14 +5245,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_gutter_runner",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_gutter_runner"
+				"skaven_gutter_runner"
 			},
 			{
 				"query_context",
@@ -6230,11 +5272,6 @@ return function ()
 				"faction_memory",
 				"time_since_ping_enemy",
 				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_gutter_runner",
-				OP.TIMESET
 			}
 		}
 	})
@@ -6253,12 +5290,6 @@ return function ()
 				"is_ping",
 				OP.EQ,
 				1
-			},
-			{
-				"query_context",
-				"distance",
-				OP.GT,
-				7
 			},
 			{
 				"query_context",
@@ -6298,11 +5329,6 @@ return function ()
 				"faction_memory",
 				"last_seen_rat_ogre",
 				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"time_since_ping_monster",
-				OP.TIMESET
 			}
 		}
 	})
@@ -6326,14 +5352,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_ratling_gunner",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_ratling_gunner"
+				"skaven_ratling_gunner"
 			},
 			{
 				"query_context",
@@ -6359,11 +5378,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_skaven_ratling_gunner",
 				OP.TIMESET
 			}
 		}
@@ -6388,14 +5402,7 @@ return function ()
 				"query_context",
 				"enemy_tag",
 				OP.EQ,
-				"skaven_pack_master",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_packmaster"
+				"skaven_pack_master"
 			},
 			{
 				"query_context",
@@ -6421,73 +5428,6 @@ return function ()
 			{
 				"faction_memory",
 				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"time_since_slaver",
-				OP.TIMESET
-			}
-		}
-	})
-	define_rule({
-		name = "pwh_gameplay_seeing_a_skaven_warpfire_thrower_ping",
-		response = "pwh_gameplay_seeing_a_skaven_warpfire_thrower_ping",
-		criterias = {
-			{
-				"query_context",
-				"concept",
-				OP.EQ,
-				"seen_enemy"
-			},
-			{
-				"query_context",
-				"is_ping",
-				OP.EQ,
-				1
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"skaven_warpfire_thrower",
-				CombiningOP.OR_NEXT
-			},
-			{
-				"query_context",
-				"enemy_tag",
-				OP.EQ,
-				"vs_warpfire_thrower"
-			},
-			{
-				"query_context",
-				"source_name",
-				OP.EQ,
-				"witch_hunter"
-			},
-			{
-				"user_context",
-				"player_profile",
-				OP.EQ,
-				"witch_hunter"
-			},
-			{
-				"faction_memory",
-				"time_since_ping_enemy",
-				OP.TIMEDIFF,
-				OP.GT,
-				7
-			}
-		},
-		on_done = {
-			{
-				"faction_memory",
-				"time_since_ping_enemy",
-				OP.TIMESET
-			},
-			{
-				"faction_memory",
-				"last_seen_skaven_warpfire_thrower",
 				OP.TIMESET
 			}
 		}
@@ -7067,9 +6007,9 @@ return function ()
 			},
 			sound_events_duration = {
 				1.4887917041779,
+				1.4887917041779,
 				1.7024583816528,
-				2.9942917823791,
-				2.0530834197998
+				2.9942917823791
 			}
 		},
 		pbw_gameplay_heard_empire_soldier_in_trouble_ping = {
@@ -7106,9 +6046,9 @@ return function ()
 			},
 			sound_events_duration = {
 				1.6243749856949,
+				1.6243749856949,
 				1.7200208902359,
-				2.6290209293366,
-				1.76016664505
+				2.6290209293366
 			}
 		},
 		pbw_gameplay_heard_witch_hunter_in_trouble_ping = {
@@ -7185,8 +6125,8 @@ return function ()
 			sound_events_duration = {
 				1.5703749656677,
 				1.7235000133514,
-				1.0262291431427,
-				1.3082708120346
+				1.5703749656677,
+				1.7235000133514
 			}
 		},
 		pbw_gameplay_knocked_down_ping = {
@@ -7236,45 +6176,6 @@ return function ()
 				1.7201978564262,
 				0.89645832777023,
 				1.86172914505
-			}
-		},
-		pbw_gameplay_pinging_monster_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "ping_dialogues_honduras",
-			sound_events_n = 4,
-			category = "enemy_alerts",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout"
-			},
-			face_animations = {
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry"
-			},
-			localization_strings = {
-				"pbw_gameplay_pinging_monster_a_01",
-				"pbw_gameplay_pinging_monster_a_02",
-				"pbw_gameplay_pinging_monster_a_03",
-				"pbw_gameplay_pinging_monster_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"pbw_gameplay_pinging_monster_a_01",
-				"pbw_gameplay_pinging_monster_a_02",
-				"pbw_gameplay_pinging_monster_a_03",
-				"pbw_gameplay_pinging_monster_a_04"
-			},
-			sound_events_duration = {
-				0.80860418081284,
-				1.4378333091736,
-				1.5725417137146,
-				1.3520208597183
 			}
 		},
 		pbw_gameplay_player_pounced_ping = {
@@ -7594,65 +6495,6 @@ return function ()
 				2.1854791641235,
 				2.5449894666672,
 				1.5654374957085
-			}
-		},
-		pbw_gameplay_seeing_a_skaven_warpfire_thrower_ping = {
-			randomize_indexes_n = 0,
-			face_animations_n = 8,
-			database = "ping_dialogues_honduras",
-			sound_events_n = 8,
-			category = "enemy_alerts",
-			dialogue_animations_n = 8,
-			dialogue_animations = {
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout"
-			},
-			face_animations = {
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry"
-			},
-			localization_strings = {
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_01",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_02",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_03",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_04",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_05",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_06",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_07",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_08"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_01",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_02",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_03",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_04",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_05",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_06",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_07",
-				"pbw_gameplay_hearing_a_Skaven_warpfire_thrower_combat_08"
-			},
-			sound_events_duration = {
-				1.4961667060852,
-				2.1861457824707,
-				1.1348541975021,
-				1.5720416307449,
-				1.112104177475,
-				0.85039585828781,
-				1.2514582872391,
-				1.3091875314713
 			}
 		},
 		pbw_gameplay_seeing_a_stormvermin_ping = {
@@ -8641,45 +7483,6 @@ return function ()
 				1.6496458053589
 			}
 		},
-		pdr_gameplay_pinging_monster_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "ping_dialogues_honduras",
-			sound_events_n = 4,
-			category = "enemy_alerts",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout"
-			},
-			face_animations = {
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry"
-			},
-			localization_strings = {
-				"pdr_gameplay_pinging_monster_a_01",
-				"pdr_gameplay_pinging_monster_a_02",
-				"pdr_gameplay_pinging_monster_a_03",
-				"pdr_gameplay_pinging_monster_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"pdr_gameplay_pinging_monster_a_01",
-				"pdr_gameplay_pinging_monster_a_02",
-				"pdr_gameplay_pinging_monster_a_03",
-				"pdr_gameplay_pinging_monster_a_04"
-			},
-			sound_events_duration = {
-				1.2480624914169,
-				0.89589583873749,
-				1.4153125286102,
-				1.4341875314713
-			}
-		},
 		pdr_gameplay_player_pounced_ping = {
 			randomize_indexes_n = 0,
 			face_animations_n = 6,
@@ -8989,70 +7792,6 @@ return function ()
 				0.81135416030884
 			}
 		},
-		pdr_gameplay_seeing_a_skaven_warpfire_thrower_ping = {
-			randomize_indexes_n = 0,
-			face_animations_n = 9,
-			database = "ping_dialogues_honduras",
-			sound_events_n = 9,
-			category = "enemy_alerts",
-			dialogue_animations_n = 9,
-			dialogue_animations = {
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout"
-			},
-			face_animations = {
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry"
-			},
-			localization_strings = {
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_01",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_02",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_03",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_04",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_05",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_06",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_07",
-				"pdr_gameplay_seeing_a_Skaven_warpfire_thrower_06",
-				"pdr_gameplay_seeing_a_Skaven_warpfire_thrower_07"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_01",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_02",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_03",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_04",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_05",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_06",
-				"pdr_gameplay_hearing_a_Skaven_warpfire_thrower_combat_07",
-				"pdr_gameplay_seeing_a_Skaven_warpfire_thrower_06",
-				"pdr_gameplay_seeing_a_Skaven_warpfire_thrower_07"
-			},
-			sound_events_duration = {
-				2.3980207443237,
-				1.3486042022705,
-				2.4221041202545,
-				1.1622707843781,
-				1.637791633606,
-				1.5051666498184,
-				1.8262083530426,
-				3.1801042556763,
-				2.7923123836517
-			}
-		},
 		pdr_gameplay_seeing_a_stormvermin_ping = {
 			randomize_indexes_n = 0,
 			face_animations_n = 8,
@@ -9181,23 +7920,23 @@ return function ()
 				"pdr_gameplay_spots_bomb_01",
 				"pdr_gameplay_spots_bomb_02",
 				"pdr_gameplay_spots_bomb_03",
-				"pdr_gameplay_spots_bomb_07",
-				"pdr_gameplay_spots_bomb_08"
+				"pdr_gameplay_spots_bomb_04",
+				"pdr_gameplay_spots_bomb_05"
 			},
 			randomize_indexes = {},
 			sound_events = {
 				"pdr_gameplay_spots_bomb_01",
 				"pdr_gameplay_spots_bomb_02",
 				"pdr_gameplay_spots_bomb_03",
-				"pdr_gameplay_spots_bomb_07",
-				"pdr_gameplay_spots_bomb_08"
+				"pdr_gameplay_spots_bomb_04",
+				"pdr_gameplay_spots_bomb_05"
 			},
 			sound_events_duration = {
 				0.71539580821991,
 				2.3319375514984,
 				0.90652084350586,
-				1.5848749876022,
-				2.0525624752045
+				3.9988749027252,
+				1.7546249628067
 			}
 		},
 		pdr_gameplay_spots_health_ping = {
@@ -9826,45 +8565,6 @@ return function ()
 				1.9732916355133
 			}
 		},
-		pes_gameplay_pinging_monster_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "ping_dialogues_honduras",
-			sound_events_n = 4,
-			category = "enemy_alerts",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout"
-			},
-			face_animations = {
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry"
-			},
-			localization_strings = {
-				"pes_gameplay_pinging_monster_a_01",
-				"pes_gameplay_pinging_monster_a_02",
-				"pes_gameplay_pinging_monster_a_03",
-				"pes_gameplay_pinging_monster_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"pes_gameplay_pinging_monster_a_01",
-				"pes_gameplay_pinging_monster_a_02",
-				"pes_gameplay_pinging_monster_a_03",
-				"pes_gameplay_pinging_monster_a_04"
-			},
-			sound_events_duration = {
-				1.2569999694824,
-				0.87812501192093,
-				0.90289580821991,
-				1.2952916622162
-			}
-		},
 		pes_gameplay_player_pounced_ping = {
 			randomize_indexes_n = 0,
 			face_animations_n = 10,
@@ -10197,50 +8897,6 @@ return function ()
 				1.6907708644867,
 				1.5038958787918,
 				2.1278958320618
-			}
-		},
-		pes_gameplay_seeing_a_skaven_warpfire_thrower_ping = {
-			randomize_indexes_n = 0,
-			face_animations_n = 5,
-			database = "ping_dialogues_honduras",
-			sound_events_n = 5,
-			category = "enemy_alerts",
-			dialogue_animations_n = 5,
-			dialogue_animations = {
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout"
-			},
-			face_animations = {
-				"face_fear",
-				"face_fear",
-				"face_fear",
-				"face_fear",
-				"face_fear"
-			},
-			localization_strings = {
-				"pes_gameplay_hearing_a_Skaven_warpfire_thrower_combat_01",
-				"pes_gameplay_hearing_a_Skaven_warpfire_thrower_combat_02",
-				"pes_gameplay_hearing_a_Skaven_warpfire_thrower_combat_03",
-				"pes_gameplay_hearing_a_Skaven_warpfire_thrower_combat_04",
-				"pes_gameplay_seeing_a_Skaven_warpfire_thrower_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"pes_gameplay_hearing_a_Skaven_warpfire_thrower_combat_01",
-				"pes_gameplay_hearing_a_Skaven_warpfire_thrower_combat_02",
-				"pes_gameplay_hearing_a_Skaven_warpfire_thrower_combat_03",
-				"pes_gameplay_hearing_a_Skaven_warpfire_thrower_combat_04",
-				"pes_gameplay_seeing_a_Skaven_warpfire_thrower_04"
-			},
-			sound_events_duration = {
-				0.92299997806549,
-				1.010645866394,
-				1.2624167203903,
-				2.3858124017715,
-				3.3966875076294
 			}
 		},
 		pes_gameplay_seeing_a_stormvermin_ping = {
@@ -11110,45 +9766,6 @@ return function ()
 				2.9985415935516
 			}
 		},
-		pwe_gameplay_pinging_monster_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "ping_dialogues_honduras",
-			sound_events_n = 4,
-			category = "enemy_alerts",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout"
-			},
-			face_animations = {
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry"
-			},
-			localization_strings = {
-				"pwe_gameplay_pinging_monster_a_01",
-				"pwe_gameplay_pinging_monster_a_02",
-				"pwe_gameplay_pinging_monster_a_03",
-				"pwe_gameplay_pinging_monster_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"pwe_gameplay_pinging_monster_a_01",
-				"pwe_gameplay_pinging_monster_a_02",
-				"pwe_gameplay_pinging_monster_a_03",
-				"pwe_gameplay_pinging_monster_a_04"
-			},
-			sound_events_duration = {
-				1.5702500343323,
-				1.6680417060852,
-				0.86077082157135,
-				1.2936874628067
-			}
-		},
 		pwe_gameplay_player_pounced_ping = {
 			randomize_indexes_n = 0,
 			face_animations_n = 8,
@@ -11461,70 +10078,6 @@ return function ()
 				4.1267085075378,
 				2.5171248912811,
 				3.4214792251587
-			}
-		},
-		pwe_gameplay_seeing_a_skaven_warpfire_thrower_ping = {
-			randomize_indexes_n = 0,
-			face_animations_n = 9,
-			database = "ping_dialogues_honduras",
-			sound_events_n = 9,
-			category = "enemy_alerts",
-			dialogue_animations_n = 9,
-			dialogue_animations = {
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout"
-			},
-			face_animations = {
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry"
-			},
-			localization_strings = {
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_01",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_02",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_03",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_04",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_05",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_06",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_07",
-				"pwe_gameplay_seeing_a_Skaven_warpfire_thrower_01",
-				"pwe_gameplay_seeing_a_Skaven_warpfire_thrower_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_01",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_02",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_03",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_04",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_05",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_06",
-				"pwe_gameplay_hearing_a_Skaven_warpfire_thrower_combat_07",
-				"pwe_gameplay_seeing_a_Skaven_warpfire_thrower_01",
-				"pwe_gameplay_seeing_a_Skaven_warpfire_thrower_04"
-			},
-			sound_events_duration = {
-				1.2997291088104,
-				1.1890208721161,
-				1.1809791326523,
-				1.8490417003632,
-				1.533979177475,
-				2.4010624885559,
-				2.1067707538605,
-				2.3354165554047,
-				2.7286250591278
 			}
 		},
 		pwe_gameplay_seeing_a_stormvermin_ping = {
@@ -12430,45 +10983,6 @@ return function ()
 				2.2484166622162
 			}
 		},
-		pwh_gameplay_pinging_monster_a = {
-			randomize_indexes_n = 0,
-			face_animations_n = 4,
-			database = "ping_dialogues_honduras",
-			sound_events_n = 4,
-			category = "enemy_alerts",
-			dialogue_animations_n = 4,
-			dialogue_animations = {
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout"
-			},
-			face_animations = {
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry"
-			},
-			localization_strings = {
-				"pwh_gameplay_pinging_monster_a_01",
-				"pwh_gameplay_pinging_monster_a_02",
-				"pwh_gameplay_pinging_monster_a_03",
-				"pwh_gameplay_pinging_monster_a_04"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"pwh_gameplay_pinging_monster_a_01",
-				"pwh_gameplay_pinging_monster_a_02",
-				"pwh_gameplay_pinging_monster_a_03",
-				"pwh_gameplay_pinging_monster_a_04"
-			},
-			sound_events_duration = {
-				1.1946250200272,
-				2.0374791622162,
-				1.9464583396912,
-				1.4368958473206
-			}
-		},
 		pwh_gameplay_player_pounced_ping = {
 			randomize_indexes_n = 0,
 			face_animations_n = 9,
@@ -12526,11 +11040,11 @@ return function ()
 				3.0750417709351,
 				3.7804374694824,
 				4.1342916488647,
-				2.5830624103546,
-				2.2937917709351,
-				3.2055833339691,
-				3.0153124332428,
-				4.0651040077209
+				7.6838126182556,
+				3.0750417709351,
+				3.7804374694824,
+				4.1342916488647,
+				2.5830624103546
 			}
 		},
 		pwh_gameplay_seeing_a_globadier_ping = {
@@ -12791,65 +11305,6 @@ return function ()
 				1.4105833768845,
 				1.4785416126251,
 				0.78702086210251
-			}
-		},
-		pwh_gameplay_seeing_a_skaven_warpfire_thrower_ping = {
-			randomize_indexes_n = 0,
-			face_animations_n = 8,
-			database = "ping_dialogues_honduras",
-			sound_events_n = 8,
-			category = "enemy_alerts",
-			dialogue_animations_n = 8,
-			dialogue_animations = {
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout",
-				"dialogue_shout"
-			},
-			face_animations = {
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry",
-				"face_angry"
-			},
-			localization_strings = {
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_01",
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_02",
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_03",
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_05",
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_06",
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_07",
-				"pwh_gameplay_seeing_a_Skaven_warpfire_thrower_08",
-				"pwh_gameplay_seeing_a_Skaven_warpfire_thrower_09"
-			},
-			randomize_indexes = {},
-			sound_events = {
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_01",
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_02",
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_03",
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_05",
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_06",
-				"pwh_gameplay_hearing_a_Skaven_warpfire_thrower_combat_07",
-				"pwh_gameplay_seeing_a_Skaven_warpfire_thrower_08",
-				"pwh_gameplay_seeing_a_Skaven_warpfire_thrower_09"
-			},
-			sound_events_duration = {
-				1.6568332910538,
-				1.1054791212082,
-				1.3664166927338,
-				2.2313957214356,
-				1.1920416355133,
-				2.152583360672,
-				2.9568750858307,
-				1.5895208120346
 			}
 		},
 		pwh_gameplay_seeing_a_stormvermin_ping = {

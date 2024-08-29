@@ -10,7 +10,8 @@ local FAIL_LEVEL_VAR = false
 GameModeWeave.init = function (self, settings, world, network_server, is_server, profile_synchronizer, level_key, statistics_db, game_mode_settings)
 	GameModeWeave.super.init(self, settings, world, network_server, is_server, profile_synchronizer, level_key, statistics_db, game_mode_settings)
 
-	self._lost_condition_timer = nil
+	self.about_to_lose = false
+	self.lost_condition_timer = nil
 	self.about_to_win = false
 	self.win_condition_timer = nil
 	self._adventure_profile_rules = AdventureProfileRules:new(self._profile_synchronizer, self._network_server)
@@ -28,7 +29,6 @@ GameModeWeave.init = function (self, settings, world, network_server, is_server,
 
 	self._local_player_spawned = false
 	self._quick_play = Managers.matchmaking:is_quick_game()
-	self._has_locked_party_size = Managers.matchmaking:is_game_private()
 
 	local event_manager = Managers.state.event
 
@@ -71,50 +71,45 @@ GameModeWeave.evaluate_end_conditions = function (self, round_started, dt, t, mu
 	local players_disabled = GameModeHelper.side_is_disabled("heroes") and not GameModeHelper.side_delaying_loss("heroes")
 	local mutator_lost = mutator_handler:evaluate_lose_conditions()
 	local time_up = self:_is_time_up(t)
-	local lost = not self._lose_condition_disabled and (mutator_lost or humans_dead or players_disabled or self._level_failed)
+	local lost = not self._lose_condition_disabled and (mutator_lost or humans_dead or players_disabled or self._level_failed or time_up)
 
 	if self._about_to_win then
 		if t > self.win_condition_timer then
 			return true, "won"
-		elseif time_up then
-			return true, "lost"
 		else
 			return false
 		end
 	end
 
-	if self:is_about_to_end_game_early() then
+	if self.about_to_lose then
 		if lost then
-			if t > self._lost_condition_timer then
+			if t > self.lost_condition_timer then
 				return true, "lost"
 			else
 				return false
 			end
 		else
-			self:set_about_to_end_game_early(false)
-
-			self._lost_condition_timer = nil
+			self.about_to_lose = nil
+			self.lost_condition_timer = nil
 		end
 	end
 
 	if lost then
-		self:set_about_to_end_game_early(true)
+		self.about_to_lose = true
 
 		if humans_dead then
-			self._lost_condition_timer = t + GameModeSettings.weave.lose_condition_time_dead
+			self.lost_condition_timer = t + GameModeSettings.weave.lose_condition_time_dead
+		elseif time_up then
+			self.lost_condition_timer = t + GameModeSettings.weave.lose_condition_time_time_up
 		else
-			self._lost_condition_timer = t + GameModeSettings.weave.lose_condition_time
+			self.lost_condition_timer = t + GameModeSettings.weave.lose_condition_time
 		end
 	elseif self._level_completed and not self._about_to_win then
 		local weave_manager = Managers.weave
 		local next_objective_index = weave_manager:calculate_next_objective_index()
 
 		if next_objective_index then
-			if time_up then
-				return true, "won"
-			else
-				return true, "won"
-			end
+			return true, "won"
 		else
 			self._about_to_win = true
 			self.win_condition_timer = t + 6
@@ -183,8 +178,8 @@ GameModeWeave._is_time_up = function (self)
 	return time_up
 end
 
-GameModeWeave.player_entered_game_session = function (self, peer_id, local_player_id)
-	GameModeWeave.super.player_entered_game_session(self, peer_id, local_player_id)
+GameModeWeave.player_entered_game_session = function (self, peer_id, local_player_id, wanted_party_index)
+	GameModeWeave.super.player_entered_game_session(self, peer_id, local_player_id, wanted_party_index)
 
 	if LAUNCH_MODE ~= "attract_benchmark" then
 		self._adventure_profile_rules:handle_profile_delegation_for_joining_player(peer_id, local_player_id)
@@ -197,12 +192,12 @@ GameModeWeave.player_entered_game_session = function (self, peer_id, local_playe
 
 		if #self._bot_players > 0 then
 			local profile_index = self._profile_synchronizer:profile_by_peer(peer_id, local_player_id)
-			local removed = self:_remove_bot_by_profile(profile_index)
+			local removed = self:_remove_bot_by_profile(self._bot_players, profile_index)
 
 			if not removed then
 				local update_safe = false
 
-				self:_remove_bot(self._bot_players[#self._bot_players], update_safe)
+				self:_remove_bot(self._bot_players, #self._bot_players, update_safe)
 			end
 		end
 
@@ -341,12 +336,7 @@ GameModeWeave.get_end_screen_config = function (self, game_won, game_lost, playe
 			}
 		end
 	else
-		local weave_manager = Managers.weave
-		local next_objective_index = weave_manager:calculate_next_objective_index()
-
-		if not next_objective_index then
-			screen_name = "defeat"
-		end
+		screen_name = "defeat"
 	end
 
 	return screen_name, screen_config
@@ -454,7 +444,7 @@ GameModeWeave._handle_bots = function (self, t, dt)
 		return
 	end
 
-	local can_spawn_bots = Development.parameter("enable_bots_in_weaves") or not self._has_locked_party_size
+	local can_spawn_bots = Development.parameter("enable_bots_in_weaves") or self._quick_play
 
 	if script_data.ai_bots_disabled or not can_spawn_bots then
 		if #self._bot_players > 0 then
@@ -484,7 +474,7 @@ GameModeWeave._handle_bots = function (self, t, dt)
 		local num_bots_to_add = math.min(delta, open_slots)
 
 		for i = 1, num_bots_to_add do
-			self:_add_bot()
+			self:_add_bot(bot_players)
 		end
 	elseif delta < 0 then
 		local num_bots_to_remove = math.abs(delta)
@@ -492,13 +482,12 @@ GameModeWeave._handle_bots = function (self, t, dt)
 		for i = 1, num_bots_to_remove do
 			local update_safe = true
 
-			self:_remove_bot(bot_players[#bot_players], update_safe)
+			self:_remove_bot(bot_players, #bot_players, update_safe)
 		end
 	end
 end
 
-GameModeWeave._add_bot = function (self)
-	local bot_players = self._bot_players
+GameModeWeave._add_bot = function (self, bot_players)
 	local party_id = 1
 	local party = Managers.party:get_party(party_id)
 	local profile_index, career_index = self:_get_first_available_bot_profile(party)
@@ -512,9 +501,10 @@ GameModeWeave._add_bot = function (self)
 	bot_players[#bot_players + 1] = bot_player
 end
 
-GameModeWeave._remove_bot = function (self, bot_player, update_safe)
-	local bot_players = self._bot_players
-	local index = table.index_of(bot_players, bot_player)
+GameModeWeave._remove_bot = function (self, bot_players, index, update_safe)
+	local bot_player = bot_players[index]
+
+	fassert(bot_player, "No bot player at index (%s)", tostring(index))
 
 	if update_safe then
 		self:_remove_bot_update_safe(bot_player)
@@ -528,8 +518,7 @@ GameModeWeave._remove_bot = function (self, bot_player, update_safe)
 	bot_players[last] = nil
 end
 
-GameModeWeave._remove_bot_by_profile = function (self, profile_index)
-	local bot_players = self._bot_players
+GameModeWeave._remove_bot_by_profile = function (self, bot_players, profile_index)
 	local bot_index
 	local num_current_bots = #bot_players
 
@@ -549,7 +538,7 @@ GameModeWeave._remove_bot_by_profile = function (self, profile_index)
 	if bot_index then
 		local update_safe = false
 
-		self:_remove_bot(bot_players[bot_index], update_safe)
+		self:_remove_bot(bot_players, bot_index, update_safe)
 
 		removed = true
 	end
@@ -562,7 +551,7 @@ GameModeWeave._clear_bots = function (self, update_safe)
 	local num_bot_players = #bot_players
 
 	for i = num_bot_players, 1, -1 do
-		self:_remove_bot(bot_players[i], update_safe)
+		self:_remove_bot(bot_players, i, update_safe)
 	end
 end
 

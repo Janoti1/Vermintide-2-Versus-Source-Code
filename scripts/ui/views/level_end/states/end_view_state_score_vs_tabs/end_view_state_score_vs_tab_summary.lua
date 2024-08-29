@@ -1,5 +1,3 @@
-require("scripts/settings/dlcs/carousel/end_screen_award_settings")
-
 local DO_RELOAD = false
 
 EndViewStateScoreVSTabSummary = class(EndViewStateScoreVSTabSummary)
@@ -24,46 +22,7 @@ EndViewStateScoreVSTabSummary.on_enter = function (self, params)
 	self._ui_animations = {}
 
 	self:create_ui_elements(params)
-	self:_calculate_awards()
 	self:_start_transition_animation("on_enter", "on_enter")
-
-	local parent = self._params.parent
-
-	parent:show_team()
-end
-
-EndViewStateScoreVSTabSummary._calculate_awards = function (self)
-	self._awards = {}
-
-	local players_session_scores = self._context.players_session_score
-
-	for i = 1, #EndScreenAwardSettings do
-		local award_settings = EndScreenAwardSettings[i]
-		local winner_peer_id = award_settings.evaluate(players_session_scores)
-
-		if winner_peer_id then
-			self._awards[winner_peer_id] = self._awards[winner_peer_id] or {}
-			self._awards[winner_peer_id][#self._awards[winner_peer_id] + 1] = award_settings.name
-		end
-	end
-
-	local max_awards = 0
-	local mvp_peer_id
-
-	for peer_id, awards in pairs(self._awards) do
-		local num_awards = #awards
-
-		if max_awards < num_awards then
-			mvp_peer_id = peer_id
-			max_awards = num_awards
-		end
-	end
-
-	if mvp_peer_id then
-		table.insert(self._awards[mvp_peer_id], 1, "mvp")
-	end
-
-	table.dump(self._awards, "AWARDS", 2)
 end
 
 EndViewStateScoreVSTabSummary.on_exit = function (self, params)
@@ -73,10 +32,6 @@ EndViewStateScoreVSTabSummary.on_exit = function (self, params)
 	self._widgets = nil
 	self._widgets_by_name = nil
 	self._ui_animator = nil
-
-	local parent = self._params.parent
-
-	parent:hide_team()
 end
 
 EndViewStateScoreVSTabSummary.create_ui_elements = function (self, params)

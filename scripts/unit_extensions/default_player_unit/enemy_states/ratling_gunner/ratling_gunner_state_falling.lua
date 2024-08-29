@@ -11,7 +11,19 @@ RatlingGunnerStateFalling.update = function (self, unit, input, dt, context, t)
 	local csm = self._csm
 	local career_extension = self._career_extension
 
-	CharacterStateHelper.update_weapon_actions(t, unit, self._input_extension, self._inventory_extension, self._health_extension)
+	RatlingGunnerStateWalking.super:debug_display_ratling_gunner_ammo(unit)
+
+	if career_extension:ability_was_triggered(self._reload_ability_id) then
+		csm:change_state("ratling_gunner_reloading")
+
+		return
+	end
+
+	if career_extension:ability_was_triggered(self._fire_ability_id) then
+		csm:change_state("ratling_gunner_firing")
+
+		return
+	end
 
 	local ghost_mode_extension = self._ghost_mode_extension
 	local in_ghost_mode = ghost_mode_extension:is_in_ghost_mode()

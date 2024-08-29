@@ -64,10 +64,8 @@ achievements.woods_javelin_melee = {
 		end
 
 		local damage_source = damage_data[DamageDataIndex.DAMAGE_SOURCE_NAME]
-		local item = rawget(ItemMasterList, damage_source)
-		local is_javelin = item and item.item_type == "we_javelin"
 
-		if not is_javelin then
+		if damage_source ~= "we_javelin" then
 			return
 		end
 
@@ -107,10 +105,8 @@ achievements.woods_javelin_combo = {
 		end
 
 		local damage_source = damage_data[DamageDataIndex.DAMAGE_SOURCE_NAME]
-		local item = rawget(ItemMasterList, damage_source)
-		local is_javelin = item and item.item_type == "we_javelin"
 
-		if not is_javelin then
+		if damage_source ~= "we_javelin" then
 			return
 		end
 
@@ -646,7 +642,7 @@ achievements.woods_wall_block_ratling = {
 		}
 	end,
 	completed = function (statistics_db, stats_id, template_data)
-		return statistics_db:get_persistent_stat(stats_id, "woods_ratling_shots_soaked") >= 500
+		return statistics_db:get_persistent_stat(stats_id, "woods_ratling_shots_soaked") > 500
 	end,
 	on_event = function (statistics_db, stats_id, template_data, event_name, event_data)
 		local local_player_unit = Managers.player:local_player().player_unit

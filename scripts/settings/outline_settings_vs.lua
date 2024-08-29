@@ -33,9 +33,9 @@ OutlineSettingsVS.colors = {
 		},
 		color = {
 			255,
-			33,
-			106,
-			34
+			118,
+			186,
+			0
 		}
 	},
 	hero_hurt = {
@@ -52,9 +52,9 @@ OutlineSettingsVS.colors = {
 		},
 		color = {
 			255,
-			177,
-			144,
-			31
+			253,
+			253,
+			4
 		}
 	},
 	hero_dying = {
@@ -71,18 +71,10 @@ OutlineSettingsVS.colors = {
 		},
 		color = {
 			255,
-			139,
-			0,
-			0
+			227,
+			4,
+			4
 		}
-	}
-}
-OutlineSettingsVS.templates = {
-	horde_ability = {
-		priority = 15,
-		method = "ai_alive",
-		outline_color = OutlineSettingsVS.colors.ally,
-		flag = OutlineSettings.flags.non_wall_occluded
 	}
 }
 

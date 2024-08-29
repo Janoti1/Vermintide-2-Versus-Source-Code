@@ -1,242 +1,32 @@
-local drop_off_ranges = {
-	shotgun_dropoff_ranges = {
-		dropoff_start = 8,
-		dropoff_end = 15
-	},
-	machinegun_dropoff_ranges = {
-		dropoff_start = 10,
-		dropoff_end = 30
-	},
-	machinegun_shotgun_dropoff_ranges = {
-		dropoff_start = 30,
-		dropoff_end = 50
-	},
-	carbine_dropoff_ranges = {
-		dropoff_start = 15,
-		dropoff_end = 30
-	},
-	sniper_dropoff_ranges = {
-		dropoff_start = 30,
-		dropoff_end = 50
-	},
-	flamethrower_dropoff_ranges = {
-		dropoff_start = 4,
-		dropoff_end = 8
-	},
-	rapier_dropoff_ranges = {
-		dropoff_start = 5,
-		dropoff_end = 10
-	}
+local shotgun_dropoff_ranges = {
+	dropoff_start = 8,
+	dropoff_end = 15
+}
+local machinegun_dropoff_ranges = {
+	dropoff_start = 10,
+	dropoff_end = 30
+}
+local machinegun_shotgun_dropoff_ranges = {
+	dropoff_start = 30,
+	dropoff_end = 50
+}
+local carbine_dropoff_ranges = {
+	dropoff_start = 15,
+	dropoff_end = 30
+}
+local sniper_dropoff_ranges = {
+	dropoff_start = 30,
+	dropoff_end = 50
+}
+local flamethrower_dropoff_ranges = {
+	dropoff_start = 4,
+	dropoff_end = 8
+}
+local rapier_dropoff_ranges = {
+	dropoff_start = 5,
+	dropoff_end = 10
 }
 local damage_templates = {
-	playable_boss_melee_fury_light_vs = {
-		charge_value = "light_attack",
-		fatigue_type = "chaos_cleave",
-		critical_strike = {},
-		armor_modifier = {
-			attack = {
-				1,
-				1,
-				1,
-				1,
-				1,
-				1
-			},
-			impact = {
-				1,
-				1,
-				1,
-				1,
-				1,
-				1
-			}
-		},
-		cleave_distribution = {
-			attack = 0.25,
-			impact = 0.2
-		},
-		targets = {
-			{
-				boost_curve_type = "linesman_curve",
-				boost_curve_coefficient = 2,
-				attack_template = "slashing_linesman",
-				power_distribution = {
-					attack = 0.6,
-					impact = 0.6
-				}
-			},
-			{
-				boost_curve_type = "linesman_curve",
-				boost_curve_coefficient = 2,
-				attack_template = "light_slashing_linesman",
-				power_distribution = {
-					attack = 0.4,
-					impact = 0.4
-				}
-			}
-		},
-		default_target = {
-			boost_curve_type = "linesman_curve",
-			boost_curve_coefficient = 2,
-			attack_template = "light_slashing_linesman",
-			power_distribution = {
-				attack = 0.1,
-				impact = 0.1
-			}
-		}
-	},
-	playable_boss_melee_fury_heavy_vs = {
-		charge_value = "heavy_attack",
-		fatigue_type = "chaos_cleave",
-		critical_strike = {},
-		armor_modifier = {
-			attack = {
-				1,
-				1,
-				1,
-				1,
-				1,
-				1
-			},
-			impact = {
-				1,
-				1,
-				1,
-				1,
-				1,
-				1
-			}
-		},
-		cleave_distribution = {
-			attack = 0.35,
-			impact = 0.35
-		},
-		targets = {
-			{
-				boost_curve_type = "linesman_curve",
-				boost_curve_coefficient = 2,
-				attack_template = "heavy_slashing_linesman",
-				power_distribution = {
-					attack = 1,
-					impact = 1
-				}
-			},
-			{
-				boost_curve_type = "linesman_curve",
-				boost_curve_coefficient = 2,
-				attack_template = "slashing_linesman",
-				power_distribution = {
-					attack = 0.5,
-					impact = 0.5
-				}
-			}
-		},
-		default_target = {
-			boost_curve_type = "linesman_curve",
-			boost_curve_coefficient = 2,
-			attack_template = "light_slashing_linesman",
-			power_distribution = {
-				attack = 0.25,
-				impact = 0.25
-			}
-		}
-	},
-	playable_boss_melee_scrambler_light_vs = {
-		charge_value = "light_attack",
-		damage_type = "push",
-		fatigue_type = "ogre_shove",
-		critical_strike = {},
-		armor_modifier = {
-			attack = {
-				1,
-				1,
-				1,
-				1,
-				1,
-				1
-			},
-			impact = {
-				1,
-				1,
-				1,
-				1,
-				1,
-				1
-			}
-		},
-		cleave_distribution = {
-			attack = 0.25,
-			impact = 0.2
-		},
-		targets = {
-			{
-				boost_curve_type = "default",
-				boost_curve_coefficient = 2,
-				attack_template = "basic_sweep_push",
-				power_distribution = {
-					attack = 0.2,
-					impact = 1
-				}
-			}
-		},
-		default_target = {
-			boost_curve_type = "default",
-			boost_curve_coefficient = 2,
-			attack_template = "basic_sweep_push",
-			power_distribution = {
-				attack = 0.1,
-				impact = 1
-			}
-		}
-	},
-	playable_boss_melee_scrambler_heavy_vs = {
-		charge_value = "light_attack",
-		damage_type = "push",
-		fatigue_type = "ogre_shove",
-		critical_strike = {},
-		armor_modifier = {
-			attack = {
-				1,
-				1,
-				1,
-				1,
-				1,
-				1
-			},
-			impact = {
-				1,
-				1,
-				1,
-				1,
-				1,
-				1
-			}
-		},
-		cleave_distribution = {
-			attack = 0.25,
-			impact = 0.2
-		},
-		targets = {
-			{
-				boost_curve_type = "default",
-				boost_curve_coefficient = 2,
-				attack_template = "basic_sweep_push",
-				power_distribution = {
-					attack = 0.8,
-					impact = 1
-				}
-			}
-		},
-		default_target = {
-			boost_curve_type = "default",
-			boost_curve_coefficient = 2,
-			attack_template = "basic_sweep_push",
-			power_distribution = {
-				attack = 0.5,
-				impact = 1
-			}
-		}
-	},
 	ratling_gunner_vs = {
 		no_stagger_damage_reduction_ranged = true,
 		charge_value = "projectile",
@@ -291,246 +81,6 @@ local damage_templates = {
 						multiplier = 0.04
 					}
 				}
-			}
-		}
-	},
-	questing_knight_career_sword_vs = {
-		charge_value = "heavy_attack",
-		is_explosion = true,
-		shield_break = true,
-		critical_strike = {
-			attack_armor_power_modifer = {
-				1,
-				1,
-				2,
-				1,
-				1,
-				1
-			},
-			impact_armor_power_modifer = {
-				1,
-				1,
-				200,
-				1,
-				1,
-				1
-			}
-		},
-		armor_modifier = {
-			attack = {
-				1,
-				1,
-				2,
-				0.1,
-				1,
-				1
-			},
-			impact = {
-				1,
-				1,
-				200,
-				0.1,
-				1,
-				1
-			}
-		},
-		cleave_distribution = {
-			attack = 0.3,
-			impact = 0.5
-		},
-		default_target = {
-			boost_curve_coefficient_headshot = 0.5,
-			boost_curve_type = "smiter_curve",
-			boost_curve_coefficient = 0.5,
-			attack_template = "slashing_smiter",
-			power_distribution = {
-				attack = 2,
-				impact = 2
-			}
-		}
-	},
-	questing_knight_career_sword_stab_vs = {
-		charge_value = "heavy_attack",
-		is_explosion = true,
-		shield_break = true,
-		critical_strike = {
-			attack_armor_power_modifer = {
-				1.5,
-				1.5,
-				2.5,
-				0.1,
-				1.5,
-				1.5
-			},
-			impact_armor_power_modifer = {
-				1,
-				1,
-				200,
-				0.1,
-				1,
-				1
-			}
-		},
-		armor_modifier = {
-			attack = {
-				1.5,
-				1.5,
-				2.5,
-				0.1,
-				1.5,
-				1.5
-			},
-			impact = {
-				1,
-				1,
-				200,
-				0.1,
-				1,
-				1
-			}
-		},
-		cleave_distribution = {
-			attack = 0.3,
-			impact = 0.5
-		},
-		default_target = {
-			boost_curve_coefficient_headshot = 0.5,
-			boost_curve_type = "smiter_curve",
-			boost_curve_coefficient = 0.5,
-			attack_template = "heavy_slashing_fencer",
-			power_distribution = {
-				attack = 2,
-				impact = 2
-			}
-		}
-	},
-	questing_knight_career_sword_tank_vs = {
-		charge_value = "heavy_attack",
-		is_explosion = true,
-		shield_break = true,
-		critical_strike = {
-			attack_armor_power_modifer = {
-				1,
-				1,
-				2,
-				1,
-				1,
-				1
-			},
-			impact_armor_power_modifer = {
-				1,
-				1,
-				200,
-				1,
-				1,
-				1
-			}
-		},
-		armor_modifier = {
-			attack = {
-				1,
-				1,
-				2,
-				0.1,
-				1,
-				1
-			},
-			impact = {
-				1,
-				1,
-				200,
-				0.1,
-				1,
-				1
-			}
-		},
-		cleave_distribution = {
-			attack = 0.5,
-			impact = 2
-		},
-		default_target = {
-			boost_curve_coefficient_headshot = 0.5,
-			boost_curve_type = "tank_curve",
-			boost_curve_coefficient = 0.5,
-			attack_template = "heavy_slashing_tank",
-			power_distribution = {
-				attack = 2,
-				impact = 2
-			}
-		}
-	},
-	thorn_sister_poison_vs = {
-		deal_min_damage = true,
-		is_dot = true,
-		charge_value = "n/a",
-		no_stagger_damage_reduction_ranged = true,
-		no_stagger = true,
-		cleave_distribution = {
-			attack = 0.25,
-			impact = 0.25
-		},
-		armor_modifier = {
-			attack = {
-				0.8,
-				0.8,
-				0.8,
-				0.8,
-				0.5,
-				0.2
-			},
-			impact = {
-				1,
-				1,
-				1,
-				1,
-				0.5,
-				0
-			}
-		},
-		default_target = {
-			attack_template = "arrow_poison_aoe",
-			damage_type = "arrow_poison_dot",
-			power_distribution = {
-				attack = 0.005,
-				impact = 0
-			}
-		}
-	},
-	victor_priest_nuke_dot_vs = {
-		is_dot = true,
-		charge_value = "n/a",
-		damage_type = "burninating",
-		no_stagger_damage_reduction_ranged = true,
-		no_stagger = true,
-		cleave_distribution = {
-			attack = 0.25,
-			impact = 0.25
-		},
-		armor_modifier = {
-			attack = {
-				0.7,
-				0.5,
-				3,
-				0.7,
-				0.7,
-				0.3
-			},
-			impact = {
-				1,
-				0,
-				0,
-				1,
-				1,
-				0
-			}
-		},
-		default_target = {
-			boost_curve_type = "tank_curve",
-			boost_curve_coefficient = 0.2,
-			attack_template = "light_blunt_tank",
-			power_distribution = {
-				attack = 0.07,
-				impact = 0.05
 			}
 		}
 	},
@@ -609,7 +159,7 @@ local damage_templates = {
 				attack = 0.15,
 				impact = 0.15
 			},
-			range_modifier_settings = drop_off_ranges.machinegun_dropoff_ranges
+			range_modifier_settings = machinegun_dropoff_ranges
 		}
 	},
 	staff_fireball_vs = {
@@ -669,7 +219,7 @@ local damage_templates = {
 				attack = 0.25,
 				impact = 0.25
 			},
-			range_modifier_settings = drop_off_ranges.carbine_dropoff_ranges
+			range_modifier_settings = carbine_dropoff_ranges
 		}
 	},
 	crossbow_bolt_vs = {
@@ -740,14 +290,14 @@ local damage_templates = {
 			boost_curve_coefficient = 1,
 			attack_template = "bolt_sniper",
 			power_distribution_near = {
-				attack = 0.7,
+				attack = 1,
 				impact = 0.4
 			},
 			power_distribution_far = {
-				attack = 0.6,
+				attack = 0.8,
 				impact = 0.3
 			},
-			range_modifier_settings = drop_off_ranges.sniper_dropoff_ranges
+			range_modifier_settings = sniper_dropoff_ranges
 		}
 	},
 	crossbow_bolt_repeating_vs = {
@@ -817,14 +367,14 @@ local damage_templates = {
 			boost_curve_coefficient = 0.75,
 			attack_template = "bolt_carbine",
 			power_distribution_near = {
-				attack = 0.375,
-				impact = 0.25
+				attack = 0.475,
+				impact = 0.35
 			},
 			power_distribution_far = {
-				attack = 0.25,
-				impact = 0.15
+				attack = 0.35,
+				impact = 0.25
 			},
-			range_modifier_settings = drop_off_ranges.carbine_dropoff_ranges
+			range_modifier_settings = carbine_dropoff_ranges
 		}
 	},
 	shot_machinegun_vs = {
@@ -901,7 +451,7 @@ local damage_templates = {
 				attack = 0.3,
 				impact = 0.075
 			},
-			range_modifier_settings = drop_off_ranges.machinegun_dropoff_ranges
+			range_modifier_settings = machinegun_dropoff_ranges
 		}
 	},
 	shot_machinegun_shotgun_vs = {
@@ -978,286 +528,9 @@ local damage_templates = {
 				attack = 0.25,
 				impact = 0.15
 			},
-			range_modifier_settings = drop_off_ranges.machinegun_shotgun_dropoff_ranges
-		}
-	},
-	thorn_sister_poison_vs = {
-		deal_min_damage = true,
-		is_dot = true,
-		charge_value = "n/a",
-		no_stagger_damage_reduction_ranged = true,
-		no_stagger = true,
-		cleave_distribution = {
-			attack = 0.25,
-			impact = 0.25
-		},
-		armor_modifier = {
-			attack = {
-				0.8,
-				0.8,
-				0.8,
-				0.8,
-				0.5,
-				0.2
-			},
-			impact = {
-				1,
-				1,
-				1,
-				1,
-				0.5,
-				0
-			}
-		},
-		default_target = {
-			attack_template = "arrow_poison_aoe",
-			damage_type = "arrow_poison_dot",
-			power_distribution = {
-				attack = 0.005,
-				impact = 0
-			}
-		}
-	},
-	burst_thorn_vs = {
-		charge_value = "projectile",
-		no_stagger_damage_reduction_ranged = true,
-		critical_strike = {
-			attack_armor_power_modifer = {
-				1,
-				0.5,
-				1.5,
-				1,
-				0.5,
-				0.25
-			},
-			impact_armor_power_modifer = {
-				1,
-				0.5,
-				1,
-				1,
-				1,
-				0.5
-			}
-		},
-		armor_modifier_near = {
-			attack = {
-				1,
-				0.3,
-				1,
-				0.5,
-				1.2,
-				0
-			},
-			impact = {
-				1,
-				0.4,
-				1,
-				1,
-				1,
-				1
-			}
-		},
-		armor_modifier_far = {
-			attack = {
-				1,
-				0,
-				1.5,
-				0.5,
-				1,
-				0
-			},
-			impact = {
-				1,
-				0.25,
-				1,
-				1,
-				1,
-				0.25
-			}
-		},
-		cleave_distribution = {
-			attack = 0.1,
-			impact = 0.1
-		},
-		default_target = {
-			boost_curve_coefficient_headshot = 1.5,
-			boost_curve_type = "smiter_curve",
-			boost_curve_coefficient = 0.25,
-			attack_template = "bolt_carbine",
-			power_distribution_near = {
-				attack = 0.15,
-				impact = 0.12
-			},
-			power_distribution_far = {
-				attack = 0.125,
-				impact = 0.1
-			},
-			range_modifier_settings = drop_off_ranges.carbine_dropoff_ranges
-		}
-	},
-	staff_suck_damage_vs = {
-		charge_value = "projectile",
-		no_procs = true,
-		no_stagger_damage_reduction_ranged = true,
-		critical_strike = {
-			attack_armor_power_modifer = {
-				1,
-				0.1,
-				1,
-				1,
-				1,
-				0.25
-			},
-			impact_armor_power_modifer = {
-				1,
-				0.2,
-				1,
-				1,
-				1,
-				0.25
-			}
-		},
-		armor_modifier_far = {
-			attack = {
-				1,
-				0.1,
-				1.5,
-				1,
-				1,
-				0
-			},
-			impact = {
-				1,
-				0.2,
-				1,
-				1,
-				1,
-				0
-			}
-		},
-		armor_modifier_near = {
-			attack = {
-				1,
-				0.5,
-				1.5,
-				1,
-				1,
-				0
-			},
-			impact = {
-				1,
-				0.8,
-				1,
-				1,
-				1,
-				0
-			}
-		},
-		cleave_distribution = {
-			attack = 0.01,
-			impact = 0.01
-		},
-		default_target = {
-			boost_curve_coefficient_headshot = 2,
-			boost_curve_type = "linesman_curve",
-			boost_curve_coefficient = 0.75,
-			attack_template = "wizard_staff_beam",
-			power_distribution_near = {
-				attack = 0.01,
-				impact = 0.065
-			},
-			power_distribution_far = {
-				attack = 0.01,
-				impact = 0.05
-			},
-			range_modifier_settings = carbine_dropoff_ranges
-		}
-	},
-	soul_rip_vs = {
-		charge_value = "heavy_instant_projectile",
-		no_stagger_damage_reduction_ranged = true,
-		shield_break = true,
-		critical_strike = {
-			attack_armor_power_modifer = {
-				1,
-				1.4,
-				3,
-				1,
-				1,
-				1
-			},
-			impact_armor_power_modifer = {
-				1,
-				1,
-				1,
-				1,
-				1,
-				1
-			}
-		},
-		armor_modifier_near = {
-			attack = {
-				1,
-				1,
-				2.5,
-				1,
-				0.75,
-				0.7
-			},
-			impact = {
-				1,
-				1.2,
-				1,
-				1,
-				1,
-				1
-			}
-		},
-		armor_modifier_far = {
-			attack = {
-				1,
-				1,
-				2.5,
-				1,
-				0.75,
-				0.7
-			},
-			impact = {
-				1,
-				1,
-				1,
-				1,
-				1,
-				0.75
-			}
-		},
-		cleave_distribution = {
-			attack = 0.35,
-			impact = 0.3
-		},
-		default_target = {
-			boost_curve_coefficient_headshot = 1,
-			impact_player_target_power_modifier = 1.5,
-			boost_curve_coefficient = 1,
-			attack_template = "shot_sniper",
-			attack_player_target_power_modifier = 0.5,
-			boost_curve_type = "smiter_curve",
-			headshot_boost_boss = 0.5,
-			power_distribution_near = {
-				attack = 1,
-				impact = 0.6
-			},
-			power_distribution_far = {
-				attack = 1,
-				impact = 0.5
-			},
-			range_modifier_settings = sniper_dropoff_ranges
+			range_modifier_settings = machinegun_shotgun_dropoff_ranges
 		}
 	}
 }
-
-damage_templates.bile_troll_sweep = table.clone(damage_templates.playable_boss_melee_fury_light_vs)
-damage_templates.bile_troll_shove = table.clone(damage_templates.playable_boss_melee_fury_light_vs)
-damage_templates.bile_troll_smiter = table.clone(damage_templates.playable_boss_melee_scrambler_heavy_vs)
 
 return damage_templates

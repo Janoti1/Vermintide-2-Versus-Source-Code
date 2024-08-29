@@ -447,19 +447,16 @@ local audio_settings_definition = {
 		}
 	},
 	{
-		show_only_with_voip = true,
 		size_y = 30,
 		widget_type = "empty"
 	},
 	{
 		text = "settings_view_header_voice_communication",
-		show_only_with_voip = true,
 		widget_type = "title"
 	},
 	{
 		setup = "cb_voip_enabled_setup",
 		saved_value = "cb_voip_enabled_saved_value",
-		show_only_with_voip = true,
 		callback = "cb_voip_enabled",
 		tooltip_text = "tooltip_voip_enabled",
 		widget_type = "stepper"
@@ -467,7 +464,6 @@ local audio_settings_definition = {
 	{
 		setup = "cb_voip_push_to_talk_setup",
 		saved_value = "cb_voip_push_to_talk_saved_value",
-		show_only_with_voip = true,
 		callback = "cb_voip_push_to_talk",
 		tooltip_text = "tooltip_voip_push_to_talk",
 		widget_type = "stepper"
@@ -475,7 +471,6 @@ local audio_settings_definition = {
 	{
 		setup = "cb_voip_bus_volume_setup",
 		saved_value = "cb_voip_bus_volume_saved_value",
-		show_only_with_voip = true,
 		callback = "cb_voip_bus_volume",
 		tooltip_text = "tooltip_voip_volume",
 		widget_type = "slider"
@@ -590,16 +585,6 @@ local audio_settings_definition = {
 		}
 	}
 }
-local audio_settings_definition_without_voip = {}
-
-for i = 1, #audio_settings_definition do
-	local definition = audio_settings_definition[i]
-
-	if not definition.show_only_with_voip then
-		audio_settings_definition_without_voip[#audio_settings_definition_without_voip + 1] = definition
-	end
-end
-
 local gameplay_settings_definition = {
 	{
 		text = "settings_view_header_input",
@@ -975,6 +960,13 @@ local gameplay_settings_definition = {
 		saved_value = "cb_hud_clamp_ui_scaling_saved_value",
 		callback = "cb_hud_clamp_ui_scaling",
 		tooltip_text = "tooltip_hud_clamp_ui_scaling",
+		widget_type = "stepper"
+	},
+	{
+		setup = "cb_vs_hud_damage_feedback_on_yourself_setup",
+		saved_value = "cb_vs_hud_damage_feedback_on_yourself_saved_value",
+		callback = "cb_vs_hud_damage_feedback_on_yourself",
+		tooltip_text = "tooltip_vs_hud_damage_feedback_on_yourself",
 		widget_type = "stepper"
 	},
 	{
@@ -1515,6 +1507,30 @@ local keybind_settings_definition = {
 		}
 	},
 	{
+		keybind_description = "ping_only_enemy",
+		keymappings_key = "PlayerControllerKeymaps",
+		widget_type = "keybind",
+		actions = {
+			"ping_only_enemy"
+		}
+	},
+	{
+		keybind_description = "ping_only_movement",
+		keymappings_key = "PlayerControllerKeymaps",
+		widget_type = "keybind",
+		actions = {
+			"ping_only_movement"
+		}
+	},
+	{
+		keybind_description = "ping_only_item",
+		keymappings_key = "PlayerControllerKeymaps",
+		widget_type = "keybind",
+		actions = {
+			"ping_only_item"
+		}
+	},
+	{
 		keybind_description = "social_wheel_only",
 		keymappings_key = "PlayerControllerKeymaps",
 		widget_type = "keybind",
@@ -1636,6 +1652,14 @@ local keybind_settings_definition = {
 		}
 	},
 	{
+		keybind_description = "vs_ghost_catch_up",
+		keymappings_key = "PlayerControllerKeymaps",
+		widget_type = "keybind",
+		actions = {
+			"ghost_mode_enter"
+		}
+	},
+	{
 		size_y = 30,
 		widget_type = "empty"
 	},
@@ -1666,7 +1690,8 @@ local keybind_settings_definition = {
 		keymappings_key = "IngameMenuKeymaps",
 		widget_type = "keybind",
 		actions = {
-			"hotkey_inventory"
+			"hotkey_inventory",
+			"hotkey_deus_inventory"
 		}
 	},
 	{
@@ -1729,14 +1754,6 @@ local keybind_settings_definition = {
 		}
 	},
 	{
-		keybind_description = "hotkey_deus_inventory",
-		keymappings_key = "IngameMenuKeymaps",
-		widget_type = "keybind",
-		actions = {
-			"hotkey_deus_inventory"
-		}
-	},
-	{
 		size_y = 30,
 		widget_type = "empty"
 	},
@@ -1783,58 +1800,6 @@ local keybind_settings_definition = {
 		actions = {
 			"ingame_vote_no"
 		}
-	},
-	{
-		size_y = 30,
-		widget_type = "empty"
-	},
-	{
-		text = "settings_view_versus",
-		widget_type = "title"
-	},
-	{
-		keybind_description = "ping_only_movement",
-		keymappings_key = "PlayerControllerKeymaps",
-		widget_type = "keybind",
-		actions = {
-			"ping_only_movement"
-		}
-	},
-	{
-		keybind_description = "ping_only_item",
-		keymappings_key = "PlayerControllerKeymaps",
-		widget_type = "keybind",
-		actions = {
-			"ping_only_item"
-		}
-	},
-	{
-		keybind_description = "ping_only_enemy",
-		keymappings_key = "PlayerControllerKeymaps",
-		widget_type = "keybind",
-		actions = {
-			"ping_only_enemy"
-		}
-	},
-	{
-		keybind_description = "vs_ghost_catch_up",
-		keymappings_key = "PlayerControllerKeymaps",
-		widget_type = "keybind",
-		actions = {
-			"ghost_mode_enter"
-		}
-	},
-	{
-		keybind_description = "action_ghost_mode_exit",
-		keymappings_key = "PlayerControllerKeymaps",
-		widget_type = "keybind",
-		actions = {
-			"ghost_mode_exit"
-		}
-	},
-	{
-		size_y = 30,
-		widget_type = "empty"
 	}
 }
 
@@ -2109,65 +2074,6 @@ local network_settings_definition = {
 
 generate_settings(network_settings_definition)
 
-local versus_settings_definition = {
-	{
-		text = "settings_view_versus_damage_feedback",
-		widget_type = "title"
-	},
-	{
-		setup = "cb_vs_floating_damage_setup",
-		saved_value = "cb_vs_floating_damage_saved_value",
-		callback = "cb_vs_floating_damage",
-		tooltip_text = "tooltip_vs_floating_damage",
-		widget_type = "stepper"
-	},
-	{
-		setup = "cb_vs_hud_damage_feedback_in_world_setup",
-		saved_value = "cb_vs_hud_damage_feedback_in_world_saved_value",
-		callback = "cb_vs_hud_damage_feedback_in_world",
-		tooltip_text = "tooltip_vs_hud_damage_feedback_in_world",
-		widget_type = "stepper"
-	},
-	{
-		setup = "cb_vs_hud_damage_feedback_on_yourself_setup",
-		saved_value = "cb_vs_hud_damage_feedback_on_yourself_saved_value",
-		callback = "cb_vs_hud_damage_feedback_on_yourself",
-		tooltip_text = "tooltip_vs_hud_damage_feedback_on_yourself",
-		widget_type = "stepper"
-	},
-	{
-		setup = "cb_vs_hud_damage_feedback_on_teammates_setup",
-		saved_value = "cb_vs_hud_damage_feedback_on_yourself_saved_value",
-		callback = "cb_vs_hud_damage_feedback_on_teammates",
-		tooltip_text = "tooltip_vs_hud_damage_feedback_on_teammates",
-		widget_type = "stepper"
-	},
-	{
-		size_y = 30,
-		widget_type = "empty"
-	},
-	{
-		text = "settings_view_header_hud_customization",
-		widget_type = "title"
-	},
-	{
-		setting_name = "toggle_pactsworn_help_ui",
-		widget_type = "stepper",
-		options = {
-			{
-				value = true,
-				text = Localize("menu_settings_on")
-			},
-			{
-				value = false,
-				text = Localize("menu_settings_off")
-			}
-		}
-	}
-}
-
-generate_settings(versus_settings_definition)
-
 local needs_reload_settings = {
 	"screen_resolution",
 	"fullscreen",
@@ -2241,20 +2147,15 @@ if rawget(_G, "Tobii") then
 	SettingsMenuNavigation[#SettingsMenuNavigation + 1] = "tobii_eyetracking_settings"
 end
 
-title_button_definitions[#title_button_definitions + 1] = UIWidgets.create_text_button("settings_button_10", "settings_view_versus", 18)
-SettingsMenuNavigation[#SettingsMenuNavigation + 1] = "versus_settings"
-
 return {
 	video_settings_definition = video_settings_definition,
 	audio_settings_definition = audio_settings_definition,
-	audio_settings_definition_without_voip = audio_settings_definition_without_voip,
 	gameplay_settings_definition = gameplay_settings_definition,
 	display_settings_definition = display_settings_definition,
 	keybind_settings_definition = keybind_settings_definition,
 	gamepad_settings_definition = gamepad_settings_definition,
 	tobii_settings_definition = tobii_settings_definition,
 	network_settings_definition = network_settings_definition,
-	versus_settings_definition = versus_settings_definition,
 	needs_restart_settings = needs_restart_settings,
 	needs_reload_settings = needs_reload_settings,
 	ignore_keybind = ignore_keybind,

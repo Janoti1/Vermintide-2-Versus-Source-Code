@@ -27,17 +27,12 @@ end
 ShowCursorStack.pop = function ()
 	ShowCursorStack.stack_depth = ShowCursorStack.stack_depth - 1
 
-	if ShowCursorStack.stack_depth < 0 and IS_WINDOWS then
-		print("[ShowCursorStack.pop()] Trying to pop a cursor stack that doesn't exist.")
-		Crashify.print_exception("ShowCursorStack", "Trying to pop a cursor stack that doesn't exist.")
-	end
+	assert(ShowCursorStack.stack_depth >= 0 or not IS_WINDOWS, "Trying to pop a cursor stack that doesn't exist.")
 
 	if ShowCursorStack.stack_depth == 0 then
 		Window.set_show_cursor(false)
 		Window.set_clip_cursor(true)
 	end
-
-	ShowCursorStack.stack_depth = math.max(ShowCursorStack.stack_depth, 0)
 end
 
 ShowCursorStack.update_clip_cursor = function ()

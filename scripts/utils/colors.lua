@@ -896,12 +896,6 @@ Colors.color_definitions = {
 		31,
 		135
 	},
-	event = {
-		255,
-		140,
-		31,
-		135
-	},
 	card_plentiful = {
 		255,
 		255,
@@ -1238,6 +1232,24 @@ Colors.color_definitions = {
 		123,
 		44
 	},
+	vs_chaos_spawn = {
+		255,
+		74,
+		145,
+		236
+	},
+	vs_stormfiend = {
+		255,
+		151,
+		99,
+		192
+	},
+	vs_rat_ogre = {
+		255,
+		204,
+		128,
+		128
+	},
 	vs_undecided = {
 		255,
 		255,
@@ -1420,15 +1432,15 @@ Colors.color_definitions = {
 	},
 	local_player_team_lighter = {
 		255,
-		72,
-		95,
-		143
+		80,
+		141,
+		214
 	},
 	local_player_team = {
 		255,
-		72,
-		95,
-		143
+		12,
+		85,
+		173
 	},
 	local_player_team_darker = {
 		255,
@@ -1436,47 +1448,23 @@ Colors.color_definitions = {
 		43,
 		94
 	},
-	local_scoreboard_entry = {
-		20,
-		157,
-		180,
-		222
-	},
-	local_scoreboard_entry_dark = {
-		20,
-		0,
-		30,
-		85
-	},
 	opponent_team_lighter = {
 		255,
-		164,
-		55,
-		53
+		204,
+		71,
+		38
 	},
 	opponent_team = {
 		255,
-		164,
-		55,
-		53
+		154,
+		45,
+		19
 	},
 	opponent_team_darkened = {
 		255,
 		63,
 		12,
 		0
-	},
-	opponent_scoreboard_entry = {
-		20,
-		233,
-		139,
-		141
-	},
-	opponent_scoreboard_entry_dark = {
-		20,
-		48,
-		0,
-		1
 	},
 	local_player_picking = {
 		255,
@@ -1501,24 +1489,6 @@ Colors.color_definitions = {
 		33,
 		106,
 		34
-	},
-	pactsworn_light_green = {
-		100,
-		144,
-		238,
-		144
-	},
-	pactsworn_green = {
-		165,
-		38,
-		255,
-		0
-	},
-	pactsworn_red = {
-		255,
-		255,
-		0,
-		0
 	}
 }
 Colors.indexed_colors, Colors.num_colors = table.values(Colors.color_definitions)

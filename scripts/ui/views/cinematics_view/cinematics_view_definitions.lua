@@ -23,7 +23,7 @@ local scenegraph_definition = {
 	screen = {
 		vertical_alignment = "center",
 		parent = "root",
-		horizontal_alignment = "center",
+		horizontal_alignment = "right",
 		position = {
 			0,
 			0,
@@ -66,34 +66,20 @@ local scenegraph_definition = {
 	},
 	fade_area_edge_hotspot = {
 		vertical_alignment = "top",
-		parent = "screen",
-		horizontal_alignment = "left",
+		parent = "fade_area_edge",
+		horizontal_alignment = "right",
 		position = {
-			-0,
+			-175,
 			0,
-			0
+			UILayer.options_menu
 		},
 		size = {
-			600,
+			5000,
 			1080
 		}
 	},
 	screen_anchor = {
 		parent = "screen"
-	},
-	canvas_hotspot = {
-		vertical_alignment = "top",
-		parent = "screen_anchor",
-		horizontal_alignment = "left",
-		position = {
-			600,
-			0,
-			10
-		},
-		size = {
-			1320,
-			1080
-		}
 	},
 	canvas = {
 		vertical_alignment = "top",
@@ -174,20 +160,6 @@ local scenegraph_definition = {
 	},
 	anchor_point = {
 		parent = "anchor_start"
-	},
-	back_button = {
-		vertical_alignment = "top",
-		parent = "screen",
-		horizontal_alignment = "left",
-		size = {
-			0,
-			0
-		},
-		position = {
-			40,
-			-50,
-			3
-		}
 	}
 }
 local title_text_style = {
@@ -397,7 +369,7 @@ local widget_definitions = {
 		0,
 		0
 	}),
-	canvas_hotspot = UIWidgets.create_simple_hotspot("canvas_hotspot"),
+	fade_edge_hotspot = UIWidgets.create_simple_hotspot("fade_area_edge_hotspot"),
 	fade_background = UIWidgets.create_simple_rect("fade_area_bg", {
 		235,
 		0,
@@ -418,9 +390,6 @@ local widget_definitions = {
 			0
 		}
 	}, "video_area_bottom")
-}
-local button_widget_definitions = {
-	back_button = UIWidgets.create_layout_button("back_button", "layout_button_back", "layout_button_back_glow")
 }
 
 local function create_video_entry(parent)
@@ -1149,7 +1118,6 @@ return {
 	create_cinematic_entry = create_cinematic_entry,
 	scenegraph_definition = scenegraph_definition,
 	widget_definitions = widget_definitions,
-	button_widget_definitions = button_widget_definitions,
 	entry_size = entry_size,
 	create_scrollbar = create_scrollbar,
 	animation_definitions = animation_definitions,

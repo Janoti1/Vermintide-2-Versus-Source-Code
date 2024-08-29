@@ -113,12 +113,12 @@ template.create_widget_definition = function (scenegraph_id)
 				vertical_alignment = "center",
 				horizontal_alignment = "center",
 				texture_size = {
-					59.25,
-					59.25
+					79,
+					79
 				},
 				default_size = {
-					59.25,
-					59.25
+					79,
+					79
 				},
 				color = {
 					255,
@@ -136,12 +136,12 @@ template.create_widget_definition = function (scenegraph_id)
 				vertical_alignment = "center",
 				horizontal_alignment = "center",
 				texture_size = {
-					56.25,
-					56.25
+					75,
+					75
 				},
 				default_size = {
-					56.25,
-					56.25
+					75,
+					75
 				},
 				color = {
 					255,
@@ -159,12 +159,12 @@ template.create_widget_definition = function (scenegraph_id)
 				vertical_alignment = "center",
 				horizontal_alignment = "center",
 				texture_size = {
-					56.25,
-					56.25
+					75,
+					75
 				},
 				default_size = {
-					56.25,
-					56.25
+					75,
+					75
 				},
 				color = {
 					255,

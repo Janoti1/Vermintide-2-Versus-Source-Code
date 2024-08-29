@@ -6,8 +6,7 @@ local extensions = {
 	"SurroundingObserverHuskExtension"
 }
 local GLOBAL_CONCEPT_NAMES = {
-	heard_speak = true,
-	player_death = true
+	heard_speak = true
 }
 
 SurroundingAwareSystem = class(SurroundingAwareSystem, ExtensionSystemBase)
@@ -534,10 +533,6 @@ SurroundingAwareSystem.update_debug = function (self, context, t)
 	end
 end
 
-local TRIGGER_ON_SELF = {
-	heard_speak = "heard_speak_self"
-}
-
 SurroundingAwareSystem.update_events = function (self, context, t)
 	local unit_input_data = self.unit_input_data
 	local broadphase = self.broadphase
@@ -573,9 +568,7 @@ SurroundingAwareSystem.update_events = function (self, context, t)
 
 				found_units[j] = nil
 
-				local is_source = target == unit
-
-				if ScriptUnit.has_extension(target, "dialogue_system") and (not is_source or TRIGGER_ON_SELF[event_name]) then
+				if target ~= unit and ScriptUnit.has_extension(target, "dialogue_system") then
 					local dialogue_input = ScriptUnit.extension_input(target, "dialogue_system")
 					local event_data = FrameTable.alloc_table()
 					local distance = 0
@@ -594,11 +587,7 @@ SurroundingAwareSystem.update_events = function (self, context, t)
 						event_data[array_data[array_data_index]] = array_data[array_data_index + 1]
 					end
 
-					if is_source then
-						dialogue_input:trigger_dialogue_event(TRIGGER_ON_SELF[event_name], event_data)
-					else
-						dialogue_input:trigger_dialogue_event(event_name, event_data)
-					end
+					dialogue_input:trigger_dialogue_event(event_name, event_data)
 				end
 			end
 
@@ -614,13 +603,8 @@ SurroundingAwareSystem.update_events = function (self, context, t)
 				for observer_unit, _ in pairs(self.global_observers) do
 					local dialogue_extension = ScriptUnit.extension(observer_unit, "dialogue_system")
 					local dialogue_input = dialogue_extension.input
-					local is_source = unit == observer_unit
 
-					if not is_source then
-						dialogue_input:trigger_dialogue_event(event_name, event_data)
-					elseif TRIGGER_ON_SELF[event_name] then
-						dialogue_input:trigger_dialogue_event(TRIGGER_ON_SELF[event_name], event_data)
-					end
+					dialogue_input:trigger_dialogue_event(event_name, event_data)
 				end
 			end
 		end

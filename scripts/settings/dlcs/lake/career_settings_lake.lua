@@ -25,8 +25,9 @@ CareerSettings.es_questingknight = {
 	activated_ability = ActivatedAbilitySettings.es_4,
 	passive_ability = PassiveAbilitySettings.es_4,
 	attributes = {
-		base_critical_strike_chance = 0.05,
-		max_hp = 150
+		max_hp = 150,
+		max_hp_kd = 300,
+		base_critical_strike_chance = 0.05
 	},
 	video = {
 		material_name = "es_questingknight",
@@ -47,7 +48,7 @@ CareerSettings.es_questingknight = {
 	is_unlocked_function = function (career, hero_name, hero_level)
 		local unlocked, reason = career:override_available_for_mechanism()
 
-		if not unlocked then
+		if unlocked ~= nil then
 			return unlocked, reason
 		end
 
@@ -76,11 +77,11 @@ CareerSettings.es_questingknight = {
 		local settings = Managers.mechanism:mechanism_setting_for_title("override_career_availability")
 		local career_name = career.display_name
 
-		if settings and settings[career_name] == false then
-			return false, "disabled_for_mechanism"
+		if settings and settings[career_name] ~= nil then
+			return settings[career_name], "disabled_for_mechanism"
 		end
 
-		return true
+		return nil
 	end,
 	item_slot_types_by_slot_name = {
 		slot_melee = {

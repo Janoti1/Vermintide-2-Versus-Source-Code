@@ -77,7 +77,7 @@ BoonManager.add_boon = function (self, owner, reward_id, consume_type, consume_v
 end
 
 BoonManager._activate_boon = function (self, boon, valid_targets)
-	local reward = MechanismOverrides.get(InGameChallengeRewards[boon.reward_id])
+	local reward = InGameChallengeRewards[boon.reward_id]
 
 	if reward and boon.active then
 		local targets = filter_targets(InGameChallengeRewardTargets[reward.target](boon.owner), valid_targets)
@@ -111,7 +111,7 @@ BoonManager._activate_boon = function (self, boon, valid_targets)
 end
 
 BoonManager._deactivate_boon = function (self, boon, valid_targets)
-	local reward = MechanismOverrides.get(InGameChallengeRewards[boon.reward_id])
+	local reward = InGameChallengeRewards[boon.reward_id]
 
 	if reward and boon.reward_data then
 		local targets = filter_targets(InGameChallengeRewardTargets[reward.target](boon.owner), valid_targets)
@@ -251,7 +251,7 @@ BoonManager.on_player_spawned = function (self, player, unit, unique_id)
 	self._spawned_players_queue[#self._spawned_players_queue + 1] = unit
 end
 
-BoonManager.on_player_joined_party = function (self, peer_id, local_player_id, party_id, slot_id, is_bot)
+BoonManager.on_player_joined_party = function (self, peer_id, local_player_id, party_id, slot_id)
 	self:_activate_player_boons(peer_id, local_player_id)
 end
 
@@ -272,7 +272,7 @@ BoonManager.on_clean_up_server_controlled_buffs = function (self, unit)
 
 	for i = 1, #boons do
 		local boon = boons[i]
-		local reward = MechanismOverrides.get(InGameChallengeRewards[boon.reward_id])
+		local reward = InGameChallengeRewards[boon.reward_id]
 
 		if reward and reward.type == "buff" and reward.server_controlled then
 			boon.reward_data[unit] = nil

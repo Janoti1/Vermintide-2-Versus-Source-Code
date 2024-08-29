@@ -1335,35 +1335,23 @@ local generic_input_actions = {
 			ignore_keybinding = true
 		},
 		{
-			input_action = "l2_r2",
-			priority = 2,
-			description_text = "input_description_select_loadout",
-			ignore_keybinding = true
-		},
-		{
-			input_action = "right_stick_press",
-			priority = 3,
-			description_text = "input_description_manage_loadouts",
-			ignore_keybinding = false
-		},
-		{
 			input_action = "show_gamercard",
-			priority = 4,
+			priority = 2,
 			description_text = "start_menu_switch_hero"
 		},
 		{
 			input_action = "confirm",
-			priority = 5,
+			priority = 3,
 			description_text = "input_description_select"
 		},
 		{
 			input_action = "refresh",
-			priority = 6,
+			priority = 4,
 			description_text = "input_description_remove"
 		},
 		{
 			input_action = "back",
-			priority = 7,
+			priority = 5,
 			description_text = "input_description_close"
 		}
 	}

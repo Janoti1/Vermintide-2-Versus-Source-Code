@@ -419,11 +419,6 @@ PlayerControllerKeymaps.win32 = InputUtils.keymaps_key_approved("win32") and {
 		"keyboard",
 		"e",
 		"pressed"
-	},
-	versus_horde_ability = {
-		"keyboard",
-		"1",
-		"pressed"
 	}
 }
 PlayerControllerKeymaps.xb1 = InputUtils.keymaps_key_approved("xb1") and {
@@ -689,12 +684,12 @@ PlayerControllerKeymaps.xb1 = InputUtils.keymaps_key_approved("xb1") and {
 	},
 	ghost_mode_enter = {
 		"gamepad",
-		"y",
+		"x",
 		"pressed"
 	},
 	ghost_mode_exit = {
 		"gamepad",
-		"x",
+		"y",
 		"pressed"
 	},
 	emote_camera_zoom_in = {
@@ -710,11 +705,6 @@ PlayerControllerKeymaps.xb1 = InputUtils.keymaps_key_approved("xb1") and {
 	emote_toggle_hud_visibility = {
 		"gamepad",
 		"x",
-		"pressed"
-	},
-	versus_horde_ability = {
-		"gamepad",
-		"d_up",
 		"pressed"
 	}
 }
@@ -994,12 +984,12 @@ PlayerControllerKeymaps.ps4 = InputUtils.keymaps_key_approved("ps4") and {
 	},
 	ghost_mode_enter = {
 		"gamepad",
-		"triangle",
+		"square",
 		"pressed"
 	},
 	ghost_mode_exit = {
 		"gamepad",
-		"square",
+		"triangle",
 		"pressed"
 	},
 	emote_camera_zoom_in = {
@@ -1015,11 +1005,6 @@ PlayerControllerKeymaps.ps4 = InputUtils.keymaps_key_approved("ps4") and {
 	emote_toggle_hud_visibility = {
 		"gamepad",
 		"square",
-		"pressed"
-	},
-	versus_horde_ability = {
-		"gamepad",
-		"up",
 		"pressed"
 	}
 }
@@ -1299,12 +1284,12 @@ PlayerControllerKeymaps.ps_pad = InputUtils.keymaps_key_approved("ps_pad") and {
 	},
 	ghost_mode_enter = {
 		"ps_pad",
-		"triangle",
+		"square",
 		"pressed"
 	},
 	ghost_mode_exit = {
 		"ps_pad",
-		"square",
+		"triangle",
 		"pressed"
 	},
 	emote_camera_zoom_in = {
@@ -1320,11 +1305,6 @@ PlayerControllerKeymaps.ps_pad = InputUtils.keymaps_key_approved("ps_pad") and {
 	emote_toggle_hud_visibility = {
 		"ps_pad",
 		"square",
-		"pressed"
-	},
-	versus_horde_ability = {
-		"ps_pad",
-		"up",
 		"pressed"
 	}
 }
@@ -3993,46 +3973,30 @@ TitleLoadingFilters.ps4 = InputUtils.keymaps_key_approved("ps4") and TitleLoadin
 TitleLoadingFilters.ps_pad = InputUtils.keymaps_key_approved("ps_pad") and TitleLoadingFilters_ps4
 TitleScreenKeyMaps = {}
 TitleScreenKeyMaps.win32 = InputUtils.keymaps_key_approved("win32") and {
-	move_up_raw = {
-		"keyboard",
-		"up",
-		"pressed"
-	},
-	move_down_raw = {
-		"keyboard",
-		"down",
-		"pressed"
-	},
 	move_left_raw = {
-		"keyboard",
-		"left",
+		"gamepad",
+		"d_left",
 		"pressed"
 	},
 	move_right_raw = {
-		"keyboard",
-		"right",
+		"gamepad",
+		"d_right",
 		"pressed"
 	},
-	analog_input = {},
-	move_up_alt_raw = {
-		"keyboard",
-		"w",
+	move_up_raw = {
+		"gamepad",
+		"d_up",
 		"pressed"
 	},
-	move_down_alt_raw = {
-		"keyboard",
-		"s",
+	move_down_raw = {
+		"gamepad",
+		"d_down",
 		"pressed"
 	},
-	move_left_alt_raw = {
-		"keyboard",
-		"a",
-		"pressed"
-	},
-	move_right_alt_raw = {
-		"keyboard",
-		"d",
-		"pressed"
+	analog_input = {
+		"gamepad",
+		"left",
+		"axis"
 	},
 	cursor = {
 		"mouse",
@@ -4099,13 +4063,6 @@ TitleScreenKeyMaps.win32 = InputUtils.keymaps_key_approved("win32") and {
 		"keyboard",
 		"f12",
 		"held"
-	},
-	previous = {},
-	next = {},
-	scroll_axis = {
-		"mouse",
-		"wheel",
-		"axis"
 	}
 }
 TitleScreenKeyMaps.xb1 = InputUtils.keymaps_key_approved("xb1") and {
@@ -4159,11 +4116,6 @@ TitleScreenKeyMaps.xb1 = InputUtils.keymaps_key_approved("xb1") and {
 		"a",
 		"pressed"
 	},
-	special_1_press = {
-		"gamepad",
-		"x",
-		"pressed"
-	},
 	start_1 = {
 		"gamepad",
 		"a",
@@ -4188,31 +4140,6 @@ TitleScreenKeyMaps.xb1 = InputUtils.keymaps_key_approved("xb1") and {
 		"gamepad",
 		"right_shoulder",
 		"held"
-	},
-	previous = {
-		"gamepad",
-		"left_shoulder",
-		"pressed"
-	},
-	next = {
-		"gamepad",
-		"right_shoulder",
-		"pressed"
-	},
-	scroll_axis = {
-		"gamepad",
-		"right",
-		"axis"
-	},
-	gamepad_right_axis = {
-		"gamepad",
-		"right",
-		"axis"
-	},
-	start_press = {
-		"gamepad",
-		"start",
-		"pressed"
 	}
 }
 TitleScreenKeyMaps.ps4 = InputUtils.keymaps_key_approved("ps4") and {
@@ -4266,11 +4193,6 @@ TitleScreenKeyMaps.ps4 = InputUtils.keymaps_key_approved("ps4") and {
 		"cross",
 		"pressed"
 	},
-	special_1_press = {
-		"gamepad",
-		"square",
-		"pressed"
-	},
 	start_1 = {
 		"gamepad",
 		"cross",
@@ -4295,31 +4217,6 @@ TitleScreenKeyMaps.ps4 = InputUtils.keymaps_key_approved("ps4") and {
 		"gamepad",
 		"r1",
 		"held"
-	},
-	previous = {
-		"gamepad",
-		"l1",
-		"pressed"
-	},
-	next = {
-		"gamepad",
-		"r1",
-		"pressed"
-	},
-	scroll_axis = {
-		"gamepad",
-		"right",
-		"axis"
-	},
-	gamepad_right_axis = {
-		"gamepad",
-		"right",
-		"axis"
-	},
-	start_press = {
-		"gamepad",
-		"options",
-		"pressed"
 	}
 }
 TitleScreenKeyMaps.ps_pad = InputUtils.keymaps_key_approved("ps_pad") and {
@@ -4373,11 +4270,6 @@ TitleScreenKeyMaps.ps_pad = InputUtils.keymaps_key_approved("ps_pad") and {
 		"cross",
 		"pressed"
 	},
-	special_1_press = {
-		"ps_pad",
-		"square",
-		"pressed"
-	},
 	start_1 = {
 		"ps_pad",
 		"cross",
@@ -4402,31 +4294,6 @@ TitleScreenKeyMaps.ps_pad = InputUtils.keymaps_key_approved("ps_pad") and {
 		"ps_pad",
 		"r1",
 		"held"
-	},
-	previous = {
-		"ps_pad",
-		"l1",
-		"pressed"
-	},
-	next = {
-		"ps_pad",
-		"r1",
-		"pressed"
-	},
-	scroll_axis = {
-		"ps_pad",
-		"right",
-		"axis"
-	},
-	gamepad_right_axis = {
-		"ps_pad",
-		"right",
-		"axis"
-	},
-	start_press = {
-		"ps_pad",
-		"options",
-		"pressed"
 	}
 }
 TitleScreenFilters = {}
@@ -4452,8 +4319,7 @@ TitleScreenFilters.win32 = InputUtils.keymaps_key_approved("win32") and {
 		filter_type = "move_filter",
 		threshold = 0.7,
 		input_mappings = {
-			"move_down_raw",
-			"move_down_alt_raw"
+			"move_down_raw"
 		},
 		axis_mappings = {
 			"analog_input"
@@ -4468,8 +4334,7 @@ TitleScreenFilters.win32 = InputUtils.keymaps_key_approved("win32") and {
 		filter_type = "move_filter",
 		threshold = 0.7,
 		input_mappings = {
-			"move_up_raw",
-			"move_up_alt_raw"
+			"move_up_raw"
 		},
 		axis_mappings = {
 			"analog_input"
@@ -4484,8 +4349,7 @@ TitleScreenFilters.win32 = InputUtils.keymaps_key_approved("win32") and {
 		filter_type = "move_filter",
 		threshold = 0.7,
 		input_mappings = {
-			"move_left_raw",
-			"move_left_altraw"
+			"move_left_raw"
 		},
 		axis_mappings = {
 			"analog_input"
@@ -4500,8 +4364,7 @@ TitleScreenFilters.win32 = InputUtils.keymaps_key_approved("win32") and {
 		filter_type = "move_filter",
 		threshold = 0.7,
 		input_mappings = {
-			"move_right_raw",
-			"move_right_alt_raw"
+			"move_right_raw"
 		},
 		axis_mappings = {
 			"analog_input"
@@ -6010,22 +5873,12 @@ IngameMenuKeymaps.xb1 = InputUtils.keymaps_key_approved("xb1") and {
 		"right_shoulder",
 		"pressed"
 	},
-	cycle_next_alt_raw = {
-		"gamepad",
-		"right_shoulder",
-		"pressed"
-	},
 	cycle_next_hold = {
 		"gamepad",
 		"right_shoulder",
 		"held"
 	},
 	cycle_previous = {
-		"gamepad",
-		"left_shoulder",
-		"pressed"
-	},
-	cycle_prev_raw = {
 		"gamepad",
 		"left_shoulder",
 		"pressed"
@@ -6310,22 +6163,12 @@ IngameMenuKeymaps.ps4 = InputUtils.keymaps_key_approved("ps4") and {
 		"r1",
 		"pressed"
 	},
-	cycle_next_alt_raw = {
-		"gamepad",
-		"r1",
-		"pressed"
-	},
 	cycle_next_hold = {
 		"gamepad",
 		"r1",
 		"held"
 	},
 	cycle_previous = {
-		"gamepad",
-		"l1",
-		"pressed"
-	},
-	cycle_prev_raw = {
 		"gamepad",
 		"l1",
 		"pressed"
@@ -6610,22 +6453,12 @@ IngameMenuKeymaps.ps_pad = InputUtils.keymaps_key_approved("ps_pad") and {
 		"r1",
 		"pressed"
 	},
-	cycle_next_alt_raw = {
-		"ps_pad",
-		"r1",
-		"pressed"
-	},
 	cycle_next_hold = {
 		"ps_pad",
 		"r1",
 		"held"
 	},
 	cycle_previous = {
-		"ps_pad",
-		"l1",
-		"pressed"
-	},
-	cycle_prev_raw = {
 		"ps_pad",
 		"l1",
 		"pressed"
@@ -7678,185 +7511,6 @@ if EndLevelViewKeymapsFilters.ps_pad then
 	EndLevelViewKeymapsFilters.ps_pad.cursor = nil
 end
 
-DarkPactSelectionUIKeymaps = {}
-DarkPactSelectionUIKeymaps.win32 = InputUtils.keymaps_key_approved("win32") and {
-	switch_dark_pact_profile = {
-		"keyboard",
-		"h",
-		"pressed"
-	},
-	cursor = {
-		"mouse",
-		"cursor",
-		"axis"
-	},
-	left_release = {
-		"mouse",
-		"left",
-		"released"
-	},
-	left_hold = {
-		"mouse",
-		"left",
-		"held"
-	},
-	left_press = {
-		"mouse",
-		"left",
-		"pressed"
-	},
-	right_press = {
-		"mouse",
-		"right",
-		"pressed"
-	},
-	next_observer_target = {
-		"mouse",
-		"left",
-		"pressed"
-	},
-	previous_observer_target = {
-		"mouse",
-		"right",
-		"pressed"
-	},
-	enable_camera_movement = {
-		"keyboard",
-		"left alt",
-		"pressed"
-	},
-	camera_movement_held = {
-		"keyboard",
-		"left alt",
-		"held"
-	}
-}
-DarkPactSelectionUIKeymaps.xb1 = InputUtils.keymaps_key_approved("xb1") and {
-	confirm = {
-		"gamepad",
-		"a",
-		"released"
-	},
-	move_left = {
-		"gamepad",
-		"d_left",
-		"pressed"
-	},
-	move_right = {
-		"gamepad",
-		"d_right",
-		"pressed"
-	},
-	move_left_hold = {
-		"gamepad",
-		"d_left",
-		"held"
-	},
-	move_right_hold = {
-		"gamepad",
-		"d_right",
-		"held"
-	},
-	analog_input = {
-		"gamepad",
-		"left",
-		"axis"
-	},
-	next_observer_target = {
-		"gamepad",
-		"right_shoulder",
-		"pressed"
-	},
-	previous_observer_target = {
-		"gamepad",
-		"left_shoulder",
-		"pressed"
-	}
-}
-DarkPactSelectionUIKeymaps.ps4 = InputUtils.keymaps_key_approved("ps4") and {
-	confirm = {
-		"gamepad",
-		"cross",
-		"released"
-	},
-	move_left = {
-		"gamepad",
-		"left",
-		"pressed"
-	},
-	move_right = {
-		"gamepad",
-		"right",
-		"pressed"
-	},
-	move_left_hold = {
-		"gamepad",
-		"left",
-		"held"
-	},
-	move_right_hold = {
-		"gamepad",
-		"right",
-		"held"
-	},
-	analog_input = {
-		"gamepad",
-		"left",
-		"axis"
-	},
-	next_observer_target = {
-		"gamepad",
-		"r1",
-		"pressed"
-	},
-	previous_observer_target = {
-		"gamepad",
-		"l1",
-		"pressed"
-	}
-}
-DarkPactSelectionUIKeymaps.ps_pad = InputUtils.keymaps_key_approved("ps_pad") and {
-	confirm = {
-		"ps_pad",
-		"cross",
-		"released"
-	},
-	move_left = {
-		"ps_pad",
-		"left",
-		"pressed"
-	},
-	move_right = {
-		"ps_pad",
-		"right",
-		"pressed"
-	},
-	move_left_hold = {
-		"ps_pad",
-		"left",
-		"held"
-	},
-	move_right_hold = {
-		"ps_pad",
-		"right",
-		"held"
-	},
-	analog_input = {
-		"ps_pad",
-		"left",
-		"axis"
-	},
-	next_observer_target = {
-		"ps_pad",
-		"r1",
-		"pressed"
-	},
-	previous_observer_target = {
-		"ps_pad",
-		"l1",
-		"pressed"
-	}
-}
 GamepadSettings = {
 	menu_cooldown = 0.25,
 	menu_analog_deadzone = 0.5,

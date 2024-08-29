@@ -1,5 +1,3 @@
-require("scripts/entity_system/systems/ghost_mode/ghost_mode_utils")
-
 local stagger_types = require("scripts/utils/stagger_types")
 
 DarkPactStatusExtension = class(DarkPactStatusExtension, GenericStatusExtension)
@@ -95,12 +93,13 @@ DarkPactStatusExtension.get_in_ghost_mode = function (self)
 end
 
 DarkPactStatusExtension.in_view_enemy_party_players = function (self, unit, player, physics_world)
+	local ghost_mode_system = Managers.state.entity:system("ghost_mode_system")
 	local peer_id = player:network_id()
 	local local_player_id = player:local_player_id()
 	local party = Managers.party:get_party_from_player_id(peer_id, local_player_id)
 	local side = Managers.state.side.side_by_party[party]
 	local enemy_positions = side.ENEMY_PLAYER_AND_BOT_POSITIONS
-	local in_los = GhostModeUtils.in_line_of_sight_of_enemies(unit, enemy_positions, physics_world)
+	local in_los = ghost_mode_system:in_line_of_sight_of_enemies(unit, enemy_positions, physics_world)
 
 	return in_los
 end
@@ -235,20 +234,12 @@ DarkPactStatusExtension.breed_action = function (self)
 	return self._breed_action
 end
 
-DarkPactStatusExtension.set_is_climbing = function (self, climbing)
-	self._is_climbing = climbing
-end
-
-DarkPactStatusExtension.is_climbing = function (self)
-	return self._about_to_climb or self._is_climbing
-end
-
 DarkPactStatusExtension.should_climb = function (self)
-	return self._about_to_climb
+	return self._is_climbing
 end
 
 DarkPactStatusExtension.set_should_climb = function (self, climbing)
-	self._about_to_climb = climbing
+	self._is_climbing = climbing
 end
 
 DarkPactStatusExtension.should_tunnel = function (self)

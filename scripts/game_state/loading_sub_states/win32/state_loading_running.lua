@@ -32,7 +32,7 @@ end
 StateLoadingRunning._init_network = function (self)
 	local loading_context = self.parent.parent.loading_context
 
-	Managers.state.event = EventManager:new(Managers.persistent_event)
+	Managers.state.event = EventManager:new()
 
 	if not self.parent:has_registered_rpcs() then
 		self.parent:register_rpcs()

@@ -15,7 +15,6 @@ DialogueSettings.auto_load_files = {
 	"dialogues/generated/witch_hunter_generic_vo",
 	"dialogues/generated/weather_vo"
 }
-DialogueSettings.auto_load_files_mechanism = {}
 DialogueSettings.level_specific_load_files = {
 	whitebox_climb = {
 		"dialogues/generated/wood_elf_prologue",
@@ -189,7 +188,6 @@ DialogueSettings.blocked_auto_load_files = {
 }
 
 DLCUtils.append("auto_load_files", DialogueSettings.auto_load_files)
-DLCUtils.merge("auto_load_files_mechanism", DialogueSettings.auto_load_files_mechanism, true)
 
 for _, dlc in pairs(DLCSettings) do
 	local dialogue_settings = dlc.dialogue_settings
@@ -834,40 +832,6 @@ DialogueSettings.dialogue_category_config = {
 			player_alerts_overcharge_warning = true,
 			cut_scene_interrupt_two = true,
 			player_alerts = true,
-			casual_singing_03 = true,
-			enemy_alerts_high = true
-		}
-	},
-	level_talk_must_play_multiple = {
-		mutually_exclusive = false,
-		interrupted_by = {},
-		playable_during_category = {
-			default = true,
-			npc_talk = true,
-			story_talk = true,
-			guidance = true,
-			player_alerts_overcharge_explode = true,
-			level_talk_tutorial = true,
-			level_talk_must_play = true,
-			casual_talk = true,
-			cut_scene = true,
-			player_feedback = true,
-			level_talk = true,
-			enemy_basic_prio = true,
-			cut_scene_interrupt = true,
-			knocked_down_override = true,
-			help_talk = true,
-			story_talk_vce = true,
-			cut_scene_interrupt_three = true,
-			enemy_high_prio = true,
-			npc_talk_interrupt_special = true,
-			activate_ability = true,
-			level_talk_must_play_multiple = true,
-			enemy_alerts = true,
-			seen_items = true,
-			player_alerts_overcharge_warning = true,
-			cut_scene_interrupt_two = true,
-			player_alerts = true,
 			enemy_alerts_high = true
 		}
 	},
@@ -926,9 +890,7 @@ DialogueSettings.dialogue_category_config = {
 	},
 	casual_singing_03 = {
 		mutually_exclusive = false,
-		interrupted_by = {
-			level_talk_must_play = true
-		},
+		interrupted_by = {},
 		playable_during_category = {
 			default = true,
 			enemy_high_prio = true,

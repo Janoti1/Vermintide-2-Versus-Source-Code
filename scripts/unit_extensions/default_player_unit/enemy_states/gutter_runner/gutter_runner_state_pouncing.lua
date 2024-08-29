@@ -32,7 +32,6 @@ GutterRunnerStatePouncing.on_enter = function (self, unit, input, dt, context, t
 	local initial_velocity = pounce_data.initial_velocity:unbox()
 
 	self:_start_pounce(unit, initial_velocity, t)
-	CharacterStateHelper.ghost_mode(self._ghost_mode_extension, input_extension)
 	CharacterStateHelper.look(input_extension, player.viewport_name, first_person_extension, status_extension, self._inventory_extension)
 	CharacterStateHelper.update_weapon_actions(t, unit, input_extension, inventory_extension, self._health_extension)
 
@@ -56,10 +55,9 @@ GutterRunnerStatePouncing.on_enter = function (self, unit, input, dt, context, t
 	blackboard.pounce_start_time = t
 
 	self:set_breed_action("jump")
-	self._ghost_mode_extension:set_external_no_spawn_reason("pouncing", true)
 end
 
-GutterRunnerStatePouncing.on_exit = function (self, unit, input, dt, context, t, next_state, is_destroy)
+GutterRunnerStatePouncing.on_exit = function (self, unit, input, dt, context, t, next_state)
 	local first_person_extension = self._first_person_extension
 	local locomotion_extension = self._locomotion_extension
 
@@ -98,12 +96,6 @@ GutterRunnerStatePouncing.on_exit = function (self, unit, input, dt, context, t,
 	first_person_extension:set_wanted_player_height("stand", t)
 	locomotion_extension:set_active_mover("standing")
 	self:set_breed_action("n/a")
-
-	if is_destroy then
-		return
-	end
-
-	self._ghost_mode_extension:set_external_no_spawn_reason("pouncing", nil)
 end
 
 GutterRunnerStatePouncing.update = function (self, unit, input, dt, context, t)

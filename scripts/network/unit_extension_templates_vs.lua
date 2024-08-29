@@ -5,13 +5,12 @@ local unit_templates_vs = {
 		self_owned_extensions = {
 			"DarkPactStatusExtension",
 			"DialogueActorExtension",
+			"HealthTriggerExtension",
 			"GenericDialogueContextExtension",
 			"PlayerProximityExtension",
 			"SurroundingObserverExtension",
 			"PlayerUnitGhostModeExtension",
-			"DarkPactPlayerOutlineExtension",
-			"ProjectileLinkerExtension",
-			"VersusHordeAbilityExtension"
+			"DarkPactPlayerOutlineExtension"
 		},
 		self_owned_extensions_server = {
 			"DarkPactStatusExtension",
@@ -21,20 +20,17 @@ local unit_templates_vs = {
 			"PlayerProximityExtension",
 			"SurroundingObserverExtension",
 			"PlayerUnitGhostModeExtension",
-			"DarkPactPlayerOutlineExtension",
-			"ProjectileLinkerExtension",
-			"VersusHordeAbilityExtension"
+			"DarkPactPlayerOutlineExtension"
 		},
 		husk_extensions = {
 			"DarkPactStatusExtension",
 			"DialogueActorExtension",
+			"HealthTriggerExtension",
 			"GenericDialogueContextExtension",
 			"PlayerProximityExtension",
 			"SurroundingObserverExtension",
 			"PlayerHuskGhostModeExtension",
-			"DarkPactPlayerHuskOutlineExtension",
-			"ProjectileLinkerExtension",
-			"VersusHordeAbilityHuskExtension"
+			"DarkPactPlayerHuskOutlineExtension"
 		},
 		husk_extensions_server = {
 			"DarkPactStatusExtension",
@@ -44,15 +40,18 @@ local unit_templates_vs = {
 			"PlayerProximityExtension",
 			"SurroundingObserverExtension",
 			"PlayerHuskGhostModeExtension",
-			"DarkPactPlayerHuskOutlineExtension",
-			"ProjectileLinkerExtension",
-			"VersusHordeAbilityExtension"
+			"DarkPactPlayerHuskOutlineExtension"
 		}
 	},
 	versus_dark_pact_climbing_interaction_unit = {
 		go_type = "versus_dark_pact_climbing_interaction_unit",
 		self_owned_extensions = {
-			"LocalInteractableExtension",
+			"GenericUnitInteractableExtension",
+			"GenericOutlineExtension",
+			"DarkPactClimbingExtension"
+		},
+		husk_extensions = {
+			"GenericUnitInteractableExtension",
 			"GenericOutlineExtension",
 			"DarkPactClimbingExtension"
 		}

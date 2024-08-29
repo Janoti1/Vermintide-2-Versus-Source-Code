@@ -79,27 +79,6 @@ ItemMasterList.vs_warpfire_thrower_gun = {
 		"versus"
 	}
 }
-ItemMasterList.vs_chaos_troll_axe = {
-	description = "dw_1h_axe_skin_01_description",
-	rarity = "plentiful",
-	right_hand_unit = "units/weapons/player/wpn_invisible_weapon",
-	inventory_icon = "icon_wpn_dw_axe_01_t1",
-	slot_type = "melee",
-	display_name = "dw_1h_axe_skin_01_name",
-	left_hand_unit = "units/weapons/player/dark_pact/wpn_chaos_troll/wpn_chaos_troll_01",
-	has_power_level = true,
-	template = "vs_chaos_troll_axe",
-	property_table_name = "melee",
-	item_type = "dr_1h_axes",
-	hud_icon = "weapon_generic_icon_axe1h",
-	trait_table_name = "melee",
-	can_wield = {
-		"vs_chaos_troll"
-	},
-	mechanisms = {
-		"versus"
-	}
-}
 ItemMasterList.vs_gutter_runner_claws = {
 	description = "dw_1h_axe_skin_01_description",
 	rarity = "plentiful",
@@ -137,8 +116,7 @@ ItemMasterList.vs_es_1h_sword = {
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
+		"es_mercenary"
 	},
 	mechanisms = {
 		"versus"
@@ -160,8 +138,7 @@ ItemMasterList.vs_es_1h_mace = {
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
+		"es_mercenary"
 	},
 	mechanisms = {
 		"versus"
@@ -183,8 +160,7 @@ ItemMasterList.vs_es_2h_sword_executioner = {
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
+		"es_mercenary"
 	},
 	mechanisms = {
 		"versus"
@@ -206,8 +182,7 @@ ItemMasterList.vs_es_2h_sword = {
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
+		"es_mercenary"
 	},
 	mechanisms = {
 		"versus"
@@ -229,8 +204,7 @@ ItemMasterList.vs_es_2h_hammer = {
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
+		"es_mercenary"
 	},
 	mechanisms = {
 		"versus"
@@ -253,8 +227,7 @@ ItemMasterList.vs_es_sword_shield = {
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
+		"es_mercenary"
 	},
 	mechanisms = {
 		"versus"
@@ -277,8 +250,7 @@ ItemMasterList.vs_es_mace_shield = {
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
+		"es_mercenary"
 	},
 	mechanisms = {
 		"versus"
@@ -494,8 +466,7 @@ ItemMasterList.vs_es_dual_wield_hammer_sword = {
 	can_wield = {
 		"es_huntsman",
 		"es_knight",
-		"es_mercenary",
-		"es_questingknight"
+		"es_mercenary"
 	},
 	mechanisms = {
 		"versus"
@@ -504,13 +475,13 @@ ItemMasterList.vs_es_dual_wield_hammer_sword = {
 ItemMasterList.vs_es_bastard_sword = {
 	description = "es_bastard_sword_skin_01_description",
 	rarity = "plentiful",
-	right_hand_unit = "units/weapons/player/wpn_emp_gk_sword_01_t1/wpn_emp_gk_sword_01_t1",
+	right_hand_unit = "units/weapons/player/wpn_empire_2h_sword_01_t1/wpn_2h_sword_01_t1",
 	inventory_icon = "icon_wpn_emp_gk_sword_01_t1",
 	slot_type = "melee",
 	display_name = "es_bastard_sword_skin_01_name",
 	hud_icon = "weapon_generic_icon_sword",
 	has_power_level = true,
-	template = "bastard_sword_template_vs",
+	template = "bastard_sword_template",
 	property_table_name = "melee",
 	item_type = "es_bastard_sword",
 	trait_table_name = "melee",
@@ -525,17 +496,17 @@ ItemMasterList.vs_es_bastard_sword = {
 	}
 }
 ItemMasterList.vs_es_sword_shield_breton = {
-	description = "es_sword_shield_breton_skin_01_description",
+	description = "es_sword_shield_breton_skin_02_description",
 	rarity = "plentiful",
-	right_hand_unit = "units/weapons/player/wpn_emp_gk_sword_01_t1/wpn_emp_gk_sword_01_t1",
+	right_hand_unit = "units/weapons/player/wpn_emp_sword_02_t2/wpn_emp_sword_02_t2",
 	inventory_icon = "icon_wpn_emp_gk_sword_01_t1_wpn_emp_gk_shield_03",
 	slot_type = "melee",
 	display_name = "es_sword_shield_breton_skin_01_name",
-	left_hand_unit = "units/weapons/player/wpn_emp_gk_shield_03/wpn_emp_gk_shield_03",
+	left_hand_unit = "units/weapons/player/wpn_empire_shield_02/wpn_emp_shield_02",
 	has_power_level = true,
 	template = "one_handed_sword_shield_template_2",
 	property_table_name = "melee",
-	item_type = "es_1h_sword_shield_breton",
+	item_type = "es_1h_sword_shield",
 	hud_icon = "weapon_generic_icon_sword_and_sheild",
 	trait_table_name = "melee",
 	can_wield = {
@@ -608,8 +579,7 @@ ItemMasterList.vs_we_dual_wield_daggers = {
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
+		"we_waywatcher"
 	},
 	mechanisms = {
 		"versus"
@@ -632,8 +602,7 @@ ItemMasterList.vs_we_dual_wield_swords = {
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
+		"we_waywatcher"
 	},
 	mechanisms = {
 		"versus"
@@ -679,8 +648,7 @@ ItemMasterList.vs_we_dual_wield_sword_dagger = {
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
+		"we_waywatcher"
 	},
 	mechanisms = {
 		"versus"
@@ -703,8 +671,7 @@ ItemMasterList.vs_we_shortbow = {
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
+		"we_waywatcher"
 	},
 	mechanisms = {
 		"versus"
@@ -727,8 +694,7 @@ ItemMasterList.vs_we_shortbow_hagbane = {
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
+		"we_waywatcher"
 	},
 	mechanisms = {
 		"versus"
@@ -774,8 +740,7 @@ ItemMasterList.vs_we_2h_axe = {
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
+		"we_waywatcher"
 	},
 	mechanisms = {
 		"versus"
@@ -797,8 +762,7 @@ ItemMasterList.vs_we_2h_sword = {
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
+		"we_waywatcher"
 	},
 	mechanisms = {
 		"versus"
@@ -842,8 +806,7 @@ ItemMasterList.vs_we_1h_axe = {
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
+		"we_waywatcher"
 	},
 	mechanisms = {
 		"versus"
@@ -888,8 +851,7 @@ ItemMasterList.vs_we_deus_01 = {
 	can_wield = {
 		"we_shade",
 		"we_maidenguard",
-		"we_waywatcher",
-		"we_thornsister"
+		"we_waywatcher"
 	},
 	mechanisms = {
 		"versus"
@@ -909,7 +871,7 @@ ItemMasterList.vs_we_javelin = {
 	is_ammo_weapon = true,
 	inventory_icon = "icon_wpn_we_javelin_01",
 	has_power_level = true,
-	template = "javelin_template_vs",
+	template = "javelin_template",
 	property_table_name = "ranged",
 	projectile_units_template = "javelin",
 	can_wield = {
@@ -931,7 +893,7 @@ ItemMasterList.vs_we_life_staff = {
 	hud_icon = "weapon_generic_icon_hammer2h",
 	left_hand_unit = "units/weapons/player/wpn_we_life_staff_01/wpn_we_life_staff_01",
 	has_power_level = true,
-	template = "staff_life_vs",
+	template = "staff_life",
 	property_table_name = "ranged",
 	item_type = "we_life_staff",
 	trait_table_name = "ranged_heat",
@@ -958,8 +920,7 @@ ItemMasterList.vs_bw_1h_mace = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -981,8 +942,7 @@ ItemMasterList.vs_bw_flame_sword = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -1004,8 +964,7 @@ ItemMasterList.vs_bw_sword = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -1027,8 +986,7 @@ ItemMasterList.vs_bw_dagger = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -1051,8 +1009,7 @@ ItemMasterList.vs_bw_skullstaff_fireball = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -1075,8 +1032,7 @@ ItemMasterList.vs_bw_skullstaff_beam = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -1099,8 +1055,7 @@ ItemMasterList.vs_bw_skullstaff_geiser = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -1123,8 +1078,7 @@ ItemMasterList.vs_bw_skullstaff_spear = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -1169,8 +1123,7 @@ ItemMasterList.vs_bw_1h_crowbill = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -1192,8 +1145,7 @@ ItemMasterList.vs_bw_1h_flail_flaming = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -1216,8 +1168,7 @@ ItemMasterList.vs_bw_deus_01 = {
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
-		"bw_unchained",
-		"bw_necromancer"
+		"bw_unchained"
 	},
 	mechanisms = {
 		"versus"
@@ -1228,20 +1179,18 @@ ItemMasterList.vs_bw_necromancy_staff = {
 	rarity = "plentiful",
 	right_hand_unit = "units/weapons/player/wpn_bw_necromancy_staff_01/wpn_bw_necromancy_staff_01",
 	inventory_icon = "icon_wpn_bw_necromancy_staff_01",
+	skin_combination_table = "bw_necromancy_staff_skins",
 	slot_type = "ranged",
+	hud_icon = "hud_icon_default",
 	display_name = "bw_necromancy_staff_skin_01_name",
-	left_hand_unit = "units/weapons/player/wpn_invisible_weapon",
 	has_power_level = true,
-	template = "staff_death_vs",
+	template = "staff_death",
 	property_table_name = "ranged",
 	item_type = "bw_necromancy_staff",
-	hud_icon = "hud_icon_default",
+	left_hand_unit = "units/weapons/player/wpn_invisible_weapon",
 	trait_table_name = "ranged_heat",
 	can_wield = {
 		"bw_necromancer"
-	},
-	mechanisms = {
-		"versus"
 	}
 }
 ItemMasterList.vs_bw_ghost_scythe = {
@@ -1249,15 +1198,15 @@ ItemMasterList.vs_bw_ghost_scythe = {
 	rarity = "plentiful",
 	right_hand_unit = "units/weapons/player/wpn_bw_ghost_scythe_01/wpn_bw_ghost_scythe_01",
 	inventory_icon = "icon_wpn_bw_ghost_scythe_01",
+	skin_combination_table = "bw_ghost_scythe_skins",
 	slot_type = "melee",
+	hud_icon = "hud_icon_default",
 	display_name = "bw_ghost_scythe_skin_01_name",
 	has_power_level = true,
 	template = "staff_scythe",
 	property_table_name = "melee",
 	item_type = "bw_ghost_scythe",
-	display_unit = "units/weapons/weapon_display/display_staff",
 	trait_table_name = "melee",
-	hud_icon = "hud_icon_default",
 	can_wield = {
 		"bw_scholar",
 		"bw_adept",
@@ -1268,9 +1217,6 @@ ItemMasterList.vs_bw_ghost_scythe = {
 		bw_unchained = "units/weapons/player/wpn_bw_ghost_scythe_01/wpn_bw_ghost_scythe_01_fire",
 		bw_scholar = "units/weapons/player/wpn_bw_ghost_scythe_01/wpn_bw_ghost_scythe_01_fire",
 		bw_adept = "units/weapons/player/wpn_bw_ghost_scythe_01/wpn_bw_ghost_scythe_01_fire"
-	},
-	mechanisms = {
-		"versus"
 	}
 }
 ItemMasterList.vs_dr_1h_axe = {
@@ -1289,8 +1235,7 @@ ItemMasterList.vs_dr_1h_axe = {
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"dr_ranger"
 	},
 	mechanisms = {
 		"versus"
@@ -1333,8 +1278,7 @@ ItemMasterList.vs_dr_2h_axe = {
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"dr_ranger"
 	},
 	mechanisms = {
 		"versus"
@@ -1356,8 +1300,7 @@ ItemMasterList.vs_dr_2h_hammer = {
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"dr_ranger"
 	},
 	mechanisms = {
 		"versus"
@@ -1379,8 +1322,7 @@ ItemMasterList.vs_dr_1h_hammer = {
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"dr_ranger"
 	},
 	mechanisms = {
 		"versus"
@@ -1402,8 +1344,7 @@ ItemMasterList.vs_dr_shield_axe = {
 	trait_table_name = "melee",
 	can_wield = {
 		"dr_ironbreaker",
-		"dr_ranger",
-		"dr_engineer"
+		"dr_ranger"
 	},
 	mechanisms = {
 		"versus"
@@ -1425,8 +1366,7 @@ ItemMasterList.vs_dr_shield_hammer = {
 	trait_table_name = "melee",
 	can_wield = {
 		"dr_ironbreaker",
-		"dr_ranger",
-		"dr_engineer"
+		"dr_ranger"
 	},
 	mechanisms = {
 		"versus"
@@ -1469,8 +1409,7 @@ ItemMasterList.vs_dr_rakegun = {
 	trait_table_name = "ranged_ammo",
 	can_wield = {
 		"dr_ironbreaker",
-		"dr_ranger",
-		"dr_engineer"
+		"dr_ranger"
 	},
 	mechanisms = {
 		"versus"
@@ -1491,8 +1430,7 @@ ItemMasterList.vs_dr_handgun = {
 	trait_table_name = "ranged_ammo",
 	can_wield = {
 		"dr_ironbreaker",
-		"dr_ranger",
-		"dr_engineer"
+		"dr_ranger"
 	},
 	mechanisms = {
 		"versus"
@@ -1512,8 +1450,7 @@ ItemMasterList.vs_dr_drakegun = {
 	item_type = "dr_drakegun",
 	trait_table_name = "ranged_heat",
 	can_wield = {
-		"dr_ironbreaker",
-		"dr_engineer"
+		"dr_ironbreaker"
 	},
 	mechanisms = {
 		"versus"
@@ -1534,8 +1471,7 @@ ItemMasterList.vs_dr_drake_pistol = {
 	hud_icon = "weapon_generic_icon_drakefire_pistols",
 	trait_table_name = "ranged_heat",
 	can_wield = {
-		"dr_ironbreaker",
-		"dr_engineer"
+		"dr_ironbreaker"
 	},
 	mechanisms = {
 		"versus"
@@ -1557,8 +1493,7 @@ ItemMasterList.vs_dr_2h_pick = {
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"dr_ranger"
 	},
 	mechanisms = {
 		"versus"
@@ -1607,8 +1542,7 @@ ItemMasterList.vs_dr_dual_wield_hammers = {
 	can_wield = {
 		"dr_ironbreaker",
 		"dr_slayer",
-		"dr_ranger",
-		"dr_engineer"
+		"dr_ranger"
 	},
 	mechanisms = {
 		"versus"
@@ -1653,8 +1587,7 @@ ItemMasterList.vs_dr_deus_01 = {
 	trait_table_name = "ranged_ammo",
 	has_power_level = true,
 	can_wield = {
-		"dr_ironbreaker",
-		"dr_engineer"
+		"dr_ironbreaker"
 	},
 	mechanisms = {
 		"versus"
@@ -1888,7 +1821,7 @@ ItemMasterList.vs_wh_dual_wield_axe_falchion = {
 	rarity = "plentiful",
 	right_hand_unit = "units/weapons/player/wpn_axe_hatchet_t2/wpn_axe_hatchet_t2",
 	inventory_icon = "icon_wh_dual_wield_axe_falchion_01",
-	left_hand_unit = "units/weapons/player/wpn_emp_sword_05_t2/wpn_emp_sword_05_t2",
+	left_hand_unit = "units/weapons/player/wpn_emp_sword_04_t1/wpn_emp_sword_04_t1",
 	display_name = "wh_dual_wield_axe_falchion_skin_01_name",
 	slot_type = "melee",
 	has_power_level = true,
@@ -2072,11 +2005,11 @@ ItemMasterList.skaven_gutter_runner_skin_0000 = {
 		"vs_gutter_runner"
 	}
 }
-ItemMasterList.skaven_pack_master_skin_0000 = {
+ItemMasterList.skaven_packmaster_skin_0000 = {
 	description = "description_skaven_packmaster_skin_0000",
-	temporary_template = "skaven_pack_master_skin_0000",
+	temporary_template = "skaven_packmaster_skin_0000",
 	display_name = "skaven_packmaster_skin_0000",
-	name = "skaven_pack_master_skin_0000",
+	name = "skaven_packmaster_skin_0000",
 	inventory_icon = "icon_skin_zealot_original",
 	slot_type = "skin",
 	information_text = "information_text_character_skin",
@@ -2136,11 +2069,11 @@ ItemMasterList.skaven_warpfire_thrower_skin_0000 = {
 		"vs_warpfire_thrower"
 	}
 }
-ItemMasterList.chaos_troll_skin_0000 = {
-	description = "description_chaos_troll_skin_0000",
-	temporary_template = "chaos_troll_skin_0000",
-	display_name = "chaos_troll_skin_0000",
-	name = "chaos_troll_skin_0000",
+ItemMasterList.chaos_spawn_skin_0000 = {
+	description = "description_chaos_spawn_skin_0000",
+	temporary_template = "chaos_spawn_skin_0000",
+	display_name = "chaos_spawn_skin_0000",
+	name = "chaos_spawn_skin_0000",
 	inventory_icon = "icon_skin_zealot_original",
 	slot_type = "skin",
 	information_text = "information_text_character_skin",
@@ -2149,7 +2082,39 @@ ItemMasterList.chaos_troll_skin_0000 = {
 	skin_type = "unit",
 	item_type = "skin",
 	can_wield = {
-		"vs_chaos_troll"
+		"vs_chaos_spawn"
+	}
+}
+ItemMasterList.skaven_stormfiend_skin_0000 = {
+	description = "description_skaven_stormfiend_skin_0000",
+	temporary_template = "skaven_stormfiend_skin_0000",
+	display_name = "skaven_stormfiend_skin_0000",
+	name = "skaven_stormfiend_skin_0000",
+	inventory_icon = "icon_skin_zealot_original",
+	slot_type = "skin",
+	information_text = "information_text_character_skin",
+	hud_icon = "unit_frame_portrait_witch_hunter",
+	rarity = "plentiful",
+	skin_type = "unit",
+	item_type = "skin",
+	can_wield = {
+		"vs_stormfiend"
+	}
+}
+ItemMasterList.skaven_rat_ogre_skin_0000 = {
+	description = "description_skaven_rat_ogre_skin_0000",
+	temporary_template = "skaven_rat_ogre_skin_0000",
+	display_name = "skaven_rat_ogre_skin_0000",
+	name = "skaven_rat_ogre_skin_0000",
+	inventory_icon = "icon_skin_zealot_original",
+	slot_type = "skin",
+	information_text = "information_text_character_skin",
+	hud_icon = "unit_frame_portrait_witch_hunter",
+	rarity = "plentiful",
+	skin_type = "unit",
+	item_type = "skin",
+	can_wield = {
+		"vs_rat_ogre"
 	}
 }
 
@@ -2158,4 +2123,6 @@ UpdateItemMasterList({}, "vs_packmaster")
 UpdateItemMasterList({}, "vs_ratling_gunner")
 UpdateItemMasterList({}, "vs_poison_wind_globadier")
 UpdateItemMasterList({}, "vs_gutter_runner")
-UpdateItemMasterList({}, "vs_chaos_troll")
+UpdateItemMasterList({}, "vs_chaos_spawn")
+UpdateItemMasterList({}, "vs_stormfiend")
+UpdateItemMasterList({}, "vs_rat_ogre")

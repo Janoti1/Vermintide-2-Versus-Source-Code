@@ -20,10 +20,6 @@ GenericUnitInteractableExtension.interaction_type = function (self)
 	return self.interactable_type
 end
 
-GenericUnitInteractableExtension.local_only = function (self)
-	return false
-end
-
 GenericUnitInteractableExtension.set_interactable_type = function (self, new_interactable_type)
 	self.interactable_type = new_interactable_type
 end

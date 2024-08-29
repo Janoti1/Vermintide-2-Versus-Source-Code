@@ -271,8 +271,8 @@ SmartObjectSettings.templates.chaos_warrior = {
 			animation_fence = "jump_down_fence_3m",
 			height_threshold = 4,
 			vertical_length = 3,
-			fence_horizontal_length = 1.5,
-			fence_land_length = 0,
+			fence_horizontal_length = 1.1,
+			fence_land_length = 0.4,
 			animation_edge = {
 				"jump_down"
 			}
@@ -280,8 +280,8 @@ SmartObjectSettings.templates.chaos_warrior = {
 		{
 			animation_fence = "jump_down_fence_5m",
 			vertical_length = 5,
-			fence_horizontal_length = 1.5,
-			fence_land_length = 0,
+			fence_horizontal_length = 1.1,
+			fence_land_length = 0.4,
 			height_threshold = math.huge,
 			animation_edge = {
 				"jump_down"

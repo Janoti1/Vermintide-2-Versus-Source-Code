@@ -86,35 +86,23 @@ local generic_input_actions = {
 			ignore_keybinding = true
 		},
 		{
-			input_action = "l2_r2",
-			priority = 2,
-			description_text = "input_description_select_loadout",
-			ignore_keybinding = true
-		},
-		{
-			input_action = "right_stick_press",
-			priority = 3,
-			description_text = "input_description_manage_loadouts",
-			ignore_keybinding = false
-		},
-		{
 			input_action = "show_gamercard",
-			priority = 4,
+			priority = 2,
 			description_text = "start_menu_swap_inventory"
 		},
 		{
 			input_action = "refresh",
-			priority = 5,
+			priority = 3,
 			description_text = "start_menu_customize_item"
 		},
 		{
 			input_action = "confirm",
-			priority = 6,
+			priority = 4,
 			description_text = "input_description_select"
 		},
 		{
 			input_action = "back",
-			priority = 7,
+			priority = 5,
 			description_text = "input_description_close"
 		}
 	},
@@ -126,30 +114,18 @@ local generic_input_actions = {
 			ignore_keybinding = true
 		},
 		{
-			input_action = "l2_r2",
-			priority = 2,
-			description_text = "input_description_select_loadout",
-			ignore_keybinding = true
-		},
-		{
-			input_action = "right_stick_press",
-			priority = 3,
-			description_text = "input_description_manage_loadouts",
-			ignore_keybinding = false
-		},
-		{
 			input_action = "show_gamercard",
-			priority = 4,
+			priority = 2,
 			description_text = "start_menu_swap_inventory"
 		},
 		{
 			input_action = "confirm",
-			priority = 5,
+			priority = 4,
 			description_text = "input_description_select"
 		},
 		{
 			input_action = "back",
-			priority = 6,
+			priority = 5,
 			description_text = "input_description_close"
 		}
 	},
@@ -167,10 +143,10 @@ local generic_input_actions = {
 			ignore_keybinding = true
 		},
 		{
-			input_action = "right_stick_press",
+			input_action = "right_thumb",
 			priority = 3,
 			description_text = "input_description_toggle_hero_details",
-			ignore_keybinding = false
+			ignore_keybinding = true
 		},
 		{
 			input_action = "confirm",

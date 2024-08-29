@@ -382,11 +382,7 @@ end
 EnemyPackageLoader._start_loading_package = function (self, breed_name, callback_name)
 	local state = self._package_state[breed_name]
 
-	if state == "loaded" then
-		self[callback_name or "cb_breed_package_loaded"](breed_name)
-
-		return
-	end
+	fassert(state == nil or state == "unloaded", "Trying to load breed package twice!")
 
 	local package_name = BREED_PATH .. (self.use_optimized and OPT_LOOKUP_BREED_NAMES[breed_name] or breed_name)
 
@@ -1281,9 +1277,7 @@ EnemyPackageLoader._send_rpc_to_server = function (self, rpc_name, ...)
 	local rpc = RPC[rpc_name]
 	local channel_id = PEER_ID_TO_CHANNEL[self._server_peer_id]
 
-	if channel_id then
-		rpc(channel_id, self._unique_connection_key, ...)
-	end
+	rpc(channel_id, self._unique_connection_key, ...)
 end
 
 EnemyPackageLoader._send_rpc_to_clients = function (self, rpc_name, ...)

@@ -473,6 +473,13 @@ local game_object_templates = {
 		game_object_destroyed_func_name = "game_object_destroyed_network_unit",
 		is_level_unit = false
 	},
+	carousel_inn_door = {
+		game_object_created_func_name = "game_object_created_network_unit",
+		syncs_position = true,
+		syncs_rotation = true,
+		game_object_destroyed_func_name = "game_object_destroyed_network_unit",
+		is_level_unit = false
+	},
 	buff_aoe_unit = {
 		game_object_created_func_name = "game_object_created_network_unit",
 		syncs_position = true,
@@ -515,10 +522,6 @@ local game_object_templates = {
 	player_unit_health = {
 		game_object_created_func_name = "game_object_created_player_unit_health",
 		game_object_destroyed_func_name = "game_object_destroyed_player_unit_health"
-	},
-	dark_pact_horde_ability = {
-		game_object_created_func_name = "game_object_created_dark_pact_horde_ability",
-		game_object_destroyed_func_name = "game_object_destroyed_dark_pact_horde_ability"
 	},
 	music_states = {
 		game_object_created_func_name = "game_object_created_music_states",

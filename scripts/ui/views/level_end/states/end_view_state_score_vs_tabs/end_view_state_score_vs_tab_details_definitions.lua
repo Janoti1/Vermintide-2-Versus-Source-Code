@@ -1,5 +1,4 @@
 local cell_height = 40
-local section_size = 450
 local scenegraph_definition = {
 	screen = {
 		scale = "fit",
@@ -24,138 +23,40 @@ local scenegraph_definition = {
 		},
 		size = {
 			1800,
-			1080
+			920
 		}
 	},
-	local_team_anchor = {
+	hammers_anchor = {
 		vertical_alignment = "top",
-		parent = "panel",
-		horizontal_alignment = "left",
+		parent = "screen",
+		horizontal_alignment = "center",
 		position = {
-			280,
-			-323,
+			-174,
+			-303,
 			10
 		},
 		size = {
-			370,
-			cell_height * 2
-		}
-	},
-	local_heroes_score_title = {
-		vertical_alignment = "top",
-		parent = "local_team_anchor",
-		horizontal_alignment = "left",
-		position = {
-			390,
-			0,
-			10
-		},
-		size = {
-			section_size,
-			cell_height * 2
-		}
-	},
-	local_pactsworn_score_title = {
-		vertical_alignment = "top",
-		parent = "local_heroes_score_title",
-		horizontal_alignment = "left",
-		position = {
-			section_size + 20,
-			0,
-			10
-		},
-		size = {
-			section_size,
-			cell_height * 2
-		}
-	},
-	local_pactsworn_score_edge = {
-		vertical_alignment = "top",
-		parent = "local_pactsworn_score_title",
-		horizontal_alignment = "left",
-		position = {
-			section_size,
-			0,
-			10
-		},
-		size = {
-			200,
-			cell_height * 2
-		}
-	},
-	local_flag = {
-		vertical_alignment = "top",
-		parent = "local_team_anchor",
-		horizontal_alignment = "left",
-		position = {
-			-140,
-			5,
-			100
-		},
-		size = {
-			232,
-			196
-		}
-	},
-	local_winner_icon = {
-		vertical_alignment = "top",
-		parent = "local_flag",
-		horizontal_alignment = "left",
-		position = {
-			-20,
-			90,
-			10
-		},
-		size = {
-			140,
-			140
-		}
-	},
-	local_names_anchor = {
-		vertical_alignment = "top",
-		parent = "local_team_anchor",
-		horizontal_alignment = "left",
-		position = {
-			100,
-			-80,
-			10
-		},
-		size = {
-			270,
+			580,
 			cell_height
 		}
 	},
-	local_anchor = {
+	hammers_pact_anchor = {
 		vertical_alignment = "top",
-		parent = "local_names_anchor",
+		parent = "hammers_anchor",
 		horizontal_alignment = "left",
 		position = {
-			290,
-			0,
-			10
-		},
-		size = {
-			section_size,
-			cell_height
-		}
-	},
-	local_pact_anchor = {
-		vertical_alignment = "top",
-		parent = "local_anchor",
-		horizontal_alignment = "left",
-		position = {
-			section_size + 20,
+			595,
 			0,
 			0
 		},
 		size = {
-			section_size,
+			372,
 			cell_height
 		}
 	},
-	local_color_edge = {
+	hammers_color_edge = {
 		vertical_alignment = "top",
-		parent = "local_anchor",
+		parent = "hammers_anchor",
 		horizontal_alignment = "left",
 		position = {
 			-2,
@@ -167,9 +68,9 @@ local scenegraph_definition = {
 			cell_height * 5
 		}
 	},
-	local_score_bg = {
+	hammers_score_bg = {
 		vertical_alignment = "top",
-		parent = "local_anchor",
+		parent = "hammers_anchor",
 		horizontal_alignment = "left",
 		position = {
 			-76,
@@ -181,9 +82,9 @@ local scenegraph_definition = {
 			54
 		}
 	},
-	local_score_bg_top = {
+	hammers_score_bg_top = {
 		vertical_alignment = "top",
-		parent = "local_score_bg",
+		parent = "hammers_score_bg",
 		horizontal_alignment = "left",
 		position = {
 			0,
@@ -195,9 +96,9 @@ local scenegraph_definition = {
 			20
 		}
 	},
-	local_score_bg_edge = {
+	hammers_score_bg_edge = {
 		vertical_alignment = "top",
-		parent = "local_anchor",
+		parent = "hammers_anchor",
 		horizontal_alignment = "left",
 		position = {
 			-20,
@@ -209,23 +110,23 @@ local scenegraph_definition = {
 			54
 		}
 	},
-	local_title = {
-		vertical_alignment = "bottom",
-		parent = "local_team_anchor",
+	hammers_title = {
+		vertical_alignment = "top",
+		parent = "hammers_anchor",
 		horizontal_alignment = "left",
 		position = {
-			100,
+			0,
 			0,
 			1
 		},
 		size = {
-			270,
-			cell_height * 2
+			199,
+			cell_height
 		}
 	},
-	local_names_grid = {
+	hammers_names_grid = {
 		vertical_alignment = "top",
-		parent = "local_anchor",
+		parent = "hammers_anchor",
 		horizontal_alignment = "left",
 		position = {
 			0,
@@ -233,13 +134,13 @@ local scenegraph_definition = {
 			1
 		},
 		size = {
-			section_size,
+			199,
 			cell_height * 5
 		}
 	},
-	local_heroes_grid = {
+	hammers_heroes_grid = {
 		vertical_alignment = "top",
-		parent = "local_anchor",
+		parent = "hammers_anchor",
 		horizontal_alignment = "right",
 		position = {
 			0,
@@ -247,13 +148,13 @@ local scenegraph_definition = {
 			1
 		},
 		size = {
-			section_size,
+			383,
 			cell_height * 6
 		}
 	},
-	local_heroes_score_grid = {
+	hammers_heroes_score_grid = {
 		vertical_alignment = "top",
-		parent = "local_anchor",
+		parent = "hammers_anchor",
 		horizontal_alignment = "right",
 		position = {
 			0,
@@ -261,13 +162,13 @@ local scenegraph_definition = {
 			1
 		},
 		size = {
-			section_size,
+			383,
 			cell_height * 5
 		}
 	},
-	local_heroes_header_grid = {
+	hammers_heroes_header_grid = {
 		vertical_alignment = "top",
-		parent = "local_heroes_score_title",
+		parent = "hammers_anchor",
 		horizontal_alignment = "right",
 		position = {
 			0,
@@ -275,13 +176,13 @@ local scenegraph_definition = {
 			1
 		},
 		size = {
-			section_size,
+			383,
 			cell_height
 		}
 	},
-	local_pact_grid = {
+	hammers_pact_grid = {
 		vertical_alignment = "top",
-		parent = "local_pact_anchor",
+		parent = "hammers_pact_anchor",
 		horizontal_alignment = "right",
 		position = {
 			0,
@@ -289,13 +190,13 @@ local scenegraph_definition = {
 			1
 		},
 		size = {
-			section_size,
+			372,
 			cell_height * 6
 		}
 	},
-	local_pact_score_grid = {
+	hammers_pact_score_grid = {
 		vertical_alignment = "top",
-		parent = "local_pact_anchor",
+		parent = "hammers_pact_anchor",
 		horizontal_alignment = "right",
 		position = {
 			0,
@@ -303,153 +204,55 @@ local scenegraph_definition = {
 			1
 		},
 		size = {
-			section_size,
+			372,
 			cell_height * 5
 		}
 	},
-	local_pact_header_grid = {
+	hammers_pact_header_grid = {
 		vertical_alignment = "top",
-		parent = "local_pactsworn_score_title",
-		horizontal_alignment = "left",
+		parent = "hammers_pact_anchor",
+		horizontal_alignment = "right",
 		position = {
 			0,
 			cell_height,
 			1
 		},
 		size = {
-			section_size,
+			372,
 			cell_height
 		}
 	},
-	opponent_team_anchor = {
+	skulls_anchor = {
 		vertical_alignment = "top",
-		parent = "panel",
+		parent = "hammers_anchor",
 		horizontal_alignment = "left",
 		position = {
-			280,
-			-323,
-			10
-		},
-		size = {
-			370,
-			cell_height * 2
-		}
-	},
-	opponent_heroes_score_title = {
-		vertical_alignment = "top",
-		parent = "opponent_team_anchor",
-		horizontal_alignment = "left",
-		position = {
-			390,
 			0,
-			10
-		},
-		size = {
-			section_size,
-			cell_height * 2
-		}
-	},
-	opponent_pactsworn_score_title = {
-		vertical_alignment = "top",
-		parent = "opponent_heroes_score_title",
-		horizontal_alignment = "left",
-		position = {
-			section_size + 20,
-			0,
-			10
-		},
-		size = {
-			section_size,
-			cell_height * 2
-		}
-	},
-	opponent_pactsworn_score_edge = {
-		vertical_alignment = "top",
-		parent = "opponent_pactsworn_score_title",
-		horizontal_alignment = "left",
-		position = {
-			section_size,
-			0,
-			10
-		},
-		size = {
-			200,
-			cell_height * 2
-		}
-	},
-	opponent_flag = {
-		vertical_alignment = "top",
-		parent = "opponent_team_anchor",
-		horizontal_alignment = "left",
-		position = {
-			-140,
-			5,
-			100
-		},
-		size = {
-			232,
-			196
-		}
-	},
-	opponent_winner_icon = {
-		vertical_alignment = "top",
-		parent = "opponent_flag",
-		horizontal_alignment = "left",
-		position = {
-			-20,
-			90,
-			10
-		},
-		size = {
-			140,
-			140
-		}
-	},
-	opponent_names_anchor = {
-		vertical_alignment = "top",
-		parent = "opponent_team_anchor",
-		horizontal_alignment = "left",
-		position = {
-			100,
-			-80,
-			10
-		},
-		size = {
-			270,
-			cell_height
-		}
-	},
-	opponent_anchor = {
-		vertical_alignment = "top",
-		parent = "opponent_names_anchor",
-		horizontal_alignment = "left",
-		position = {
-			290,
-			0,
-			10
-		},
-		size = {
-			section_size,
-			cell_height
-		}
-	},
-	opponent_pact_anchor = {
-		vertical_alignment = "top",
-		parent = "opponent_anchor",
-		horizontal_alignment = "left",
-		position = {
-			section_size + 20,
 			0,
 			0
 		},
 		size = {
-			section_size,
+			580,
 			cell_height
 		}
 	},
-	opponent_color_edge = {
+	skulls_pact_anchor = {
 		vertical_alignment = "top",
-		parent = "opponent_anchor",
+		parent = "skulls_anchor",
+		horizontal_alignment = "left",
+		position = {
+			595,
+			0,
+			0
+		},
+		size = {
+			372,
+			cell_height
+		}
+	},
+	skulls_color_edge = {
+		vertical_alignment = "top",
+		parent = "skulls_anchor",
 		horizontal_alignment = "left",
 		position = {
 			-2,
@@ -461,9 +264,9 @@ local scenegraph_definition = {
 			cell_height * 5
 		}
 	},
-	opponent_score_bg = {
+	skulls_score_bg = {
 		vertical_alignment = "top",
-		parent = "opponent_anchor",
+		parent = "skulls_anchor",
 		horizontal_alignment = "left",
 		position = {
 			-76,
@@ -475,9 +278,9 @@ local scenegraph_definition = {
 			54
 		}
 	},
-	opponent_score_bg_top = {
+	skulls_score_bg_top = {
 		vertical_alignment = "top",
-		parent = "opponent_score_bg",
+		parent = "skulls_score_bg",
 		horizontal_alignment = "left",
 		position = {
 			0,
@@ -489,9 +292,9 @@ local scenegraph_definition = {
 			20
 		}
 	},
-	opponent_score_bg_edge = {
+	skulls_score_bg_edge = {
 		vertical_alignment = "top",
-		parent = "opponent_anchor",
+		parent = "skulls_anchor",
 		horizontal_alignment = "left",
 		position = {
 			-20,
@@ -503,23 +306,9 @@ local scenegraph_definition = {
 			54
 		}
 	},
-	opponent_title = {
-		vertical_alignment = "bottom",
-		parent = "opponent_team_anchor",
-		horizontal_alignment = "left",
-		position = {
-			100,
-			0,
-			1
-		},
-		size = {
-			270,
-			cell_height * 2
-		}
-	},
-	opponent_names_grid = {
+	skulls_title = {
 		vertical_alignment = "top",
-		parent = "opponent_anchor",
+		parent = "skulls_anchor",
 		horizontal_alignment = "left",
 		position = {
 			0,
@@ -527,41 +316,41 @@ local scenegraph_definition = {
 			1
 		},
 		size = {
-			section_size,
+			199,
+			cell_height
+		}
+	},
+	skulls_names_grid = {
+		vertical_alignment = "top",
+		parent = "skulls_anchor",
+		horizontal_alignment = "left",
+		position = {
+			0,
+			0,
+			1
+		},
+		size = {
+			199,
 			cell_height * 5
 		}
 	},
-	opponent_heroes_grid = {
+	skulls_heroes_grid = {
 		vertical_alignment = "top",
-		parent = "opponent_anchor",
+		parent = "skulls_anchor",
 		horizontal_alignment = "right",
 		position = {
 			0,
-			cell_height,
-			1
-		},
-		size = {
-			section_size,
-			cell_height * 6
-		}
-	},
-	opponent_heroes_score_grid = {
-		vertical_alignment = "top",
-		parent = "opponent_anchor",
-		horizontal_alignment = "right",
-		position = {
 			0,
-			cell_height,
 			1
 		},
 		size = {
-			section_size,
+			383,
 			cell_height * 5
 		}
 	},
-	opponent_pact_grid = {
+	skulls_heroes_score_grid = {
 		vertical_alignment = "top",
-		parent = "opponent_pact_anchor",
+		parent = "skulls_anchor",
 		horizontal_alignment = "right",
 		position = {
 			0,
@@ -569,13 +358,27 @@ local scenegraph_definition = {
 			1
 		},
 		size = {
-			section_size,
-			cell_height * 6
+			383,
+			cell_height * 5
 		}
 	},
-	opponent_pact_score_grid = {
+	skulls_pact_grid = {
 		vertical_alignment = "top",
-		parent = "opponent_pact_anchor",
+		parent = "skulls_pact_anchor",
+		horizontal_alignment = "right",
+		position = {
+			0,
+			0,
+			1
+		},
+		size = {
+			372,
+			cell_height * 5
+		}
+	},
+	skulls_pact_score_grid = {
+		vertical_alignment = "top",
+		parent = "skulls_pact_anchor",
 		horizontal_alignment = "right",
 		position = {
 			0,
@@ -583,13 +386,13 @@ local scenegraph_definition = {
 			1
 		},
 		size = {
-			section_size,
+			372,
 			cell_height * 5
 		}
 	},
 	heroes_header_bg = {
 		vertical_alignment = "top",
-		parent = "local_anchor",
+		parent = "hammers_anchor",
 		horizontal_alignment = "right",
 		position = {
 			0,
@@ -597,13 +400,13 @@ local scenegraph_definition = {
 			0
 		},
 		size = {
-			section_size,
+			383,
 			cell_height
 		}
 	},
 	pact_header_bg = {
 		vertical_alignment = "top",
-		parent = "local_pact_anchor",
+		parent = "hammers_pact_anchor",
 		horizontal_alignment = "right",
 		position = {
 			0,
@@ -611,10 +414,22 @@ local scenegraph_definition = {
 			0
 		},
 		size = {
-			section_size,
+			372,
 			cell_height
 		}
 	}
+}
+local uneven_field_color = {
+	255,
+	13,
+	13,
+	13
+}
+local even_field_color = {
+	255,
+	46,
+	46,
+	46
 }
 local header_bg_color = {
 	255,
@@ -622,22 +437,12 @@ local header_bg_color = {
 	24,
 	24
 }
-local selected_color = {
-	255,
-	226,
-	220,
-	209
-}
-local local_team_color = Colors.get_color_table_with_alpha("local_player_team", 255)
-local local_team_color_light = Colors.get_color_table_with_alpha("local_player_team_lighter", 255)
-local local_team_color_dark = Colors.get_color_table_with_alpha("local_player_team_darker", 255)
-local opponent_team_color = Colors.get_color_table_with_alpha("opponent_team", 255)
-local opponent_team_color_light = Colors.get_color_table_with_alpha("opponent_team_lighter", 255)
-local opponent_team_color_dark = Colors.get_color_table_with_alpha("opponent_team_darkened", 255)
-local local_even_field_color = Colors.get_table("local_scoreboard_entry_dark")
-local local_uneven_field_color = Colors.get_table("local_scoreboard_entry")
-local opponent_even_field_color = Colors.get_table("opponent_scoreboard_entry_dark")
-local opponent_uneven_field_color = Colors.get_table("opponent_scoreboard_entry")
+local hammers_team_color = Colors.get_color_table_with_alpha("local_player_team", 255)
+local hammers_team_color_light = Colors.get_color_table_with_alpha("local_player_team_lighter", 255)
+local hammers_team_color_dark = Colors.get_color_table_with_alpha("local_player_team_darker", 255)
+local skulls_team_color = Colors.get_color_table_with_alpha("opponent_team", 255)
+local skulls_team_color_light = Colors.get_color_table_with_alpha("opponent_team_lighter", 255)
+local skulls_team_color_dark = Colors.get_color_table_with_alpha("opponent_team_darkened", 255)
 
 local function create_grid(scenegraph_id, num_rows, num_columns, line_width, color)
 	local color = color or {
@@ -780,7 +585,7 @@ local team_score_style = {
 	word_wrap = false,
 	upper_case = true,
 	localize = false,
-	font_size = 24,
+	font_size = 40,
 	horizontal_alignment = "center",
 	vertical_alignment = "center",
 	dynamic_font_size = false,
@@ -794,14 +599,14 @@ local team_score_style = {
 }
 local score_style = {
 	word_wrap = false,
-	upper_case = false,
+	upper_case = true,
 	localize = false,
 	font_size = 20,
 	horizontal_alignment = "center",
 	vertical_alignment = "center",
 	dynamic_font_size = true,
 	font_type = "hell_shark_header",
-	text_color = selected_color,
+	text_color = Colors.get_color_table_with_alpha("white", 255),
 	offset = {
 		0,
 		-2,
@@ -816,8 +621,8 @@ local title_style = {
 	word_wrap = false,
 	upper_case = false,
 	localize = false,
-	font_size = 20,
-	horizontal_alignment = "right",
+	font_size = 22,
+	horizontal_alignment = "left",
 	vertical_alignment = "center",
 	dynamic_font_size = true,
 	font_type = "hell_shark",
@@ -836,35 +641,15 @@ local team_title_style = {
 	word_wrap = false,
 	upper_case = true,
 	localize = true,
-	font_size = 36,
-	horizontal_alignment = "left",
-	vertical_alignment = "center",
-	dynamic_font_size = true,
-	font_type = "hell_shark_header",
-	text_color = Colors.get_color_table_with_alpha("white", 255),
-	offset = {
-		12,
-		-12,
-		1
-	},
-	size = {
-		0,
-		0
-	}
-}
-local team_type_style = {
-	word_wrap = false,
-	upper_case = false,
-	localize = true,
-	font_size = 20,
+	font_size = 35,
 	horizontal_alignment = "left",
 	vertical_alignment = "center",
 	dynamic_font_size = true,
 	font_type = "hell_shark",
-	text_color = selected_color,
+	text_color = Colors.get_color_table_with_alpha("white", 255),
 	offset = {
-		12,
-		18,
+		0,
+		-2,
 		1
 	},
 	size = {
@@ -876,12 +661,12 @@ local side_title_style = {
 	word_wrap = false,
 	upper_case = true,
 	localize = true,
-	font_size = 20,
-	horizontal_alignment = "center",
+	font_size = 25,
+	horizontal_alignment = "left",
 	vertical_alignment = "center",
 	dynamic_font_size = true,
-	font_type = "hell_shark",
-	text_color = selected_color,
+	font_type = "hell_shark_header",
+	text_color = Colors.get_color_table_with_alpha("white", 255),
 	offset = {
 		0,
 		-2,
@@ -910,7 +695,7 @@ local function create_side_title(scenegraph_id, text, color)
 		scenegraph_id = scenegraph_id,
 		offset = {
 			0,
-			27,
+			47,
 			0
 		}
 	}
@@ -943,6 +728,10 @@ local function create_side_title(scenegraph_id, text, color)
 		-3,
 		-1
 	}
+	passes[#passes + 1] = {
+		pass_type = "rect",
+		style_id = "underline"
+	}
 	style.underline = {
 		vertical_alignment = "bottom",
 		horizontal_alignment = "center",
@@ -951,6 +740,16 @@ local function create_side_title(scenegraph_id, text, color)
 			size[1],
 			4
 		}
+	}
+	passes[#passes + 1] = {
+		style_id = "left_gradient",
+		pass_type = "texture_uv",
+		content_id = "gradient"
+	}
+	passes[#passes + 1] = {
+		style_id = "right_gradient",
+		pass_type = "texture_uv",
+		content_id = "gradient"
 	}
 	content.gradient = {
 		texture_id = "vertical_gradient",
@@ -997,10 +796,10 @@ local function create_side_title(scenegraph_id, text, color)
 	return widget
 end
 
-local function create_stats(scenegraph_id, fields, optional_font_size, offset, is_me, skip_highscores, highscores, optional_team)
+local function create_stats(scenegraph_id, fields, optional_font_size, offset, is_me, skip_highscores, highscores)
 	local scenegraph_data = scenegraph_definition[scenegraph_id]
 	local size = scenegraph_data.size
-	local padding = 12
+	local padding = 10
 	local cell_size = {
 		size[1] / #fields,
 		size[2]
@@ -1008,16 +807,7 @@ local function create_stats(scenegraph_id, fields, optional_font_size, offset, i
 	local internal_score_style = table.clone(score_style)
 
 	internal_score_style.font_size = optional_font_size or internal_score_style.font_size
-	internal_score_style.text_color = is_me and {
-		255,
-		177,
-		144,
-		31
-	} or internal_score_style.text_color
-
-	if optional_team then
-		internal_score_style.text_color = optional_team == "local_team" and Colors.get_color_table_with_alpha("local_player_team_lighter", 255) or Colors.get_color_table_with_alpha("opponent_team_lighter", 255)
-	end
+	internal_score_style.text_color = is_me and Colors.get_color_table_with_alpha("local_player_picking", 255) or internal_score_style.text_color
 
 	local widget = {
 		element = {
@@ -1051,14 +841,6 @@ local function create_stats(scenegraph_id, fields, optional_font_size, offset, i
 				pass_type = "texture",
 				texture_id = "highscore_marker",
 				style_id = id .. "_highscore_marker",
-				content_check_function = function (content, style)
-					return content[id .. "_is_highscore"]
-				end
-			}
-			passes[#passes + 1] = {
-				pass_type = "texture",
-				texture_id = "highscore_marker",
-				style_id = id .. "_highscore_marker_shadow",
 				content_check_function = function (content, style)
 					return content[id .. "_is_highscore"]
 				end
@@ -1120,29 +902,6 @@ local function create_stats(scenegraph_id, fields, optional_font_size, offset, i
 				cell_size[2]
 			}
 		}
-		style[id .. "_highscore_marker_shadow"] = {
-			vertical_alignment = "center",
-			horizontal_alignment = "center",
-			texture_size = {
-				71,
-				39
-			},
-			color = {
-				255,
-				0,
-				0,
-				0
-			},
-			offset = {
-				(i - 1) * cell_size[1] + 1,
-				-1,
-				4
-			},
-			size = {
-				cell_size[1],
-				cell_size[2]
-			}
-		}
 	end
 
 	return widget
@@ -1154,16 +913,11 @@ local function create_title(scenegraph_id, title, optional_font_size, offset, is
 
 	size[1] = 170
 
-	local team_color = selected_color
+	local team_color = team == "team_hammers" and hammers_team_color or skulls_team_color
 	local internal_title_style = table.clone(title_style)
 
 	internal_title_style.font_size = optional_font_size or internal_title_style.font_size
-	internal_title_style.text_color = is_me and {
-		255,
-		177,
-		144,
-		31
-	} or team_color
+	internal_title_style.text_color = is_me and Colors.get_color_table_with_alpha("local_player_picking", 255) or team_color
 	internal_title_style.size = size
 
 	local widget = {
@@ -1212,21 +966,26 @@ local function create_title(scenegraph_id, title, optional_font_size, offset, is
 	return widget
 end
 
-local function create_team_title(team, local_team_name, opponent_team_name)
-	local is_local_team = team == "local_team"
-	local scenegraph_id = is_local_team and "local_title" or "opponent_title"
+local function create_team_title(scenegraph_id, team)
 	local scenegraph_data = scenegraph_definition[scenegraph_id]
 	local size = table.clone(scenegraph_data.size)
-	local team_name = is_local_team and local_team_name or opponent_team_name
-	local team_settings = UISettings.teams_ui_assets[team_name]
-	local team_color = is_local_team and local_team_color or opponent_team_color
-	local team_color_light = is_local_team and local_team_color_light or opponent_team_color_light
-	local team_color_dark = is_local_team and local_team_color_dark or opponent_team_color_dark
-	local title_color = is_local_team and Colors.get_color_table_with_alpha("local_player_team_lighter", 255) or Colors.get_color_table_with_alpha("opponent_team_lighter", 255)
+
+	size[1] = 140
+
+	local settings = UISettings.teams_ui_assets
+	local team_ui_settings = settings[team]
+	local team_color = team == "team_hammers" and hammers_team_color or skulls_team_color
+	local team_color_light = team == "team_hammers" and hammers_team_color_light or skulls_team_color_light
+	local team_color_dark = team == "team_hammers" and hammers_team_color_dark or skulls_team_color_dark
 	local internal_title_style = table.clone(team_title_style)
 
 	internal_title_style.size = size
-	internal_title_style.text_color = title_color
+	internal_title_style.text_color = team_color
+	internal_title_style.offset = {
+		50,
+		0,
+		0
+	}
 
 	local widget = {
 		element = {
@@ -1247,6 +1006,58 @@ local function create_team_title(team, local_team_name, opponent_team_name)
 	local style = widget.style
 
 	passes[#passes + 1] = {
+		pass_type = "texture",
+		style_id = "icon",
+		texture_id = "icon"
+	}
+	passes[#passes + 1] = {
+		pass_type = "texture",
+		style_id = "icon_bg",
+		texture_id = "icon_bg"
+	}
+	passes[#passes + 1] = {
+		pass_type = "texture",
+		style_id = "icon_frame",
+		texture_id = "icon_frame"
+	}
+	content.icon = team_ui_settings.team_icon
+	content.icon_bg = team_ui_settings.background_texture
+	content.icon_frame = team_ui_settings.background_frame
+	style.icon = {
+		vertical_alignment = "center",
+		horizontal_alignment = "center",
+		texture_size = {
+			20,
+			20
+		},
+		color = {
+			255,
+			255,
+			255,
+			255
+		},
+		offset = {
+			-70,
+			0,
+			2
+		}
+	}
+	style.icon_frame = table.clone(style.icon)
+	style.icon_frame.texture_size = {
+		32,
+		32
+	}
+	style.icon_frame.offset[3] = 1
+	style.icon_frame.color = team_color_light
+	style.icon_bg = table.clone(style.icon)
+	style.icon_bg.color = team_color
+	style.icon_bg.texture_size = {
+		32,
+		32
+	}
+	style.icon_bg.offset[3] = 0
+	style.icon_bg.color = team_color_dark
+	passes[#passes + 1] = {
 		style_id = "title",
 		pass_type = "text",
 		text_id = "title"
@@ -1256,7 +1067,7 @@ local function create_team_title(team, local_team_name, opponent_team_name)
 		pass_type = "text",
 		text_id = "title"
 	}
-	content.title = team_settings.display_name
+	content.title = tostring(team_ui_settings.display_name)
 	style.title = internal_title_style
 	style.title_shadow = table.clone(internal_title_style)
 	style.title_shadow.text_color = {
@@ -1265,186 +1076,31 @@ local function create_team_title(team, local_team_name, opponent_team_name)
 		0,
 		0
 	}
-	style.title_shadow.offset[1] = style.title_shadow.offset[1] + 2
-	style.title_shadow.offset[2] = style.title_shadow.offset[2] - 2
-	style.title_shadow.offset[3] = style.title_shadow.offset[3] - 1
-	passes[#passes + 1] = {
-		style_id = "team_type",
-		pass_type = "text",
-		text_id = "team_type"
+	style.title_shadow.offset = {
+		style.title_shadow.offset[1] + 1,
+		-1,
+		-1
 	}
-	passes[#passes + 1] = {
-		style_id = "team_type_shadow",
-		pass_type = "text",
-		text_id = "team_type"
-	}
-	content.team_type = is_local_team and "vs_lobby_your_team" or "vs_lobby_enemy_team"
-
-	local internal_type_style = table.clone(team_type_style)
-
-	internal_type_style.size = size
-	style.team_type = internal_type_style
-	style.team_type_shadow = table.clone(internal_type_style)
-	style.team_type_shadow.text_color = {
-		255,
-		0,
-		0,
-		0
-	}
-	style.team_type_shadow.offset[1] = style.team_type_shadow.offset[1] + 2
-	style.team_type_shadow.offset[2] = style.team_type_shadow.offset[2] - 2
-	style.team_type_shadow.offset[3] = style.team_type_shadow.offset[3] - 1
 
 	return widget
 end
 
 local widget_definitions = {
-	background = UIWidgets.create_simple_rect("screen", {
-		128,
-		0,
-		0,
-		0
-	}),
-	heroes_side_title = create_side_title("local_heroes_header_grid", "vs_as_heroes", selected_color),
-	pactsworn_side_title = create_side_title("local_pact_header_grid", "vs_as_pactsworn", selected_color),
-	local_gradient = UIWidgets.create_simple_uv_texture("horizontal_gradient", {
-		{
-			1,
-			0
-		},
-		{
-			0,
-			1
-		}
-	}, "local_pactsworn_score_edge", nil, nil, {
-		200,
-		0,
-		0,
-		0
-	}),
-	opponent_gradient = UIWidgets.create_simple_uv_texture("horizontal_gradient", {
-		{
-			1,
-			0
-		},
-		{
-			0,
-			1
-		}
-	}, "opponent_pactsworn_score_edge", nil, nil, {
-		200,
-		0,
-		0,
-		0
-	})
+	heroes_side_title = create_side_title("hammers_heroes_header_grid", "vs_as_heroes", Colors.get_color_table_with_alpha("heroes_color", 255)),
+	pactsworn_side_title = create_side_title("hammers_pact_header_grid", "vs_as_pactsworn", Colors.get_color_table_with_alpha("pactsworn_color", 255)),
+	team_hammers_score = UIWidgets.create_simple_text("0", "hammers_score_bg", scenegraph_definition.hammers_score_bg.size, nil, team_score_style),
+	team_skulls_score = UIWidgets.create_simple_text("0", "skulls_score_bg", scenegraph_definition.hammers_score_bg.size, nil, team_score_style),
+	team_hammers_title = create_team_title("hammers_title", "team_hammers"),
+	hammers_score_bg = UIWidgets.create_simple_rounded_rect("hammers_score_bg", 10, hammers_team_color),
+	hammers_score_bg_top = UIWidgets.create_simple_rect("hammers_score_bg_top", hammers_team_color),
+	hammers_score_bg_edge = UIWidgets.create_simple_rect("hammers_score_bg_edge", hammers_team_color),
+	team_skulls_title = create_team_title("skulls_title", "team_skulls"),
+	skulls_score_bg = UIWidgets.create_simple_rounded_rect("skulls_score_bg", 10, skulls_team_color),
+	skulls_score_bg_top = UIWidgets.create_simple_rect("skulls_score_bg_top", skulls_team_color),
+	skulls_score_bg_edge = UIWidgets.create_simple_rect("skulls_score_bg_edge", skulls_team_color),
+	heroes_header_bg = UIWidgets.create_simple_rect("heroes_header_bg", header_bg_color),
+	pact_header_bg = UIWidgets.create_simple_rect("pact_header_bg", header_bg_color)
 }
-
-local function create_winner_icon(winning_team)
-	local scenegraph_id = winning_team == "local_team" and "local_winner_icon" or "opponent_winner_icon"
-
-	return {
-		element = {
-			passes = {
-				{
-					texture_id = "texture_id",
-					style_id = "texture_id",
-					pass_type = "texture"
-				},
-				{
-					style_id = "text",
-					pass_type = "text",
-					text_id = "text_id"
-				},
-				{
-					style_id = "text_shadow",
-					pass_type = "text",
-					text_id = "text_id"
-				}
-			}
-		},
-		content = {
-			texture_id = "winner_icon",
-			text_id = "WINNER"
-		},
-		style = {
-			texture_id = {
-				color = {
-					255,
-					255,
-					255,
-					255
-				},
-				offset = {
-					0,
-					0,
-					0
-				}
-			},
-			text = {
-				word_wrap = false,
-				upper_case = true,
-				localize = false,
-				font_size = 32,
-				horizontal_alignment = "center",
-				vertical_alignment = "right",
-				dynamic_font_size = false,
-				font_type = "hell_shark",
-				text_color = Colors.get_color_table_with_alpha("local_player_picking", 255),
-				offset = {
-					90,
-					46,
-					1
-				}
-			},
-			text_shadow = {
-				word_wrap = false,
-				upper_case = true,
-				localize = false,
-				font_size = 32,
-				horizontal_alignment = "center",
-				vertical_alignment = "right",
-				dynamic_font_size = false,
-				font_type = "hell_shark",
-				text_color = {
-					0,
-					0,
-					0,
-					0
-				},
-				offset = {
-					92,
-					44,
-					0
-				}
-			}
-		},
-		offset = {
-			0,
-			0,
-			0
-		},
-		scenegraph_id = scenegraph_id
-	}
-end
-
-local function create_flag(team, local_team_name, opponent_team_name)
-	local texture_name = "icons_placeholder"
-	local scenegraph_id = ""
-
-	if team == "local_team" then
-		local team_settings = UISettings.teams_ui_assets[local_team_name]
-
-		texture_name = team_settings.local_flag_texture or texture_name
-		scenegraph_id = "local_flag"
-	else
-		local team_settings = UISettings.teams_ui_assets[opponent_team_name]
-
-		texture_name = team_settings.opponent_flag_texture or texture_name
-		scenegraph_id = "opponent_flag"
-	end
-
-	return UIWidgets.create_simple_texture(texture_name, scenegraph_id)
-end
 
 local function create_edge(scenegraph_id, color, size_y)
 	local size = scenegraph_definition[scenegraph_id].size
@@ -1489,7 +1145,7 @@ local function create_edge(scenegraph_id, color, size_y)
 	}
 end
 
-local function create_fields(anchor, num_fields, base_name, widgets, even_field_color, uneven_field_color)
+local function create_fields(anchor, num_fields, base_name, widgets)
 	local field_size = scenegraph_definition[anchor].size
 
 	for i = 1, num_fields do
@@ -1497,36 +1153,31 @@ local function create_fields(anchor, num_fields, base_name, widgets, even_field_
 			0,
 			(i - 1) * -field_size[2]
 		}
-		local color = i % 2 == 0 and even_field_color or uneven_field_color or {
-			128,
-			0,
-			0,
-			0
-		}
 
-		widgets[base_name .. "_" .. i] = UIWidgets.create_simple_rect(anchor, color, nil, offset)
+		widgets[base_name .. "_" .. i] = UIWidgets.create_simple_rect(anchor, i % 2 == 0 and even_field_color or uneven_field_color, nil, offset)
 	end
 end
 
 local function create_team_grid_fields(team, num_fields, ui_scenegraph)
 	local widgets = {}
 
-	if team == "local_team" then
-		create_fields("local_team_anchor", 1, "local_team", widgets)
-		create_fields("local_heroes_score_title", 1, "local_team_heroes", widgets)
-		create_fields("local_pactsworn_score_title", 1, "local_team_pactsworn", widgets)
-		create_fields("local_names_anchor", num_fields, "local_names", widgets, local_even_field_color, local_uneven_field_color)
-		create_fields("local_anchor", num_fields, "local_heroes", widgets, local_even_field_color, local_uneven_field_color)
-		create_fields("local_pact_anchor", num_fields, "local_pact", widgets, local_even_field_color, local_uneven_field_color)
+	if team == "team_hammers" then
+		create_fields("hammers_anchor", num_fields + 1, "hammers_heroes", widgets)
+		create_fields("hammers_pact_anchor", num_fields + 1, "hammers_pact", widgets)
 
-		ui_scenegraph.opponent_team_anchor.local_position[2] = scenegraph_definition.local_team_anchor.position[2] - 5 * cell_height - scenegraph_definition.local_team_anchor.size[2]
+		widgets.hammers_names_grid = create_grid("hammers_names_grid", num_fields + 1, 1, 2, nil)
+		widgets.hammers_heroes_grid = create_grid("hammers_heroes_grid", num_fields + 2, 3, 2, nil)
+		widgets.hammers_pact_grid = create_grid("hammers_pact_grid", num_fields + 2, 3, 2, nil)
+		widgets.hammers_color_edge = create_edge("hammers_color_edge", hammers_team_color, (num_fields + 1) * cell_height)
+		ui_scenegraph.skulls_anchor.local_position[2] = scenegraph_definition.skulls_anchor.position[2] - (num_fields + 2) * cell_height
 	else
-		create_fields("opponent_team_anchor", 1, "opponent_team", widgets)
-		create_fields("opponent_heroes_score_title", 1, "opponent_team_heroes", widgets)
-		create_fields("opponent_pactsworn_score_title", 1, "opponent_team_pactsworn", widgets)
-		create_fields("opponent_names_anchor", num_fields, "opponent_names", widgets, opponent_even_field_color, opponent_uneven_field_color)
-		create_fields("opponent_anchor", num_fields, "opponent_heroes", widgets, opponent_even_field_color, opponent_uneven_field_color)
-		create_fields("opponent_pact_anchor", num_fields, "opponent_pact", widgets, opponent_even_field_color, opponent_uneven_field_color)
+		create_fields("skulls_anchor", num_fields + 1, "skulls_heroes", widgets)
+		create_fields("skulls_pact_anchor", num_fields + 1, "skulls_pact", widgets)
+
+		widgets.skulls_names_grid = create_grid("skulls_names_grid", num_fields + 1, 1, 2, nil)
+		widgets.skulls_heroes_grid = create_grid("skulls_heroes_grid", num_fields + 1, 3, 2, nil)
+		widgets.skulls_pact_grid = create_grid("skulls_pact_grid", num_fields + 1, 3, 2, nil)
+		widgets.skulls_color_edge = create_edge("skulls_color_edge", skulls_team_color, (num_fields + 1) * cell_height)
 	end
 
 	return widgets
@@ -1577,8 +1228,5 @@ return {
 	animation_definitions = animation_definitions,
 	create_stats_func = create_stats,
 	create_title_func = create_title,
-	create_team_grid_fields_func = create_team_grid_fields,
-	create_team_title_func = create_team_title,
-	create_flag_func = create_flag,
-	create_winner_icon_func = create_winner_icon
+	create_team_grid_fields_func = create_team_grid_fields
 }

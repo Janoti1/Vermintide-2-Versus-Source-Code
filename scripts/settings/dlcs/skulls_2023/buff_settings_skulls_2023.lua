@@ -1,7 +1,7 @@
 local settings = DLCSettings.skulls_2023
-local BUFF_DURATION = 30
+local BUFF_DURATION = 20
 local MAX_STACKS = 5
-local BUFF_REFRESH_STACKS = 1
+local BUFF_REFRESH_STACKS = 5
 local buff_order = {
 	"skulls_2023_buff_power_level",
 	"skulls_2023_buff_attack_speed",
@@ -9,8 +9,8 @@ local buff_order = {
 	"skulls_2023_buff_movement_speed",
 	"skulls_2023_buff_cooldown_regen"
 }
-local MIN_BUFF_DURATION = 30
-local BUFF_DURATION_PER_STACK = 15
+local MIN_BUFF_DURATION = 20
+local BUFF_DURATION_PER_STACK = 10
 local DEBUFF_DURATION = 20
 
 local function buff_duration_func(current_stacks)
@@ -236,15 +236,12 @@ settings.buff_function_templates = {
 		if not is_bot(unit) then
 			local first_person_extension = ScriptUnit.extension(unit, "first_person_system")
 			local effect_id = first_person_extension:create_screen_particles("fx/skulls_2023/screenspace_skulls_2023_buff")
+			local effect_lerp = (num_buff_stacks - 1) / (MAX_STACKS - 1)
+			local effect_strength = math.lerp(-0.55, 0.4, effect_lerp)
 
-			if effect_id then
-				local effect_lerp = (num_buff_stacks - 1) / (MAX_STACKS - 1)
-				local effect_strength = math.lerp(-0.55, 0.4, effect_lerp)
+			World.set_particles_material_scalar(world, effect_id, "overlay", "shadow_amount", effect_strength)
 
-				World.set_particles_material_scalar(world, effect_id, "overlay", "shadow_amount", effect_strength)
-
-				buff.effect_id = effect_id
-			end
+			buff.effect_id = effect_id
 
 			first_person_extension:play_hud_sound_event("Play_skulls_event_buff_on")
 		end
@@ -262,13 +259,10 @@ settings.buff_function_templates = {
 
 		if not is_bot(unit) then
 			local effect_id = buff.effect_id
+			local effect_lerp = (num_buff_stacks - 1) / (MAX_STACKS - 1)
+			local effect_strength = math.lerp(-0.55, 0.4, effect_lerp)
 
-			if effect_id then
-				local effect_lerp = (num_buff_stacks - 1) / (MAX_STACKS - 1)
-				local effect_strength = math.lerp(-0.55, 0.4, effect_lerp)
-
-				World.set_particles_material_scalar(world, effect_id, "overlay", "shadow_amount", effect_strength)
-			end
+			World.set_particles_material_scalar(world, effect_id, "overlay", "shadow_amount", effect_strength)
 
 			if num_buff_stacks >= MAX_STACKS and not buff.sound_played then
 				local first_person_extension = ScriptUnit.extension(unit, "first_person_system")
@@ -401,9 +395,14 @@ settings.proc_functions = {
 		local breed_killed = params[2]
 
 		if breed_killed then
-			local buff_extension = ScriptUnit.extension(owner_unit, "buff_system")
+			local value = breed_killed.threat_value
+			local buff_extension = ScriptUnit.has_extension(owner_unit, "buff_system")
 
-			buff_extension:add_buff("skulls_2023_buff_refresh")
+			if buff_extension then
+				for i = 1, math.floor(value) do
+					buff_extension:add_buff("skulls_2023_buff_refresh")
+				end
+			end
 		end
 	end
 }

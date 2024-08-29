@@ -22,63 +22,59 @@ RangedAttackTypes = {
 	[AttackTypes.grenade] = true
 }
 StatBuffApplicationMethods = {
-	reduced_spread_hit = "stacking_multiplier",
-	non_headshot_damage = "stacking_multiplier",
+	deus_coins_greed = "stacking_multiplier",
+	dummy_stagger = "stacking_bonus",
 	gromril_cooldown = "stacking_bonus",
-	explosion_damage = "stacking_multiplier",
 	headshot_multiplier = "stacking_multiplier",
 	increased_max_targets = "stacking_bonus",
+	protection_chaos = "stacking_multiplier",
+	max_damage_taken_from_boss_or_elite = "min",
 	attack_speed_drakefire = "stacking_multiplier",
-	increased_burn_dot_damage = "stacking_multiplier",
 	debuff_armoured = "stacking_bonus",
-	increased_drone_count = "stacking_bonus",
+	push_power = "stacking_multiplier",
 	increased_balefire_dot_duration = "stacking_multiplier",
 	critical_strike_effectiveness = "stacking_multiplier",
-	critical_strike_chance_heavy = "stacking_bonus",
+	critical_strike_chance_melee = "stacking_bonus",
 	critical_strike_chance_ranged = "stacking_bonus",
 	protection_gutter_runner = "stacking_multiplier",
-	first_melee_hit_damage = "stacking_multiplier",
 	vent_speed = "stacking_multiplier",
+	power_level_melee_cleave = "stacking_multiplier",
 	power_level_critical_strike = "stacking_multiplier",
-	coop_stamina = "proc",
 	damage_taken_elites = "stacking_multiplier",
+	damage_taken = "stacking_multiplier_multiplicative",
 	damage_taken_kd = "stacking_multiplier",
-	total_ammo = "stacking_multiplier",
+	power_level_armoured = "stacking_multiplier",
 	not_consume_potion = "proc",
 	reduced_overcharge = "stacking_multiplier",
-	max_damage_taken = "min",
-	power_level_large = "stacking_multiplier",
+	increased_weapon_damage_melee_1h = "stacking_multiplier",
 	not_consume_grenade = "proc",
+	power_level_large = "stacking_multiplier",
 	faster_revive = "stacking_multiplier",
-	reduced_overcharge_from_passive = "stacking_multiplier",
+	increased_weapon_damage_ranged_to_wounded = "stacking_multiplier",
 	grenade_extra_shot = "stacking_bonus",
 	block_cost = "stacking_multiplier",
 	applied_stagger_distance = "stacking_multiplier",
 	timed_block_cost = "stacking_multiplier",
 	push_range = "stacking_bonus",
-	curse_protection = "stacking_multiplier",
-	power_level_armoured = "stacking_multiplier",
-	max_fatigue = "stacking_bonus",
+	first_melee_hit_damage = "stacking_multiplier",
 	clip_size = "stacking_multiplier",
-	throw_speed_increase = "stacking_multiplier",
-	hit_mass_amount = "stacking_multiplier",
-	hit_force = "stacking_multiplier",
-	health_curse = "stacking_bonus",
+	reduced_overcharge_from_passive = "stacking_multiplier",
+	attack_intensity_reset = "stacking_multiplier",
+	faster_respawn = "stacking_multiplier",
 	extra_wounds = "stacking_bonus",
+	life_essence = "stacking_multiplier",
+	max_controlled_pets = "stacking_bonus_and_multiplier",
 	attack_intensity_decay = "stacking_multiplier",
 	reload_speed = "stacking_multiplier",
 	stun_duration = "stacking_multiplier",
 	cooldown_regen = "stacking_multiplier",
-	life_essence = "stacking_multiplier",
-	max_controlled_pets = "stacking_bonus_and_multiplier",
 	power_level_chaos = "stacking_multiplier",
-	dummy_stagger = "stacking_bonus",
-	ammo_used_multiplier = "stacking_multiplier",
+	health_curse = "stacking_bonus",
 	increased_damage_to_balefire = "stacking_multiplier",
 	increased_weapon_damage_melee = "stacking_multiplier",
 	power_level = "stacking_multiplier",
-	max_damage_taken_from_boss_or_elite = "min",
-	push_power = "stacking_multiplier",
+	hit_force = "stacking_multiplier",
+	coop_stamina = "proc",
 	power_level_ranged = "stacking_multiplier",
 	unbalanced_damage_taken = "stacking_bonus",
 	increased_weapon_damage_ranged = "stacking_multiplier",
@@ -89,15 +85,15 @@ StatBuffApplicationMethods = {
 	grimoire_max_health = "stacking_multiplier",
 	overcharge_damage_immunity = "proc",
 	power_level_impact = "stacking_multiplier",
-	damage_taken = "stacking_multiplier_multiplicative",
+	curse_protection = "stacking_multiplier",
 	increased_weapon_damage = "stacking_multiplier",
 	outer_block_angle = "stacking_multiplier",
 	damage_dealt = "stacking_multiplier",
 	increased_weapon_damage_poisoned_or_bleeding = "stacking_multiplier",
-	deus_coins_greed = "stacking_multiplier",
+	reduced_spread_hit = "stacking_multiplier",
 	power_level_super_armour = "stacking_multiplier",
 	protection_ratling_gunner = "stacking_multiplier",
-	faster_respawn = "stacking_multiplier",
+	max_damage_taken = "min",
 	movement_speed = "stacking_multiplier",
 	shield_break_proc = "proc",
 	full_charge_boost = "stacking_multiplier",
@@ -111,10 +107,9 @@ StatBuffApplicationMethods = {
 	counter_push_power = "stacking_multiplier",
 	damage_taken_to_overcharge = "stacking_multiplier",
 	fatigue_regen = "stacking_multiplier",
-	grenade_throw_range = "stacking_multiplier",
 	block_angle = "stacking_multiplier",
 	increase_luck = "stacking_multiplier",
-	power_level_melee_cleave = "stacking_multiplier",
+	hit_mass_amount = "stacking_multiplier",
 	max_health = "stacking_multiplier",
 	projectile_bounces = "stacking_bonus",
 	extra_shot = "stacking_bonus",
@@ -131,20 +126,18 @@ StatBuffApplicationMethods = {
 	no_push_fatigue_cost = "proc",
 	reduced_spread = "stacking_multiplier",
 	reduced_spread_moving = "stacking_multiplier",
-	critical_strike_chance_melee = "stacking_bonus",
-	increased_weapon_damage_ranged_to_wounded = "stacking_multiplier",
+	increased_burn_dot_damage = "stacking_multiplier",
+	non_headshot_damage = "stacking_multiplier",
 	flat_power_level = "stacking_bonus",
 	reduced_spread_shot = "stacking_multiplier",
-	explosion_radius = "stacking_multiplier",
 	healing_received = "stacking_multiplier",
 	protection_skaven = "stacking_multiplier",
 	power_level_melee = "stacking_multiplier",
 	potion_duration = "stacking_multiplier",
-	protection_chaos = "stacking_multiplier",
+	total_ammo = "stacking_multiplier",
 	reduced_ranged_charge_time = "stacking_multiplier",
 	impact_vulnerability = "stacking_multiplier",
-	extra_ability_charges = "stacking_bonus",
-	attack_intensity_reset = "stacking_multiplier",
+	max_fatigue = "stacking_bonus",
 	power_level_unarmoured = "stacking_multiplier",
 	attack_speed = "stacking_multiplier",
 	increased_move_speed_while_aiming = "stacking_multiplier",
@@ -155,7 +148,7 @@ StatBuffApplicationMethods = {
 	damage_taken_melee = "stacking_multiplier",
 	backstab_multiplier = "stacking_bonus",
 	protection_poison_wind = "stacking_multiplier",
-	increased_weapon_damage_melee_1h = "stacking_multiplier",
+	throw_speed_increase = "stacking_multiplier",
 	ranged_additional_penetrations = "stacking_bonus",
 	power_level_skaven = "stacking_multiplier",
 	damage_taken_burning_enemy = "stacking_multiplier",
@@ -189,9 +182,10 @@ ProcEvents = {
 	"on_boss_killed",
 	"on_special_killed",
 	"on_elite_killed",
-	"on_pingable_target_killed",
+	"on_ping_target_killed",
 	"on_block",
 	"on_block_broken",
+	"on_timed_block",
 	"on_knocked_down",
 	"on_ledge_hang_start",
 	"on_player_disabled",
@@ -240,8 +234,8 @@ ProcEvents = {
 	"on_controlled_unit_added",
 	"on_controlled_unit_removed",
 	"on_controlled_unit_death",
-	"on_boon_granted",
 	"on_death",
+	"on_attack_blocked",
 	"on_damage_dealt",
 	"on_push_used",
 	"on_backstab",
@@ -259,16 +253,9 @@ ProcEvents = {
 	"on_ability_cooldown_started",
 	"on_extra_ability_consumed",
 	"on_crouch",
-	"on_timed_block",
-	"on_wield",
 	"on_gromril_armour_removed",
 	"on_broke_shield",
 	"on_pet_spawned",
-	"cursed_chest_running",
-	"stagger_calculation_started",
-	"stagger_calculation_ended",
-	"damage_calculation_started",
-	"damage_calculation_ended",
 	"minion_attack_used"
 }
 
@@ -797,11 +784,6 @@ ProcFunctions = {
 			local template = buff.template
 			local explosion_template = template.explosion_template
 			local world = Managers.world:world(LevelHelper.INGAME_WORLD_NAME)
-
-			if not world then
-				return
-			end
-
 			local player_position = POSITION_LOOKUP[owner_unit]
 			local rotation = Quaternion.identity()
 			local player = Managers.player:owner(owner_unit)
@@ -1558,18 +1540,17 @@ ProcFunctions = {
 				local raycast_down = true
 				local pickup_system = Managers.state.entity:system("pickup_system")
 
-				if talent_extension:has_talent("bardin_ranger_passive_spawn_healing_draught") then
+				if talent_extension:has_talent("bardin_ranger_passive_spawn_healing_draught", "dwarf_ranger", true) then
 					if math.random(1, 4) > 1 then
 						pickup_system:buff_spawn_pickup("ammo_ranger", player_pos, raycast_down)
 					else
 						pickup_system:buff_spawn_pickup("frag_grenade_t1", player_pos, raycast_down)
 						pickup_system:buff_spawn_pickup("ammo_ranger", player_pos, raycast_down)
 					end
-				elseif talent_extension:has_talent("bardin_ranger_passive_spawn_potions_or_bombs") then
-					local spawn_chance = TalentUtils.get_talent_attribute("bardin_ranger_passive_spawn_potions_or_bombs", "spawn_chance")
-					local drop_result = math.random()
+				elseif talent_extension:has_talent("bardin_ranger_passive_spawn_potions_or_bombs", "dwarf_ranger", true) then
+					local drop_result = math.random(1, 5)
 
-					if drop_result <= spawn_chance then
+					if drop_result == 1 then
 						local potion_result = math.random(1, 5)
 
 						if potion_result >= 1 and potion_result <= 3 then
@@ -2553,6 +2534,31 @@ ProcFunctions = {
 				buff_extension:remove_buff(huntsman_activated_ability_buff.id)
 			end
 		end
+	end,
+	exit_buff_area = function (leaving_unit, owner_unit, template, buff_area_unit, source_unit)
+		local buff_name = template.buff_area_buff
+		local buff_extension = ScriptUnit.has_extension(leaving_unit, "buff_system")
+
+		if buff_extension then
+			local area_buff = buff_extension:get_buff_type(buff_name)
+
+			if area_buff then
+				local buff_system = Managers.state.entity:system("buff_system")
+
+				buff_system:remove_buff_synced(leaving_unit, area_buff.id)
+			end
+		end
+	end,
+	enter_buff_area = function (entering_unit, owner_unit, template, buff_area_unit, source_unit)
+		local buff_system = Managers.state.entity:system("buff_system")
+		local buff_name = template.buff_area_buff
+		local sync_type = template.buff_sync_type or BuffSyncType.Local
+		local params = FrameTable.alloc_table()
+
+		params.attacker_unit = source_unit
+		params.source_attacker_unit = source_unit
+
+		buff_system:add_buff_synced(entering_unit, buff_name, sync_type, params)
 	end,
 	increased_movement_speed = function (owner_unit, buff, params)
 		if ALIVE[owner_unit] then
@@ -4210,20 +4216,6 @@ StackingBuffFunctions = {
 		dummy_buff.template = sub_buff_template
 
 		BuffFunctionTemplates.functions.reduce_cooldown_percent(unit, dummy_buff, new_buff_params)
-	end,
-	fire_grenade_dot_add = function (unit, sub_buff_template, current_num_stacks, buff_extension, new_buff_params)
-		local should_add_buff = true
-		local breed = AiUtils.unit_breed(unit)
-
-		if breed and breed.is_player then
-			local mechanism_name = Managers.mechanism:current_mechanism_name()
-
-			if mechanism_name == "versus" then
-				should_add_buff = current_num_stacks < (sub_buff_template.max_player_stacks_in_versus or math.huge)
-			end
-		end
-
-		return should_add_buff
 	end
 }
 PotionSpreadTrinketTemplates = {
@@ -5041,46 +5033,6 @@ BuffTemplates = {
 			}
 		}
 	},
-	planted_decrease_rotation_speed = {
-		buffs = {
-			{
-				remove_buff_name = "planted_return_to_normal_movement",
-				name = "decrease_speed",
-				lerp_time = 0.2,
-				multiplier = 0.75,
-				update_func = "update_action_lerp_movement_buff",
-				remove_buff_func = "remove_action_lerp_movement_buff",
-				apply_buff_func = "apply_action_lerp_movement_buff",
-				path_to_movement_setting_to_modify = {
-					"move_speed"
-				}
-			},
-			{
-				remove_buff_name = "planted_return_to_normal_crouch_movement",
-				name = "decrease_crouch_speed",
-				lerp_time = 1,
-				multiplier = 0.75,
-				update_func = "update_charging_action_lerp_movement_buff",
-				remove_buff_func = "remove_action_lerp_movement_buff",
-				apply_buff_func = "apply_action_lerp_movement_buff",
-				path_to_movement_setting_to_modify = {
-					"crouch_move_speed"
-				}
-			},
-			{
-				remove_buff_name = "planted_return_to_normal_walk_movement",
-				name = "decrease_walk_speed",
-				lerp_time = 1,
-				multiplier = 0.75,
-				update_func = "update_charging_action_lerp_movement_buff",
-				remove_buff_func = "remove_action_lerp_movement_buff",
-				apply_buff_func = "apply_action_lerp_movement_buff",
-				path_to_movement_setting_to_modify = {
-					"walk_move_speed"
-				}
-			}
-		}
-	},
 	arrow_poison_dot = {
 		buffs = {
 			{
@@ -5292,34 +5244,15 @@ BuffTemplates = {
 			{
 				duration = 6,
 				name = "burning_dot_fire_grenade",
-				on_add_stack_override_func = "fire_grenade_dot_add",
-				versus_player_duration = 3,
 				apply_buff_func = "start_dot_damage",
 				update_start_delay = 1,
-				max_player_stacks_in_versus = 1,
 				time_between_dot_damages = 1,
 				damage_type = "burninating",
 				damage_profile = "burning_dot_firegrenade",
 				update_func = "apply_dot_damage",
 				perks = {
 					buff_perks.burning
-				},
-				max_stacks = math.huge,
-				duration_modifier_func = function (unit, sub_buff_template, duration, buff_extension, params)
-					local is_versus = Managers.mechanism:current_mechanism_name() == "versus"
-
-					if not is_versus then
-						return duration
-					end
-
-					local breed = AiUtils.unit_breed(unit)
-
-					if breed and breed.is_player then
-						return sub_buff_template.versus_player_duration
-					end
-
-					return duration
-				end
+				}
 			}
 		}
 	},
@@ -6980,10 +6913,10 @@ BuffTemplates = {
 					},
 					versus_base = {
 						3,
-						3,
-						3,
-						3,
-						3
+						1,
+						0,
+						6.5,
+						2
 					}
 				},
 				perks = {
@@ -7066,11 +6999,11 @@ BuffTemplates = {
 						4
 					},
 					versus_base = {
-						3,
-						3,
-						3,
-						3,
-						3
+						10,
+						1,
+						0,
+						6.5,
+						1
 					}
 				},
 				perks = {
@@ -8575,6 +8508,124 @@ BuffTemplates = {
 				damage_type = "vomit_face",
 				max_stacks = 5,
 				duration = 5
+			}
+		}
+	},
+	corpse_explosion_default = {
+		buffs = {
+			{
+				slowdown_buff_name = "bile_troll_vomit_face_slowdown",
+				name = "corpse_explosion_default",
+				debuff = true,
+				update_func = "update_vomit_in_face",
+				fatigue_type = "vomit_face",
+				remove_buff_func = "remove_vomit_in_face",
+				apply_buff_func = "apply_vomit_in_face",
+				duration = 2,
+				time_between_dot_damages = 0.65,
+				refresh_durations = true,
+				damage_type = "vomit_face",
+				max_stacks = 1,
+				icon = "troll_vomit_debuff",
+				push_speed = 6,
+				difficulty_damage = {
+					easy = {
+						1,
+						1,
+						0,
+						0.5,
+						1
+					},
+					normal = {
+						1,
+						1,
+						0,
+						1,
+						1
+					},
+					hard = {
+						1,
+						1,
+						0,
+						1,
+						1
+					},
+					harder = {
+						1,
+						1,
+						0,
+						2,
+						1
+					},
+					hardest = {
+						1,
+						1,
+						0,
+						4,
+						1
+					},
+					cataclysm = {
+						1,
+						1,
+						0,
+						1,
+						1
+					},
+					cataclysm_2 = {
+						1,
+						1,
+						0,
+						2,
+						1
+					},
+					cataclysm_3 = {
+						1,
+						1,
+						0,
+						4,
+						1
+					},
+					versus_base = {
+						1,
+						1,
+						0,
+						1,
+						1
+					}
+				}
+			},
+			{
+				name = "decrease_jump_speed",
+				multiplier = 0.3,
+				duration = 2,
+				remove_buff_func = "remove_movement_buff",
+				apply_buff_func = "apply_movement_buff",
+				path_to_movement_setting_to_modify = {
+					"jump",
+					"initial_vertical_speed"
+				}
+			},
+			{
+				name = "decrease_dodge_speed",
+				multiplier = 0.3,
+				duration = 2,
+				remove_buff_func = "remove_movement_buff",
+				apply_buff_func = "apply_movement_buff",
+				path_to_movement_setting_to_modify = {
+					"dodging",
+					"speed_modifier"
+				}
+			},
+			{
+				name = "decrease_dodge_distance",
+				multiplier = 0.3,
+				duration = 2,
+				remove_buff_func = "remove_movement_buff",
+				apply_buff_func = "apply_movement_buff",
+				path_to_movement_setting_to_modify = {
+					"dodging",
+					"distance_modifier"
+				}
 			}
 		}
 	},

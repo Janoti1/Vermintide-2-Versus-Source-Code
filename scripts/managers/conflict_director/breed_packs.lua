@@ -39,11 +39,6 @@ InterestPointSettings = {
 local HEAVY_WEIGHT = 10
 local MEDIUM_WEIGHT = 5
 local LIGHT_WEIGHT = 2
-local heavy_boys = {
-	Breeds.chaos_warrior,
-	Breeds.chaos_warrior,
-	Breeds.chaos_bulwark
-}
 
 BreedPacks = {
 	standard = {
@@ -996,11 +991,6 @@ BreedPacks = {
 					},
 					{
 						1,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						1,
 						"beastmen_bestigor",
 						Breeds.beastmen_gor
 					},
@@ -1019,11 +1009,6 @@ BreedPacks = {
 					{
 						1,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						1,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -1050,11 +1035,6 @@ BreedPacks = {
 					},
 					{
 						2,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						2,
 						"beastmen_bestigor",
 						Breeds.beastmen_gor
 					},
@@ -1073,11 +1053,6 @@ BreedPacks = {
 					{
 						3,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						3,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -1104,11 +1079,6 @@ BreedPacks = {
 					},
 					{
 						4,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						4,
 						"beastmen_bestigor",
 						Breeds.beastmen_gor
 					},
@@ -1127,11 +1097,6 @@ BreedPacks = {
 					{
 						4,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						4,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -1158,11 +1123,6 @@ BreedPacks = {
 					},
 					{
 						5,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						5,
 						"beastmen_bestigor",
 						Breeds.beastmen_gor
 					},
@@ -1181,11 +1141,6 @@ BreedPacks = {
 					{
 						1,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						1,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -1214,11 +1169,6 @@ BreedPacks = {
 					},
 					{
 						0,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						0,
 						"beastmen_bestigor",
 						Breeds.beastmen_gor
 					},
@@ -1237,11 +1187,6 @@ BreedPacks = {
 					{
 						1,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						1,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -1268,11 +1213,6 @@ BreedPacks = {
 					},
 					{
 						2,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						2,
 						"beastmen_bestigor",
 						Breeds.beastmen_gor
 					},
@@ -1291,11 +1231,6 @@ BreedPacks = {
 					{
 						3,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						3,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -1322,11 +1257,6 @@ BreedPacks = {
 					},
 					{
 						5,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						5,
 						"beastmen_bestigor",
 						Breeds.beastmen_gor
 					},
@@ -1345,11 +1275,6 @@ BreedPacks = {
 					{
 						5,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						5,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -1376,11 +1301,6 @@ BreedPacks = {
 					},
 					{
 						5,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						5,
 						"beastmen_bestigor",
 						Breeds.beastmen_gor
 					},
@@ -1399,11 +1319,6 @@ BreedPacks = {
 					{
 						1,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						1,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -1600,7 +1515,7 @@ BreedPacks = {
 		{
 			spawn_weight = HEAVY_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_raider,
 				Breeds.chaos_marauder,
 				Breeds.chaos_marauder,
@@ -1611,7 +1526,7 @@ BreedPacks = {
 		{
 			spawn_weight = MEDIUM_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_marauder,
 				Breeds.chaos_marauder,
 				Breeds.chaos_marauder,
@@ -1637,7 +1552,7 @@ BreedPacks = {
 		{
 			spawn_weight = HEAVY_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_raider,
 				Breeds.chaos_raider,
 				Breeds.chaos_marauder,
@@ -4295,11 +4210,6 @@ BreedPacks = {
 						Breeds.chaos_marauder
 					},
 					{
-						1,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
 						0,
 						"chaos_marauder_with_shield",
 						Breeds.chaos_marauder
@@ -4312,14 +4222,6 @@ BreedPacks = {
 							2
 						},
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						{
-							1,
-							2
-						},
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -4342,14 +4244,6 @@ BreedPacks = {
 					},
 					{
 						{
-							1,
-							2
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							3,
 							5
 						},
@@ -4364,14 +4258,6 @@ BreedPacks = {
 							3
 						},
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						{
-							2,
-							3
-						},
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -4394,14 +4280,6 @@ BreedPacks = {
 					},
 					{
 						{
-							2,
-							3
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							15,
 							20
 						},
@@ -4416,14 +4294,6 @@ BreedPacks = {
 							3
 						},
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						{
-							2,
-							3
-						},
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -4446,14 +4316,6 @@ BreedPacks = {
 					},
 					{
 						{
-							2,
-							3
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							15,
 							20
 						},
@@ -4468,14 +4330,6 @@ BreedPacks = {
 							2
 						},
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						{
-							1,
-							2
-						},
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -4496,11 +4350,6 @@ BreedPacks = {
 						Breeds.chaos_marauder
 					},
 					{
-						0,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
 						{
 							0,
 							2
@@ -4516,11 +4365,6 @@ BreedPacks = {
 						Breeds.chaos_marauder
 					},
 					{
-						0,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
 						{
 							0,
 							5
@@ -4533,11 +4377,6 @@ BreedPacks = {
 					{
 						0,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						0,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -4560,14 +4399,6 @@ BreedPacks = {
 					},
 					{
 						{
-							1,
-							2
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							8,
 							10
 						},
@@ -4582,14 +4413,6 @@ BreedPacks = {
 							2
 						},
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						{
-							1,
-							2
-						},
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -4612,14 +4435,6 @@ BreedPacks = {
 					},
 					{
 						{
-							1,
-							2
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							8,
 							10
 						},
@@ -4638,14 +4453,6 @@ BreedPacks = {
 					},
 					{
 						{
-							1,
-							2
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							8,
 							10
 						},
@@ -4657,11 +4464,6 @@ BreedPacks = {
 					{
 						0,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						0,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -4678,7 +4480,7 @@ BreedPacks = {
 		{
 			spawn_weight = LIGHT_WEIGHT,
 			members = {
-				heavy_boys
+				Breeds.chaos_warrior
 			}
 		},
 		{
@@ -4690,7 +4492,7 @@ BreedPacks = {
 		{
 			spawn_weight = LIGHT_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_marauder
 			}
 		},
@@ -4704,7 +4506,7 @@ BreedPacks = {
 		{
 			spawn_weight = MEDIUM_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_marauder,
 				Breeds.chaos_marauder
 			}
@@ -4712,7 +4514,7 @@ BreedPacks = {
 		{
 			spawn_weight = HEAVY_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_marauder_with_shield,
 				Breeds.chaos_marauder_with_shield
 			}
@@ -4720,7 +4522,7 @@ BreedPacks = {
 		{
 			spawn_weight = MEDIUM_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_marauder,
 				Breeds.chaos_marauder,
 				Breeds.chaos_marauder
@@ -4729,29 +4531,7 @@ BreedPacks = {
 		{
 			spawn_weight = HEAVY_WEIGHT,
 			members = {
-				heavy_boys,
-				Breeds.chaos_marauder_with_shield,
-				Breeds.chaos_marauder_with_shield,
-				Breeds.chaos_marauder_with_shield
-			}
-		},
-		{
-			spawn_weight = MEDIUM_WEIGHT,
-			members = {
-				heavy_boys,
-				Breeds.chaos_marauder,
-				Breeds.chaos_marauder,
-				Breeds.chaos_marauder,
-				Breeds.chaos_marauder,
-				Breeds.chaos_marauder
-			}
-		},
-		{
-			spawn_weight = HEAVY_WEIGHT,
-			members = {
-				heavy_boys,
-				Breeds.chaos_marauder_with_shield,
-				Breeds.chaos_marauder_with_shield,
+				Breeds.chaos_warrior,
 				Breeds.chaos_marauder_with_shield,
 				Breeds.chaos_marauder_with_shield,
 				Breeds.chaos_marauder_with_shield
@@ -4760,7 +4540,29 @@ BreedPacks = {
 		{
 			spawn_weight = MEDIUM_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
+				Breeds.chaos_marauder,
+				Breeds.chaos_marauder,
+				Breeds.chaos_marauder,
+				Breeds.chaos_marauder,
+				Breeds.chaos_marauder
+			}
+		},
+		{
+			spawn_weight = HEAVY_WEIGHT,
+			members = {
+				Breeds.chaos_warrior,
+				Breeds.chaos_marauder_with_shield,
+				Breeds.chaos_marauder_with_shield,
+				Breeds.chaos_marauder_with_shield,
+				Breeds.chaos_marauder_with_shield,
+				Breeds.chaos_marauder_with_shield
+			}
+		},
+		{
+			spawn_weight = MEDIUM_WEIGHT,
+			members = {
+				Breeds.chaos_warrior,
 				Breeds.chaos_marauder,
 				Breeds.chaos_marauder,
 				Breeds.chaos_marauder,
@@ -4773,7 +4575,7 @@ BreedPacks = {
 		{
 			spawn_weight = HEAVY_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_marauder_with_shield,
 				Breeds.chaos_marauder_with_shield,
 				Breeds.chaos_marauder_with_shield,
@@ -4802,14 +4604,6 @@ BreedPacks = {
 					},
 					{
 						{
-							0,
-							1
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							1,
 							2
 						},
@@ -4828,14 +4622,6 @@ BreedPacks = {
 					},
 					{
 						{
-							0,
-							1
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							2,
 							3
 						},
@@ -4850,14 +4636,6 @@ BreedPacks = {
 							2
 						},
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						{
-							1,
-							2
-						},
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -4880,14 +4658,6 @@ BreedPacks = {
 					},
 					{
 						{
-							2,
-							3
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							6,
 							8
 						},
@@ -4902,14 +4672,6 @@ BreedPacks = {
 							3
 						},
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						{
-							2,
-							3
-						},
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -4932,14 +4694,6 @@ BreedPacks = {
 					},
 					{
 						{
-							2,
-							3
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							6,
 							8
 						},
@@ -4954,14 +4708,6 @@ BreedPacks = {
 							3
 						},
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						{
-							2,
-							3
-						},
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -4984,14 +4730,6 @@ BreedPacks = {
 					},
 					{
 						{
-							0,
-							1
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							2,
 							3
 						},
@@ -5009,11 +4747,6 @@ BreedPacks = {
 					},
 					{
 						0,
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						0,
 						"chaos_raider",
 						Breeds.chaos_marauder
 					}
@@ -5022,11 +4755,6 @@ BreedPacks = {
 					{
 						0,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						0,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -5049,14 +4777,6 @@ BreedPacks = {
 					},
 					{
 						{
-							0,
-							1
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							1,
 							3
 						},
@@ -5071,14 +4791,6 @@ BreedPacks = {
 							2
 						},
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						{
-							1,
-							2
-						},
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -5101,14 +4813,6 @@ BreedPacks = {
 					},
 					{
 						{
-							1,
-							2
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							4,
 							5
 						},
@@ -5127,14 +4831,6 @@ BreedPacks = {
 					},
 					{
 						{
-							1,
-							2
-						},
-						"chaos_bulwark",
-						Breeds.chaos_marauder
-					},
-					{
-						{
 							4,
 							5
 						},
@@ -5146,11 +4842,6 @@ BreedPacks = {
 					{
 						0,
 						"chaos_warrior",
-						Breeds.chaos_marauder
-					},
-					{
-						0,
-						"chaos_bulwark",
 						Breeds.chaos_marauder
 					},
 					{
@@ -5180,7 +4871,7 @@ BreedPacks = {
 		{
 			spawn_weight = LIGHT_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_marauder
 			}
 		},
@@ -5195,7 +4886,7 @@ BreedPacks = {
 		{
 			spawn_weight = MEDIUM_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_fanatic,
 				Breeds.chaos_fanatic
 			}
@@ -5203,7 +4894,7 @@ BreedPacks = {
 		{
 			spawn_weight = MEDIUM_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_fanatic,
 				Breeds.chaos_fanatic,
 				Breeds.chaos_fanatic
@@ -5221,7 +4912,7 @@ BreedPacks = {
 		{
 			spawn_weight = MEDIUM_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_raider,
 				Breeds.chaos_marauder,
 				Breeds.chaos_marauder
@@ -5241,7 +4932,7 @@ BreedPacks = {
 		{
 			spawn_weight = HEAVY_WEIGHT,
 			members = {
-				heavy_boys,
+				Breeds.chaos_warrior,
 				Breeds.chaos_raider,
 				Breeds.chaos_marauder,
 				Breeds.chaos_marauder,

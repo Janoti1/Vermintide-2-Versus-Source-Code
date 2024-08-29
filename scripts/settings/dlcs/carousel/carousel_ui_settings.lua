@@ -116,11 +116,21 @@ settings.ui_texture_settings = {
 		"unit_frame_portrait_vs_ratling_gunner_masked",
 		"unit_frame_portrait_vs_ratling_gunner_twitch_icon",
 		"unit_frame_portrait_vs_ratling_gunner_saturated",
-		"unit_frame_portrait_vs_chaos_troll",
-		"unit_frame_portrait_vs_chaos_troll_twitch",
-		"unit_frame_portrait_vs_chaos_troll_masked",
-		"unit_frame_portrait_vs_chaos_troll_twitch_icon",
-		"unit_frame_portrait_vs_chaos_troll_saturated",
+		"unit_frame_portrait_vs_chaos_spawn",
+		"unit_frame_portrait_vs_chaos_spawn_twitch",
+		"unit_frame_portrait_vs_chaos_spawn_masked",
+		"unit_frame_portrait_vs_chaos_spawn_twitch_icon",
+		"unit_frame_portrait_vs_chaos_spawn_saturated",
+		"unit_frame_portrait_vs_stormfiend",
+		"unit_frame_portrait_vs_stormfiend_twitch",
+		"unit_frame_portrait_vs_stormfiend_masked",
+		"unit_frame_portrait_vs_stormfiend_twitch_icon",
+		"unit_frame_portrait_vs_stormfiend_saturated",
+		"unit_frame_portrait_vs_rat_ogre",
+		"unit_frame_portrait_vs_rat_ogre_twitch",
+		"unit_frame_portrait_vs_rat_ogre_masked",
+		"unit_frame_portrait_vs_rat_ogre_twitch_icon",
+		"unit_frame_portrait_vs_rat_ogre_saturated",
 		"vs_info_ghost_spawn",
 		"vs_info_ghost_cantspawn",
 		"vs_info_ghost_catchup"
@@ -179,6 +189,11 @@ settings.start_game_layout_console_generic_inputs = {
 				ignore_keybinding = true
 			},
 			{
+				input_action = "right_stick_press",
+				priority = 2,
+				description_text = "input_description_additional_options"
+			},
+			{
 				input_action = "back",
 				priority = 3,
 				description_text = "input_description_close"
@@ -189,15 +204,15 @@ settings.start_game_layout_console_generic_inputs = {
 		ignore_generic_actions = true,
 		actions = {
 			{
-				input_action = "d_vertical",
+				input_action = "d_pad",
 				priority = 1,
 				description_text = "input_description_navigate",
 				ignore_keybinding = true
 			},
 			{
-				input_action = "confirm",
+				input_action = "right_stick_press",
 				priority = 2,
-				description_text = "input_description_select"
+				description_text = "input_description_additional_options"
 			},
 			{
 				input_action = "refresh",
@@ -306,29 +321,21 @@ settings.teams_ui_assets = {
 		team_icon = "icons_placeholder",
 		background_frame = "team_icon_bg_frame",
 		icon = "icons_placeholder",
-		background_texture = "team_icon_background"
+		background_texture = "team_icon_bg"
 	},
 	team_hammers = {
-		opponent_flag_texture = "banner_hammers_opponent",
-		local_flag_long_texture = "banner_hammers_local_long",
 		display_name = "versus_team_name_hammers",
+		team_icon = "team_hammers_icon",
 		background_frame = "team_icon_bg_frame",
-		team_icon = "team_icon_hammers",
-		local_flag_texture = "banner_hammers_local",
-		opponent_flag_long_texture = "banner_hammers_opponent_long",
 		icon = "team_one_banner",
-		background_texture = "team_icon_background"
+		background_texture = "team_icon_bg"
 	},
 	team_skulls = {
-		opponent_flag_texture = "banner_skulls_opponent",
-		local_flag_long_texture = "banner_skulls_local_long",
 		display_name = "versus_team_name_skulls",
+		team_icon = "team_skulls_icon",
 		background_frame = "team_icon_bg_frame",
-		team_icon = "team_icon_skulls",
-		local_flag_texture = "banner_skulls_local",
-		opponent_flag_long_texture = "banner_skulls_opponent_long",
 		icon = "team_two_banner",
-		background_texture = "team_icon_background"
+		background_texture = "team_icon_bg"
 	}
 }
 settings.ui_settings = {
@@ -337,5 +344,6 @@ settings.ui_settings = {
 settings.sides_localization_lookup = {
 	heroes = "vs_lobby_hero_team_name",
 	spectator = "not_assigned",
-	dark_pact = "vs_lobby_dark_pact_team_name"
+	dark_pact = "vs_lobby_dark_pact_team_name",
+	undecided = "vs_undecided"
 }

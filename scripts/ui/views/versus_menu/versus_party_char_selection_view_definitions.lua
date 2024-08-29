@@ -1,7 +1,7 @@
 local RETAINED_MODE = false
 local slider_length = 1600
 local hero_group_width = 318
-local hero_group_spacing = 60
+local hero_group_spacing = 40
 local player_name_box_size = {
 	474,
 	46
@@ -1049,19 +1049,14 @@ local function create_hero_roster_detail_widget(scenegraph_id)
 				dynamic_font_size_word_wrap = true,
 				font_size = 25,
 				horizontal_alignment = "center",
-				vertical_alignment = "bottom",
 				use_shadow = true,
+				vertical_alignment = "bottom",
 				font_type = "hell_shark_header",
-				text_color = Colors.get_color_table_with_alpha("white", 255),
+				text_color = Colors.get_color_table_with_alpha("font_title", 255),
 				offset = {
 					0,
 					-30,
 					2
-				},
-				shadow_offset = {
-					1,
-					1,
-					0
 				}
 			},
 			available_text = {
@@ -1071,19 +1066,14 @@ local function create_hero_roster_detail_widget(scenegraph_id)
 				dynamic_font_size_word_wrap = true,
 				font_size = 25,
 				horizontal_alignment = "center",
-				vertical_alignment = "bottom",
 				use_shadow = true,
+				vertical_alignment = "bottom",
 				font_type = "hell_shark_header",
 				text_color = Colors.get_color_table_with_alpha("green", 255),
 				offset = {
 					100,
 					-30,
 					3
-				},
-				shadow_offset = {
-					1,
-					1,
-					0
 				}
 			}
 		},
@@ -1153,10 +1143,10 @@ local function create_player_box_widget(scenegraph_id, offset, size)
 		0,
 		11
 	}
-	local frame_style = "menu_frame_12"
+	local frame_style = "menu_frame_12_gold"
 	local frame_settings = UIFrameSettings[frame_style]
 	local frame_width = frame_settings.texture_sizes.horizontal[2]
-	local mute_button_frame_settings = UIFrameSettings.button_frame_02
+	local mute_button_frame_settings = UIFrameSettings.button_frame_02_gold
 	local widget = {
 		element = {
 			passes = {
@@ -1238,7 +1228,7 @@ local function create_player_box_widget(scenegraph_id, offset, size)
 			is_player = false,
 			muted = false,
 			is_local_player = false,
-			background = "item_tooltip_background",
+			background = "achievement_background_leather",
 			mute_icon = "tab_menu_icon_01",
 			mute_button_frame = mute_button_frame_settings.texture,
 			frame = frame_settings.texture,
@@ -1303,18 +1293,12 @@ local function create_player_box_widget(scenegraph_id, offset, size)
 				font_size = 25,
 				horizontal_alignment = "center",
 				vertical_alignment = "center",
-				use_shadow = true,
 				font_type = "hell_shark",
 				text_color = Colors.get_color_table_with_alpha("white", 255),
 				offset = {
 					0,
 					0,
 					8
-				},
-				shadow_offset = {
-					1,
-					1,
-					0
 				}
 			},
 			mute_background_fade = {
@@ -1435,8 +1419,8 @@ local function create_your_turn_text_widget(scenegraph_id)
 				upper_case = true,
 				localize = true,
 				word_wrap = false,
-				horizontal_alignment = "center",
 				use_shadow = true,
+				horizontal_alignment = "center",
 				vertical_alignment = "center",
 				font_type = "hell_shark_header",
 				size = {
@@ -1448,11 +1432,6 @@ local function create_your_turn_text_widget(scenegraph_id)
 					0,
 					40,
 					2
-				},
-				shadow_offset = {
-					1,
-					1,
-					0
 				}
 			},
 			arrow_texture = {
@@ -1460,7 +1439,12 @@ local function create_your_turn_text_widget(scenegraph_id)
 					83.2,
 					26.650000000000002
 				},
-				color = Colors.get_color_table_with_alpha("local_player_picking", 255),
+				color = {
+					255,
+					252,
+					221,
+					0
+				},
 				offset = {
 					0,
 					25,
@@ -1541,7 +1525,7 @@ local function create_skill_info_widget(scenegraph_id, skill_type, skill_icon, s
 			},
 			skill_type = {
 				word_wrap = false,
-				font_size = 20,
+				font_size = 24,
 				localize = false,
 				use_shadow = true,
 				horizontal_alignment = "left",
@@ -1556,16 +1540,11 @@ local function create_skill_info_widget(scenegraph_id, skill_type, skill_icon, s
 					75,
 					0,
 					2
-				},
-				shadow_offset = {
-					1,
-					1,
-					0
 				}
 			},
 			skill_name = {
 				word_wrap = false,
-				font_size = 24,
+				font_size = 30,
 				localize = false,
 				use_shadow = true,
 				horizontal_alignment = "left",
@@ -1578,13 +1557,8 @@ local function create_skill_info_widget(scenegraph_id, skill_type, skill_icon, s
 				text_color = Colors.get_color_table_with_alpha("font_title", 255),
 				offset = {
 					75,
-					-24,
+					-30,
 					2
-				},
-				shadow_offset = {
-					1,
-					1,
-					0
 				}
 			}
 		},
@@ -1807,8 +1781,8 @@ local selected_career_title_style = {
 	dynamic_font_size_word_wrap = true,
 	font_size = 160,
 	horizontal_alignment = "left",
-	vertical_alignment = "top",
 	use_shadow = true,
+	vertical_alignment = "top",
 	font_type = "hell_shark_header",
 	text_color = {
 		50,
@@ -1820,11 +1794,6 @@ local selected_career_title_style = {
 		0,
 		0,
 		2
-	},
-	shadow_offset = {
-		1,
-		1,
-		0
 	}
 }
 local countdown_timer_style = {
@@ -1835,17 +1804,12 @@ local countdown_timer_style = {
 	use_shadow = true,
 	horizontal_alignment = "center",
 	vertical_alignment = "center",
-	font_type = "hell_shark_header",
+	font_type = "hell_shark",
 	text_color = Colors.get_color_table_with_alpha("white", 255),
 	offset = {
 		0,
 		0,
 		2
-	},
-	shadow_offset = {
-		1,
-		1,
-		0
 	}
 }
 local selected_hero_title_style = {
@@ -1867,40 +1831,33 @@ local selected_hero_title_style = {
 		0,
 		0,
 		2
-	},
-	shadow_offset = {
-		1,
-		1,
-		0
 	}
 }
 local team_text_style = {
-	word_wrap = true,
-	horizontal_alignment = "center",
-	localize = false,
-	font_size = 45,
-	use_shadow = true,
 	vertical_alignment = "top",
+	font_size = 45,
+	localize = false,
+	horizontal_alignment = "center",
+	word_wrap = true,
 	font_type = "hell_shark_header",
-	text_color = Colors.get_color_table_with_alpha("local_player_team_lighter", 255),
+	text_color = {
+		255,
+		0,
+		153,
+		255
+	},
 	offset = {
 		0,
 		0,
 		1
-	},
-	shadow_offset = {
-		1,
-		1,
-		0
 	}
 }
 local objective_text_style = {
-	word_wrap = true,
-	horizontal_alignment = "center",
-	localize = false,
-	font_size = 30,
-	use_shadow = true,
 	vertical_alignment = "bottom",
+	font_size = 30,
+	localize = false,
+	horizontal_alignment = "center",
+	word_wrap = true,
 	font_type = "hell_shark",
 	text_color = {
 		255,
@@ -1912,18 +1869,12 @@ local objective_text_style = {
 		0,
 		0,
 		1
-	},
-	shadow_offset = {
-		1,
-		1,
-		0
 	}
 }
 local player_picking_text_style = {
 	word_wrap = false,
 	font_size = 20,
 	localize = false,
-	use_shadow = true,
 	horizontal_alignment = "left",
 	vertical_alignment = "top",
 	font_type = "hell_shark",
@@ -1939,20 +1890,14 @@ local player_picking_text_style = {
 	},
 	offset = {
 		0,
-		15,
+		25,
 		1
-	},
-	shadow_offset = {
-		1,
-		1,
-		0
 	}
 }
 local hero_career_name_text_style = {
 	word_wrap = false,
-	font_size = 48,
+	font_size = 60,
 	localize = false,
-	use_shadow = true,
 	horizontal_alignment = "left",
 	vertical_alignment = "center",
 	font_type = "hell_shark_header",
@@ -1968,13 +1913,8 @@ local hero_career_name_text_style = {
 	},
 	offset = {
 		0,
-		-45,
+		-35,
 		1
-	},
-	shadow_offset = {
-		1,
-		1,
-		0
 	}
 }
 local other_definitions = {
@@ -2005,16 +1945,7 @@ local other_definitions = {
 local widget_definitions = {
 	selected_career_title = UIWidgets.create_simple_text("", "selected_career_title", nil, nil, selected_career_title_style),
 	selected_hero_title = UIWidgets.create_simple_text("", "selected_hero_title", nil, nil, selected_hero_title_style),
-	character_selection_bg = UIWidgets.create_simple_texture("versus_hero_selection_bottom_frame_background", "bottom_bar", nil, nil, {
-		255,
-		136,
-		136,
-		136
-	}, {
-		0,
-		0,
-		1
-	}),
+	character_selection_bg = UIWidgets.create_simple_texture("versus_hero_selection_bottom_frame_background", "bottom_bar"),
 	character_selection_bg_fade = UIWidgets.create_simple_texture("loot_presentation_fg_02_fade", "bottom_bar", nil, nil, {
 		255,
 		255,

@@ -21,15 +21,14 @@ EnvironmentalHazards = {
 				damage_type = "cutting"
 			},
 			difficulty_damage = {
-				hardest = 23,
-				normal = 12,
-				hard = 15,
 				harder = 18,
+				hard = 15,
+				normal = 12,
+				hardest = 23,
 				cataclysm = 30,
-				easy = 7,
-				versus_base = 15,
 				cataclysm_3 = 50,
-				cataclysm_2 = 40
+				cataclysm_2 = 40,
+				easy = 7
 			}
 		}
 	},
@@ -55,15 +54,14 @@ EnvironmentalHazards = {
 				damage_type = "cutting"
 			},
 			difficulty_damage = {
-				hardest = 7,
-				normal = 4,
-				hard = 5,
 				harder = 6,
+				hard = 5,
+				normal = 4,
+				hardest = 7,
 				cataclysm = 8,
-				easy = 3,
-				versus_base = 5,
 				cataclysm_3 = 10,
-				cataclysm_2 = 9
+				cataclysm_2 = 9,
+				easy = 3
 			}
 		}
 	},
@@ -89,15 +87,14 @@ EnvironmentalHazards = {
 				damage_type = "burn"
 			},
 			difficulty_damage = {
-				hardest = 7,
-				normal = 4,
-				hard = 5,
 				harder = 6,
+				hard = 5,
+				normal = 4,
+				hardest = 7,
 				cataclysm = 8,
-				easy = 3,
-				versus_base = 5,
 				cataclysm_3 = 10,
-				cataclysm_2 = 9
+				cataclysm_2 = 9,
+				easy = 3
 			}
 		}
 	},

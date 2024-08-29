@@ -43,41 +43,6 @@ local function can_add_versus_menu(params)
 	return Managers.state.game_mode:game_mode_key() == "inn_vs" and can_add_ingame_menu(params)
 end
 
-local default_disable_for_mechanism = {
-	adventure = {
-		matchmaking = false,
-		matchmaking_ready = true,
-		not_matchmaking = false
-	},
-	versus = {
-		matchmaking = false,
-		matchmaking_ready = true,
-		not_matchmaking = false
-	},
-	deus = {
-		matchmaking = false,
-		matchmaking_ready = true,
-		not_matchmaking = false
-	}
-}
-local disable_for_mechanism_versus_disabled = {
-	adventure = {
-		matchmaking = false,
-		matchmaking_ready = true,
-		not_matchmaking = false
-	},
-	versus = {
-		matchmaking = true,
-		matchmaking_ready = true,
-		not_matchmaking = true
-	},
-	deus = {
-		matchmaking = false,
-		matchmaking_ready = true,
-		not_matchmaking = false
-	}
-}
-
 if IS_PS4 then
 	menu_layouts = {
 		in_menu = {
@@ -88,24 +53,24 @@ if IS_PS4 then
 					display_name = "return_to_game_button_name"
 				},
 				{
+					disable_when_matchmaking_ready = true,
 					display_name = "profile_menu_button_name",
 					requires_player_unit = true,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -125,24 +90,24 @@ if IS_PS4 then
 					display_name = "return_to_game_button_name"
 				},
 				{
+					disable_when_matchmaking_ready = true,
 					display_name = "profile_menu_button_name",
 					requires_player_unit = true,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -162,24 +127,24 @@ if IS_PS4 then
 					display_name = "return_to_game_button_name"
 				},
 				{
+					disable_when_matchmaking_ready = true,
 					display_name = "profile_menu_button_name",
 					requires_player_unit = true,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -218,18 +183,18 @@ if IS_PS4 then
 					display_name = "return_to_game_button_name"
 				},
 				{
+					disable_when_matchmaking_ready = true,
 					display_name = "profile_menu_button_name",
 					requires_player_unit = true,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -249,13 +214,13 @@ if IS_PS4 then
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -278,13 +243,13 @@ if IS_PS4 then
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -307,13 +272,13 @@ if IS_PS4 then
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -374,7 +339,7 @@ if IS_PS4 then
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -399,24 +364,24 @@ elseif IS_XB1 then
 					display_name = "return_to_game_button_name"
 				},
 				{
+					disable_when_matchmaking_ready = true,
 					display_name = "profile_menu_button_name",
 					requires_player_unit = true,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -436,24 +401,24 @@ elseif IS_XB1 then
 					display_name = "return_to_game_button_name"
 				},
 				{
+					disable_when_matchmaking_ready = true,
 					display_name = "profile_menu_button_name",
 					requires_player_unit = true,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -473,24 +438,24 @@ elseif IS_XB1 then
 					display_name = "return_to_game_button_name"
 				},
 				{
+					disable_when_matchmaking_ready = true,
 					display_name = "profile_menu_button_name",
 					requires_player_unit = true,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -529,18 +494,18 @@ elseif IS_XB1 then
 					display_name = "return_to_game_button_name"
 				},
 				{
+					disable_when_matchmaking_ready = true,
 					display_name = "profile_menu_button_name",
 					requires_player_unit = true,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -560,13 +525,13 @@ elseif IS_XB1 then
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -589,13 +554,13 @@ elseif IS_XB1 then
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -618,13 +583,13 @@ elseif IS_XB1 then
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = true,
 					transition = "console_friends_menu",
 					display_name = "console_friends_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -685,7 +650,7 @@ elseif IS_XB1 then
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -710,38 +675,42 @@ else
 					display_name = "return_to_game_button_name"
 				},
 				{
-					display_name = "profile_menu_button_name",
+					disable_when_matchmaking_ready = true,
 					requires_player_unit = true,
+					display_name = "profile_menu_button_name",
+					disable_when_matchmaking_in_versus = false,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
+					requires_player_unit = true,
 					display_name = "inventory_menu_button_name",
-					requires_player_unit = true,
+					force_open = true,
 					fade = true,
-					transition_state = "overview",
 					transition = "hero_view",
-					force_open = true,
-					disable_for_mechanism = default_disable_for_mechanism,
+					disable_when_matchmaking_in_versus = false,
+					transition_state = "overview",
+					disable_when_matchmaking_ready = true,
 					can_add_function = can_add_ingame_menu
 				},
 				{
-					display_name = "interact_loot",
 					requires_player_unit = true,
-					fade = true,
-					transition_state = "loot",
-					transition = "spoils_of_war",
+					display_name = "interact_loot",
 					force_open = true,
-					disable_for_mechanism = disable_for_mechanism_versus_disabled,
+					fade = true,
+					transition = "spoils_of_war",
+					disable_when_matchmaking_in_versus = true,
+					transition_state = "loot",
+					disable_when_matchmaking_ready = true,
 					can_add_function = can_add_ingame_menu
 				},
 				{
-					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_in_versus = false,
+					fade = true,
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -761,38 +730,42 @@ else
 					display_name = "return_to_game_button_name"
 				},
 				{
-					display_name = "profile_menu_button_name",
+					disable_when_matchmaking_ready = true,
 					requires_player_unit = true,
+					display_name = "profile_menu_button_name",
+					disable_when_matchmaking_in_versus = false,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
+					requires_player_unit = true,
 					display_name = "inventory_menu_button_name",
-					requires_player_unit = true,
+					force_open = true,
 					fade = true,
-					transition_state = "overview",
 					transition = "hero_view",
-					force_open = true,
-					disable_for_mechanism = default_disable_for_mechanism,
+					disable_when_matchmaking_in_versus = false,
+					transition_state = "overview",
+					disable_when_matchmaking_ready = true,
 					can_add_function = can_add_ingame_menu
 				},
 				{
-					display_name = "interact_loot",
 					requires_player_unit = true,
-					fade = true,
-					transition_state = "loot",
-					transition = "spoils_of_war",
+					display_name = "interact_loot",
 					force_open = true,
-					disable_for_mechanism = disable_for_mechanism_versus_disabled,
+					fade = true,
+					transition = "spoils_of_war",
+					disable_when_matchmaking_in_versus = true,
+					transition_state = "loot",
+					disable_when_matchmaking_ready = true,
 					can_add_function = can_add_ingame_menu
 				},
 				{
-					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_in_versus = false,
+					fade = true,
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -817,38 +790,42 @@ else
 					display_name = "return_to_game_button_name"
 				},
 				{
-					display_name = "profile_menu_button_name",
+					disable_when_matchmaking_ready = true,
 					requires_player_unit = true,
+					display_name = "profile_menu_button_name",
+					disable_when_matchmaking_in_versus = false,
 					fade = true,
 					transition_state = "character",
-					transition = "character_selection",
-					disable_for_mechanism = default_disable_for_mechanism
+					transition = "character_selection"
 				},
 				{
+					requires_player_unit = true,
 					display_name = "inventory_menu_button_name",
-					requires_player_unit = true,
+					force_open = true,
 					fade = true,
-					transition_state = "overview",
 					transition = "hero_view",
-					force_open = true,
-					disable_for_mechanism = default_disable_for_mechanism,
+					disable_when_matchmaking_in_versus = false,
+					transition_state = "overview",
+					disable_when_matchmaking_ready = true,
 					can_add_function = can_add_ingame_menu
 				},
 				{
-					display_name = "interact_loot",
 					requires_player_unit = true,
-					fade = true,
-					transition_state = "loot",
-					transition = "spoils_of_war",
+					display_name = "interact_loot",
 					force_open = true,
-					disable_for_mechanism = disable_for_mechanism_versus_disabled,
+					fade = true,
+					transition = "spoils_of_war",
+					disable_when_matchmaking_in_versus = true,
+					transition_state = "loot",
+					disable_when_matchmaking_ready = true,
 					can_add_function = can_add_ingame_menu
 				},
 				{
-					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_in_versus = false,
+					fade = true,
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -897,7 +874,7 @@ else
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -920,7 +897,7 @@ else
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -943,7 +920,7 @@ else
 					fade = true,
 					transition = "options_menu",
 					display_name = "options_menu_button_name",
-					disable_for_mechanism = default_disable_for_mechanism
+					disable_when_matchmaking_ready = true
 				},
 				{
 					fade = false,
@@ -1032,58 +1009,47 @@ end
 
 local full_access_layout = {
 	{
+		requires_player_unit = true,
 		display_name = "profile_menu_button_name",
+		disable_when_matchmaking_in_versus = false,
 		fade = true,
 		transition_state = "character",
 		transition = "character_selection",
-		disable_for_mechanism = {
-			adventure = {
-				matchmaking = false,
-				matchmaking_ready = false,
-				not_matchmaking = false
-			},
-			versus = {
-				matchmaking = false,
-				matchmaking_ready = false,
-				not_matchmaking = false
-			},
-			deus = {
-				matchmaking = false,
-				matchmaking_ready = false,
-				not_matchmaking = false
-			}
-		}
+		disable_when_matchmaking = false
 	},
 	{
-		display_name = "inventory_menu_button_name",
 		requires_player_unit = true,
-		fade = true,
-		transition_state = "overview",
-		transition = "hero_view",
+		display_name = "inventory_menu_button_name",
 		force_open = true,
-		disable_for_mechanism = default_disable_for_mechanism,
+		fade = true,
+		transition = "hero_view",
+		disable_when_matchmaking_in_versus = false,
+		transition_state = "overview",
+		disable_when_matchmaking_ready = true,
 		can_add_function = can_add_ingame_menu
 	},
 	{
-		requires_player_unit = true,
+		force_open = true,
 		transition_sub_state = "talents",
 		display_name = "hero_window_talents",
-		force_open = true,
+		requires_player_unit = true,
 		fade = true,
 		transition = "hero_view",
+		disable_when_matchmaking_in_versus = false,
 		transition_state = "overview",
-		disable_for_mechanism = default_disable_for_mechanism,
+		disable_when_matchmaking_ready = true,
 		can_add_function = can_add_ingame_menu
 	},
 	{
-		requires_player_unit = true,
+		force_open = true,
 		transition_sub_state = "cosmetics",
 		display_name = "hero_window_cosmetics",
-		force_open = true,
+		requires_player_unit = true,
 		fade = true,
 		transition = "hero_view",
+		disable_when_matchmaking_in_versus = false,
 		transition_state = "overview",
-		disable_for_mechanism = default_disable_for_mechanism,
+		disable_when_matchmaking_ready = true,
 		can_add_function = can_add_ingame_menu
 	},
 	{
@@ -1094,28 +1060,25 @@ local full_access_layout = {
 		transition = "hero_view"
 	},
 	{
+		disable_when_matchmaking_in_versus = false,
 		display_name = "start_menu_view",
 		requires_player_unit = true,
 		fade = false,
-		transition = "start_menu_view",
-		disable_for_mechanism = default_disable_for_mechanism
+		transition = "start_menu_view"
 	},
 	{
-		fade = true,
 		transition = "options_menu",
 		display_name = "options_menu_button_name",
-		disable_for_mechanism = default_disable_for_mechanism
+		disable_when_matchmaking_in_versus = false,
+		fade = true,
+		disable_when_matchmaking_ready = true
 	},
 	{
-		fade = true,
 		transition = "console_friends_menu",
 		display_name = "console_friends_menu_button_name",
-		disable_for_mechanism = default_disable_for_mechanism
-	},
-	{
-		fade = false,
-		transition = "return_to_title_screen_hero_view",
-		display_name = "menu_return_to_title_screen"
+		disable_when_matchmaking_in_versus = false,
+		fade = true,
+		disable_when_matchmaking_ready = true
 	},
 	{
 		fade = false,

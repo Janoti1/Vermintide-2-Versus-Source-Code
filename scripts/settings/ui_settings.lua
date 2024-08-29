@@ -286,47 +286,47 @@ UISettings = UISettings or {
 	},
 	use_ps4_input_icons = IS_PS4 or Application.user_setting("gamepad_use_ps4_style_input_icons"),
 	breed_textures = {
-		hero_we_shade = "small_unit_frame_portrait_kerillian_shade",
-		chaos_tentacle = "unit_frame_portrait_enemy_chaos_sorcerer",
+		skaven_ratling_gunner = "unit_frame_portrait_enemy_ratling_gunner",
+		pet_skeleton_dual_wield = "unit_frame_portrait_pet_skeleton",
 		skaven_warpfire_thrower = "unit_frame_portrait_enemy_warpfire",
-		chaos_zombie = "unit_frame_portrait_enemy_plague_zombie",
+		chaos_exalted_champion_warcamp = "unit_frame_portrait_enemy_chaos_warrior",
 		skaven_poison_wind_globadier = "unit_frame_portrait_enemy_poison_wind",
 		vs_ratling_gunner = "unit_frame_portrait_enemy_ratling_gunner",
 		hero_bw_scholar = "small_unit_frame_portrait_sienna_scholar",
 		chaos_plague_sorcerer = "unit_frame_portrait_enemy_chaos_sorcerer",
-		chaos_berzerker = "unit_frame_portrait_enemy_savage",
+		chaos_vortex_sorcerer = "unit_frame_portrait_enemy_sorcerer_vortex",
 		hero_es_questingknight = "small_unit_frame_portrait_kruber_questingknight",
+		vs_rat_ogre = "unit_frame_portrait_enemy_rat_ogre",
 		chaos_fanatic = "unit_frame_portrait_enemy_fanatic",
-		beastmen_standard_bearer = "unit_frame_portrait_enemy_standard_bearer",
-		chaos_vortex = "unit_frame_portrait_enemy_sorcerer_vortex",
+		skaven_storm_vermin_champion = "unit_frame_portrait_enemy_stormvermin",
 		hero_wh_bountyhunter = "small_unit_frame_portrait_victor_bountyhunter",
 		pet_skeleton = "unit_frame_portrait_pet_skeleton",
 		skaven_stormfiend_demo = "unit_frame_portrait_enemy_stormfiend",
 		pet_skeleton_with_shield = "unit_frame_portrait_pet_skeleton",
-		skaven_plague_monk = "unit_frame_portrait_enemy_plague_monk",
+		beastmen_standard_bearer = "unit_frame_portrait_enemy_standard_bearer",
 		hero_bw_necromancer = "small_unit_frame_portrait_sienna_necromancer",
 		hero_we_maidenguard = "small_unit_frame_portrait_kerillian_maidenguard",
+		chaos_zombie = "unit_frame_portrait_enemy_plague_zombie",
 		hero_bw_unchained = "small_unit_frame_portrait_sienna_unchained",
-		skaven_ratling_gunner = "unit_frame_portrait_enemy_ratling_gunner",
+		skaven_plague_monk = "unit_frame_portrait_enemy_plague_monk",
 		hero_dr_slayer = "small_unit_frame_portrait_bardin_slayer",
-		hero_es_huntsman = "small_unit_frame_portrait_kruber_huntsman",
 		chaos_troll = "unit_frame_portrait_enemy_chaos_troll",
 		chaos_spawn = "unit_frame_portrait_enemy_chaos_spawn",
-		hero_es_knight = "small_unit_frame_portrait_kruber_knight",
+		hero_es_huntsman = "small_unit_frame_portrait_kruber_huntsman",
 		chaos_exalted_sorcerer_drachenfels = "unit_frame_portrait_enemy_sorcerer_drachenfels",
-		chaos_vortex_sorcerer = "unit_frame_portrait_enemy_sorcerer_vortex",
+		vs_stormfiend = "unit_frame_portrait_enemy_stormfiend",
 		skaven_storm_vermin = "unit_frame_portrait_enemy_stormvermin",
-		vs_warpfire_thrower = "unit_frame_portrait_enemy_warpfire",
+		hero_es_knight = "small_unit_frame_portrait_kruber_knight",
 		chaos_marauder = "unit_frame_portrait_enemy_chaos_marauder",
-		skaven_storm_vermin_champion = "unit_frame_portrait_enemy_stormvermin",
+		vs_warpfire_thrower = "unit_frame_portrait_enemy_warpfire",
+		chaos_vortex = "unit_frame_portrait_enemy_sorcerer_vortex",
 		pet_skeleton_armored = "unit_frame_portrait_pet_skeleton",
 		skaven_clan_rat_with_shield = "unit_frame_portrait_enemy_clanrat",
 		chaos_exalted_champion_norsca = "unit_frame_portrait_enemy_chaos_warrior",
 		skaven_loot_rat = "unit_frame_portrait_enemy_lootrat",
 		skaven_pack_master = "unit_frame_portrait_enemy_packmaster",
 		chaos_spawn_exalted_champion_norsca = "unit_frame_portrait_enemy_chaos_spawn",
-		chaos_bulwark = "unit_frame_portrait_enemy_chaos_bulwark",
-		vs_chaos_troll = "unit_frame_portrait_enemy_chaos_troll",
+		vs_chaos_spawn = "unit_frame_portrait_enemy_chaos_spawn",
 		hero_dr_ironbreaker = "small_unit_frame_portrait_bardin_ironbreaker",
 		hero_wh_priest = "small_unit_frame_portrait_victor_priest",
 		hero_wh_captain = "small_unit_frame_portrait_victor_captain",
@@ -344,17 +344,17 @@ UISettings = UISettings or {
 		chaos_exalted_sorcerer = "unit_frame_portrait_enemy_sorcerer_boss",
 		chaos_tentacle_sorcerer = "unit_frame_portrait_enemy_chaos_sorcerer",
 		skaven_rat_ogre = "unit_frame_portrait_enemy_rat_ogre",
-		pet_skeleton_dual_wield = "unit_frame_portrait_pet_skeleton",
+		hero_we_shade = "small_unit_frame_portrait_kerillian_shade",
 		chaos_corruptor_sorcerer = "unit_frame_portrait_enemy_sorcerer_corruptor",
 		skaven_stormfiend_boss = "unit_frame_portrait_enemy_stormfiend",
 		beastmen_gor = "unit_frame_portrait_enemy_standard_bearer",
 		skaven_storm_vermin_with_shield = "unit_frame_portrait_enemy_stormvermin",
 		hero_we_waywatcher = "small_unit_frame_portrait_kerillian_waywatcher",
 		hero_bw_adept = "small_unit_frame_portrait_sienna_adept",
-		chaos_exalted_champion_warcamp = "unit_frame_portrait_enemy_chaos_warrior",
+		chaos_berzerker = "unit_frame_portrait_enemy_savage",
 		chaos_marauder_with_shield = "unit_frame_portrait_enemy_chaos_marauder",
 		hero_dr_engineer = "small_unit_frame_portrait_bardin_engineer",
-		training_dummy = "unit_frame_portrait_enemy_raider",
+		chaos_tentacle = "unit_frame_portrait_enemy_chaos_sorcerer",
 		hero_dr_ranger = "small_unit_frame_portrait_bardin_ranger",
 		vs_packmaster = "unit_frame_portrait_enemy_packmaster",
 		beastmen_ungor = "unit_frame_portrait_enemy_standard_bearer",
@@ -721,13 +721,6 @@ UISettings.hero_icons = {
 		dwarf_ranger = "hero_icon_medium_dwarf_ranger_yellow",
 		wood_elf = "hero_icon_medium_way_watcher_yellow",
 		bright_wizard = "hero_icon_medium_bright_wizard_yellow"
-	},
-	medium_white = {
-		witch_hunter = "hero_icon_medium_witch_hunter_white",
-		empire_soldier = "hero_icon_medium_empire_soldier_white",
-		dwarf_ranger = "hero_icon_medium_dwarf_ranger_white",
-		wood_elf = "hero_icon_medium_way_watcher_white",
-		bright_wizard = "hero_icon_medium_bright_wizard_white"
 	}
 }
 UISettings.hero_tooltips = {
@@ -752,10 +745,9 @@ UISettings.slot_icons = {
 }
 UISettings.item_type_store_icons = {
 	weapon_skin = "store_tag_icon_weapon",
+	skin = "store_tag_icon_skin",
 	hat = "store_tag_icon_hat",
-	bundle = "store_tag_icon_bundle",
-	frame = "store_tag_icon_portrait_frame",
-	skin = "store_tag_icon_skin"
+	bundle = "store_tag_icon_bundle"
 }
 
 DLCUtils.merge("item_type_store_icons", UISettings.item_type_store_icons)
@@ -1468,14 +1460,6 @@ UISettings.dlc_order_data = {
 		display_name = "store_shovel_upgrade_title"
 	},
 	{
-		dlc = "premium_career_bundle",
-		display_name = "display_name_premium_career_bundle"
-	},
-	{
-		dlc = "premium_career_bundle_upgrade",
-		display_name = "display_name_premium_career_bundle_upgrade"
-	},
-	{
 		dlc = "slayer_bundle_0002",
 		display_name = "display_name_slayer_bundle_0002"
 	},
@@ -2157,10 +2141,10 @@ local button_mapping = {
 			}
 		},
 		back = {
-			texture = "ps4_button_icon_touchpad",
+			texture = "ps4_button_icon_share",
 			size = {
-				42,
-				28
+				44,
+				33
 			}
 		},
 		touch = {
@@ -2431,207 +2415,5 @@ UISettings.crosshair_styles = {
 	default = {
 		enabled = true,
 		crosshair_icon = "icon_crosshair_01"
-	}
-}
-UISettings.default_loadout_settings = {
-	we_shade = {
-		{
-			icon = "smiter_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_stealth,loadout_tag_high_damage"
-		},
-		{
-			icon = "smiter_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_stealth,loadout_tag_high_damage"
-		}
-	},
-	bw_adept = {
-		{
-			icon = "balanced_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_charge,loadout_tag_burn,loadout_tag_volotile"
-		},
-		{
-			icon = "sniper_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_charge,loadout_tag_burn,loadout_tag_volotile"
-		}
-	},
-	wh_captain = {
-		{
-			icon = "sniper_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_high_damage,loadout_tag_ammo,loadout_tag_high_health"
-		},
-		{
-			icon = "hordekiller_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_high_health,loadout_tag_support"
-		}
-	},
-	bw_necromancer = {
-		{
-			icon = "balanced_loadout_icon",
-			tags = "loadout_tag_versatile,loadout_tag_summoner,loadout_tag_sniper,loadout_tag_volatile"
-		},
-		{
-			icon = "sniper_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_summoner,loadout_tag_sniper,loadout_tag_volatile"
-		}
-	},
-	we_waywatcher = {
-		{
-			icon = "sniper_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_ammo,loadout_tag_sniper"
-		},
-		{
-			icon = "balanced_loadout_icon",
-			tags = "loadout_tag_versatile,loadout_tag_healer"
-		}
-	},
-	wh_priest = {
-		{
-			icon = "tank_loadout_icon",
-			tags = "loadout_tag_melee_only,loadout_tag_shield,loadout_tag_high_health,loadout_tag_support"
-		},
-		{
-			icon = "tank_loadout_icon",
-			tags = "loadout_tag_melee_only,loadout_tag_shield,loadout_tag_high_health"
-		}
-	},
-	dr_ranger = {
-		{
-			icon = "sniper_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_stealth,loadout_tag_ammo"
-		},
-		{
-			icon = "balanced_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_stealth,loadout_tag_shield"
-		}
-	},
-	wh_bountyhunter = {
-		{
-			icon = "sniper_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_ammo,loadout_tag_high_damage"
-		},
-		{
-			icon = "smiter_loadout_icon",
-			tags = "loadout_tag_versatile,loadout_tag_ammo,loadout_tag_high_damage"
-		}
-	},
-	es_questingknight = {
-		{
-			icon = "tank_loadout_icon",
-			tags = "loadout_tag_melee_only,loadout_tag_high_health,loadout_tag_high_cleave"
-		},
-		{
-			icon = "smiter_loadout_icon",
-			tags = "loadout_tag_melee_only,loadout_tag_high_health,loadout_tag_high_damage"
-		}
-	},
-	dr_ironbreaker = {
-		{
-			icon = "tank_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_taunt,loadout_tag_shield,loadout_tag_high_health"
-		},
-		{
-			icon = "smiter_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_taunt,loadout_tag_high_health"
-		}
-	},
-	es_knight = {
-		{
-			icon = "tank_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_shield,loadout_tag_high_health"
-		},
-		{
-			icon = "smiter_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_high_health"
-		}
-	},
-	dr_engineer = {
-		{
-			icon = "balanced_loadout_icon",
-			tags = "loadout_tag_versatile"
-		},
-		{
-			icon = "sniper_loadout_icon",
-			tags = "loadout_tag_versatile,loadout_tag_shield"
-		}
-	},
-	we_thornsister = {
-		{
-			icon = "hordekiller_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_poison,loadout_tag_aoe,loadout_tag_support"
-		},
-		{
-			icon = "sniper_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_poison"
-		}
-	},
-	es_huntsman = {
-		{
-			icon = "sniper_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_stealth,loadout_tag_ammo"
-		},
-		{
-			icon = "smiter_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_stealth,loadout_tag_high_damage"
-		}
-	},
-	dr_slayer = {
-		{
-			icon = "hordekiller_loadout_icon",
-			tags = "loadout_tag_melee_only,loadout_tag_charge,loadout_tag_high_health"
-		},
-		{
-			icon = "balanced_loadout_icon",
-			tags = "loadout_tag_melee_only,loadout_tag_charge,loadout_tag_high_health"
-		}
-	},
-	es_mercenary = {
-		{
-			icon = "hordekiller_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_high_cleave,loadout_tag_healer"
-		},
-		{
-			icon = "smiter_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_healer,loadout_tag_ammo"
-		}
-	},
-	we_maidenguard = {
-		{
-			icon = "smiter_loadout_icon",
-			tags = "loadout_tag_versatile,loadout_tag_charge,loadout_tag_stealth,loadout_tag_high_health"
-		},
-		{
-			icon = "hordekiller_loadout_icon",
-			tags = "loadout_tag_versatile,loadout_tag_charge,loadout_tag_high_health"
-		}
-	},
-	bw_scholar = {
-		{
-			icon = "sniper_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_aoe,loadout_tag_burn,loadout_tag_volatile"
-		},
-		{
-			icon = "hordekiller_loadout_icon",
-			tags = "loadout_tag_ranged,loadout_tag_aoe,loadout_tag_burn,loadout_tag_volatile"
-		}
-	},
-	bw_unchained = {
-		{
-			icon = "hordekiller_loadout_icon",
-			tags = "loadout_tag_versatile,loadout_tag_aoe,loadout_tag_burn,loadout_tag_high_health"
-		},
-		{
-			icon = "tank_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_burn,loadout_tag_volatile,loadout_tag_high_health"
-		}
-	},
-	wh_zealot = {
-		{
-			icon = "tank_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_high_health,loadout_tag_charge"
-		},
-		{
-			icon = "smiter_loadout_icon",
-			tags = "loadout_tag_melee,loadout_tag_high_health,loadout_tag_charge"
-		}
 	}
 }

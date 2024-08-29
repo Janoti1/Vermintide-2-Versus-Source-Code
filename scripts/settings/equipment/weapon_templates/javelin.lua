@@ -1140,18 +1140,20 @@ weapon_template.actions = {
 		throw_charged = {
 			reset_aim_on_attack = true,
 			anim_end_event = "attack_finished",
+			speed = 7000,
 			kind = "thrown_projectile",
+			anim_event_last_ammo_3p = "attack_throw_last",
 			charge_value = "zoomed_arrow_hit",
 			weapon_action_hand = "right",
-			attack_template = "arrow_sniper_1",
-			apply_recoil = true,
 			hit_effect = "throwing_javelin",
 			anim_event_last_ammo = "attack_throw_last",
 			minimum_hold_time = 0.4,
-			fire_time = 0.03,
+			attack_template = "arrow_sniper_1",
 			ammo_usage = 1,
 			anim_event_infinite_ammo = "attack_throw",
-			speed = 7000,
+			apply_recoil = true,
+			fire_time = 0.03,
+			anim_event_infinite_ammo_3p = "attack_throw",
 			hold_input = "action_two_hold",
 			anim_event = "attack_throw",
 			no_out_of_ammo_vo = true,
@@ -1477,7 +1479,6 @@ weapon_template.state_machine = "units/beings/player/first_person_base/state_mac
 weapon_template.weapon_type = "POLEARM"
 weapon_template.default_projectile_action = weapon_template.actions.action_one.default
 weapon_template.dodge_count = 6
-weapon_template.destroy_indexed_projectiles = true
 weapon_template.buffs = {
 	change_dodge_distance = {
 		external_optional_multiplier = 1.2
@@ -1559,12 +1560,6 @@ weapon_template.tooltip_detail = {
 	}
 }
 
-local javelin_vs = table.clone(weapon_template)
-
-javelin_vs.actions.action_one.throw_charged.impact_data.damage_profile = "thrown_javelin"
-javelin_vs.ammo_data.max_ammo = 3
-
 return {
-	javelin_template = table.clone(weapon_template),
-	javelin_template_vs = table.clone(javelin_vs)
+	javelin_template = weapon_template
 }

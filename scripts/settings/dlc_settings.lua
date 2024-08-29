@@ -288,14 +288,28 @@ DLCSettings = DLCSettings or {
 			buff = "scripts/settings/dlcs/skulls_2023/buff_settings_skulls_2023"
 		}
 	},
-	skulls_2024 = {
-		localization = "localization/skulls_2024",
-		additional_settings = {}
-	},
 	fall_collection_2021 = {
 		package_name = "resource_packages/dlcs/fall_collection_2021",
 		additional_settings = {
 			common = "scripts/settings/dlcs/fall_collection_2021/fall_collection_2021_common_settings"
+		}
+	},
+	carousel = {
+		package_name = "resource_packages/dlcs/carousel",
+		localization = "localization/carousel",
+		level_settings = "levels/honduras_dlcs/carousel/level_settings_carousel",
+		additional_settings = {
+			game_object_initializers = "scripts/settings/dlcs/carousel/carousel_game_object_initializers",
+			sound = "scripts/settings/dlcs/carousel/carousel_sound_settings",
+			common = "scripts/settings/dlcs/carousel/carousel_common_settings",
+			buff = "scripts/settings/dlcs/carousel/carousel_buff_settings",
+			character_states = "scripts/settings/dlcs/carousel/carousel_character_state_settings",
+			game_object_templates = "scripts/settings/dlcs/carousel/carousel_game_object_templates",
+			backend = "scripts/settings/dlcs/carousel/carousel_backend_settings",
+			equipment = "scripts/settings/dlcs/carousel/carousel_equipment_settings",
+			experience = "scripts/settings/dlcs/carousel/carousel_experience_settings",
+			ui = "scripts/settings/dlcs/carousel/carousel_ui_settings",
+			badges = "scripts/settings/dlcs/carousel/carousel_badge_definitions"
 		}
 	},
 	gotwf = {
@@ -383,17 +397,6 @@ DLCSettings = DLCSettings or {
 			level = "scripts/settings/dlcs/karak_azgaraz/karak_azgaraz_level_settings_part_3"
 		}
 	},
-	karak_azgaraz_part_4 = {
-		localization = "localization/whaling_village",
-		package_name = "resource_packages/dlcs/karak_azgaraz_part_4",
-		additional_settings = {
-			common = "scripts/settings/dlcs/karak_azgaraz/karak_azgaraz_common_settings_part_4",
-			ai = "scripts/settings/dlcs/karak_azgaraz/karak_azgaraz_ai_settings_part_4",
-			sound = "scripts/settings/dlcs/karak_azgaraz/karak_azgaraz_sound_settings_part_4",
-			achievements = "scripts/settings/dlcs/karak_azgaraz/karak_azgaraz_achievement_settings_part_4",
-			level = "scripts/settings/dlcs/karak_azgaraz/karak_azgaraz_level_settings_part_4"
-		}
-	},
 	cosmetics_2023_q1 = {
 		localization = "localization/cosmetics_2023_q1",
 		package_name = "resource_packages/dlcs/cosmetics_2023_q1",
@@ -427,30 +430,5 @@ DLCSettings = DLCSettings or {
 	},
 	crawl_2023 = {
 		localization = "localization/crawl_2023"
-	},
-	premium_career_bundle = {
-		localization = "localization/cosmetics_2024_q1",
-		package_name = "resource_packages/dlcs/premium_career_bundle",
-		additional_settings = {
-			common = "scripts/settings/dlcs/premium_career_bundle/premium_career_bundle_common_settings"
-		}
-	},
-	carousel = {
-		package_name = "resource_packages/dlcs/carousel",
-		localization = "localization/carousel",
-		level_settings = "levels/honduras_dlcs/carousel/level_settings_carousel",
-		additional_settings = {
-			game_object_initializers = "scripts/settings/dlcs/carousel/carousel_game_object_initializers",
-			sound = "scripts/settings/dlcs/carousel/carousel_sound_settings",
-			common = "scripts/settings/dlcs/carousel/carousel_common_settings",
-			buff = "scripts/settings/dlcs/carousel/carousel_buff_settings",
-			character_states = "scripts/settings/dlcs/carousel/carousel_character_state_settings",
-			game_object_templates = "scripts/settings/dlcs/carousel/carousel_game_object_templates",
-			backend = "scripts/settings/dlcs/carousel/carousel_backend_settings",
-			equipment = "scripts/settings/dlcs/carousel/carousel_equipment_settings",
-			experience = "scripts/settings/dlcs/carousel/carousel_experience_settings",
-			ui = "scripts/settings/dlcs/carousel/carousel_ui_settings",
-			badges = "scripts/settings/dlcs/carousel/carousel_badge_definitions"
-		}
 	}
 }

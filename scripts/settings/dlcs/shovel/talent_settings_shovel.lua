@@ -50,7 +50,7 @@ SHOVEL_BUFF_TWEAK_DATA = {
 		multiplier = -0.8
 	},
 	sienna_necromancer_5_3 = {
-		overcharge_threshold = 0.12
+		overcharge_threshold = 0.2
 	},
 	sienna_necromancer_6_1 = {
 		controlled_unit_template = "necromancer_pet",
@@ -389,16 +389,18 @@ local talent_buff_templates = {
 	sienna_necromancer_cursed_area = {
 		buffs = {
 			{
-				area_unit_name = "units/hub_elements/empty",
+				icon = "sienna_necromancer_6_3",
 				name = "sienna_necromancer_cursed_area",
 				buff_area_buff = "sienna_necromancer_empowered_overcharge",
+				area_unit_name = "units/hub_elements/empty",
+				enter_area_func = "enter_buff_area",
 				refresh_durations = false,
 				refresh_buff_area_position = true,
 				buff_self = true,
 				area_radius = 8,
 				buff_area = true,
 				max_stacks = 1,
-				icon = "sienna_necromancer_6_3"
+				exit_area_func = "exit_buff_area"
 			}
 		}
 	},
@@ -472,7 +474,7 @@ local talents = {
 		icon = "sienna_necromancer_1_1",
 		description_values = {
 			{
-				value = BuffUtils.get_buff_template("reaper", "adventure").buffs[1].max_targets
+				value = BuffTemplates.reaper.buffs[1].max_targets
 			}
 		},
 		buffs = {
@@ -488,7 +490,7 @@ local talents = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("bloodlust", "adventure").buffs[1].multiplier
+				value = BuffTemplates.bloodlust.buffs[1].multiplier
 			}
 		},
 		buffs = {
@@ -504,7 +506,7 @@ local talents = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("conqueror", "adventure").buffs[1].multiplier
+				value = BuffTemplates.conqueror.buffs[1].multiplier
 			}
 		},
 		buffs = {
@@ -578,11 +580,11 @@ local talents = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("linesman_unbalance", "adventure").buffs[1].display_multiplier
+				value = BuffTemplates.linesman_unbalance.buffs[1].display_multiplier
 			},
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("linesman_unbalance", "adventure").buffs[1].max_display_multiplier
+				value = BuffTemplates.linesman_unbalance.buffs[1].max_display_multiplier
 			}
 		},
 		buffs = {
@@ -598,11 +600,11 @@ local talents = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("smiter_unbalance", "adventure").buffs[1].display_multiplier
+				value = BuffTemplates.smiter_unbalance.buffs[1].display_multiplier
 			},
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("smiter_unbalance", "adventure").buffs[1].max_display_multiplier
+				value = BuffTemplates.smiter_unbalance.buffs[1].max_display_multiplier
 			}
 		},
 		buffs = {
@@ -618,7 +620,7 @@ local talents = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("power_level_unbalance", "adventure").buffs[1].multiplier
+				value = BuffTemplates.power_level_unbalance.buffs[1].multiplier
 			}
 		},
 		buffs = {
@@ -762,8 +764,8 @@ local talents = {
 		icon = "sienna_necromancer_6_3",
 		description_values = {
 			{
-				value_type = "percent",
-				value = CareerConstants.bw_necromancer.armored_pet_health_additional_modifier - 1
+				value = 0.5,
+				value_type = "percent"
 			}
 		},
 		buffs = {}

@@ -18,7 +18,6 @@ end
 VersusBaseObjectiveExtension.activate = function (self, game_object_id, objective_data)
 	self._description = objective_data.description
 	self._objective_type = objective_data.objective_type
-	self._objective_tag = objective_data.objective_tag
 	self._objective_icon = objective_data.objective_type
 	self._on_complete_func = objective_data.on_complete_func
 	self._optional = objective_data.optional or false
@@ -35,10 +34,6 @@ VersusBaseObjectiveExtension.activate = function (self, game_object_id, objectiv
 	end
 
 	self._activated = true
-end
-
-VersusBaseObjectiveExtension.objective_tag = function (self)
-	return self._objective_tag
 end
 
 VersusBaseObjectiveExtension._store_local_player = function (self)
@@ -115,10 +110,6 @@ VersusBaseObjectiveExtension.play_unit_sound = function (self, event)
 end
 
 VersusBaseObjectiveExtension.update = function (self, dt, t)
-	if script_data.testify and self.update_testify then
-		self:update_testify(dt, t)
-	end
-
 	if not self._activated then
 		return
 	end
@@ -228,8 +219,4 @@ end
 
 VersusBaseObjectiveExtension.is_active = function (self)
 	return self._activated
-end
-
-VersusBaseObjectiveExtension.get_parent_name = function (self)
-	return self._parent_objective_name
 end

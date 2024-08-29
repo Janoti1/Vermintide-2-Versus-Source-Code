@@ -8,7 +8,7 @@ end
 
 UIWidget = UIWidget or {}
 
-UIWidget.init = function (widget_definition, ui_renderer)
+UIWidget.init = function (widget_definition)
 	local content = error_prone_clone(widget_definition.content)
 	local style = error_prone_clone(widget_definition.style)
 	local offset = widget_definition.offset and error_prone_clone(widget_definition.offset)
@@ -21,7 +21,7 @@ UIWidget.init = function (widget_definition, ui_renderer)
 		local pass_type = pass.pass_type
 		local ui_pass = UIPasses[pass_type]
 
-		pass_data[i] = ui_pass.init(pass, content, style, ui_renderer)
+		pass_data[i] = ui_pass.init(pass, content, style)
 	end
 
 	local widget = {

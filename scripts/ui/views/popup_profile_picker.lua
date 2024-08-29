@@ -80,7 +80,7 @@ PopupProfilePicker._create_ui_elements = function (self)
 end
 
 PopupProfilePicker.update = function (self, dt, t)
-	self:_update_occupied_profiles(t)
+	self:_update_occupied_profiles()
 
 	local ui_top_renderer = self._ui_top_renderer
 	local input_service = self:input_service()
@@ -109,11 +109,9 @@ PopupProfilePicker._INPUT_DEVICES = {
 	"mouse"
 }
 
-PopupProfilePicker.show = function (self, current_profile_index, current_career_index, time_until_cancel, join_by_lobby_browser, _difficulty, lobby_client, reserved_party_id, optional_locked_profile_index)
+PopupProfilePicker.show = function (self, current_profile_index, current_career_index, time_until_cancel, join_by_lobby_browser, _difficulty, lobby_data)
 	self._join_lobby_result = nil
-	self._makeshift_lobby_data = {}
-	self._lobby_client = lobby_client
-	self._reserved_party_id = reserved_party_id
+	self._lobby_data = lobby_data
 
 	self._ingame_ui:handle_transition(join_by_lobby_browser and "exit_menu" or "close_active")
 	ShowCursorStack.push()
@@ -125,7 +123,6 @@ PopupProfilePicker.show = function (self, current_profile_index, current_career_
 	self:_select_hero(profile_index, career_index, ignore_sound)
 
 	self._cancel_timer = time_until_cancel
-	self._optional_locked_profile_index = optional_locked_profile_index
 
 	local input_manager = self._input_manager
 
@@ -140,7 +137,7 @@ PopupProfilePicker.hide = function (self)
 
 	self._selected_hero_name = nil
 	self._selected_career_name = nil
-	self._makeshift_lobby_data = nil
+	self._lobby_data = nil
 end
 
 PopupProfilePicker.input_service = function (self)
@@ -391,34 +388,25 @@ PopupProfilePicker._set_timer_text = function (self, timer_text)
 	widgets_by_name.timer_text.content.text = timer_text
 end
 
+PopupProfilePicker.set_unavailable_heroes = function (self, occupied_heroes)
+	self._occupied_heroes = occupied_heroes
+
+	self:_update_occupied_profiles()
+end
+
 PopupProfilePicker.set_difficulty = function (self, difficulty)
 	self._difficulty = difficulty
 end
 
-local REQUEST_DATA_DELAY = 2
-
-PopupProfilePicker._update_occupied_profiles = function (self, t)
-	if self._lobby_client.request_data and t > (self._request_timer or 0) then
-		self._lobby_client:request_data()
-
-		self._request_timer = t + REQUEST_DATA_DELAY
-	end
-
-	local lobby_data = self._makeshift_lobby_data
-
-	lobby_data.reserved_profiles = self._lobby_client:lobby_data("reserved_profiles")
-
+PopupProfilePicker._update_occupied_profiles = function (self)
+	local lobby_data = self._lobby_data
 	local hero_widgets = self._hero_widgets
 	local hero_icon_widgets = self._hero_icon_widgets
 	local is_button_enabled = false
 
 	for i = 1, #hero_icon_widgets do
-		local occupied
 		local profile_index = ProfilePriority[i]
-
-		occupied = not ProfileSynchronizer.is_free_in_lobby(profile_index, lobby_data, self._reserved_party_id)
-		occupied = self._optional_locked_profile_index == profile_index or occupied
-
+		local occupied = self._lobby_data and not ProfileSynchronizer.is_free_in_lobby(profile_index, lobby_data)
 		local widget = hero_icon_widgets[i]
 		local content = widget.content
 		local button_hotspot = content.button_hotspot
@@ -426,15 +414,15 @@ PopupProfilePicker._update_occupied_profiles = function (self, t)
 		content.taken = occupied
 	end
 
-	local taken = not ProfileSynchronizer.is_free_in_lobby(self._selected_profile_index, lobby_data, self._reserved_party_id)
+	if self._lobby_data then
+		local taken = not ProfileSynchronizer.is_free_in_lobby(self._selected_profile_index, lobby_data)
 
-	taken = self._optional_locked_profile_index == self._selected_profile_index or taken
+		for i = 1, #hero_widgets do
+			local widget = hero_widgets[i]
+			local content = widget.content
 
-	for i = 1, #hero_widgets do
-		local widget = hero_widgets[i]
-		local content = widget.content
-
-		content.taken = taken
+			content.taken = taken
+		end
 	end
 
 	local widget = hero_widgets[self._selected_career_column]

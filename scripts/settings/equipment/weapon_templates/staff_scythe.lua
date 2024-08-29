@@ -2019,9 +2019,10 @@ weapon_template.actions = {
 				},
 				{
 					sub_action = "special_action_attack",
-					start_time = 0.7,
 					action = "action_three",
-					auto_chain = true
+					auto_chain = true,
+					release_required = "action_three",
+					start_time = 0.7
 				}
 			},
 			enter_function = function (attacker_unit, input_extension, _, weapon_extension)

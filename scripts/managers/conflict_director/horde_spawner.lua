@@ -56,7 +56,7 @@ local function copy_array(a, b)
 	end
 end
 
-HordeSpawner.horde = function (self, horde_type, extra_data, side_id, no_fallback, optional_data)
+HordeSpawner.horde = function (self, horde_type, extra_data, side_id, no_fallback)
 	print("horde requested: ", horde_type)
 
 	if horde_type == "vector" then
@@ -64,7 +64,7 @@ HordeSpawner.horde = function (self, horde_type, extra_data, side_id, no_fallbac
 	elseif horde_type == "vector_blob" then
 		self:execute_vector_blob_horde(extra_data, side_id, no_fallback)
 	else
-		self:execute_ambush_horde(extra_data, side_id, no_fallback, nil, optional_data)
+		self:execute_ambush_horde(extra_data, side_id, no_fallback)
 	end
 end
 
@@ -93,14 +93,6 @@ HordeSpawner._add_horde = function (self, horde)
 	local id = #hordes + 1
 
 	hordes[id] = horde
-
-	local horde_already_alive = Managers.state.conflict:is_horde_alive()
-
-	if not horde_already_alive then
-		local dialogue_system = Managers.state.entity:system("dialogue_system")
-
-		dialogue_system:trigger_mission_giver_event("horde")
-	end
 end
 
 HordeSpawner.execute_event_horde = function (self, t, terror_event_type, side_id, composition_type, limit_spawners, silent, group_template, strictly_not_close_to_players, sound_settings, use_closest_spawners, source_unit, optional_data)

@@ -1319,7 +1319,6 @@ weapon_template.actions = {
 			anim_end_event = "attack_finished",
 			outer_push_angle = 180,
 			kind = "push_stagger",
-			fatigue_cost = "action_stun_push",
 			damage_profile_outer = "light_push",
 			weapon_action_hand = "right",
 			push_angle = 100,

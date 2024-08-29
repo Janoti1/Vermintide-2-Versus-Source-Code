@@ -64,8 +64,7 @@ TwitchSettings = TwitchSettings or {
 			adventure = true,
 			versus_quickplay = false,
 			twitch = true,
-			versus = true,
-			deus_weekly = true
+			versus = true
 		}
 	},
 	positive_vote_options = table.enum("enable_positive_votes", "disable_giving_items", "disable_positive_votes")

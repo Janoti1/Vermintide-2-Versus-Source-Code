@@ -6477,14 +6477,6 @@ AttachmentNodeLinking = {
 			{
 				target = 0,
 				source = "j_leftweaponattach"
-			},
-			{
-				target = "j_hose_start",
-				source = "j_leftweaponattach"
-			},
-			{
-				target = "j_hose_end",
-				source = "j_ammo_attach"
 			}
 		},
 		unwielded = {
@@ -8210,34 +8202,6 @@ AttachmentNodeLinking = {
 			}
 		}
 	},
-	ai_bulwark_shield = {
-		wielded = {
-			{
-				target = 0,
-				source = "j_leftweaponattach"
-			}
-		},
-		unwielded = {
-			{
-				target = 0,
-				source = "j_leftweaponattach"
-			}
-		}
-	},
-	ai_bulwark_weapon = {
-		wielded = {
-			{
-				target = 0,
-				source = "j_rightweaponattach"
-			}
-		},
-		unwielded = {
-			{
-				target = 0,
-				source = "j_rightweaponattach"
-			}
-		}
-	},
 	ai_zombie_blob_left = {
 		{
 			target = 0,
@@ -8864,12 +8828,6 @@ AttachmentNodeLinking = {
 		{
 			target = "j_rightlowereyelash_04",
 			source = "j_rightlowereyelash_03"
-		}
-	},
-	ui_portrait_frame = {
-		{
-			target = 0,
-			source = "j_rightweaponattach"
 		}
 	}
 }

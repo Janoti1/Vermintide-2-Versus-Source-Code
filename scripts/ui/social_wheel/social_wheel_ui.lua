@@ -18,9 +18,9 @@ local ANIMATION_TIMES
 if IS_WINDOWS then
 	ANIMATION_TIMES = {
 		OPEN = {
-			MOVE_Y = 0.3,
-			SIZE = 0.3,
-			MOVE_X = 0.3,
+			MOVE_Y = 1.5,
+			SIZE = 1.5,
+			MOVE_X = 1.5,
 			ALPHA = 0.45
 		},
 		CLOSE = {
@@ -33,9 +33,9 @@ if IS_WINDOWS then
 else
 	ANIMATION_TIMES = {
 		OPEN = {
-			MOVE_Y = 0.3,
-			SIZE = 0.3,
-			MOVE_X = 0.3,
+			MOVE_Y = 0.75,
+			SIZE = 0.75,
+			MOVE_X = 0.75,
 			ALPHA = 0.45
 		},
 		CLOSE = {
@@ -112,6 +112,7 @@ SocialWheelUI.init = function (self, parent, ingame_ui_context)
 
 	self:_create_ui_elements()
 	self:_register_rpcs()
+	Managers.state.event:register(self, "on_player_joined_side", "on_player_joined_side")
 end
 
 SocialWheelUI._create_ui_elements = function (self)
@@ -200,6 +201,8 @@ SocialWheelUI.destroy = function (self)
 	if player_interactor_ext then
 		player_interactor_ext:enable_interactions(true)
 	end
+
+	Managers.state.event:unregister("on_player_joined_side", self)
 end
 
 SocialWheelUI._widget_angle = function (self, total_angle, num_elements, i)
@@ -639,8 +642,8 @@ SocialWheelUI._open_menu = function (self, dt, t, input_service, increment_page)
 		social_wheel_unit = nil
 	end
 
-	local side = Managers.state.side.side_by_unit[self._player.player_unit]
-	local side_name = side:name()
+	local unique_id = self._player:unique_id()
+	local side_name = self._side_name
 	local side_settings = Managers.state.game_mode:setting("social_wheel_by_side")
 	local category
 
@@ -653,10 +656,9 @@ SocialWheelUI._open_menu = function (self, dt, t, input_service, increment_page)
 	if IS_WINDOWS then
 		local gamepad_enabled = Managers.input:is_device_active("gamepad")
 		local layout_settings = Application.user_setting("social_wheel_gamepad_layout")
-		local should_use_gamepad = Managers.state.game_mode:setting("should_use_gamepad_social_wheel")
 		local use_gamepad_layout = layout_settings == "auto" and gamepad_enabled or layout_settings == "always"
 
-		if use_gamepad_layout or should_use_gamepad then
+		if use_gamepad_layout then
 			category = category .. "_gamepad"
 		end
 	else
@@ -762,7 +764,6 @@ SocialWheelUI._open_menu = function (self, dt, t, input_service, increment_page)
 
 		if position then
 			local ping_system = Managers.state.entity:system("ping_system")
-			local unique_id = self._player:unique_id()
 			local _, new_position, _ = ping_system:is_ping_response(nil, unique_id, position)
 
 			if not self._world_marker_preview_id or new_position and Vector3.distance_squared(new_position, position) == 0 then
@@ -773,11 +774,9 @@ SocialWheelUI._open_menu = function (self, dt, t, input_service, increment_page)
 		end
 	end
 
-	if side_name then
-		local event = SFX_EVENTS[side_name].OPEN
+	local event = SFX_EVENTS[self._side_name].OPEN
 
-		self:_play_sound(event)
-	end
+	self:_play_sound(event)
 end
 
 SocialWheelUI.update_open = function (self, dt, t, input_service)
@@ -985,14 +984,9 @@ SocialWheelUI._update_selection = function (self, enabled, total_angle, angle)
 			end
 		end
 
-		local side = Managers.state.side.side_by_unit[self._player.player_unit]
-		local side_name = side:name()
+		local event = SFX_EVENTS[self._side_name].HOVER
 
-		if side_name then
-			local event = SFX_EVENTS[side_name].HOVER
-
-			self:_play_sound(event)
-		end
+		self:_play_sound(event)
 	else
 		self._valid_selection = false
 	end
@@ -1125,19 +1119,14 @@ SocialWheelUI._close_menu = function (self, dt, t, input_service, page_only)
 		end
 	end
 
-	local side = Managers.state.side.side_by_unit[self._player.player_unit]
-	local side_name = side:name()
+	if social_message_sent then
+		local event = SFX_EVENTS[self._side_name].SELECT
 
-	if side_name then
-		if social_message_sent then
-			local event = SFX_EVENTS[side_name].SELECT
+		self:_play_sound(event)
+	else
+		local event = SFX_EVENTS[self._side_name].CLOSE
 
-			self:_play_sound(event)
-		else
-			local event = SFX_EVENTS[side_name].CLOSE
-
-			self:_play_sound(event)
-		end
+		self:_play_sound(event)
 	end
 
 	self._active_context = nil
@@ -1157,4 +1146,14 @@ end
 
 SocialWheelUI.is_active = function (self)
 	return self._active_context ~= nil
+end
+
+SocialWheelUI.on_player_joined_side = function (self, unique_id, local_player_id, side_id)
+	local player = Managers.player:player_from_unique_id(unique_id)
+
+	if player.local_player then
+		local side = Managers.state.side:get_side(side_id)
+
+		self._side_name = side:name()
+	end
 end

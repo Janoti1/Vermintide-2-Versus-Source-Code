@@ -39,22 +39,7 @@ ActivatedAbilitySettings = {
 			display_name = "career_active_name_dr_3",
 			cooldown = 120,
 			icon = "bardin_ranger_activated_ability",
-			action_name = "action_career_dr_3",
-			description_values = {
-				{
-					value = CareerConstants.dr_ranger.ability_duration
-				}
-			},
-			mechanism_overrides = {
-				versus = {
-					cooldown = 140,
-					description_values = {
-						{
-							value = CareerConstants.dr_ranger.ability_duration_versus
-						}
-					}
-				}
-			}
+			action_name = "action_career_dr_3"
 		}
 	},
 	es_1 = {
@@ -72,12 +57,7 @@ ActivatedAbilitySettings = {
 			display_name = "career_active_name_es_2",
 			cooldown = 30,
 			icon = "markus_knight_activated_ability",
-			ability_class = CareerAbilityESKnight,
-			mechanism_overrides = {
-				versus = {
-					cooldown = 60
-				}
-			}
+			ability_class = CareerAbilityESKnight
 		}
 	},
 	es_3 = {
@@ -86,24 +66,7 @@ ActivatedAbilitySettings = {
 			display_name = "career_active_name_markus_mercenary",
 			cooldown = 90,
 			icon = "markus_mercenary_activated_ability",
-			ability_class = CareerAbilityESMercenary,
-			heal_amount = CareerConstants.es_mercenary.ability_heal_amount,
-			description_values = {
-				{
-					value = CareerConstants.es_mercenary.ability_heal_amount
-				}
-			},
-			mechanism_overrides = {
-				versus = {
-					description = "career_active_desc_markus_mercenary_2",
-					description_values = {
-						{
-							value = CareerConstants.es_mercenary.ability_heal_amount_versus
-						}
-					},
-					heal_amount = CareerConstants.es_mercenary.ability_heal_amount_versus
-				}
-			}
+			ability_class = CareerAbilityESMercenary
 		}
 	},
 	we_1 = {
@@ -128,12 +91,7 @@ ActivatedAbilitySettings = {
 			display_name = "career_active_name_we_2",
 			cooldown = 20,
 			icon = "kerillian_maidenguard_activated_ability",
-			ability_class = CareerAbilityWEMaidenGuard,
-			mechanism_overrides = {
-				versus = {
-					cooldown = 40
-				}
-			}
+			ability_class = CareerAbilityWEMaidenGuard
 		}
 	},
 	we_3 = {
@@ -187,7 +145,7 @@ ActivatedAbilitySettings = {
 			description = "career_active_desc_bw_1",
 			weapon_name = "sienna_scholar_career_skill_weapon",
 			display_name = "career_active_name_bw_1",
-			cooldown = 50,
+			cooldown = 60,
 			icon = "sienna_scholar_activated_ability",
 			action_name = "action_career_bw_1"
 		}
@@ -196,14 +154,9 @@ ActivatedAbilitySettings = {
 		{
 			description = "career_active_desc_bw_2_2",
 			display_name = "career_active_name_bw_2",
-			cooldown = 50,
+			cooldown = 40,
 			icon = "sienna_adept_activated_ability",
-			ability_class = CareerAbilityBWAdept,
-			mechanism_overrides = {
-				versus = {
-					cooldown = 80
-				}
-			}
+			ability_class = CareerAbilityBWAdept
 		}
 	},
 	bw_3 = {
@@ -523,29 +476,13 @@ PassiveAbilitySettings = {
 		buffs = {
 			"sienna_scholar_passive",
 			"sienna_scholar_passive_ranged_damage",
-			"sienna_scholar_passive_max_overcharge",
 			"sienna_scholar_ability_cooldown_on_hit",
-			"sienna_scholar_ability_cooldown_on_damage_taken",
-			"sienna_scholar_overcharge_no_slow"
+			"sienna_scholar_ability_cooldown_on_damage_taken"
 		},
 		perks = {
 			{
 				display_name = "career_passive_name_bw_1b",
 				description = "career_passive_desc_bw_1b_2"
-			},
-			{
-				display_name = "sienna_scholar_overcharge_no_slow",
-				description = "sienna_scholar_overcharge_no_slow_desc"
-			},
-			{
-				description = "sienna_scholar_increased_max_desc",
-				display_name = "sienna_scholar_increased_max",
-				description_values = {
-					{
-						value_type = "percent",
-						value = CareerConstants.bw_scholar.perk_3_max_overcharge
-					}
-				}
 			}
 		}
 	},

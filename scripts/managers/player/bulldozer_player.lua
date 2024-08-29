@@ -286,8 +286,7 @@ BulldozerPlayer.spawn = function (self, optional_position, optional_rotation, is
 		},
 		buff_system = {
 			is_husk = false,
-			initial_buff_names = initial_buff_names,
-			breed = breed
+			initial_buff_names = initial_buff_names
 		},
 		statistics_system = {
 			template = "player",
@@ -338,8 +337,7 @@ BulldozerPlayer.spawn = function (self, optional_position, optional_rotation, is
 
 	if using_ghost_mode_system then
 		extension_init_data.ghost_mode_system = {
-			side_id = side.side_id,
-			player = self
+			side_id = side.side_id
 		}
 	end
 

@@ -125,7 +125,7 @@ end
 
 UnitFrameUI.destroy = function (self)
 	self:set_visible(false)
-	Managers.state.event:unregister("enter_ghostmode", self)
+	Managers.state.event:unregister("enter_ghostmode")
 end
 
 UnitFrameUI.is_visible = function (self)
@@ -446,7 +446,7 @@ UnitFrameUI.set_portrait_frame = function (self, frame_settings_name, level_text
 
 	local retained_mode = true
 	local widget_definition = UIWidgets.create_portrait_frame("portrait_pivot", frame_settings_name, level_text, scale, retained_mode)
-	local widget = UIWidget.init(widget_definition, self.ui_renderer)
+	local widget = UIWidget.init(widget_definition)
 
 	widgets.portrait_static = widget
 	portrait_widgets.portrait_static = widgets.portrait_static
@@ -892,13 +892,6 @@ UnitFrameUI.show_respawn_countdown = function (self, player, is_local_player, sp
 	widget_content.total_countdown_time = spawn_timer
 	widget_content.state = "countdown"
 	widget_content.respawn_info_text = "Respawn in"
-
-	local widget_style = widget.style
-	local style_n = widget_style.respawn_countdown_text
-
-	if style_n then
-		style_n.text_color[1] = 255
-	end
 end
 
 UnitFrameUI.update_respawn_countdown = function (self, dt, t)
@@ -911,7 +904,6 @@ UnitFrameUI.update_respawn_countdown = function (self, dt, t)
 	local widget = player_frame and self:_widget_by_name("respawn_dynamic") or self:_widget_by_name("default_dynamic")
 	local widget_content = widget.content
 	local state = widget_content.state
-	local fallback_fadeout_time = 0.66
 
 	if state == "countdown" then
 		local respawn_delta = widget_content.respawn_timer - Managers.time:time("game")
@@ -919,7 +911,7 @@ UnitFrameUI.update_respawn_countdown = function (self, dt, t)
 		if respawn_delta <= 0 then
 			local total_fadeout_time = widget_content.total_fadeout_time
 
-			widget_content.fadeout_time = total_fadeout_time or fallback_fadeout_time
+			widget_content.fadeout_time = total_fadeout_time
 			state = "fadeout"
 			respawn_delta = 0
 		end
@@ -927,8 +919,8 @@ UnitFrameUI.update_respawn_countdown = function (self, dt, t)
 		widget_content.respawn_countdown_text = string.format("%d", math.abs(respawn_delta))
 	elseif state == "fadeout" then
 		local widget_style = widget.style
-		local fadeout_time = (widget_content.fadeout_time or fallback_fadeout_time) - dt
-		local normalized_alpha = math.max(fadeout_time, 0) / (widget_content.total_fadeout_time or fallback_fadeout_time)
+		local fadeout_time = widget_content.fadeout_time - dt
+		local normalized_alpha = (fadeout_time - dt) / widget_content.total_fadeout_time
 		local alpha = normalized_alpha * 255
 		local style_n = widget_style.respawn_countdown_text
 
@@ -1587,17 +1579,15 @@ local pop_dmg_time = 0.7
 local pop_dmg_life_time = 2
 local dmg_lookup1 = {
 	[0] = ".00",
-	[75] = ".75",
-	[25] = ".25",
-	[50] = ".50",
-	[100] = ".00"
+	[0.75] = ".75",
+	[0.25] = ".25",
+	[0.5] = ".50"
 }
 local dmg_lookup2 = {
 	[0] = " ",
-	[75] = "\xC2\xBE",
-	[25] = "\xC2\xBC",
-	[50] = "\xC2\xBD",
-	[100] = " "
+	[0.75] = "\xC2\xBE",
+	[0.25] = "\xC2\xBC",
+	[0.5] = "\xC2\xBD"
 }
 local dmg_decimals_lookup = dmg_lookup1
 local MAX_NUMBER_OF_DAMAGE_MESSAGES = 4
@@ -1663,8 +1653,7 @@ UnitFrameUI.add_damage_feedback = function (self, hash, is_local_player, event_t
 
 	local integer = math.floor(damage_amount)
 	local dec = damage_amount - integer
-	local dec_lookup = math.floor((dec + 0.125) * 4) * 25
-	local parts = dmg_decimals_lookup[dec_lookup] or "  "
+	local parts = dmg_decimals_lookup[dec] or "  "
 	local damage_amount_txt = integer .. parts
 
 	dmg_parts[existing_event.num_dmg_parts] = {
@@ -1791,9 +1780,8 @@ UnitFrameUI._update_damage_feedback = function (self, dt, t)
 			event.old_shown_amount_decimal = event.shown_amount_decimal
 
 			local dec = event.shown_amount - math.floor(event.shown_amount)
-			local dec_lookup = math.floor((dec + 0.125) * 4) * 25
 
-			event.shown_amount_decimal = dmg_decimals_lookup[dec_lookup] or ".??"
+			event.shown_amount_decimal = dmg_decimals_lookup[dec] or "??"
 
 			if event.running_parts == 0 then
 				event.first_index = 1

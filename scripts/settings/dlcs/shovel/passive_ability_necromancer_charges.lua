@@ -1,7 +1,7 @@
 local RPCS = {
 	"rpc_necromancer_passive_spawn_pet",
 	"rpc_necromancer_respawn_all_pets",
-	"rpc_necromancer_passive_kill_pets"
+	"rpc_necromancer_passive_stragglify_pets"
 }
 local PositionModesLookup
 
@@ -131,13 +131,9 @@ PassiveAbilityNecromancerCharges.destroy = function (self)
 	self._network_event_delegate:unregister(self)
 	self:_unregister_events()
 
-	local in_game_session = Managers.state.network:in_game_session()
+	local game_session = Managers.state.network:game()
 
-	if not in_game_session then
-		return
-	end
-
-	if not Managers.state.network.profile_synchronizer:get_own_actually_ingame() then
+	if not game_session then
 		return
 	end
 
@@ -185,7 +181,7 @@ PassiveAbilityNecromancerCharges.spawn_army_pet = function (self, spawn_index, o
 		if not breed_name then
 			spawn_index = spawn_index - num_army
 			breed_name = extra_skeletons[spawn_index]
-			template_name = "necromancer_pet_army"
+			template_name = "necromancer_pet_straggler"
 			done = spawn_index >= #extra_skeletons
 		end
 	end
@@ -273,9 +269,9 @@ PassiveAbilityNecromancerCharges.rpc_necromancer_passive_spawn_pet = function (s
 	self:_queue_pet(breed_name, position, position_mode, template_name)
 end
 
-PassiveAbilityNecromancerCharges.kill_pets = function (self, peer_id)
+PassiveAbilityNecromancerCharges.stragglify_pets = function (self, peer_id)
 	if not self._is_server then
-		self._network_transmit:send_rpc_server("rpc_necromancer_passive_kill_pets")
+		self._network_transmit:send_rpc_server("rpc_necromancer_passive_stragglify_pets")
 
 		return
 	end
@@ -287,9 +283,9 @@ PassiveAbilityNecromancerCharges.kill_pets = function (self, peer_id)
 		for pet_unit in pairs(self._spawned_pets) do
 			if HEALTH_ALIVE[pet_unit] then
 				local template = commander_ext:controlled_unit_template(pet_unit)
-				local army_template = "necromancer_pet_army"
+				local straggler_template = "necromancer_pet_straggler"
 
-				if template.name ~= army_template then
+				if template.name ~= straggler_template then
 					AiUtils.kill_unit(pet_unit)
 				end
 			end
@@ -299,8 +295,8 @@ PassiveAbilityNecromancerCharges.kill_pets = function (self, peer_id)
 	end
 end
 
-PassiveAbilityNecromancerCharges.rpc_necromancer_passive_kill_pets = function (self, channel_id)
-	assert(self._is_server, "[PassiveAbilityNecromancerCharges] 'rpc_necromancer_passive_kill_pets' is a server only function.")
+PassiveAbilityNecromancerCharges.rpc_necromancer_passive_stragglify_pets = function (self, channel_id)
+	assert(self._is_server, "[PassiveAbilityNecromancerCharges] 'rpc_necromancer_passive_stragglify_pets' is a server only function.")
 
 	local peer_id = CHANNEL_TO_PEER_ID[channel_id]
 
@@ -308,7 +304,7 @@ PassiveAbilityNecromancerCharges.rpc_necromancer_passive_kill_pets = function (s
 		return
 	end
 
-	self:kill_pets(peer_id)
+	self:stragglify_pets(peer_id)
 end
 
 PassiveAbilityNecromancerCharges.rpc_necromancer_respawn_all_pets = function (self, channel_id)

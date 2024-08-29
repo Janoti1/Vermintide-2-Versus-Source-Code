@@ -552,7 +552,7 @@ LobbyBrowserConsoleUI._verify_selected_lobby_index = function (self)
 		local widget_content = widget.content
 		local progress = self._wanted_pos / (self._num_lobbies * entry_size_y - num_visible_entries * entry_size_y)
 
-		progress = self:_is_nan_or_inf(progress) and 0 or progress
+		progress = self:_is_nan(progress) and 0 or progress
 		self._ui_animations.scrollbar = UIAnimation.init(UIAnimation.function_by_time, widget_content, "scrollbar_progress", widget_content.scrollbar_progress, progress, 0.3, math.easeOutCubic)
 	end
 end
@@ -670,7 +670,7 @@ LobbyBrowserConsoleUI._handle_browser_input = function (self, input_service, ele
 		local widget_content = widget.content
 		local progress = self._wanted_pos / (self._num_lobbies * entry_size_y - num_visible_entries * entry_size_y)
 
-		progress = self:_is_nan_or_inf(progress) and 0 or progress
+		progress = self:_is_nan(progress) and 0 or progress
 		self._ui_animations.scrollbar = UIAnimation.init(UIAnimation.function_by_time, widget_content, "scrollbar_progress", widget_content.scrollbar_progress, progress, 0.3, math.easeOutCubic)
 	end
 end
@@ -809,13 +809,13 @@ LobbyBrowserConsoleUI._handle_browser_input_mouse = function (self, input_servic
 		local widget_content = widget.content
 		local progress = self._wanted_pos / (self._num_lobbies * entry_size_y - num_visible_entries * entry_size_y)
 
-		progress = self:_is_nan_or_inf(progress) and 0 or progress
+		progress = self:_is_nan(progress) and 0 or progress
 		self._ui_animations.scrollbar = UIAnimation.init(UIAnimation.function_by_time, widget_content, "scrollbar_progress", widget_content.scrollbar_progress, progress, 0.3, math.easeOutCubic)
 	end
 end
 
-LobbyBrowserConsoleUI._is_nan_or_inf = function (self, value)
-	return type(value) ~= "number" or value ~= value or value == math.huge or value == -math.huge
+LobbyBrowserConsoleUI._is_nan = function (self, value)
+	return type(value) == "number" and value ~= value
 end
 
 LobbyBrowserConsoleUI._handle_filter_input = function (self, input_service, element_settings, dt, t)
@@ -1144,7 +1144,7 @@ LobbyBrowserConsoleUI._handle_level_filter_input = function (self, input_service
 		local widget_content = widget.content
 		local progress = (self._wanted_list_pos - self._list_base_pos_y) / (num_entries * entry_size_y - num_visible_entries * entry_size_y + entry_size_y)
 
-		progress = self:_is_nan_or_inf(progress) and 0 or progress
+		progress = self:_is_nan(progress) and 0 or progress
 		self._ui_animations.list_scrollbar = UIAnimation.init(UIAnimation.function_by_time, widget_content, "scrollbar_progress", widget_content.scrollbar_progress, progress, 0.3, math.easeOutCubic)
 
 		self._parent:play_sound("Play_hud_hover")
@@ -1247,7 +1247,7 @@ LobbyBrowserConsoleUI._handle_level_filter_input_mouse = function (self, input_s
 			local widget_content = widget.content
 			local progress = offset_num / (num_entries - num_visible_entries + 1)
 
-			progress = self:_is_nan_or_inf(progress) and 0 or progress
+			progress = self:_is_nan(progress) and 0 or progress
 			self._ui_animations.list_scrollbar = UIAnimation.init(UIAnimation.function_by_time, widget_content, "scrollbar_progress", widget_content.scrollbar_progress, progress, 0.3, math.easeOutCubic)
 		end
 	end
@@ -2017,11 +2017,10 @@ LobbyBrowserConsoleUI._fill_details = function (self, lobby_data)
 
 	if lobby_data then
 		local matchmaking_type_lookup = {
-			tutorial = "lb_game_type_prologue",
-			deed = "lb_game_type_deed",
-			weave = "lb_game_type_weave",
 			event = "lb_game_type_event",
-			deus_weekly = "cw_weekly_expedition_name_long",
+			deed = "lb_game_type_deed",
+			tutorial = "lb_game_type_prologue",
+			weave = "lb_game_type_weave",
 			custom = "lb_game_type_custom",
 			standard = "lb_game_type_quick_play",
 			weave_quick_play = "lb_game_type_weave_quick_play",
@@ -2044,7 +2043,7 @@ LobbyBrowserConsoleUI._fill_details = function (self, lobby_data)
 				matchmaking_type = "weave"
 			end
 		elseif mechanism == "deus" then
-			matchmaking_type = matchmaking_type == "event" and "deus_weekly" or "deus"
+			matchmaking_type = "deus"
 		end
 
 		local level_setting = LevelSettings[level_key]
@@ -2346,7 +2345,6 @@ LobbyBrowserConsoleUI._fill_deus_details = function (self, lobby_data)
 			deed = "lb_game_type_deed",
 			tutorial = "lb_game_type_prologue",
 			weave = "lb_game_type_weave",
-			deus_weekly = "cw_weekly_expedition_name_long",
 			custom = "lb_game_type_custom",
 			standard = "lb_game_type_quick_play",
 			weave_quick_play = "lb_game_type_weave_quick_play",
@@ -2369,7 +2367,7 @@ LobbyBrowserConsoleUI._fill_deus_details = function (self, lobby_data)
 				matchmaking_type = "weave"
 			end
 		elseif mechanism == "deus" then
-			matchmaking_type = matchmaking_type == "event" and "deus_weekly" or "deus"
+			matchmaking_type = "deus"
 		end
 
 		local level_setting = LevelSettings[level_key]

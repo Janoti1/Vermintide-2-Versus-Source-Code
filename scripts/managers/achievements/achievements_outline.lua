@@ -318,20 +318,6 @@ local weaves = {
 	entries = {},
 	categories = {}
 }
-local achievements = {
-	name = "achv_menu_achievements_category_title",
-	categories = {
-		levels,
-		heroes,
-		enemies,
-		items,
-		crafting,
-		deeds,
-		weaves
-	}
-}
-
-DLCUtils.append("achievement_categories", achievements.categories)
 
 for _, dlc in pairs(DLCSettings) do
 	local achievement_outline = dlc.achievement_outline
@@ -394,6 +380,19 @@ for _, dlc in pairs(DLCSettings) do
 		end
 	end
 end
+
+local achievements = {
+	name = "achv_menu_achievements_category_title",
+	categories = {
+		levels,
+		heroes,
+		enemies,
+		items,
+		crafting,
+		deeds,
+		weaves
+	}
+}
 
 for _, category in ipairs(achievements.categories) do
 	local sub_categories = category.categories

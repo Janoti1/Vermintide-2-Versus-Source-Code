@@ -19,6 +19,7 @@ local mutators_to_add = {
 	"multiple_bosses",
 	"hordes_galore",
 	"powerful_elites",
+	"corpse_explosion",
 	"shared_health_pool",
 	"high_intensity",
 	"wave_of_plague_monks",

@@ -258,9 +258,9 @@ MenuWorldPreviewer.update = function (self, dt, t, input_disabled)
 	end
 end
 
-MenuWorldPreviewer.post_update = function (self, dt, t)
+MenuWorldPreviewer.post_update = function (self, dt)
 	self:_handle_unit_spawn_request()
-	MenuWorldPreviewer.super.post_update(self, dt, t)
+	MenuWorldPreviewer.super.post_update(self, dt)
 end
 
 MenuWorldPreviewer.force_stream_highest_mip_levels = function (self)
@@ -599,8 +599,8 @@ MenuWorldPreviewer._spawn_item = function (self, item_name, spawn_data)
 	end
 end
 
-MenuWorldPreviewer._spawn_item_unit = function (self, unit, item_slot_type, item_template, unit_attachment_node_linking, scene_graph_links, material_settings, unit_spawn_data)
-	MenuWorldPreviewer.super._spawn_item_unit(self, unit, item_slot_type, item_template, unit_attachment_node_linking, scene_graph_links, material_settings, unit_spawn_data)
+MenuWorldPreviewer._spawn_item_unit = function (self, unit, item_slot_type, item_template, unit_attachment_node_linking, scene_graph_links, material_settings)
+	MenuWorldPreviewer.super._spawn_item_unit(self, unit, item_slot_type, item_template, unit_attachment_node_linking, scene_graph_links, material_settings)
 
 	if self._use_highest_mip_levels or UISettings.wait_for_mip_streaming_items then
 		self:_request_mip_streaming_for_unit(unit)

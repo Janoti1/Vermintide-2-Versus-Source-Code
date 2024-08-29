@@ -49,6 +49,10 @@ DeusBelakorCrystalExtension.destroy = function (self)
 		return
 	end
 
+	if self._running_astar then
+		GwNavAStar.cancel(self._astar)
+	end
+
 	GwNavAStar.destroy(self._astar)
 
 	self._astar = nil

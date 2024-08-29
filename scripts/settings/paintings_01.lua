@@ -1888,51 +1888,6 @@ Paintings.ver_vampire_counts_page_58 = {
 		wood = true
 	}
 }
-Paintings.hor_high_elves_page_004 = {
-	sound_event = "painting_high_elves_page_004_description",
-	rarity = "common",
-	display_name = "painting_high_elves_page_004_name",
-	icon = "icon_painting_1",
-	frame = "wood",
-	description = "painting_high_elves_page_004_description",
-	artist = "painting_high_elves_page_004_artist",
-	orientation = "horizontal",
-	frames = {
-		gold = true,
-		paint = true,
-		wood = true
-	}
-}
-Paintings.ver_dark_elves_page_52 = {
-	sound_event = "painting_dark_elves_page_52_description",
-	rarity = "common",
-	display_name = "painting_dark_elves_page_52_name",
-	icon = "icon_painting_2",
-	frame = "wood",
-	description = "painting_dark_elves_page_52_description",
-	artist = "painting_dark_elves_page_52_artist",
-	orientation = "vertical",
-	frames = {
-		gold = true,
-		paint = true,
-		wood = true
-	}
-}
-Paintings.ver_dark_elves_page_58 = {
-	sound_event = "painting_dark_elves_page_58_description",
-	rarity = "common",
-	display_name = "painting_dark_elves_page_58_name",
-	icon = "icon_painting_2",
-	frame = "wood",
-	description = "painting_dark_elves_page_58_description",
-	artist = "painting_dark_elves_page_58_artist",
-	orientation = "vertical",
-	frames = {
-		gold = true,
-		paint = true,
-		wood = true
-	}
-}
 DefaultPaintings = {
 	"hor_none",
 	"ver_none",
@@ -2063,10 +2018,7 @@ local painting_order = {
 	"ver_vampire_counts_page_31",
 	"ver_vampire_counts_page_35",
 	"ver_vampire_counts_page_40",
-	"ver_vampire_counts_page_58",
-	"ver_dark_elves_page_58",
-	"ver_dark_elves_page_52",
-	"hor_high_elves_page_004"
+	"ver_vampire_counts_page_58"
 }
 
 PaintingOrder = PaintingOrder or {}

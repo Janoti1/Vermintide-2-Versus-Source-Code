@@ -132,7 +132,7 @@ BTStormfiendDualShootAction.create_firewall = function (self, unit, data)
 	local direction = data.direction:unbox()
 	local extension_init_data = {
 		area_damage_system = {
-			liquid_template = "stormfiend_shock",
+			liquid_template = "stormfiend_firewall",
 			flow_dir = direction,
 			source_unit = unit
 		}

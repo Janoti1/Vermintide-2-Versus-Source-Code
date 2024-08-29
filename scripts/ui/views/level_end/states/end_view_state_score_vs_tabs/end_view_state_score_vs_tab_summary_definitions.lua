@@ -26,7 +26,14 @@ local scenegraph_definition = {
 		}
 	}
 }
-local widget_definitions = {}
+local widget_definitions = {
+	temp = UIWidgets.create_simple_texture("fake_end_game_view_summary", "panel", nil, nil, {
+		255,
+		255,
+		255,
+		255
+	}, nil, scenegraph_definition.panel.size)
+}
 local animation_definitions = {
 	on_enter = {
 		{

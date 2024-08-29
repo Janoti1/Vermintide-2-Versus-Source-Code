@@ -16,6 +16,7 @@ require("scripts/ui/atlas_settings/gui_frames_atlas")
 require("scripts/ui/atlas_settings/gui_menus_atlas")
 require("scripts/ui/atlas_settings/gui_country_flags_atlas")
 require("scripts/ui/atlas_settings/gui_mission_selection_atlas")
+require("scripts/ui/atlas_settings/gui_development_atlas")
 require("scripts/ui/atlas_settings/gui_lock_test_atlas")
 
 UIAtlasHelper = UIAtlasHelper or {}
@@ -44,7 +45,7 @@ local standalone_texture = {
 	gradient_credits_menu = true,
 	achievement_small_book_glow = true,
 	unit_frame_portrait_kruber_questingknight_masked = true,
-	teammate_hp_bar_color_tint_7 = true,
+	teammate_hp_bar_mask = true,
 	end_screen_effect_victory_1 = true,
 	gradient_main_menu = true,
 	news_splash_new_dlc_tag = true,
@@ -122,7 +123,7 @@ local standalone_texture = {
 	start_game_detail_glow_masked = true,
 	achievement_menu_flag = true,
 	unit_frame_portrait_bardin_engineer_twitch_icon = true,
-	dark_pact_ability_effect = true,
+	unit_frame_portrait_kerillian_maidenguard_twitch_icon = true,
 	console_menu_highlight = true,
 	hero_power_glow_console = true,
 	unit_frame_portrait_sienna_unchained_twitch = true,
@@ -160,41 +161,24 @@ local standalone_texture = {
 	weave_button_passive_glow = true,
 	overcharge_bar_warrior_priest = true,
 	achievement_book_ribbon_01 = true,
-	dark_pact_player_hp_bar = true,
+	overcharge_bar_warrior_priest_slim_bar = true,
 	overcharge_bar_warrior_priest_active = true,
 	gamepad_ability_effect_priest = true,
 	twitch_rat_ogre = true,
 	twitch_logo = true,
-	teammate_hp_bar_5 = true,
 	teammate_hp_bar_color_tint_2 = true,
-	teammate_hp_bar_7 = true,
-	teammate_hp_bar_color_tint_5 = true,
-	teammate_hp_bar_color_tint_6 = true,
-	teammate_hp_bar_mask = true,
 	unit_frame_portrait_bardin_ironbreaker_twitch_icon = true,
-	local_player_score_bar = true,
 	storepage_button = true,
-	dark_pact_overcharge_bar = true,
-	dark_pact_player_hp_bar_color_tint = true,
-	overcharge_bar_warrior_priest_slim_bar = true,
 	boss_portrait_heal = true,
-	dark_pact_boss_player_hp_bar_color_tint = true,
-	dark_pact_boss_player_hp_bar = true,
-	unit_frame_portrait_kerillian_maidenguard_twitch_icon = true,
-	dark_pact_ability_effect_top = true,
-	dark_pact_ability_effect_bar_top = true,
 	radial_chat_wedge = true,
 	unit_frame_portrait_kruber_huntsman_twitch_icon = true,
-	dark_pact_ability_effect_halo = true,
 	game_mode_selection_glow_02 = true,
-	dark_pact_ability_icon_cooldown_gradient = true,
 	options_menu_divider_glow_02 = true,
 	loot_presentation_circle_glow_plentiful = true,
 	unit_frame_portrait_kruber_questingknight_twitch = true,
 	unit_frame_portrait_victor_bountyhunter = true,
 	athanor_options_track_background = true,
 	journal_gradient_03 = true,
-	opponent_score_bar = true,
 	background_net_anim_02 = true,
 	end_screen_effect_defeat_1 = true,
 	hud_panel_banner = true,
@@ -210,7 +194,6 @@ local standalone_texture = {
 	esrb_logo = true,
 	unit_frame_portrait_victor_bountyhunter_twitch_icon = true,
 	loading_screen = true,
-	teammate_hp_bar_8 = true,
 	news_splash_bg_premium = true,
 	settings_debug_gamma_correction = true,
 	unit_frame_portrait_victor_captain_twitch_icon = true,
@@ -225,7 +208,6 @@ local standalone_texture = {
 	mask_rect = true,
 	loot_presentation_circle_glow_plentiful_large = true,
 	unit_frame_portrait_sienna_necromancer = true,
-	dark_pact_ability_progress_bar = true,
 	speech_bubble = true,
 	unit_frame_portrait_kruber_mercenary = true,
 	unit_frame_portrait_default = true,
@@ -236,7 +218,6 @@ local standalone_texture = {
 	beta_text = true,
 	end_screen_experience_bar = true,
 	game_option_smoke = true,
-	teammate_hp_bar_color_tint_8 = true,
 	store_bg_marble_highlights_mask = true,
 	play_button_passive_glow = true,
 	weave_button_passive_glow_unmasked = true,
@@ -309,7 +290,6 @@ local standalone_texture = {
 	unit_frame_portrait_kruber_questingknight = true,
 	unit_frame_portrait_kerillian_shade_twitch = true,
 	teammate_hp_bar_color_tint_1 = true,
-	teammate_hp_bar_6 = true,
 	twitch_disconnected = true,
 	twitch_special_group_2 = true,
 	twitch_connected = true,
@@ -339,7 +319,6 @@ local standalone_texture = {
 	unit_frame_portrait_kruber_knight_twitch = true,
 	twitch_healing_draught = true,
 	end_screen_banner_defeat = true,
-	dark_pact_ability_icon_gradient_mask = true,
 	gradient_friend_list = true,
 	gradient_enchantment_craft = true,
 	unit_frame_portrait_bardin_slayer = true,
@@ -364,6 +343,7 @@ local ui_atlas_setting_tables = {
 	gui_frames_atlas = frames_atlas,
 	gui_level_images_atlas = level_images_atlas,
 	gui_country_flags_atlas = country_flags_atlas,
+	gui_development_atlas = development_atlas,
 	gui_lock_test_atlas = lock_test_atlas
 }
 local masked_materials = {
@@ -372,13 +352,14 @@ local masked_materials = {
 	gui_chat_atlas = "gui_chat_atlas_masked",
 	gui_hud_atlas = "gui_hud_atlas_masked",
 	gui_start_screen_atlas = "gui_start_screen_atlas_masked",
-	gui_level_images_atlas = "gui_level_images_atlas_masked",
+	gui_development_atlas = "gui_development_atlas_masked",
 	gui_frames_atlas = "gui_frames_atlas_masked",
 	gui_menu_buttons_atlas = "gui_menu_buttons_atlas_masked",
 	gui_menus_atlas = "gui_menus_atlas_masked",
-	gui_lock_test_atlas = "gui_lock_test_atlas_masked",
+	gui_level_images_atlas = "gui_level_images_atlas_masked",
 	gui_season_emblems_atlas = "gui_season_emblems_atlas_masked",
 	gui_country_flags_atlas = "gui_country_flags_atlas_masked",
+	gui_lock_test_atlas = "gui_lock_test_atlas_masked",
 	gui_icons_atlas = "gui_icons_atlas_masked",
 	gui_items_atlas = "gui_items_atlas_masked"
 }
@@ -390,12 +371,14 @@ local saturated_materials = {
 	gui_achievement_icons_atlas = "gui_achievement_icons_atlas_saturated",
 	gui_menu_buttons_atlas = "gui_menu_buttons_atlas_saturated",
 	gui_menus_atlas = "gui_menus_atlas_saturated",
+	gui_development_atlas = "gui_development_atlas_saturated",
 	gui_icons_atlas = "gui_icons_atlas_saturated",
 	gui_items_atlas = "gui_items_atlas_saturated",
 	gui_mission_selection_atlas = "gui_mission_selection_atlas_saturated"
 }
 local masked_saturated_materials = {
 	gui_achievement_icons_atlas = "gui_achievement_icons_atlas_masked_saturated",
+	gui_development_atlas = "gui_development_atlas_masked_saturated",
 	gui_lock_test_atlas = "gui_lock_test_atlas_masked_saturated",
 	gui_hud_atlas = "gui_hud_atlas_point_sample_masked_saturated",
 	gui_icons_atlas = "gui_icons_atlas_masked_saturated",
@@ -417,12 +400,14 @@ local masked_point_sample_materials = {
 	gui_frames_atlas = "gui_frames_atlas_point_sample_masked",
 	gui_menus_atlas = "gui_menus_atlas_point_sample_masked",
 	gui_season_emblems_atlas = "gui_season_emblems_atlas_point_sample_masked",
+	gui_development_atlas = "gui_development_atlas_point_sample_masked",
 	gui_icons_atlas = "gui_icons_atlas_point_sample_masked",
 	gui_items_atlas = "gui_items_atlas_point_sample_masked"
 }
 local masked_saturated_point_sample_materials = {
-	gui_lock_test_atlas = "gui_lock_test_atlas_point_sample_masked_saturated",
+	gui_development_atlas = "gui_development_atlas_point_sample_masked_saturated",
 	gui_icons_atlas = "gui_icons_atlas_point_sample_masked_saturated",
+	gui_lock_test_atlas = "gui_lock_test_atlas_point_sample_masked_saturated",
 	gui_hud_atlas = "gui_hud_atlas_point_sample_masked_saturated"
 }
 local point_sample_materials = {
@@ -435,11 +420,12 @@ local point_sample_materials = {
 	gui_achievement_icons_atlas = "gui_achievement_icons_atlas_point_sample",
 	gui_level_images_atlas = "gui_level_images_atlas_point_sample",
 	gui_menus_atlas = "gui_menus_atlas_point_sample",
-	loading_screen_default = "loading_screen_default_point_sample",
-	overchargecircle_sidefade = "overchargecircle_fill_point_sample",
 	loading_screen = "loading_screen_point_sample",
-	end_screen_banner_victory = "end_screen_banner_victory_point_sample",
+	overchargecircle_sidefade = "overchargecircle_fill_point_sample",
+	gui_development_atlas = "gui_development_atlas_point_sample",
+	loading_screen_default = "loading_screen_default_point_sample",
 	gui_icons_atlas = "gui_icons_atlas_point_sample",
+	end_screen_banner_victory = "end_screen_banner_victory_point_sample",
 	end_screen_effect_victory_1 = "end_screen_effect_victory_1_point_sample",
 	end_screen_effect_victory_2 = "end_screen_effect_victory_2_point_sample",
 	end_screen_banner_defeat = "end_screen_banner_defeat_point_sample",
@@ -459,31 +445,36 @@ local point_sample_materials = {
 }
 local offscreen_materials = {
 	gui_menus_atlas = "gui_menus_atlas_offscreen",
-	gui_icons_atlas = "gui_icons_atlas_offscreen",
 	gui_items_atlas = "gui_items_atlas_offscreen",
+	gui_development_atlas = "gui_development_atlas_offscreen",
+	gui_icons_atlas = "gui_icons_atlas_offscreen",
 	gui_frames_atlas = "gui_frames_atlas_offscreen"
 }
 local masked_offscreen_materials = {
 	gui_menus_atlas = "gui_menus_atlas_masked_offscreen",
-	gui_icons_atlas = "gui_icons_atlas_masked_offscreen",
 	gui_items_atlas = "gui_items_atlas_masked_offscreen",
+	gui_development_atlas = "gui_development_atlas_masked_offscreen",
+	gui_icons_atlas = "gui_icons_atlas_masked_offscreen",
 	gui_frames_atlas = "gui_frames_atlas_masked_offscreen"
 }
 local masked_point_sample_offscreen_materials = {
 	gui_menus_atlas = "gui_menus_atlas_point_sample_masked_offscreen",
-	gui_icons_atlas = "gui_icons_atlas_point_sample_masked_offscreen",
 	gui_items_atlas = "gui_items_atlas_point_sample_masked_offscreen",
+	gui_development_atlas = "gui_development_atlas_point_sample_masked_offscreen",
+	gui_icons_atlas = "gui_icons_atlas_point_sample_masked_offscreen",
 	gui_frames_atlas = "gui_frames_atlas_point_sample_masked_offscreen"
 }
 local point_sample_offscreen_materials = {
 	gui_menus_atlas = "gui_menus_atlas_point_sample_offscreen",
-	gui_icons_atlas = "gui_icons_atlas_point_sample_offscreen",
 	gui_items_atlas = "gui_items_atlas_point_sample_offscreen",
+	gui_development_atlas = "gui_development_atlas_point_sample_offscreen",
+	gui_icons_atlas = "gui_icons_atlas_point_sample_offscreen",
 	gui_frames_atlas = "gui_frames_atlas_point_sample_offscreen"
 }
 local saturated_offscreen_materials = {
+	gui_icons_atlas = "gui_icons_atlas_saturated",
 	gui_items_atlas = "gui_items_atlas_saturated",
-	gui_icons_atlas = "gui_icons_atlas_saturated"
+	gui_development_atlas = "gui_development_atlas_saturated_offscreen"
 }
 local viewport_mask_materials = {
 	gui_lock_test_atlas = "gui_lock_test_viewport_mask"
@@ -600,52 +591,4 @@ UIAtlasHelper.has_texture_by_name = function (texture_name)
 	else
 		return false
 	end
-end
-
-UIAtlasHelper.add_standalone_texture_by_name = function (texture_name)
-	if standalone_texture[texture_name] or ui_atlas_settings[texture_name] then
-		return
-	else
-		standalone_texture[texture_name] = true
-	end
-end
-
-UIAtlasHelper.get_insignia_texture_settings_from_level = function (level)
-	local insignia_uv_size = {
-		0.2,
-		0.1
-	}
-	local insignia_level = math.floor((level - 1) / 50)
-	local insignia_type = math.floor((level - 1) % 10)
-	local insignia_main_uvs = {
-		{
-			insignia_level * insignia_uv_size[1],
-			insignia_type * insignia_uv_size[2]
-		},
-		{
-			insignia_level * insignia_uv_size[1] + insignia_uv_size[1],
-			insignia_type * insignia_uv_size[2] + insignia_uv_size[2]
-		}
-	}
-	local insignia_addon_uv_size = {
-		0.25,
-		1
-	}
-	local addon_level = math.floor((level - 1) / 10) % 5
-	local insignia_addon_uvs
-
-	if addon_level > 0 then
-		insignia_addon_uvs = {
-			{
-				(addon_level - 1) * insignia_addon_uv_size[1],
-				0
-			},
-			{
-				(addon_level - 1) * insignia_addon_uv_size[1] + insignia_addon_uv_size[1],
-				1
-			}
-		}
-	end
-
-	return insignia_main_uvs, insignia_addon_uvs
 end

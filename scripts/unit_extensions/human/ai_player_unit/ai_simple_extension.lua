@@ -35,6 +35,7 @@ AISimpleExtension.init = function (self, extension_init_context, unit, extension
 	blackboard.world = extension_init_context.world
 	blackboard.unit = unit
 	blackboard.level = LevelHelper:current_level(extension_init_context.world)
+	blackboard.move_orders = {}
 	blackboard.nav_world = self._nav_world
 	blackboard.node_data = {}
 	blackboard.running_nodes = {}
@@ -125,27 +126,28 @@ STATIC_BLACKBOARD_KEYS = STATIC_BLACKBOARD_KEYS or {
 	target_dist = true,
 	stagger_count = true,
 	node_data = true,
-	spawn_type = true,
+	is_in_attack_cooldown = true,
 	next_lean_index = true,
 	health_extension = true,
-	override_targets = true,
+	stagger_count_reset_at = true,
 	lean_dogpile = true,
+	next_smart_object_data = true,
 	navigation_extension = true,
 	locomotion_extension = true,
-	system_api = true,
+	move_orders = true,
 	lean_slots = true,
-	next_smart_object_data = true,
 	unit = true,
 	optional_spawn_data = true,
 	level = true,
-	stagger_count_reset_at = true,
-	lean_unit_list = true,
-	world = true,
+	system_api = true,
+	override_targets = true,
+	spawn_type = true,
 	running_nodes = true,
-	is_in_attack_cooldown = true,
+	lean_unit_list = true,
 	group_blackboard = true,
 	attack_cooldown_at = true,
 	stuck_check_time = true,
+	world = true,
 	inventory_extension = true,
 	is_passive = true,
 	breed = true,
@@ -178,6 +180,7 @@ AISimpleExtension.unfreeze = function (self, unit, data)
 
 	local side = Managers.state.side:add_unit_to_side(self._unit, side_id)
 
+	table.clear(blackboard.move_orders)
 	table.clear(blackboard.node_data)
 	table.clear(blackboard.running_nodes)
 	table.clear(blackboard.override_targets)
@@ -418,6 +421,10 @@ AISimpleExtension.die = function (self, killer_unit, killing_blow)
 end
 
 AISimpleExtension.attacked = function (self, attacker_unit, t, damage_hit)
+	if script_data.disable_ai_perception then
+		return
+	end
+
 	local unit = self._unit
 	local blackboard = self._blackboard
 	local side = blackboard.side
@@ -443,6 +450,10 @@ AISimpleExtension.attacked = function (self, attacker_unit, t, damage_hit)
 end
 
 AISimpleExtension.enemy_aggro = function (self, alerting_unit, enemy_unit)
+	if script_data.disable_ai_perception then
+		return
+	end
+
 	local blackboard = self._blackboard
 
 	if blackboard.confirmed_player_sighting or blackboard.only_trust_your_own_eyes then
@@ -477,6 +488,10 @@ AISimpleExtension.enemy_aggro = function (self, alerting_unit, enemy_unit)
 end
 
 AISimpleExtension.enemy_alert = function (self, alerting_unit, enemy_unit)
+	if script_data.disable_ai_perception then
+		return
+	end
+
 	local blackboard = self._blackboard
 	local run_on_alerted = self._breed.run_on_alerted
 

@@ -5,7 +5,7 @@ local scoreboard_setup = {
 	headers = {
 		{
 			side = "heroes",
-			scenegraph_id = "local_heroes_header_grid",
+			scenegraph_id = "hammers_heroes_header_grid",
 			texts = {
 				"vs_scoreboard_eliminations",
 				"vs_scoreboard_damage_done",
@@ -14,7 +14,7 @@ local scoreboard_setup = {
 		},
 		{
 			side = "dark_pact",
-			scenegraph_id = "local_pact_header_grid",
+			scenegraph_id = "hammers_pact_header_grid",
 			texts = {
 				"vs_scoreboard_eliminations",
 				"vs_scoreboard_damage_done",
@@ -22,35 +22,35 @@ local scoreboard_setup = {
 			}
 		}
 	},
-	local_team = {
+	team_hammers = {
 		{
 			"kills_specials",
-			"vs_damage_dealt_to_pactsworn",
+			"damage_dealt_pactsworn",
 			"revives",
-			scenegraph_id = "local_heroes_score_grid",
+			scenegraph_id = "hammers_heroes_score_grid",
 			side = "heroes"
 		},
 		{
 			"kills_heroes",
 			"damage_dealt_heroes",
 			"disables",
-			scenegraph_id = "local_pact_score_grid",
+			scenegraph_id = "hammers_pact_score_grid",
 			side = "dark_pact"
 		}
 	},
-	opponent_team = {
+	team_skulls = {
 		{
 			"kills_specials",
-			"vs_damage_dealt_to_pactsworn",
+			"damage_dealt_pactsworn",
 			"revives",
-			scenegraph_id = "opponent_heroes_score_grid",
+			scenegraph_id = "skulls_heroes_score_grid",
 			side = "heroes"
 		},
 		{
 			"kills_heroes",
 			"damage_dealt_heroes",
 			"disables",
-			scenegraph_id = "opponent_pact_score_grid",
+			scenegraph_id = "skulls_pact_score_grid",
 			side = "dark_pact"
 		}
 	}
@@ -98,35 +98,9 @@ EndViewStateScoreVSTabDetails.create_ui_elements = function (self, params)
 	self._widgets, self._widgets_by_name = UIUtils.create_widgets(widget_definitions, {}, {})
 
 	self:_populate_stats(definitions)
-	self:_create_winner_icon(definitions)
 	UIRenderer.clear_scenegraph_queue(self._ui_renderer)
 
 	self._ui_animator = UIAnimator:new(self._ui_scenegraph, animation_definitions)
-end
-
-EndViewStateScoreVSTabDetails._create_winner_icon = function (self, definitions)
-	local create_winner_icon_func = definitions.create_winner_icon_func
-	local my_peer_id = Network.peer_id()
-	local local_player_id = 1
-	local local_player_party_id = self._context.party_composition[PlayerUtils.unique_player_id(my_peer_id, local_player_id)]
-	local opponent_party_id = local_player_party_id == 1 and 2 or 1
-	local scores = self._context.rewards.team_scores
-	local local_player_team_score = scores[local_player_party_id]
-	local opponent_team_score = scores[opponent_party_id]
-
-	if opponent_team_score < local_player_team_score then
-		local widget_definition = create_winner_icon_func("local_team")
-		local widget = UIWidget.init(widget_definition)
-
-		self._widgets[#self._widgets + 1] = widget
-		self._widgets_by_name.local_winner_icon = widget
-	elseif local_player_team_score < opponent_team_score then
-		local widget_definition = create_winner_icon_func("opponent_team")
-		local widget = UIWidget.init(widget_definition)
-
-		self._widgets[#self._widgets + 1] = widget
-		self._widgets_by_name.opponent_winner_icon = widget
-	end
 end
 
 local PARTY_COMPOSITION = {}
@@ -145,7 +119,7 @@ EndViewStateScoreVSTabDetails._trim_bots = function (self, party_composition)
 	end
 
 	for name, party_id in pairs(party_composition) do
-		local values = string.split_deprecated(name, ":")
+		local values = string.split(name, ":")
 
 		if values[2] == "1" then
 			PARTY_COMPOSITION[name] = party_id
@@ -160,17 +134,10 @@ EndViewStateScoreVSTabDetails._populate_stats = function (self, definitions)
 	local my_peer_id = Network.peer_id()
 	local context = self._context
 	local party_composition, team_sizes, max_team_sizes = self:_trim_bots(context.party_composition)
-	local my_unique_id = my_peer_id .. ":1"
-	local my_party_id = party_composition[my_unique_id]
-	local my_team = GameModeSettings.versus.party_names_lookup_by_id[my_party_id]
-	local opponent_party_id = my_party_id == 1 and 2 or 1
-	local opponent_team = GameModeSettings.versus.party_names_lookup_by_id[opponent_party_id]
 	local players_session_score = context.players_session_score
 	local create_stats_func = definitions.create_stats_func
 	local create_title_func = definitions.create_title_func
 	local create_team_grid_fields_func = definitions.create_team_grid_fields_func
-	local create_team_title_func = definitions.create_team_title_func
-	local create_flag_func = definitions.create_flag_func
 	local player_session_data = table.values(players_session_score)
 	local player_highscores = {}
 
@@ -230,8 +197,7 @@ EndViewStateScoreVSTabDetails._populate_stats = function (self, definitions)
 				for _, data in pairs(player_session_data) do
 					local unique_id = data.peer_id .. ":" .. data.local_player_id
 					local party_id = party_composition[unique_id]
-					local player_team_name = GameModeSettings.versus.party_names_lookup_by_id[party_id]
-					local player_team = party_id == my_party_id and "local_team" or "opponent_team"
+					local player_team = GameModeSettings.versus.party_names_lookup_by_id[party_id]
 
 					if player_team == team then
 						local scores = data.scores
@@ -247,7 +213,7 @@ EndViewStateScoreVSTabDetails._populate_stats = function (self, definitions)
 							highscores[#highscores + 1] = player_highscores[stat_name]
 						end
 
-						offset[2] = -40 * (row_index - 1)
+						offset[2] = -40 * row_index
 
 						local skip_highscore = false
 						local widget_definition = create_stats_func(scenegraph_id, fields, 20, offset, data.peer_id == my_peer_id, skip_highscore, highscores)
@@ -257,9 +223,9 @@ EndViewStateScoreVSTabDetails._populate_stats = function (self, definitions)
 						self._widgets_by_name[unique_id .. "_" .. team .. "_" .. side] = widget
 
 						if side == "heroes" then
-							offset[1] = -200
+							offset[1] = -180
 
-							local widget_definition = create_title_func(scenegraph_id, data.name, nil, offset, data.peer_id == my_peer_id, player_team_name)
+							local widget_definition = create_title_func(scenegraph_id, data.name, nil, offset, data.peer_id == my_peer_id, team)
 							local widget = UIWidget.init(widget_definition)
 
 							self._widgets[#self._widgets + 1] = widget
@@ -275,26 +241,46 @@ EndViewStateScoreVSTabDetails._populate_stats = function (self, definitions)
 
 				UIUtils.create_widgets(widget_definitions, self._widgets, self._widgets_by_name)
 
-				offset[2] = 95
+				offset[2] = 40
 
-				local widget_definition = create_stats_func(scenegraph_id, total_fields, 45, offset, nil, nil, nil, team)
+				local widget_definition = create_stats_func(scenegraph_id, total_fields, 30, offset)
 				local widget = UIWidget.init(widget_definition)
 
 				self._widgets[#self._widgets + 1] = widget
 				self._widgets_by_name["total_fields_" .. "_" .. team .. "_" .. side] = widget
-
-				local widget_definition = create_team_title_func(team, my_team, opponent_team)
-				local widget = UIWidget.init(widget_definition)
-
-				self._widgets[#self._widgets + 1] = widget
-				self._widgets_by_name["team_title_" .. team] = widget
-
-				local widget_definition = create_flag_func(team, my_team, opponent_team)
-				local widget = UIWidget.init(widget_definition)
-
-				self._widgets[#self._widgets + 1] = widget
-				self._widgets_by_name[team .. "_flag"] = widget
 			end
+		end
+	end
+
+	local local_player_id
+
+	for _, data in pairs(player_session_data) do
+		if data.peer_id == my_peer_id then
+			local_player_id = data.local_player_id
+
+			break
+		end
+	end
+
+	if local_player_id then
+		local _, local_player_party_id = Managers.party:get_party_from_player_id(my_peer_id, local_player_id)
+		local opponent_party_id = local_player_party_id == 1 and 2 or 1
+		local player_team = GameModeSettings.versus.party_names_lookup_by_id[local_player_party_id]
+		local win_conditions = Managers.mechanism:game_mechanism():win_conditions()
+		local local_player_team_score = win_conditions:get_total_score(local_player_party_id)
+		local opponent_team_score = win_conditions:get_total_score(opponent_party_id)
+		local widgets_by_name = self._widgets_by_name
+		local hammers_widget = widgets_by_name.team_hammers_score
+		local hammers_widget_content = hammers_widget.content
+		local skulls_widget = widgets_by_name.team_skulls_score
+		local skulls_widget_content = skulls_widget.content
+
+		if player_team == "team_hammers" then
+			hammers_widget_content.text = local_player_team_score
+			skulls_widget_content.text = opponent_team_score
+		else
+			hammers_widget_content.text = opponent_team_score
+			skulls_widget_content.text = local_player_team_score
 		end
 	end
 end

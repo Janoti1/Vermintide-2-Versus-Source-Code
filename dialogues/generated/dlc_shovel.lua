@@ -347,7 +347,8 @@ return function ()
 				"user_context",
 				"player_career",
 				OP.EQ,
-				"bw_necromancer"
+				"bw_necromancer",
+				1
 			},
 			{
 				"global_context",
@@ -1016,7 +1017,8 @@ return function ()
 				"user_context",
 				"player_career",
 				OP.EQ,
-				"bw_necromancer"
+				"bw_necromancer",
+				1
 			},
 			{
 				"global_context",
@@ -1369,7 +1371,8 @@ return function ()
 				"user_context",
 				"player_career",
 				OP.EQ,
-				"bw_necromancer"
+				"bw_necromancer",
+				1
 			},
 			{
 				"global_context",
@@ -1592,7 +1595,8 @@ return function ()
 				"user_context",
 				"player_career",
 				OP.EQ,
-				"bw_necromancer"
+				"bw_necromancer",
+				1
 			},
 			{
 				"global_context",
@@ -3089,7 +3093,7 @@ return function ()
 			},
 			{
 				"faction_memory",
-				"shovel_conversation_twenty_twentyone",
+				"shovel_conversation_twenty_twentyone_twentyfour",
 				OP.EQ,
 				0
 			}
@@ -3097,7 +3101,7 @@ return function ()
 		on_done = {
 			{
 				"faction_memory",
-				"shovel_conversation_twenty_twentyone",
+				"shovel_conversation_twenty_twentyone_twentyfour",
 				OP.ADD,
 				1
 			},
@@ -3213,7 +3217,7 @@ return function ()
 			},
 			{
 				"faction_memory",
-				"shovel_conversation_twentyfour",
+				"shovel_conversation_twenty_twentyone_twentyfour",
 				OP.EQ,
 				0
 			}
@@ -3221,7 +3225,7 @@ return function ()
 		on_done = {
 			{
 				"faction_memory",
-				"shovel_conversation_twentyfour",
+				"shovel_conversation_twenty_twentyone_twentyfour",
 				OP.ADD,
 				1
 			},
@@ -3337,7 +3341,7 @@ return function ()
 			},
 			{
 				"faction_memory",
-				"shovel_conversation_twenty_twentyone",
+				"shovel_conversation_twenty_twentyone_twentyfour",
 				OP.EQ,
 				0
 			}
@@ -3345,7 +3349,7 @@ return function ()
 		on_done = {
 			{
 				"faction_memory",
-				"shovel_conversation_twenty_twentyone",
+				"shovel_conversation_twenty_twentyone_twentyfour",
 				OP.ADD,
 				1
 			},

@@ -27,19 +27,6 @@ settings.buff_templates = {
 			}
 		}
 	},
-	markus_questing_knight_passive_cooldown_reduction_vs = {
-		buffs = {
-			{
-				name = "markus_questing_knight_passive_cooldown_reduction_vs",
-				multiplier = 0.15,
-				stat_buff = "cooldown_regen",
-				refresh_durations = true,
-				max_stacks = 1,
-				icon = "markus_questing_knight_buff_cdr",
-				priority_buff = true
-			}
-		}
-	},
 	markus_questing_knight_passive_attack_speed = {
 		buffs = {
 			{
@@ -62,18 +49,6 @@ settings.buff_templates = {
 				max_stacks = 1,
 				icon = "markus_questing_knight_buff_attackspeed",
 				priority_buff = true
-			}
-		}
-	},
-	markus_questing_knight_passive_attack_speed_vs = {
-		buffs = {
-			{
-				name = "markus_questing_knight_passive_attack_speed_vs",
-				multiplier = 0.075,
-				stat_buff = "attack_speed",
-				refresh_durations = true,
-				max_stacks = 1,
-				icon = "markus_questing_knight_buff_attackspeed"
 			}
 		}
 	},
@@ -102,19 +77,6 @@ settings.buff_templates = {
 			}
 		}
 	},
-	markus_questing_knight_passive_power_level_vs = {
-		buffs = {
-			{
-				name = "markus_questing_knight_passive_power_level_vs",
-				multiplier = 0.15,
-				stat_buff = "power_level",
-				refresh_durations = true,
-				max_stacks = 1,
-				icon = "markus_questing_knight_buff_powerlevel",
-				priority_buff = true
-			}
-		}
-	},
 	markus_questing_knight_passive_damage_taken = {
 		buffs = {
 			{
@@ -137,19 +99,6 @@ settings.buff_templates = {
 				refresh_durations = true,
 				max_stacks = 1,
 				icon = "markus_questing_knight_buff_damage_taken"
-			}
-		}
-	},
-	markus_questing_knight_passive_damage_taken_vs = {
-		buffs = {
-			{
-				name = "markus_questing_knight_passive_damage_taken_vs",
-				multiplier = -0.15,
-				stat_buff = "damage_taken",
-				refresh_durations = true,
-				max_stacks = 1,
-				icon = "markus_questing_knight_buff_damage_taken",
-				priority_buff = true
 			}
 		}
 	},
@@ -179,21 +128,6 @@ settings.buff_templates = {
 				update_func = "health_regen_update",
 				apply_buff_func = "health_regen_start",
 				heal_type = "career_passive"
-			}
-		}
-	},
-	markus_questing_knight_passive_health_regen_vs = {
-		buffs = {
-			{
-				heal = 1,
-				heal_type = "career_passive",
-				name = "markus_questing_knight_passive_health_regen_vs",
-				icon = "markus_questing_knight_buff_health_regen",
-				time_between_heal = 2.5,
-				priority_buff = true,
-				apply_buff_func = "health_regen_start",
-				max_stacks = 1,
-				update_func = "health_regen_update"
 			}
 		}
 	}

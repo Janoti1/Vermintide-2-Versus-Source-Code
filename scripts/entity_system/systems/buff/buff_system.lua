@@ -214,22 +214,7 @@ BuffSystem._next_free_server_buff_id = function (self)
 		self.next_server_buff_id = self.next_server_buff_id + 1
 	end
 
-	if free_buff_id > NetworkConstants.server_controlled_buff_id.max then
-		print("===== [BuffSystem] server controlled buffs dump =====")
-
-		local count = 0
-
-		for unit, buffs in pairs(self.server_controlled_buffs) do
-			for server_id, buff_data in pairs(buffs) do
-				print(unit, server_id, HEALTH_ALIVE[unit], buff_data.template_name, buff_data.attacker_unit)
-
-				count = count + 1
-			end
-		end
-
-		printf("Found %s buffs", count)
-		ferror("[BuffSystem] ERROR! Too many server controlled buffs! (%d/%d)", free_buff_id, NetworkConstants.server_controlled_buff_id.max)
-	end
+	fassert(free_buff_id <= NetworkConstants.server_controlled_buff_id.max, "[BuffSystem] ERROR! Too many server controlled buffs! (%d/%d)", free_buff_id, NetworkConstants.server_controlled_buff_id.max)
 
 	return free_buff_id
 end
@@ -248,7 +233,7 @@ BuffSystem._add_buff_helper_function = function (self, unit, template_name, atta
 			self.server_controlled_buffs[unit] = {}
 		end
 
-		local buff_template = BuffUtils.get_buff_template(template_name)
+		local buff_template = BuffTemplates[template_name]
 		local buffs = buff_template.buffs
 
 		for i = 1, #buffs do
@@ -619,6 +604,14 @@ local function buff_param_unpack_unit(input, ctx)
 	return ctx.unit_storage:unit(input)
 end
 
+local function buff_param_pack_parent_id(input, ctx, unit)
+	return ScriptUnit.extension(unit, "buff_system"):id_to_sync_id(input) or 0
+end
+
+local function buff_param_unpack_parent_id(input, ctx, unit)
+	return ScriptUnit.extension(unit, "buff_system"):sync_id_to_id(input) or 0
+end
+
 local buff_param_packing_methods = {
 	attacker_unit = {
 		pack = buff_param_pack_unit,
@@ -892,7 +885,8 @@ BuffSystem.rpc_add_buff_synced = function (self, channel_id, target_unit_id, tem
 			remote_sync_id = invalid_buff_sync_id
 		end
 
-		local server_sync_id = self.is_server and buff_extension:generate_sync_id() or remote_sync_id
+		local local_sync_id = remote_sync_id ~= invalid_buff_sync_id and buff_extension:generate_sync_id() or invalid_buff_sync_id
+		local server_sync_id = self.is_server and local_sync_id or remote_sync_id
 		local sync_type = BuffSyncTypeLookup[sync_type_id]
 		local owner_peer_id = CHANNEL_TO_PEER_ID[channel_id]
 
@@ -946,7 +940,8 @@ BuffSystem.rpc_add_buff_synced_params = function (self, channel_id, target_unit_
 		local template_name = NetworkLookup.buff_templates[template_name_id]
 		local params = self:_unpack_buff_params(unpacked_buff_params, param_ids, param_vals, target_unit)
 		local id = buff_extension:add_buff(template_name, params)
-		local server_sync_id = self.is_server and buff_extension:generate_sync_id() or remote_sync_id
+		local local_sync_id = remote_sync_id ~= invalid_buff_sync_id and buff_extension:generate_sync_id() or invalid_buff_sync_id
+		local server_sync_id = self.is_server and local_sync_id or remote_sync_id
 		local sync_type = BuffSyncTypeLookup[sync_type_id]
 		local owner_peer_id = CHANNEL_TO_PEER_ID[channel_id]
 
@@ -1052,36 +1047,24 @@ BuffSystem._hot_join_sync_synced_buffs = function (self, peer_id)
 			for buff_id, sync_type in pairs(buff_to_sync_type) do
 				if sync_type == BuffSyncType.All then
 					local buff = extension:get_buff_by_id(buff_id)
+					local template_name_id = NetworkLookup.buff_templates[buff.buff_template_name]
+					local server_sync_id = id_to_server_sync[buff_id]
 
-					if buff then
-						local template_name_id = NetworkLookup.buff_templates[buff.buff_template_name]
-						local server_sync_id = id_to_server_sync[buff_id]
+					table.clear(buff_params)
 
-						table.clear(buff_params)
+					buff_params.external_optional_bonus = buff.bonus
+					buff_params.external_optional_multiplier = buff.multiplier
+					buff_params.external_optional_value = buff.value
+					buff_params.external_optional_proc_chance = buff.proc_chance
+					buff_params.external_optional_range = buff.range
+					buff_params.damage_source = buff.damage_source
+					buff_params.power_level = buff.power_level
+					buff_params.attacker_unit = buff.attacker_unit
+					buff_params.source_attacker_unit = buff.source_attacker_unit
+					buff_params._hot_join_sync_buff_age = buff.duration and math.min(t - buff.start_time, 6550)
 
-						buff_params.external_optional_bonus = buff.bonus
-						buff_params.external_optional_multiplier = buff.multiplier
-						buff_params.external_optional_value = buff.value
-						buff_params.external_optional_proc_chance = buff.proc_chance
-						buff_params.external_optional_range = buff.range
-						buff_params.damage_source = buff.damage_source
-						buff_params.power_level = buff.power_level
-						buff_params.attacker_unit = buff.attacker_unit
-						buff_params.source_attacker_unit = buff.source_attacker_unit
-						buff_params._hot_join_sync_buff_age = buff.duration and math.min(t - buff.start_time, 6550)
-
-						self:_pack_buff_params(buff_params, packed_buff_param_ids, packed_buff_param_vals, unit)
-						network_transmit:send_rpc("rpc_add_buff_synced_relay_params", peer_id, unit_id, template_name_id, server_sync_id, sync_type_id, packed_buff_param_ids, packed_buff_param_vals)
-					else
-						if extension.debug_buff_names then
-							local buff_name = extension.debug_buff_names[buff_id]
-
-							print("Server would have crashed buff name ", buff_name)
-							Crashify.print_exception("[BuffSystem]", "buff_id points to missing buff: %s", buff_name)
-						end
-
-						buff_to_sync_type[buff_id] = nil
-					end
+					self:_pack_buff_params(buff_params, packed_buff_param_ids, packed_buff_param_vals, unit)
+					network_transmit:send_rpc("rpc_add_buff_synced_relay_params", peer_id, unit_id, template_name_id, server_sync_id, sync_type_id, packed_buff_param_ids, packed_buff_param_vals)
 				end
 			end
 		end

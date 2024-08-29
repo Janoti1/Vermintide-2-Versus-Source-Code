@@ -93,9 +93,9 @@ EnemyCharacterStateDead.on_exit = function (self, unit, input, dt, context, t, n
 	local game_mode = Managers.state.game_mode:game_mode()
 
 	if game_mode then
-		local about_to_end_game_early = game_mode:is_about_to_end_game_early()
+		local about_to_lose = game_mode.is_about_to_lose and game_mode:is_about_to_lose()
 
-		if not about_to_end_game_early then
+		if not about_to_lose then
 			local camera_params = {
 				input_service_name = "dark_pact_selection",
 				allow_camera_movement = true,

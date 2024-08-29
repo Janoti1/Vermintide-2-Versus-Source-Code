@@ -64,11 +64,6 @@ local windows = {
 		name = "hero_power",
 		class_name = "HeroWindowHeroPowerConsole"
 	},
-	loadout_selection = {
-		ignore_alignment = true,
-		name = "loadout_selection",
-		class_name = "HeroWindowLoadoutSelectionConsole"
-	},
 	ingame_view = {
 		ignore_alignment = true,
 		name = "ingame_view",
@@ -93,7 +88,6 @@ local window_layouts = {
 		close_on_exit = true,
 		windows = {
 			hero_power = 5,
-			loadout_selection = 6,
 			background = 2,
 			character_info = 3,
 			panel = 1,
@@ -106,10 +100,9 @@ local window_layouts = {
 		sound_event_exit = "play_gui_talents_close",
 		close_on_exit = true,
 		windows = {
-			loadout_selection = 5,
-			background = 2,
 			character_info = 3,
 			panel = 1,
+			background = 2,
 			talents = 4
 		}
 	},
@@ -125,7 +118,11 @@ local window_layouts = {
 			crafting_list = 3
 		},
 		can_add_function = function (mechanism_name)
-			return mechanism_name ~= "versus" and mechanism_name ~= "inn_vs"
+			if mechanism_name == "versus" or mechanism_name == "inn_vs" then
+				return false
+			else
+				return true
+			end
 		end
 	},
 	{
@@ -137,7 +134,6 @@ local window_layouts = {
 			hero_power = 5,
 			cosmetics_loadout = 3,
 			background = 2,
-			loadout_selection = 6,
 			character_info = 4,
 			panel = 1
 		}
@@ -229,42 +225,7 @@ local window_layouts = {
 		}
 	}
 }
-local MAX_ACTIVE_WINDOWS = 6
-
-DLCUtils.map("hero_view_window_layout_console", function (hero_view_window_layout_console)
-	local new_windows = hero_view_window_layout_console.windows
-
-	if new_windows then
-		for name, window in pairs(new_windows) do
-			windows[name] = window
-		end
-	end
-
-	local new_window_layouts = hero_view_window_layout_console.window_layouts
-
-	if new_window_layouts then
-		for i = 1, #new_window_layouts do
-			window_layouts[#window_layouts + 1] = new_window_layouts[i]
-		end
-	end
-end)
-DLCUtils.map("hero_view_window_layout_console", function (hero_view_window_layout_console)
-	local new_windows = hero_view_window_layout_console.windows
-
-	if new_windows then
-		for name, window in pairs(new_windows) do
-			windows[name] = window
-		end
-	end
-
-	local new_window_layouts = hero_view_window_layout_console.window_layouts
-
-	if new_window_layouts then
-		for i = 1, #new_window_layouts do
-			window_layouts[#window_layouts + 1] = new_window_layouts[i]
-		end
-	end
-end)
+local MAX_ACTIVE_WINDOWS = 5
 
 return {
 	max_active_windows = MAX_ACTIVE_WINDOWS,

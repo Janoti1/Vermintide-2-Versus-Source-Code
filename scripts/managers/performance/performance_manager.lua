@@ -10,7 +10,6 @@ PerformanceManager.init = function (self, gui, is_server, level_key)
 		beastmen_bestigor = true,
 		chaos_berzerker = true,
 		skaven_clan_rat_with_shield = true,
-		chaos_bulwark = true,
 		chaos_marauder_with_shield = true,
 		chaos_fanatic = true,
 		skaven_slave = true,

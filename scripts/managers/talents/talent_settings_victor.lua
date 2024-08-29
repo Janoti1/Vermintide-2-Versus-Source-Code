@@ -138,7 +138,7 @@ local buff_tweak_data = {
 		multiplier = -0.25
 	},
 	victor_bountyhunter_activated_ability_railgun = {
-		multiplier = 0.6
+		multiplier = 0.4
 	},
 	victor_bountyhunter_activated_ability_reset_cooldown_on_stacks = {
 		multiplier = 0.02
@@ -945,9 +945,9 @@ TalentBuffTemplates.witch_hunter = {
 	victor_bountyhunter_activated_ability_railgun_delayed_add = {
 		buffs = {
 			{
-				max_stacks = 1,
-				duration = 0.25,
-				multiplier = 0.6,
+				max_stacks = 2,
+				duration = 0.15,
+				multiplier = 0.4,
 				remove_buff_func = "victor_bountyhunter_activated_ability_railgun_delayed"
 			}
 		}
@@ -1122,7 +1122,7 @@ TalentBuffTemplates.witch_hunter = {
 	victor_witchhunter_critical_hit_chance_on_ping_target_killed = {
 		buffs = {
 			{
-				event = "on_pingable_target_killed",
+				event = "on_ping_target_killed",
 				buff_to_add = "victor_witchhunter_ping_target_crit_chance",
 				buff_func = "add_buff_to_all_players"
 			}
@@ -1343,7 +1343,7 @@ Talents.witch_hunter = {
 		icon = "victor_zealot_regrowth",
 		description_values = {
 			{
-				value = BuffUtils.get_buff_template("reaper", "adventure").buffs[1].max_targets
+				value = BuffTemplates.reaper.buffs[1].max_targets
 			}
 		},
 		buffs = {
@@ -1359,7 +1359,7 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("bloodlust", "adventure").buffs[1].multiplier
+				value = BuffTemplates.bloodlust.buffs[1].multiplier
 			}
 		},
 		buffs = {
@@ -1375,7 +1375,7 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("conqueror", "adventure").buffs[1].multiplier
+				value = BuffTemplates.conqueror.buffs[1].multiplier
 			}
 		},
 		buffs = {
@@ -1583,11 +1583,11 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("smiter_unbalance", "adventure").buffs[1].display_multiplier
+				value = BuffTemplates.smiter_unbalance.buffs[1].display_multiplier
 			},
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("smiter_unbalance", "adventure").buffs[1].max_display_multiplier
+				value = BuffTemplates.smiter_unbalance.buffs[1].max_display_multiplier
 			}
 		},
 		buffs = {
@@ -1603,11 +1603,11 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("linesman_unbalance", "adventure").buffs[1].display_multiplier
+				value = BuffTemplates.linesman_unbalance.buffs[1].display_multiplier
 			},
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("linesman_unbalance", "adventure").buffs[1].max_display_multiplier
+				value = BuffTemplates.linesman_unbalance.buffs[1].max_display_multiplier
 			}
 		},
 		buffs = {
@@ -1623,7 +1623,7 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("power_level_unbalance", "adventure").buffs[1].multiplier
+				value = BuffTemplates.power_level_unbalance.buffs[1].multiplier
 			}
 		},
 		buffs = {
@@ -1638,7 +1638,7 @@ Talents.witch_hunter = {
 		icon = "victor_bountyhunter_regrowth",
 		description_values = {
 			{
-				value = BuffUtils.get_buff_template("regrowth", "adventure").buffs[1].bonus
+				value = BuffTemplates.regrowth.buffs[1].bonus
 			}
 		},
 		buffs = {
@@ -1654,7 +1654,7 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("bloodlust", "adventure").buffs[1].multiplier
+				value = BuffTemplates.bloodlust.buffs[1].multiplier
 			}
 		},
 		buffs = {
@@ -1670,7 +1670,7 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("conqueror", "adventure").buffs[1].multiplier
+				value = BuffTemplates.conqueror.buffs[1].multiplier
 			}
 		},
 		buffs = {
@@ -1709,10 +1709,10 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("defence_debuff_enemies", "adventure").buffs[1].multiplier
+				value = BuffTemplates.defence_debuff_enemies.buffs[1].multiplier
 			},
 			{
-				value = BuffUtils.get_buff_template("defence_debuff_enemies", "adventure").buffs[1].duration
+				value = BuffTemplates.defence_debuff_enemies.buffs[1].duration
 			}
 		},
 		buffs = {
@@ -1896,11 +1896,11 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("smiter_unbalance", "adventure").buffs[1].display_multiplier
+				value = BuffTemplates.smiter_unbalance.buffs[1].display_multiplier
 			},
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("smiter_unbalance", "adventure").buffs[1].max_display_multiplier
+				value = BuffTemplates.smiter_unbalance.buffs[1].max_display_multiplier
 			}
 		},
 		buffs = {
@@ -1916,11 +1916,11 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("finesse_unbalance", "adventure").buffs[1].display_multiplier
+				value = BuffTemplates.finesse_unbalance.buffs[1].display_multiplier
 			},
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("finesse_unbalance", "adventure").buffs[1].max_display_multiplier
+				value = BuffTemplates.finesse_unbalance.buffs[1].max_display_multiplier
 			}
 		},
 		buffs = {
@@ -1936,7 +1936,7 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("power_level_unbalance", "adventure").buffs[1].multiplier
+				value = BuffTemplates.power_level_unbalance.buffs[1].multiplier
 			}
 		},
 		buffs = {
@@ -1951,7 +1951,7 @@ Talents.witch_hunter = {
 		icon = "victor_witchhunter_regrowth",
 		description_values = {
 			{
-				value = BuffUtils.get_buff_template("regrowth", "adventure").buffs[1].bonus
+				value = BuffTemplates.regrowth.buffs[1].bonus
 			}
 		},
 		buffs = {
@@ -1966,7 +1966,7 @@ Talents.witch_hunter = {
 		icon = "victor_witchhunter_bloodlust",
 		description_values = {
 			{
-				value = BuffUtils.get_buff_template("reaper", "adventure").buffs[1].max_targets
+				value = BuffTemplates.reaper.buffs[1].max_targets
 			}
 		},
 		buffs = {
@@ -1982,7 +1982,7 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("conqueror", "adventure").buffs[1].multiplier
+				value = BuffTemplates.conqueror.buffs[1].multiplier
 			}
 		},
 		buffs = {
@@ -2182,11 +2182,11 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("linesman_unbalance", "adventure").buffs[1].display_multiplier
+				value = BuffTemplates.linesman_unbalance.buffs[1].display_multiplier
 			},
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("linesman_unbalance", "adventure").buffs[1].max_display_multiplier
+				value = BuffTemplates.linesman_unbalance.buffs[1].max_display_multiplier
 			}
 		},
 		buffs = {
@@ -2202,11 +2202,11 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("finesse_unbalance", "adventure").buffs[1].display_multiplier
+				value = BuffTemplates.finesse_unbalance.buffs[1].display_multiplier
 			},
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("finesse_unbalance", "adventure").buffs[1].max_display_multiplier
+				value = BuffTemplates.finesse_unbalance.buffs[1].max_display_multiplier
 			}
 		},
 		buffs = {
@@ -2222,7 +2222,7 @@ Talents.witch_hunter = {
 		description_values = {
 			{
 				value_type = "percent",
-				value = BuffUtils.get_buff_template("power_level_unbalance", "adventure").buffs[1].multiplier
+				value = BuffTemplates.power_level_unbalance.buffs[1].multiplier
 			}
 		},
 		buffs = {

@@ -18,12 +18,7 @@ MatchmakingStateHostGame.on_enter = function (self, state_context)
 	self.search_config = state_context.search_config
 
 	self:_start_hosting_game()
-
-	if DEDICATED_SERVER then
-		self._matchmaking_manager:send_system_chat_message("matchmaking_status_found_game")
-	else
-		self._matchmaking_manager:send_system_chat_message("matchmaking_status_start_hosting_game")
-	end
+	self._matchmaking_manager:send_system_chat_message("matchmaking_status_start_hosting_game")
 
 	if not DEDICATED_SERVER then
 		self:set_debug_info()

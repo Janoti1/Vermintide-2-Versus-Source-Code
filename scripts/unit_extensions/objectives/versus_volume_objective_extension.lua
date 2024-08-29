@@ -1,5 +1,3 @@
-local versus_volume_objective_extension_testify = script_data.testify and require("scripts/unit_extensions/objectives/testify/versus_volume_objective_extension_testify")
-
 VersusVolumeObjectiveExtension = class(VersusVolumeObjectiveExtension, VersusBaseObjectiveExtension)
 VersusVolumeObjectiveExtension.NAME = "VersusVolumeObjectiveExtension"
 
@@ -62,10 +60,6 @@ VersusVolumeObjectiveExtension._client_update = function (self, dt, t)
 	end
 
 	self._percentage = GameSession.game_object_field(game_session, self._game_object_id, "value") / 100
-end
-
-VersusVolumeObjectiveExtension.update_testify = function (self, dt, t)
-	Testify:poll_requests_through_handler(versus_volume_objective_extension_testify, self)
 end
 
 VersusVolumeObjectiveExtension.get_percentage_done = function (self)

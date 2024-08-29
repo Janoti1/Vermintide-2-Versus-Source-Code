@@ -3,22 +3,22 @@ local ROOT_SIZE = {
 	1080
 }
 local BADGE_SIZE = {
-	96,
-	96
+	128,
+	128
 }
 local BADGE_OFFSET = {
 	0,
-	-100,
+	-150,
 	0
 }
-local FONT_SIZE = 24
+local FONT_SIZE = 28
 local TEXT_SIZE = {
 	ROOT_SIZE[1] / 2,
 	FONT_SIZE + 20
 }
 local TEXT_OFFSET = {
 	0,
-	50,
+	100,
 	0
 }
 local ICON_SIZE = {
@@ -52,14 +52,14 @@ local scenegraph_definition = {
 	pivot = {
 		vertical_alignment = "top",
 		parent = "screen",
-		horizontal_alignment = "center",
+		horizontal_alignment = "left",
 		size = {
 			ROOT_SIZE[1],
 			BADGE_SIZE[1]
 		},
 		position = {
 			0,
-			-86,
+			-130,
 			UILayer.hud
 		}
 	},
@@ -248,8 +248,8 @@ local animation_definitions = {
 
 				params.render_settings.alpha_multiplier = anim_progress
 
-				local size_x = scenegraph_def.badge_placement.size[1] * 1.3
-				local size_y = scenegraph_def.badge_placement.size[2] * 1.3
+				local size_x = scenegraph_def.badge_placement.size[1] * 1.5
+				local size_y = scenegraph_def.badge_placement.size[2] * 1.5
 				local icon_size = ICON_SIZE
 
 				params.ui_scenegraph.badge_placement.size = {
@@ -277,7 +277,7 @@ local animation_definitions = {
 		{
 			name = "scale_down",
 			start_progress = 0.5,
-			end_progress = 0.62,
+			end_progress = 0.6,
 			init = function (ui_scenegraph, scenegraph_def, widgets, params)
 				params.ui_scenegraph.text_background_placement.size = {
 					0,
@@ -322,8 +322,8 @@ local animation_definitions = {
 		},
 		{
 			name = "fade_out_everything",
-			start_progress = 1.4,
-			end_progress = 1.8,
+			start_progress = 4.8,
+			end_progress = 5.3,
 			init = function (ui_scenegraph, scenegraph_def, widgets, params)
 				params.render_settings.alpha_multiplier = 1
 			end,

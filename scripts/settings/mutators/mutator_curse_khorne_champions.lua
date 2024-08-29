@@ -30,8 +30,6 @@ local mutator = mutator_base_curse_marked_enemies("curse_khorne_champions_name",
 	skaven_storm_vermin_champion = true
 })
 
-mutator.packages = {
-	"resource_packages/mutators/mutator_curse_khorne_champions"
-}
+mutator.curse_package_name = "resource_packages/mutators/mutator_curse_khorne_champions"
 
 return mutator

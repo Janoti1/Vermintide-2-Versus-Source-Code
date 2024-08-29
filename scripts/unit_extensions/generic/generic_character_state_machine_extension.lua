@@ -77,9 +77,7 @@ GenericCharacterStateMachineExtension.extensions_ready = function (self)
 end
 
 GenericCharacterStateMachineExtension.destroy = function (self)
-	local is_destroy = true
-
-	self.state_machine:exit_current_state(is_destroy)
+	self.state_machine:exit_current_state()
 end
 
 GenericCharacterStateMachineExtension.reset = function (self)

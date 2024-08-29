@@ -154,9 +154,10 @@ weapon_template.actions = {
 				},
 				{
 					sub_action = "auto_reload",
-					start_time = 0,
 					action = "weapon_reload",
-					auto_chain = true
+					auto_chain = true,
+					release_required = "action_two_hold",
+					start_time = 0
 				}
 			},
 			enter_function = function (attacker_unit, input_extension)
@@ -319,9 +320,10 @@ weapon_template.actions = {
 				},
 				{
 					sub_action = "auto_reload",
-					start_time = 0,
 					action = "weapon_reload",
-					auto_chain = true
+					auto_chain = true,
+					release_required = "action_two_hold",
+					start_time = 0
 				}
 			},
 			condition_func = function (unit, input_extension, ammo_extension)

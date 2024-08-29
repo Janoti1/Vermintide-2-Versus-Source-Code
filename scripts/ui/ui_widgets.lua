@@ -5195,7 +5195,7 @@ UIWidgets.create_simple_two_state_button = function (scenegraph_id, normal_textu
 	}
 end
 
-UIWidgets.create_simple_rect = function (scenegraph_id, color, layer, offset, rect_size)
+UIWidgets.create_simple_rect = function (scenegraph_id, color, layer, offset)
 	return {
 		element = {
 			passes = {
@@ -5208,7 +5208,6 @@ UIWidgets.create_simple_rect = function (scenegraph_id, color, layer, offset, re
 		content = {},
 		style = {
 			rect = {
-				vertical_alignment = "top",
 				color = color or {
 					255,
 					255,
@@ -5219,8 +5218,7 @@ UIWidgets.create_simple_rect = function (scenegraph_id, color, layer, offset, re
 					0,
 					0,
 					layer or 0
-				},
-				texture_size = rect_size
+				}
 			}
 		},
 		offset = {
@@ -5603,7 +5601,7 @@ UIWidgets.create_simple_uv_rotated_texture = function (texture, uvs, angle, pivo
 	}
 end
 
-UIWidgets.create_simple_uv_texture = function (texture, uvs, scenegraph_id, masked, retained, color, offset, disable_with_gamepad, texture_size)
+UIWidgets.create_simple_uv_texture = function (texture, uvs, scenegraph_id, masked, retained, color, offset, disable_with_gamepad)
 	if type(offset) ~= "table" then
 		offset = {
 			0,
@@ -5632,7 +5630,6 @@ UIWidgets.create_simple_uv_texture = function (texture, uvs, scenegraph_id, mask
 		},
 		style = {
 			texture_id = {
-				texture_size = texture_size,
 				masked = masked,
 				offset = {
 					0,
@@ -7452,9 +7449,7 @@ UIWidgets.create_splash_video = function (input, video_player_reference)
 			background = {
 				color = Colors.color_definitions.black
 			},
-			video_style = {
-				color = Colors.color_definitions.white
-			}
+			video_style = {}
 		},
 		scenegraph_id = input.scenegraph_id
 	}
@@ -9235,7 +9230,7 @@ UIWidgets.create_text_button = function (scenegraph_id, text, font_size, optiona
 	}
 end
 
-UIWidgets.create_console_panel_button = function (scenegraph_id, size, text, optional_font_size, optional_offset, optional_horizontal_alignment, optional_highlight_color)
+UIWidgets.create_console_panel_button = function (scenegraph_id, size, text, font_size, optional_offset, optional_horizontal_alignment, highlight_color)
 	local new_marker_offset = {
 		-19,
 		-25,
@@ -9342,7 +9337,7 @@ UIWidgets.create_console_panel_button = function (scenegraph_id, size, text, opt
 			selected_texture = "hero_panel_selection_glow",
 			button_hotspot = {},
 			text_field = text,
-			default_font_size = optional_font_size or 32
+			default_font_size = font_size
 		},
 		style = {
 			text = {
@@ -9352,8 +9347,8 @@ UIWidgets.create_console_panel_button = function (scenegraph_id, size, text, opt
 				vertical_alignment = "center",
 				dynamic_font_size = true,
 				font_type = "hell_shark_header",
-				font_size = optional_font_size or 32,
-				horizontal_alignment = optional_horizontal_alignment or "center",
+				font_size = font_size,
+				horizontal_alignment = optional_horizontal_alignment or "left",
 				text_color = Colors.get_color_table_with_alpha("font_button_normal", 255),
 				default_offset = optional_offset or {
 					0,
@@ -9374,8 +9369,8 @@ UIWidgets.create_console_panel_button = function (scenegraph_id, size, text, opt
 				vertical_alignment = "center",
 				dynamic_font_size = true,
 				font_type = "hell_shark_header",
-				font_size = optional_font_size or 32,
-				horizontal_alignment = optional_horizontal_alignment or "center",
+				font_size = font_size,
+				horizontal_alignment = optional_horizontal_alignment or "left",
 				text_color = Colors.get_color_table_with_alpha("black", 255),
 				default_offset = shadow_offset,
 				offset = shadow_offset,
@@ -9388,8 +9383,8 @@ UIWidgets.create_console_panel_button = function (scenegraph_id, size, text, opt
 				vertical_alignment = "center",
 				dynamic_font_size = true,
 				font_type = "hell_shark_header",
-				font_size = optional_font_size or 32,
-				horizontal_alignment = optional_horizontal_alignment or "center",
+				font_size = font_size,
+				horizontal_alignment = optional_horizontal_alignment or "left",
 				text_color = Colors.get_color_table_with_alpha("white", 255),
 				default_offset = optional_offset or {
 					0,
@@ -9410,8 +9405,8 @@ UIWidgets.create_console_panel_button = function (scenegraph_id, size, text, opt
 				vertical_alignment = "center",
 				dynamic_font_size = true,
 				font_type = "hell_shark_header",
-				font_size = optional_font_size or 32,
-				horizontal_alignment = optional_horizontal_alignment or "center",
+				font_size = font_size,
+				horizontal_alignment = optional_horizontal_alignment or "left",
 				text_color = Colors.get_color_table_with_alpha("gray", 50),
 				default_offset = optional_offset or {
 					0,
@@ -9432,7 +9427,7 @@ UIWidgets.create_console_panel_button = function (scenegraph_id, size, text, opt
 					169,
 					35
 				},
-				color = optional_highlight_color or Colors.get_color_table_with_alpha("font_title", 255),
+				color = highlight_color or Colors.get_color_table_with_alpha("font_title", 255),
 				offset = selection_offset
 			},
 			marker_left = {

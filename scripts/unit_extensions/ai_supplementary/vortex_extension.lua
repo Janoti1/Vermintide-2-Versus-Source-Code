@@ -618,7 +618,9 @@ VortexExtension._update_attract_players = function (self, unit, blackboard, vort
 					local dir = Vector3.normalize(suck_dir)
 
 					locomotion_extension:add_external_velocity(dir * speed)
-				elseif StatusUtils.set_in_vortex_network(player_unit, true, unit) then
+				else
+					StatusUtils.set_in_vortex_network(player_unit, true, unit)
+
 					local vortex_eject_height = ConflictUtils.random_interval(vortex_template.player_eject_height)
 
 					players_inside[player_unit] = {

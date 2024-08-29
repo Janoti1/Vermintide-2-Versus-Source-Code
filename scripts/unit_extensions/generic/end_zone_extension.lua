@@ -219,7 +219,7 @@ EndZoneExtension._activate = function (self, activate)
 			if Unit.alive(unit) then
 				local status_ext = ScriptUnit.extension(unit, "status_system")
 
-				status_ext:set_in_end_zone(false, self._unit)
+				status_ext:set_in_end_zone(false)
 			end
 		end
 	end
@@ -533,7 +533,7 @@ EndZoneExtension._end_mission_check = function (self, dt, t)
 							players_outside_portal[#players_outside_portal] = player_unit
 						end
 
-						status_extension:set_in_end_zone(false, self._unit)
+						status_extension:set_in_end_zone(false)
 					else
 						any_inside = true
 
@@ -549,7 +549,7 @@ EndZoneExtension._end_mission_check = function (self, dt, t)
 							buff_system:add_buff(player_unit, buff_name, player_unit, false)
 						end
 
-						status_extension:set_in_end_zone(true, self._unit)
+						status_extension:set_in_end_zone(true)
 					end
 				end
 			end

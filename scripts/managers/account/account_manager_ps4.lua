@@ -500,7 +500,7 @@ AccountManager.current_psn_session = function (self)
 	return session and session.id
 end
 
-AccountManager.all_sessions_cleaned_up = function (self)
+AccountManager.all_lobbies_freed = function (self)
 	return true
 end
 

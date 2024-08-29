@@ -3,155 +3,52 @@ local function count_event_breed(breed_name)
 end
 
 local weighted_random_terror_events
-local HARD = 3
 local HARDER = 4
 local HARDEST = 5
 local CATACLYSM = 6
 local terror_event_blueprints = {
-	farmlands_oak_hill_event = {
-		{
-			"set_master_event_running",
-			name = "farmlands_oak_hill_event"
-		},
-		{
-			"set_freeze_condition",
-			max_active_enemies = 100
-		},
-		{
-			"disable_kick"
-		},
-		{
-			"event_horde",
-			spawner_id = "oak_hill_event_spawner",
-			composition_type = "event_small"
-		},
-		{
-			"delay",
-			duration = 5
-		},
-		{
-			"event_horde",
-			spawner_id = "oak_hill_event_spawner",
-			composition_type = "event_extra_spice_small"
-		},
-		{
-			"delay",
-			duration = 5
-		},
-		{
-			"event_horde",
-			spawner_id = "oak_hill_event_spawner",
-			composition_type = "plague_monks_small"
-		},
-		{
-			"delay",
-			duration = 10
-		},
-		{
-			"continue_when",
-			duration = 90,
-			condition = function (t)
-				return count_event_breed("skaven_slave") < 2 and count_event_breed("skaven_clan_rat") < 2 and count_event_breed("skaven_clan_rat_with_shield") < 2 and count_event_breed("skaven_storm_vermin_commander") < 1 and count_event_breed("skaven_plague_monk") < 1
-			end
-		},
-		{
-			"delay",
-			duration = 10
-		},
-		{
-			"flow_event",
-			flow_event_name = "farmlands_oak_hill_event_done"
-		}
-	},
 	farmlands_rat_ogre = {
 		{
 			"set_master_event_running",
 			name = "farmlands_boss_barn"
 		},
 		{
-			"event_horde",
+			"spawn_at_raw",
 			spawner_id = "farmlands_rat_ogre",
-			composition_type = "chaos_warriors"
-		},
-		{
-			"delay",
-			duration = 1
-		},
-		{
-			"spawn_at_raw",
-			spawner_id = "farmlands_rat_ogre_3",
 			breed_name = {
-				"chaos_warrior"
+				"skaven_rat_ogre",
+				"skaven_stormfiend",
+				"chaos_troll",
+				"chaos_spawn"
 			}
 		},
 		{
 			"delay",
 			duration = 1
-		},
-		{
-			"spawn_at_raw",
-			spawner_id = "farmlands_rat_ogre_up",
-			breed_name = {
-				"chaos_warrior"
-			}
-		},
-		{
-			"delay",
-			duration = 5
 		},
 		{
 			"continue_when",
-			duration = 90,
 			condition = function (t)
-				return count_event_breed("chaos_warrior") < 1
+				return count_event_breed("skaven_rat_ogre") == 1 or count_event_breed("skaven_stormfiend") == 1 or count_event_breed("chaos_troll") == 1 or count_event_breed("chaos_spawn") == 1
 			end
 		},
 		{
 			"delay",
-			duration = 3
+			duration = 1
+		},
+		{
+			"flow_event",
+			flow_event_name = "farmlands_barn_boss_spawned"
+		},
+		{
+			"continue_when",
+			condition = function (t)
+				return count_event_breed("skaven_rat_ogre") < 1 and count_event_breed("skaven_stormfiend") < 1 and count_event_breed("chaos_troll") < 1 and count_event_breed("chaos_spawn") < 1
+			end
 		},
 		{
 			"flow_event",
 			flow_event_name = "farmlands_barn_boss_dead"
-		}
-	},
-	farmlands_rat_ogre_loft = {
-		{
-			"set_master_event_running",
-			name = "farmlands_boss_barn"
-		},
-		{
-			"event_horde",
-			spawner_id = "farmlands_rat_ogre_loft",
-			composition_type = "event_small_chaos"
-		},
-		{
-			"delay",
-			duration = 1
-		},
-		{
-			"event_horde",
-			spawner_id = "farmlands_rat_ogre_loft",
-			composition_type = "event_small_fanatics"
-		},
-		{
-			"delay",
-			duration = 5
-		},
-		{
-			"continue_when",
-			duration = 60,
-			condition = function (t)
-				return count_event_breed("chaos_marauder") < 1 and count_event_breed("chaos_marauder_with_shield") < 1 and count_event_breed("chaos_fanatic") < 1
-			end
-		},
-		{
-			"delay",
-			duration = 3
-		},
-		{
-			"flow_event",
-			flow_event_name = "farmlands_rat_ogre_loft_done"
 		}
 	},
 	farmlands_storm_fiend = {
@@ -160,80 +57,37 @@ local terror_event_blueprints = {
 			name = "farmlands_boss_barn"
 		},
 		{
-			"event_horde",
+			"spawn_at_raw",
 			spawner_id = "farmlands_rat_ogre",
-			composition_type = "plague_monks_medium"
+			breed_name = "skaven_stormfiend"
 		},
 		{
 			"delay",
 			duration = 1
-		},
-		{
-			"spawn_at_raw",
-			spawner_id = "farmlands_rat_ogre_3",
-			breed_name = {
-				"skaven_plague_monk"
-			}
-		},
-		{
-			"delay",
-			duration = 1
-		},
-		{
-			"spawn_at_raw",
-			spawner_id = "farmlands_rat_ogre_up",
-			breed_name = {
-				"skaven_plague_monk"
-			}
-		},
-		{
-			"delay",
-			duration = 5
 		},
 		{
 			"continue_when",
-			duration = 90,
 			condition = function (t)
-				return count_event_breed("skaven_plague_monk") < 1
+				return count_event_breed("skaven_stormfiend") == 1
 			end
 		},
 		{
 			"delay",
-			duration = 3
+			duration = 1
+		},
+		{
+			"flow_event",
+			flow_event_name = "farmlands_barn_boss_spawned"
+		},
+		{
+			"continue_when",
+			condition = function (t)
+				return count_event_breed("skaven_stormfiend") < 1
+			end
 		},
 		{
 			"flow_event",
 			flow_event_name = "farmlands_barn_boss_dead"
-		}
-	},
-	farmlands_storm_fiend_loft = {
-		{
-			"set_master_event_running",
-			name = "farmlands_boss_barn"
-		},
-		{
-			"event_horde",
-			spawner_id = "farmlands_rat_ogre_loft",
-			composition_type = "event_extra_spice_medium"
-		},
-		{
-			"delay",
-			duration = 3
-		},
-		{
-			"continue_when",
-			duration = 60,
-			condition = function (t)
-				return count_event_breed("skaven_clan_rat_with_shield") < 1 and count_event_breed("skaven_clan_rat") < 1 and count_event_breed("skaven_storm_vermin_commander") < 1
-			end
-		},
-		{
-			"delay",
-			duration = 3
-		},
-		{
-			"flow_event",
-			flow_event_name = "farmlands_storm_fiend_loft_done"
 		}
 	},
 	farmlands_chaos_troll = {
@@ -242,103 +96,37 @@ local terror_event_blueprints = {
 			name = "farmlands_boss_barn"
 		},
 		{
-			"event_horde",
+			"spawn_at_raw",
 			spawner_id = "farmlands_rat_ogre",
-			composition_type = "chaos_berzerkers_medium"
+			breed_name = "chaos_troll"
 		},
 		{
 			"delay",
 			duration = 1
-		},
-		{
-			"spawn_at_raw",
-			spawner_id = "farmlands_rat_ogre_3",
-			breed_name = {
-				"chaos_berzerker"
-			}
-		},
-		{
-			"spawn_at_raw",
-			spawner_id = "farmlands_rat_ogre_5",
-			breed_name = {
-				"chaos_berzerker"
-			}
-		},
-		{
-			"delay",
-			duration = 1
-		},
-		{
-			"spawn_at_raw",
-			spawner_id = "farmlands_rat_ogre_up",
-			breed_name = {
-				"chaos_berzerker"
-			}
-		},
-		{
-			"spawn_at_raw",
-			spawner_id = "farmlands_rat_ogre_4",
-			breed_name = {
-				"chaos_berzerker"
-			}
-		},
-		{
-			"delay",
-			duration = 5
 		},
 		{
 			"continue_when",
-			duration = 90,
 			condition = function (t)
-				return count_event_breed("chaos_berzerker") < 1
+				return count_event_breed("chaos_troll") == 1
 			end
 		},
 		{
 			"delay",
-			duration = 3
+			duration = 1
+		},
+		{
+			"flow_event",
+			flow_event_name = "farmlands_barn_boss_spawned"
+		},
+		{
+			"continue_when",
+			condition = function (t)
+				return count_event_breed("chaos_troll") < 1
+			end
 		},
 		{
 			"flow_event",
 			flow_event_name = "farmlands_barn_boss_dead"
-		}
-	},
-	farmlands_chaos_troll_loft = {
-		{
-			"set_master_event_running",
-			name = "farmlands_boss_barn"
-		},
-		{
-			"event_horde",
-			spawner_id = "farmlands_rat_ogre_loft",
-			composition_type = "chaos_raiders_medium"
-		},
-		{
-			"delay",
-			duration = 1
-		},
-		{
-			"event_horde",
-			spawner_id = "farmlands_rat_ogre_loft",
-			composition_type = "event_small_chaos"
-		},
-		{
-			"delay",
-			duration = 5
-		},
-		{
-			"continue_when",
-			duration = 60,
-			condition = function (t)
-				return count_event_breed("chaos_marauder") < 1 and count_event_breed("chaos_marauder_with_shield") < 1 and count_event_breed("chaos_raider") < 1
-			end
-		},
-		{
-			"delay",
-			duration = 3
-		},
-		{
-			"flow_event",
-			flow_event_name = "farmlands_chaos_troll_loft_done"
 		}
 	},
 	farmlands_chaos_spawn = {
@@ -347,117 +135,46 @@ local terror_event_blueprints = {
 			name = "farmlands_boss_barn"
 		},
 		{
-			"event_horde",
+			"spawn_at_raw",
 			spawner_id = "farmlands_rat_ogre",
-			composition_type = "bestigors"
+			breed_name = "chaos_spawn"
 		},
 		{
 			"delay",
 			duration = 1
-		},
-		{
-			"event_horde",
-			spawner_id = "farmlands_rat_ogre_4",
-			composition_type = "ungor_archers"
-		},
-		{
-			"delay",
-			duration = 1
-		},
-		{
-			"event_horde",
-			spawner_id = "farmlands_rat_ogre_5",
-			composition_type = "end_event_crater_medium"
-		},
-		{
-			"spawn_at_raw",
-			spawner_id = "farmlands_rat_ogre_3",
-			breed_name = {
-				"beastmen_bestigor"
-			}
-		},
-		{
-			"delay",
-			duration = 1
-		},
-		{
-			"spawn_at_raw",
-			spawner_id = "farmlands_rat_ogre_up",
-			breed_name = {
-				"beastmen_bestigor"
-			}
-		},
-		{
-			"delay",
-			duration = 5
 		},
 		{
 			"continue_when",
-			duration = 90,
 			condition = function (t)
-				return count_event_breed("beastmen_ungor_archer") < 2 and count_event_breed("beastmen_bestigor") < 2
+				return count_event_breed("chaos_spawn") == 1
 			end
 		},
 		{
 			"delay",
-			duration = 3
+			duration = 1
+		},
+		{
+			"flow_event",
+			flow_event_name = "farmlands_barn_boss_spawned"
+		},
+		{
+			"continue_when",
+			condition = function (t)
+				return count_event_breed("chaos_spawn") < 1
+			end
 		},
 		{
 			"flow_event",
 			flow_event_name = "farmlands_barn_boss_dead"
 		}
 	},
-	farmlands_chaos_spawn_loft = {
-		{
-			"set_master_event_running",
-			name = "farmlands_boss_barn"
-		},
-		{
-			"event_horde",
-			spawner_id = "farmlands_rat_ogre_loft",
-			composition_type = "event_small_beastmen"
-		},
-		{
-			"delay",
-			duration = 1
-		},
-		{
-			"event_horde",
-			spawner_id = "farmlands_rat_ogre_loft",
-			composition_type = "standard_bearer_ambush"
-		},
-		{
-			"delay",
-			duration = 1
-		},
-		{
-			"event_horde",
-			spawner_id = "farmlands_rat_ogre_loft",
-			composition_type = "ungor_archers"
-		},
-		{
-			"delay",
-			duration = 3
-		},
-		{
-			"continue_when",
-			duration = 60,
-			condition = function (t)
-				return count_event_breed("beastmen_gor") < 1 and count_event_breed("beastmen_ungor_archer") < 1 and count_event_breed("beastmen_ungor") < 1
-			end
-		},
-		{
-			"delay",
-			duration = 3
-		},
-		{
-			"flow_event",
-			flow_event_name = "farmlands_chaos_spawn_loft_done"
-		}
-	},
 	farmlands_spawn_guards = {
 		{
 			"control_pacing",
+			enable = false
+		},
+		{
+			"control_specials",
 			enable = false
 		},
 		{
@@ -494,6 +211,10 @@ local terror_event_blueprints = {
 			enable = false
 		},
 		{
+			"control_specials",
+			enable = false
+		},
+		{
 			"set_master_event_running",
 			name = "farmlands_prisoner_event_01"
 		},
@@ -514,6 +235,15 @@ local terror_event_blueprints = {
 			"event_horde",
 			spawner_id = "hay_barn_bridge_invis",
 			composition_type = "event_small_chaos"
+		},
+		{
+			"spawn_special",
+			amount = 1,
+			breed_name = {
+				"chaos_corruptor_sorcerer",
+				"chaos_vortex_sorcerer"
+			},
+			difficulty_requirement = HARDER
 		},
 		{
 			"delay",
@@ -541,6 +271,16 @@ local terror_event_blueprints = {
 			composition_type = "event_small_chaos"
 		},
 		{
+			"spawn_special",
+			amount = 1,
+			breed_name = {
+				"skaven_warpfire_thrower",
+				"skaven_ratling_gunner",
+				"skaven_poison_wind_globadier"
+			},
+			difficulty_requirement = HARDER
+		},
+		{
 			"delay",
 			duration = 10
 		},
@@ -555,6 +295,15 @@ local terror_event_blueprints = {
 			"event_horde",
 			spawner_id = "hay_barn_back",
 			composition_type = "event_small"
+		},
+		{
+			"spawn_special",
+			amount = 1,
+			breed_name = {
+				"skaven_gutter_runner",
+				"skaven_pack_master"
+			},
+			difficulty_requirement = HARDEST
 		},
 		{
 			"delay",
@@ -590,6 +339,10 @@ local terror_event_blueprints = {
 		},
 		{
 			"control_pacing",
+			enable = false
+		},
+		{
+			"control_specials",
 			enable = false
 		},
 		{
@@ -641,6 +394,21 @@ local terror_event_blueprints = {
 			duration = 5
 		},
 		{
+			"spawn_special",
+			breed_name = "skaven_poison_wind_globadier",
+			difficulty_amount = {
+				hardest = 2,
+				hard = 1,
+				harder = 2,
+				cataclysm = 2,
+				normal = 1
+			}
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
 			"continue_when",
 			duration = 80,
 			condition = function (t)
@@ -666,6 +434,16 @@ local terror_event_blueprints = {
 		{
 			"event_horde",
 			composition_type = "event_small"
+		},
+		{
+			"spawn_special",
+			amount = 1,
+			breed_name = {
+				"skaven_gutter_runner",
+				"skaven_pack_master",
+				"skaven_warpfire_thrower"
+			},
+			difficulty_requirement = HARDEST
 		},
 		{
 			"delay",
@@ -722,6 +500,10 @@ local terror_event_blueprints = {
 			enable = false
 		},
 		{
+			"control_specials",
+			enable = false
+		},
+		{
 			"set_master_event_running",
 			name = "farmlands_prisoner_event_upper_square"
 		},
@@ -748,6 +530,17 @@ local terror_event_blueprints = {
 			duration = 10
 		},
 		{
+			"spawn_special",
+			amount = 1,
+			breed_name = {
+				"skaven_gutter_runner",
+				"skaven_pack_master",
+				"skaven_warpfire_thrower",
+				"skaven_ratling_gunner"
+			},
+			difficulty_requirement = HARDER
+		},
+		{
 			"event_horde",
 			spawner_id = "sawmill_yard",
 			composition_type = "event_smaller"
@@ -767,6 +560,15 @@ local terror_event_blueprints = {
 			"event_horde",
 			spawner_id = "sawmill_yard_invis",
 			composition_type = "event_small_chaos"
+		},
+		{
+			"spawn_special",
+			amount = 1,
+			breed_name = {
+				"chaos_vortex_sorcerer",
+				"chaos_corruptor_sorcerer"
+			},
+			difficulty_requirement = HARDEST
 		},
 		{
 			"delay",
@@ -796,6 +598,16 @@ local terror_event_blueprints = {
 			end
 		}
 	},
+	farmlands_saw_mill_guards = {
+		{
+			"spawn_at_raw",
+			spawner_id = "saw_mill_guards",
+			breed_name = {
+				"skaven_ratling_gunner",
+				"skaven_warpfire_thrower"
+			}
+		}
+	},
 	farmlands_prisoner_event_sawmill_door = {
 		{
 			"set_freeze_condition",
@@ -803,6 +615,10 @@ local terror_event_blueprints = {
 		},
 		{
 			"control_pacing",
+			enable = false
+		},
+		{
+			"control_specials",
 			enable = false
 		},
 		{
@@ -836,6 +652,10 @@ local terror_event_blueprints = {
 			enable = false
 		},
 		{
+			"control_specials",
+			enable = false
+		},
+		{
 			"set_master_event_running",
 			name = "farmlands_prisoner_event_sawmill"
 		},
@@ -862,6 +682,15 @@ local terror_event_blueprints = {
 			duration = 10
 		},
 		{
+			"spawn_special",
+			amount = 1,
+			breed_name = {
+				"skaven_pack_master",
+				"skaven_gutter_runner"
+			},
+			difficulty_requirement = HARDER
+		},
+		{
 			"continue_when",
 			duration = 80,
 			condition = function (t)
@@ -875,6 +704,15 @@ local terror_event_blueprints = {
 		{
 			"delay",
 			duration = 10
+		},
+		{
+			"spawn_special",
+			amount = 1,
+			breed_name = {
+				"skaven_poison_wind_globadier",
+				"skaven_warpfire_thrower"
+			},
+			difficulty_requirement = HARDEST
 		},
 		{
 			"continue_when",
@@ -913,20 +751,14 @@ local terror_event_blueprints = {
 			end
 		},
 		{
-			"event_horde",
-			limit_spawners = 2,
-			composition_type = "event_small"
-		},
-		{
-			"delay",
-			duration = 10
-		},
-		{
-			"continue_when",
-			duration = 80,
-			condition = function (t)
-				return count_event_breed("skaven_clan_rat") < 5 and count_event_breed("skaven_slave") < 5
-			end
+			"spawn_special",
+			amount = 1,
+			breed_name = {
+				"skaven_poison_wind_globadier",
+				"skaven_warpfire_thrower",
+				"skaven_ratling_gunner"
+			},
+			difficulty_requirement = HARDER
 		},
 		{
 			"event_horde",
@@ -943,34 +775,22 @@ local terror_event_blueprints = {
 			condition = function (t)
 				return count_event_breed("skaven_clan_rat") < 5 and count_event_breed("skaven_slave") < 5
 			end
-		}
-	},
-	farmlands_pvp_pacing_off = {
-		{
-			"control_pacing",
-			enable = false
 		},
 		{
-			"control_specials",
-			enable = false
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_small"
 		},
 		{
-			"control_hordes",
-			enable = false
-		}
-	},
-	farmlands_pvp_pacing_on = {
-		{
-			"control_pacing",
-			enable = true
+			"delay",
+			duration = 10
 		},
 		{
-			"control_specials",
-			enable = true
-		},
-		{
-			"control_hordes",
-			enable = true
+			"continue_when",
+			duration = 80,
+			condition = function (t)
+				return count_event_breed("skaven_clan_rat") < 5 and count_event_breed("skaven_slave") < 5
+			end
 		}
 	},
 	farmlands_gate_open_event_challenge = {
@@ -1008,6 +828,711 @@ local terror_event_blueprints = {
 		{
 			"control_pacing",
 			enable = true
+		},
+		{
+			"control_specials",
+			enable = true
+		}
+	},
+	farmlands_pvp_event_su01_01 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_chaos_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_small"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"event_horde",
+			limit_spawners = 6,
+			composition_type = "event_small"
+		}
+	},
+	farmlands_pvp_event_su01_02 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_small_beastmen"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_small_beastmen"
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_small_beastmen"
+		}
+	},
+	farmlands_pvp_event_su01_03 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_small_beastmen"
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_medium_beastmen"
+		}
+	},
+	farmlands_pvp_event_su01_04 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "ungor_archers"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_small_beastmen"
+		}
+	},
+	farmlands_pvp_event_su02_01 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_medium_shield"
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_extra_spice_medium"
+		}
+	},
+	farmlands_pvp_event_su02_02 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_chaos_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_chaos_extra_spice_medium"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_large_chaos"
+		}
+	},
+	farmlands_pvp_event_su02_03 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_medium_chaos"
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_medium_chaos"
+		}
+	},
+	farmlands_pvp_event_su02_04 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "ungor_archers"
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
+			"event_horde",
+			limit_spawners = 8,
+			composition_type = "bestigors"
+		}
+	},
+	farmlands_pvp_event_su03_01 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_small_beastmen"
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_small_beastmen"
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
+			"event_horde",
+			limit_spawners = 6,
+			composition_type = "bestigors_small"
+		}
+	},
+	farmlands_pvp_event_su03_02 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_small_beastmen"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"event_horde",
+			limit_spawners = 6,
+			composition_type = "event_medium_beastmen"
+		}
+	},
+	farmlands_pvp_event_su03_03 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "ungor_archers"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_medium_beastmen"
+		}
+	},
+	farmlands_pvp_event_su03_04 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_chaos_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_small_chaos"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_medium_chaos"
+		}
+	},
+	farmlands_pvp_event_su04_01 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_chaos_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_small_chaos"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_medium_chaos"
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_medium_chaos"
+		}
+	},
+	farmlands_pvp_event_su04_02 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_chaos_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_large_chaos"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"event_horde",
+			limit_spawners = 6,
+			composition_type = "event_large_chaos"
+		}
+	},
+	farmlands_pvp_event_su04_03 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "bestigors"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_small_beastmen"
+		}
+	},
+	farmlands_pvp_event_su04_04 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_small_beastmen"
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_small_beastmen"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_small_beastmen"
+		}
+	},
+	farmlands_pvp_event_su05_01 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_large_beastmen"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_large_beastmen"
+		}
+	},
+	farmlands_pvp_event_su05_02 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "plague_monks_medium"
+		},
+		{
+			"delay",
+			duration = 5
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_extra_spice_small"
+		}
+	},
+	farmlands_pvp_event_su05_03 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_medium_shield"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_medium_shield"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "event_medium_shield"
+		}
+	},
+	farmlands_pvp_event_su05_04 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_chaos_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_large_chaos"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_large_chaos"
+		}
+	},
+	farmlands_pvp_event_su06_01 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_medium_beastmen"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "ungor_archers"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "ungor_archers"
+		}
+	},
+	farmlands_pvp_event_su06_02 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "ungor_archers"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "bestigors"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"event_horde",
+			limit_spawners = 6,
+			composition_type = "event_medium_beastmen"
+		}
+	},
+	farmlands_pvp_event_su06_03 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_beastmen_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "ungor_archers"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_large_beastmen"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"event_horde",
+			limit_spawners = 2,
+			composition_type = "bestigors"
+		}
+	},
+	farmlands_pvp_event_su06_04 = {
+		{
+			"set_master_event_running",
+			name = "horde_surge_event"
+		},
+		{
+			"set_freeze_condition",
+			max_active_enemies = 100
+		},
+		{
+			"play_stinger",
+			stinger_name = "enemy_horde_chaos_stinger"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_large_chaos"
+		},
+		{
+			"delay",
+			duration = 10
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_large_chaos"
+		},
+		{
+			"event_horde",
+			limit_spawners = 4,
+			composition_type = "event_large_chaos"
 		}
 	}
 }
